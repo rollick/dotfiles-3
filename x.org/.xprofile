@@ -1,0 +1,5 @@
+#!/bin/bash
+if which urxvtd >/dev/null 2>&1; then
+	mkdir -p "${XDG_CACHE:-${HOME}/.cache}/urxvt"
+	export RXVT_SOCKET="${XDG_CACHE:-${HOME}/.cache}/urxvt/$(hostname)"
+fi

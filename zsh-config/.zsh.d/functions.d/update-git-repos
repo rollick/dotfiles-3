@@ -1,0 +1,46 @@
+#!/bin/zsh
+# Dependencies:
+# * coreutils
+# * git
+
+local d
+
+if ! which git &>|/dev/null; then
+	printmsg "git is not installed."
+
+	if which command_not_found_handler &>|/dev/null; then
+		print ""
+		command_not_found_handler git
+	fi
+
+	return 1
+fi
+
+if [[ -z ${1} ]]; then
+	local first
+	first=1
+	for d in $(hash -d |grep "^git-" |cut -d "=" -f 2); do
+		if [[ -d "${d}/.git" ]] && [[ ! -f "${d}/.local-repo" ]]; then
+			if [[ ${first} -eq 0 ]]; then
+				print ""
+			else
+				first=0
+			fi
+			printhl "$(basename "${d}")"
+			(cd "${d}"; git pull)
+		fi
+	done
+else
+	until [[ -z ${1} ]]; do
+		if [[ -d "${1}/.git" ]] && [[ ! -f "${1}/.local-repo" ]]; then
+			printhl "$(basename "${1}")"
+			(cd "${1}"; git pull)
+			if [[ ${#} -gt 0 ]]; then
+				print ""
+			fi
+		fi
+		shift
+	done
+fi
+
+return 0

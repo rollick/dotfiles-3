@@ -1,0 +1,11 @@
+#!/bin/zsh
+# Aliases for more miscellaneous programs
+which colordiff &>|/dev/null && alias diff='colordiff'
+which locate &>|/dev/null && alias locate='locate --existing'
+which sudo &>|/dev/null && alias sudo='sudo '
+which htop &>|/dev/null && alias uhtop='htop -u ${USER}'
+which top &>|/dev/null && alias utop='top -U ${USER}'
+alias cls='clear'
+alias lj='jobs -l'
+which octave &>|/dev/null && alias octave='octave --silent'
+alias dmesg='dmesg --color --decode --human --time-format ctime'

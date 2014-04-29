@@ -1,0 +1,78 @@
+#!/bin/zsh
+# Functions and settings for the line editor
+####################
+
+# Better URL handling
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+function toggle-alias() {
+	if [[ "${BUFFER[(w)1]}" == "="* ]]; then
+		BUFFER[(w)1]="${BUFFER[(w)1]/=/}"
+	else
+		BUFFER[(w)1]="=${BUFFER[(w)1]}"
+	fi
+}
+zle -N toggle-alias
+
+# Toggle "sudo" at the beginning of the line
+# Also replace $EDITOR with sudoedit and vis a vis.
+# TODO: Handle sudo $EDITOR -> sudoedit
+function toggle-sudo() {
+	case ${BUFFER[(w)1]} in
+		"=sudo" )			BUFFER="${BUFFER/=sudo /}";;
+		"sudo" )			BUFFER="${BUFFER/sudo /}";;
+		"sudoedit" ) 		BUFFER[(w)1]="${EDITOR:-vi}";;
+		"vi" )				;&
+		"${EDITOR:-vi}" )	BUFFER[(w)1]="sudoedit";;
+		* )					BUFFER[(w)1]="sudo ${BUFFER[(w)1]}";;
+	esac
+}
+zle -N toggle-sudo
+
+# Hide commands from history
+function hide-from-history() {
+	if [[ "${BUFFER}" == \ * ]]; then
+		BUFFER="${BUFFER/# /}"
+	else
+		BUFFER=" ${BUFFER}"
+	fi
+}
+zle -N hide-from-history
+
+# Expand global aliases after typing
+function expand-global-alias() {
+	local ga="${LBUFFER[(w)-1]}"
+
+	if [[ -n ${ga} ]]; then
+		LBUFFER[(w)-1]="${${galiases[${ga}]}:-${ga}}"
+	fi
+	zle self-insert
+}
+zle -N expand-global-alias
+
+# Get help for a (incomplete) command, and then insert said command again
+function get-help() {
+	local cmd="${BUFFER[(w)1]}"
+
+	zle push-line
+
+	LBUFFER="${cmd} --help |\$PAGER"
+}
+zle -N get-help
+
+# Show manpage for a (incomplete) command, and then insert said command again
+function get-man() {
+	local cmd="${BUFFER[(w)1]}"
+
+	zle push-line
+
+	LBUFFER="man 1 ${cmd}"
+}
+zle -N get-man
+
+# Insert ISO date in the form of YYYY-MM-DD
+function insert-iso-date() {
+	LBUFFER+="$(date +%F)"
+}
+zle -N insert-iso-date

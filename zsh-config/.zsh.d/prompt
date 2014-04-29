@@ -1,0 +1,14 @@
+#!/bin/zsh
+# Set up prompt
+
+# Add own prompts to fpath
+if [[ -d ${HOME}/.zsh.d/prompt.d ]]; then
+	fpath=(${HOME}/.zsh.d/prompt.d ${fpath})
+	typeset -u fpath
+fi
+
+#  Load needed functions
+which promptinit &>|/dev/null || autoload -U promptinit && promptinit
+
+# Set prompt
+prompt default

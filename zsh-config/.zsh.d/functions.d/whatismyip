@@ -1,0 +1,34 @@
+#!/bin/zsh
+local url
+local urls
+
+urls=("https://icanhazip.com" "https://ip.appspot.com")
+
+# Make sure there is a internet connection
+if ! ping -c 1 google.com &>| /dev/null; then
+	return 1
+fi
+
+# Check for curl
+if ! which curl &>|/dev/null; then
+	print "curl is not installed."
+
+	# List packages which contain curl
+	if which command_not_found_handler &>|/dev/null; then
+		print ""
+		command_not_found_handler curl
+	fi
+
+	return 1
+fi
+
+# Retrive IP address
+for url in ${urls}; do
+	if =curl -s ${url}; then
+		return 0
+	else
+		continue
+	fi
+done
+
+return 1

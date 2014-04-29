@@ -1,0 +1,3 @@
+#!/bin/zsh
+which colors &>|/dev/null || autoload -U colors && colors
+print "${fg_bold[black]}   ------------------------------${reset_color}"

@@ -1,0 +1,12 @@
+#!/bin/zsh
+# Aliases for vim
+if which vim &>|/dev/null; then
+	alias view="rview"
+	alias vim="vim -p"
+	alias vi="vim -p"
+	if [[ -f "${HOME}/.vim/vimencrypt.vim" ]]; then
+       		alias vime="vim -p -u \"${HOME}/.vim/vimencrypt.vim\" -x"
+	else
+		alias vime="vim -p -x"
+	fi
+fi

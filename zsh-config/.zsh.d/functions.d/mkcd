@@ -1,0 +1,11 @@
+#!/bin/zsh
+# Create directory and cd to it
+if [[ "${#}" -eq 1 ]] && [[ "${1}" != "--help" ]]; then
+	if [[ ! -d "${1}" ]]; then
+		mkdir -p "${1}"
+	fi
+	cd "${1}"
+else
+	print "Usage: ${0} TARGET"
+	return 1
+fi

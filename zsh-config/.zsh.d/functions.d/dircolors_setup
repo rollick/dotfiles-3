@@ -1,0 +1,34 @@
+#!/bin/zsh
+# Setup $LS_COLORS
+####################
+if which dircolors &>|/dev/null; then
+	local CACHEDIR="${XDG_CACHE_HOME:-${HOME}/.cache}"
+	[[ ! -d "${CACHEDIR}" ]] && mkdir -p "${CACHEDIR}"
+	[[ ! -f "${CACHEDIR}" ]] && touch "${CACHEDIR}/dircolors"
+
+	if [[ "$(dircolors --version)" != $(<"${CACHEDIR}/dircolors") ]]; then
+		dircolors --version >| "${CACHEDIR}/dircolors"
+
+		# Don't overwrite user settings
+		# Since most users don't touch their dircolors configuration,
+		# just copy their old one to ${HOME}/.dircolors.old and inform them about
+		# it.
+		if [[ -f "${HOME}/.dircolors" ]]; then
+			mv -f "${HOME}/.dircolors" "${HOME}/.dircolors.old"
+
+			[[ ! -f "${HOME}/.dircolors" ]] && dircolors -p >| "${HOME}/.dircolors"
+
+			if [[ $(<"${HOME}/.dircolors") != $(<"${HOME}/.dircolors.old") ]]; then
+				printmsg "Old dircolors configuration moved to ${HOME}/.dircolors.old"
+			else
+				rm "${HOME}/.dircolors.old"
+			fi
+		fi
+	fi
+
+	# Create missing ~/.dircolors
+	[[ ! -f "${HOME}/.dircolors" ]] && dircolors -p >| "${HOME}/.dircolors"
+
+	# Load dircolors settings
+	eval $(dircolors -b "${HOME}/.dircolors")
+fi

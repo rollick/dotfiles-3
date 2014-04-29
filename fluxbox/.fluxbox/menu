@@ -20,9 +20,9 @@
 			[exec] (Firefox) {firefox}
 		[end]
 		[submenu] (System)
-			[exec] (Editor) {urxvt -e vim}
-			[exec] (System monitor) {urxvt -e htop}
-			[exec] (Terminal) {urxvt}
+			[exec] (Editor) {urxvtc -e vim}
+			[exec] (System monitor) {urxvtc -e htop}
+			[exec] (Terminal) {urxvtc}
 		[end]
 		[submenu] (Fluxbox menu)
 			[config] (Configure)

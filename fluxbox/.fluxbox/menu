@@ -18,18 +18,6 @@
 	[encoding] {UTF-8}
 		[exec] (xterm) {xterm}
 		[exec] (firefox) {}
-		[submenu] (Net)
-			[submenu] (FTP)
-				[exec]   (ftp) {xterm -e ftp}
-			[end]
-		[end]
-		[submenu] (Editors)
-			[exec]   (nano) {xterm -e nano}
-			[exec]   (vi) {xterm -e vi}
-		[end]
-		[submenu] (System Tools)
-			[exec]   (top) {xterm -e top}
-		[end]
 		[submenu] (Fluxbox menu)
 			[config] (Configure)
 			[submenu] (System Styles) {Choose a style...}

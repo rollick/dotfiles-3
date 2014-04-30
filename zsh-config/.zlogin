@@ -9,6 +9,6 @@ fi
 if  [[ "${TTY}" == "/dev/tty1" ]]; then
 	if which startx &>|/dev/null && [[ -e "${HOME}/.xinitrc" ]]; then
 		export SHLVL=0
-		exec startx
+		exec startx &>|/dev/null
 	fi
 fi

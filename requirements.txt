@@ -1,0 +1,8 @@
+openbox:
+ - feh
+ - xorg-xmodmap
+ - xorg-xinit
+ - numlockx
+
+rxvt-unicode:
+ - urxvt-perls

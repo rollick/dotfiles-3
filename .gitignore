@@ -4,5 +4,5 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 # *~
-lastwallpaper
-styles
+fluxbox/.fluxbox/lastwallpaper
+fluxbox/.fluxbox/styles

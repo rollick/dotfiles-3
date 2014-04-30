@@ -15,3 +15,11 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+#
+# Set Wallpaper
+if which feh >/dev/null 2>&1; then
+	if [[ -e "${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper" ]];then
+		feh --bg-scale "${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper" &
+	fi
+fi
+

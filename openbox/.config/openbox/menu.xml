@@ -93,7 +93,7 @@
 			<command>urxvtc -e vim</command>
 		</action>
 	</item>
-	<item label="System manager">
+	<item label="System monitor">
 		<action name="Execute">
 			<command>urxvtc -e htop</command>
 		</action>

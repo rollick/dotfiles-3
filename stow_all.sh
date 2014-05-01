@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir --verbose -p "${HOME}/.moc"
 mkdir -p "${HOME}/.ssh"
 mkdir --verbose -p "${HOME}/.unison"
 mkdir -p "${XDG_CONFIG_HOME:-${HOME}/.config}"

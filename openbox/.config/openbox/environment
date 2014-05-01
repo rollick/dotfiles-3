@@ -2,4 +2,4 @@
 # Set user-specific environment variables here for Openbox
 #
 
-GNOME_DESKTOP_SESSION_ID=1
+export GNOME_DESKTOP_SESSION_ID=1

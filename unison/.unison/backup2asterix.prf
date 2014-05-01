@@ -1,0 +1,7 @@
+# Backup $HOME to asterix.local
+include backup_home.include
+
+# Set Destination
+root = ssh://asterix.local
+
+label = Backup $HOME to asterix.local

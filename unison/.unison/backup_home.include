@@ -1,0 +1,108 @@
+####################
+# Set ~/ as root
+####################
+root =
+####################
+# Options
+####################
+confirmbigdel = false
+log = false
+prefer = newer
+
+####################
+# Always exclude Unison cache files
+####################
+ignore = Path .unison/*
+ignorenot = Path .unison/*.prf
+ignorenot = Path .unison/*.include
+
+####################
+# Always exclude temporary and backup files
+####################
+ignore = Name *~
+ignore = Name .*~
+ignore = Name *.bak
+ignore = Name *.o
+ignore = Name *.pyc
+ignore = Name *.tmp
+ignore = Name *.swp
+
+####################
+# Exclude the following paths
+####################
+ignore = Path Documents/Code/*/pkgbuilds/*/pkg
+ignore = Path Documents/Code/*/pkgbuilds/*/src
+ignore = Path Documents/Code/*/pkgbuilds/*/*.pkg.tar*
+ignore = Path Documents/Code/*/pkgbuilds/*/*.src.tar*
+ignore = Path .config/pulse
+ignore = Path .config/transmission/resume
+ignore = Path .config/transmission/torrents
+ignore = Path .local/share/moc
+ignore = Path .local/share/Trash
+ignore = Path .local/share/icc/*
+ignore = Path .local/share/gvfs-metadata
+ignore = Path .local/share/numlock_on
+ignore = Path .local/share/recently-used.xbel
+ignore = Path .vim/.recently-used
+
+####################
+# Include folders
+####################
+path = Desktop
+path = Documents
+path = Music
+path = PDF
+path = Pictures
+path = Public
+path = Software
+path = Temp
+path = Templates
+path = Videos
+path = .config
+path = .cups
+path = .fonts
+path = .gconf
+path = .gimp-2.8
+path = .gnome2
+path = .gnome2_private
+path = .gnupg
+path = .icons
+path = .local
+path = .mozilla
+path = .purple
+path = .themes
+path = .unison
+path = .vim
+path = .xchat2
+path = .zsh.d
+
+####################
+# Include files
+####################
+path = .MP3Diags.ini
+path = .MP3Diags.dat
+path = .asunder
+path = .easyMP3Gain
+path = .face
+path = .gitconfig
+path = .gitignore
+path = .gtk-bookmarks
+path = .gtkrc-2.0
+path = .gvimrc
+path = .hidden
+path = .hushlogin
+path = .octaverc
+path = .profile
+path = .tmux.conf
+path = .vimrc
+path = .Xdefaults
+path = .Xmodmap
+path = .Xresources
+path = .xinitrc
+path = .xprofile
+path = .Xresources
+path = .zlogin
+path = .zlogout
+path = .zshenv
+path = .zshrc
+path = .ssh/config

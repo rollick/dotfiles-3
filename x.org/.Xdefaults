@@ -1,3 +1,14 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! lal
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+lal.color: black
+lal.font: Droid Sans
+lal.fontsize: 18
+lal.format: %R
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! URxvt
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 URxvt.scrollBar: false
 URxvt.foreground: #ffffff
 URxvt.background: #121212

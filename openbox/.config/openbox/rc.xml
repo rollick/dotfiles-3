@@ -189,6 +189,10 @@
 <keyboard>
   <chainQuitKey>C-g</chainQuitKey>
 
+  <!-- Keybindings for root menu -->
+  <keybind key="W-space">
+    <action name="ShowMenu"><menu>root-menu</menu></action>
+  </keybind>
   <!-- Keybindings for desktop switching -->
   <keybind key="C-A-Left">
     <action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>

@@ -5,7 +5,14 @@ URxvt.font: xft:Droid Sans Mono:size=10
 URxvt.geometry:100x30
 
 URxvt.cursorUnderline: true
-URxvt.perl-ext-common: default,clipboard
+URxvt.perl-ext-common: default,clipboard,tabbed
+
+! Set color for tabbar
+URxvt.tabbed.tabbar-fg: 4
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 0
+URxvt.tabbed.tab-bg: 4
+
 ! Tango Colorscheme
 ! Black
 URxvt*color0: #121212

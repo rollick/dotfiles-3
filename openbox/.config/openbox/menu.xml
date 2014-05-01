@@ -115,6 +115,11 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Volume control">
+		<action name="Execute">
+			<command>urxvtc -e alsamixer</command>
+		</action>
+	</item>
 </menu>
 
 <menu id="system-openbox-menu" label="Openbox">

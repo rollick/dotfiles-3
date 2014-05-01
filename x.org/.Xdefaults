@@ -5,7 +5,11 @@ URxvt.font: xft:Droid Sans Mono:size=10
 URxvt.geometry:100x30
 
 URxvt.cursorUnderline: true
-URxvt.perl-ext-common: default,clipboard,tabbed
+URxvt.perl-ext-common: default,clipboard,tabbed,matcher
+
+! Settings to make URLs clickable
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
 
 ! Set color for tabbar
 URxvt.tabbed.tabbar-fg: 4

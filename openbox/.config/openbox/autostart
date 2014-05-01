@@ -29,3 +29,9 @@ fi
 if which urxvtd >/dev/null 2>&1; then
 	urxvtd -q -o -f &
 fi
+
+# Enable Edgescroll in touchpad
+if which synclient >/dev/null 2>&1; then
+	synclient HorizEdgeScroll=1 &
+	synclient VertEdgeScroll=1 &
+fi

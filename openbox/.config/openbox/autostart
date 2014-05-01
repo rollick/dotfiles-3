@@ -20,7 +20,7 @@ fi
 
 # Set Wallpaper
 if which feh >/dev/null 2>&1; then
-	if [[ -e "${${HOME}/.fehbg" ]];then
+	if [[ -e "${HOME}/.fehbg" ]];then
 		. "${HOME}/.fehbg" &
 	fi
 fi

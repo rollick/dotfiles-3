@@ -1,5 +1,6 @@
 openbox:
  - feh
+ - lal
  - xorg-xmodmap
  - xorg-xinit
  - numlockx

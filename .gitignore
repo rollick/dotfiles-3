@@ -6,11 +6,3 @@
 # *~
 appearance/.icons/*.png
 appearance/.icons/default/*.png
-fluxbox/.fluxbox/lastwallpaper
-fluxbox/.fluxbox/styles
-moc/.moc/equalizer
-moc/.moc/last_directory
-moc/.moc/pid
-moc/.moc/playlist.m3u
-moc/.moc/socket*
-moc/.moc/softmixer

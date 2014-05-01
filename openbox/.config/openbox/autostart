@@ -34,3 +34,4 @@ fi
 if which lal >/dev/null 2>&1; then
 	lal &
 fi
+# vim: ft=sh

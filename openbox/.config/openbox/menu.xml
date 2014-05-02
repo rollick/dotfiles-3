@@ -188,17 +188,17 @@
 </menu>
 
 <menu id="root-menu" label="Openbox 3">
-  <separator label="Applications" />
-  <menu id="apps-graphics-menu"/>
-  <menu id="apps-multimedia-menu"/>
-  <menu id="apps-net-menu"/>
-  <menu id="apps-office-menu"/>
-  <menu id="apps-system-menu"/>
-  <separator label="System" />
-  <menu id="system-administration-menu"/>
-  <menu id="system-openbox-menu"/>
-  <separator />
-  <menu id="system-session-menu"/>
+	<separator label="Applications" />
+	<menu id="apps-graphics-menu"/>
+	<menu id="apps-multimedia-menu"/>
+	<menu id="apps-net-menu"/>
+	<menu id="apps-office-menu"/>
+	<menu id="apps-system-menu"/>
+	<separator label="System" />
+	<menu id="system-administration-menu"/>
+	<menu id="system-openbox-menu"/>
+	<separator />
+	<menu id="system-session-menu"/>
 </menu>
 
 </openbox_menu>

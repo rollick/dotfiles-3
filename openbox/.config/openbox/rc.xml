@@ -211,6 +211,11 @@
 		<action name="ShowMenu"><menu>root-menu</menu></action>
 	</keybind>
 
+	<!-- Keybindings for session menu -->
+	<keybind key="XF86Sleep">
+		<action name="ShowMenu"><menu>system-session-menu</menu></action>
+	</keybind>
+
 	<!-- Edge tiling -->
 	<keybind key="W-a" chroot="true">
 		<!--

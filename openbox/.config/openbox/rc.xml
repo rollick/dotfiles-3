@@ -193,6 +193,156 @@
 	<keybind key="W-space">
 		<action name="ShowMenu"><menu>root-menu</menu></action>
 	</keybind>
+
+	<!-- Edge tiling -->
+	<keybind key="W-a">
+		<!--
+		     W-a-Left-Left:	Full height, left side
+		     W-a-Left-Up:	Top left
+		     W-a-Left-Down:	Bottom left
+		     W-a-Right-Right:	Full height, right side
+		     W-a-Right-Up:	Top right
+		     W-a-Right-Down:	Bottom right
+		     W-a-Up-Up:		Full width, top
+		     W-a-Up-Left:	Top left
+		     W-a-Up-Right:	Top right
+		     W-a-Down-Down:	Full width, bottom
+		     W-a-Down-Left:	Bottom left
+		     W-a-Down-Right:	Bottom right
+		-->
+		<!-- left side -->
+		<keybind key="Left">
+			<keybind key="Left">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>100%</height>
+				</action>
+			</keybind>
+			<!-- top left -->
+			<keybind key="Up">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- bottom left -->
+			<keybind key="Down">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>50%</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+		</keybind>
+		<!-- right side -->
+		<keybind key="Right">
+			<!--full height-->
+			<keybind key="Right">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>50%</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>100%</height>
+				</action>
+			</keybind>
+			<!-- top right -->
+			<keybind key="Up">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>50%</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- bottom right -->
+			<keybind key="Down">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>50%</x>
+					<y>50%</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+		</keybind>
+		<!-- top -->
+		<keybind key="Up">
+			<!--full width-->
+			<keybind key="Up">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>0</y>
+					<width>100%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- top left -->
+			<keybind key="Left">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- top right -->
+			<keybind key="Right">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>50%</x>
+					<y>0</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+		</keybind>
+		<!-- bottom -->
+		<keybind key="Down">
+			<!--full width-->
+			<keybind key="Down">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>50%</y>
+					<width>100%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- bottom left -->
+			<keybind key="Left">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>0</x>
+					<y>50%</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+			<!-- top right -->
+			<keybind key="Right">
+				<action name="UnmaximizeFull"/>
+				<action name="MoveResizeTo">
+					<x>50%</x>
+					<y>50%</y>
+					<width>50%</width>
+					<height>50%</height>
+				</action>
+			</keybind>
+		</keybind>
+	</keybind>
+
 	<!-- Keybindings for desktop switching -->
 	<keybind key="C-A-Left">
 		<action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>

@@ -1,0 +1,85 @@
+#!/bin/bash
+print_item() {
+	# ${1} -- Label
+	# ${2} -- Command
+	if [[ ! -z ${2} ]]; then
+		echo -e "\t<item label=\"${1}\">"
+		echo -e "\t\t<action name=\"Execute\"><command>${2}</command></action>"
+		echo -e "\t</item>"
+	else
+		echo -e "\t<item label=\"${1}\" />"
+	fi
+}
+
+get_mocdir() {
+	mocdir="$(grep "MOCDir" "${HOME}/.moc/config"| cut -d '=' -f 2| tr -d " ")"
+	echo "${mocdir/\~/${HOME}}"
+}
+
+control_commands() {
+	if [[ "${1}" != "unstop" ]]; then
+		echo -e "\t<separator label=\"Commands\" />"
+	fi
+
+	if [[ "${1}" == "play" ]]; then
+		print_item "Play" "mocp --toggle-pause"
+	elif [[ "${1}" == "pause" ]]; then
+		print_item "Pause" "mocp --toggle-pause"
+	else
+		print_item "Play" "mocp --play"
+	fi
+
+	if [[ "${1}" != "unstop" ]]; then
+		print_item "Previous" "mocp --prev"
+		print_item "Next" "mocp --next"
+		print_item "Stop" "mocp --stop"
+	fi
+	echo -e "\t<separator />"
+	print_item "Show mocp" "urxvtc -e mocp"
+	print_item "Exit" "mocp --exit"
+}
+
+calc_playlistn() {
+	if [[ -f "${1}" ]]; then
+		playlistn="$(wc -l "${1}"| cut -d ' ' -f 1)"
+		playlistn=$(( (${playlistn} -2) / 2))
+	else
+		playlistn="?"
+	fi
+	echo "${playlistn}"
+}
+
+song_info() {
+	cmd="urxvtc -e mocp"
+	mocdir="$(get_mocdir)"
+	playlist="${mocdir}/playlist.m3u"
+
+	artist="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Artist:")"
+	songtitle="$(LC_ALL=C mocp --info 2>/dev/null| grep "^SongTitle:")"
+	album="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Album:")"
+	trackn="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Title:"| cut -d ' ' -f 2)"
+	print_item "${artist}" "${cmd}"
+	print_item "${songtitle/SongTitle/Title}" "${cmd}"
+	print_item "${album}" "${cmd}"
+	print_item "Track: ${trackn}/$(calc_playlistn "${playlist}")" "${cmd}"
+}
+
+state=$(LC_ALL=C mocp --info 2>/dev/null | grep State | cut -d ' ' -f 2)
+echo "<openbox_pipe_menu>"
+if [[ "${state}" == "PLAY" ]]; then
+	echo -e '\t<separator label="Playing" />'
+	song_info
+	control_commands pause
+elif [[ "${state}" == "PAUSE" ]]; then
+	echo -e '\t<separator label="Paused" />'
+	song_info
+	control_commands play
+elif [[ "${state}" == "STOP" ]]; then
+	echo -e '\t<separator label="Stopped" />'
+	control_commands unstop
+else
+	echo -e '\ŧ<separator label="Not running" />'
+	print_item "Start mocp server" "mocp --server"
+	print_item "Show mocp" "urxvtc -e mocp"
+fi
+echo "</openbox_pipe_menu>"

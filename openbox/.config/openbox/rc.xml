@@ -195,7 +195,7 @@
 	</keybind>
 
 	<!-- Edge tiling -->
-	<keybind key="W-a">
+	<keybind key="W-a" chroot="true">
 		<!--
 		     W-a-Left-Left:	Full height, left side
 		     W-a-Left-Up:	Top left
@@ -210,8 +210,13 @@
 		     W-a-Down-Left:	Bottom left
 		     W-a-Down-Right:	Bottom right
 		-->
+		<!-- Break chroot -->
+		<keybind key="Escape"><action name="BreakChroot"/></keybind>
 		<!-- left side -->
-		<keybind key="Left">
+		<keybind key="Left" chroot="true">
+			<keybind key="Escape">
+				<action name="BreakChroot"/>
+			</keybind>
 			<keybind key="Left">
 				<action name="UnmaximizeFull"/>
 				<action name="MoveResizeTo">
@@ -220,6 +225,8 @@
 					<width>50%</width>
 					<height>100%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- top left -->
 			<keybind key="Up">
@@ -230,6 +237,8 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- bottom left -->
 			<keybind key="Down">
@@ -240,10 +249,15 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 		</keybind>
 		<!-- right side -->
-		<keybind key="Right">
+		<keybind key="Right" chroot="true">
+			<keybind key="Escape">
+				<action name="BreakChroot"/>
+			</keybind>
 			<!--full height-->
 			<keybind key="Right">
 				<action name="UnmaximizeFull"/>
@@ -253,6 +267,8 @@
 					<width>50%</width>
 					<height>100%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- top right -->
 			<keybind key="Up">
@@ -263,6 +279,8 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- bottom right -->
 			<keybind key="Down">
@@ -273,10 +291,15 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 		</keybind>
 		<!-- top -->
-		<keybind key="Up">
+		<keybind key="Up" chroot="true">
+			<keybind key="Escape">
+				<action name="BreakChroot"/>
+			</keybind>
 			<!--full width-->
 			<keybind key="Up">
 				<action name="UnmaximizeFull"/>
@@ -286,6 +309,8 @@
 					<width>100%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- top left -->
 			<keybind key="Left">
@@ -296,6 +321,8 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- top right -->
 			<keybind key="Right">
@@ -306,10 +333,15 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 		</keybind>
 		<!-- bottom -->
 		<keybind key="Down">
+			<keybind key="Escape">
+				<action name="BreakChroot"/>
+			</keybind>
 			<!--full width-->
 			<keybind key="Down">
 				<action name="UnmaximizeFull"/>
@@ -319,6 +351,8 @@
 					<width>100%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- bottom left -->
 			<keybind key="Left">
@@ -329,6 +363,8 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 			<!-- top right -->
 			<keybind key="Right">
@@ -339,6 +375,8 @@
 					<width>50%</width>
 					<height>50%</height>
 				</action>
+				<action name="BreakChroot"/>
+				<action name="BreakChroot"/>
 			</keybind>
 		</keybind>
 	</keybind>

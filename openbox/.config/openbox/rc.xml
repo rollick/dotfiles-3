@@ -212,6 +212,17 @@
 		-->
 		<!-- Break chroot -->
 		<keybind key="Escape"><action name="BreakChroot"/></keybind>
+		<!-- Center -->
+		<keybind key="c">
+			<action name="UnmaximizeFull"/>
+			<action name="MoveResizeTo">
+				<x>10%</x>
+				<y>10%</y>
+				<width>80%</width>
+				<height>80%</height>
+			</action>
+			<action name="BreakChroot"/>
+		</keybind>
 		<!-- left side -->
 		<keybind key="Left" chroot="true">
 			<keybind key="Escape">

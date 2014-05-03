@@ -84,4 +84,7 @@ echo "<openbox_pipe_menu>"
 	fi
 	vol_menu "vol-headphone" "Headphone"
 
+	echo -e "\t<separator />"
+	print_item "Open mixer" "urxvtc -e alsamixer"
+
 echo "</openbox_pipe_menu>"

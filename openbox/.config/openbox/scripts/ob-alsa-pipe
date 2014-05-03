@@ -42,8 +42,8 @@ vol_menu() {
 	# $2 = control
 	local i
 	local cur
+	local mod
 	cur=$(control_vol ${2})
-	old=$cur
 
 	if [[ $(( ${cur} % 5 )) -ne 0 ]]; then
 		mod=$(( $cur % 5 ))
@@ -53,7 +53,6 @@ vol_menu() {
 			cur=$(( $cur - $mod ))
 		fi
 	fi
-	#echo "${old}->${cur}"
 
 	echo "<menu label=\"Volume\" id=\"${1}\">"
 	for i in $(seq 0 5 100); do
@@ -67,6 +66,7 @@ vol_menu() {
 }
 
 echo "<openbox_pipe_menu>"
+	print_item "Open mixer" "urxvtc -e alsamixer"
 	# Implement speaker
 	#echo -e "\t<separator label=\"Speaker ($(jack_state "Line Out Jack"))\" />"
 	#if [[ $(control_state "Master") == "on" ]]; then
@@ -83,8 +83,4 @@ echo "<openbox_pipe_menu>"
 		print_item "Unmute" "amixer sset Headphone toggle"
 	fi
 	vol_menu "vol-headphone" "Headphone"
-
-	echo -e "\t<separator />"
-	print_item "Open mixer" "urxvtc -e alsamixer"
-
 echo "</openbox_pipe_menu>"

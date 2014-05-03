@@ -12,6 +12,8 @@ print_item() {
 }
 
 get_mocdir() {
+	local mocdir
+
 	mocdir="$(grep "MOCDir" "${HOME}/.moc/config"| cut -d '=' -f 2| tr -d " ")"
 	echo "${mocdir/\~/${HOME}}"
 }
@@ -40,6 +42,8 @@ control_commands() {
 }
 
 calc_playlistn() {
+	local playlistn
+
 	if [[ -f "${1}" ]]; then
 		playlistn="$(wc -l "${1}"| cut -d ' ' -f 1)"
 		playlistn=$(( (${playlistn} -2) / 2))
@@ -50,6 +54,14 @@ calc_playlistn() {
 }
 
 song_info() {
+	local album
+	local artist
+	local cmd
+	local mocdir
+	local playlist
+	local songtitle
+	local trackn
+
 	cmd="urxvtc -e mocp"
 	mocdir="$(get_mocdir)"
 	playlist="${mocdir}/playlist.m3u"
@@ -58,6 +70,7 @@ song_info() {
 	songtitle="$(LC_ALL=C mocp --info 2>/dev/null| grep "^SongTitle:")"
 	album="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Album:")"
 	trackn="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Title:"| cut -d ' ' -f 2)"
+
 	print_item "${artist}" "${cmd}"
 	print_item "${songtitle/SongTitle/Title}" "${cmd}"
 	print_item "${album}" "${cmd}"
@@ -65,21 +78,22 @@ song_info() {
 }
 
 state=$(LC_ALL=C mocp --info 2>/dev/null | grep State | cut -d ' ' -f 2)
+
 echo "<openbox_pipe_menu>"
-if [[ "${state}" == "PLAY" ]]; then
-	echo -e '\t<separator label="Playing" />'
-	song_info
-	control_commands pause
-elif [[ "${state}" == "PAUSE" ]]; then
-	echo -e '\t<separator label="Paused" />'
-	song_info
-	control_commands play
-elif [[ "${state}" == "STOP" ]]; then
-	echo -e '\t<separator label="Stopped" />'
-	control_commands unstop
-else
-	echo -e '\ŧ<separator label="Not running" />'
-	print_item "Start mocp server" "mocp --server"
-	print_item "Show mocp" "urxvtc -e mocp"
-fi
+	if [[ "${state}" == "PLAY" ]]; then
+		echo -e '\t<separator label="Playing" />'
+		song_info
+		control_commands pause
+	elif [[ "${state}" == "PAUSE" ]]; then
+		echo -e '\t<separator label="Paused" />'
+		song_info
+		control_commands play
+	elif [[ "${state}" == "STOP" ]]; then
+		echo -e '\t<separator label="Stopped" />'
+		control_commands unstop
+	else
+		echo -e '\ŧ<separator label="Not running" />'
+		print_item "Start mocp server" "mocp --server"
+		print_item "Show mocp" "urxvtc -e mocp"
+	fi
 echo "</openbox_pipe_menu>"

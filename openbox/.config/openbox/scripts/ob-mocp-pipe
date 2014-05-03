@@ -3,11 +3,11 @@ print_item() {
 	# ${1} -- Label
 	# ${2} -- Command
 	if [[ ! -z ${2} ]]; then
-		echo -e "\t<item label=\"${1}\">"
-		echo -e "\t\t<action name=\"Execute\"><command>${2}</command></action>"
-		echo -e "\t</item>"
+		echo "<item label=\"${1}\">"
+		echo "<action name=\"Execute\"><command>${2}</command></action>"
+		echo "</item>"
 	else
-		echo -e "\t<item label=\"${1}\" />"
+		echo "<item label=\"${1}\" />"
 	fi
 }
 
@@ -20,7 +20,7 @@ get_mocdir() {
 
 control_commands() {
 	if [[ "${1}" != "unstop" ]]; then
-		echo -e "\t<separator label=\"Commands\" />"
+		echo "<separator label=\"Commands\" />"
 	fi
 
 	if [[ "${1}" == "play" ]]; then
@@ -36,7 +36,7 @@ control_commands() {
 		print_item "Next" "mocp --next"
 		print_item "Stop" "mocp --stop"
 	fi
-	echo -e "\t<separator />"
+	echo "<separator />"
 	print_item "Show mocp" "urxvtc -e mocp"
 	print_item "Exit" "mocp --exit"
 }
@@ -81,18 +81,18 @@ state=$(LC_ALL=C mocp --info 2>/dev/null | grep State | cut -d ' ' -f 2)
 
 echo "<openbox_pipe_menu>"
 	if [[ "${state}" == "PLAY" ]]; then
-		echo -e '\t<separator label="Playing" />'
+		echo '<separator label="Playing" />'
 		song_info
 		control_commands pause
 	elif [[ "${state}" == "PAUSE" ]]; then
-		echo -e '\t<separator label="Paused" />'
+		echo '<separator label="Paused" />'
 		song_info
 		control_commands play
 	elif [[ "${state}" == "STOP" ]]; then
-		echo -e '\t<separator label="Stopped" />'
+		echo '<separator label="Stopped" />'
 		control_commands unstop
 	else
-		echo -e '\ŧ<separator label="Not running" />'
+		echo '\ŧ<separator label="Not running" />'
 		print_item "Start mocp server" "mocp --server"
 		print_item "Show mocp" "urxvtc -e mocp"
 	fi

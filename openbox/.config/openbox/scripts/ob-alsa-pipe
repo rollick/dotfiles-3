@@ -3,11 +3,11 @@ print_item() {
 	# ${1} -- Label
 	# ${2} -- Command
 	if [[ ! -z ${2} ]]; then
-		echo -e "\t<item label=\"${1}\">"
-		echo -e "\t\t<action name=\"Execute\"><command>${2}</command></action>"
-		echo -e "\t</item>"
+		echo "<item label=\"${1}\">"
+		echo "<action name=\"Execute\"><command>${2}</command></action>"
+		echo "</item>"
 	else
-		echo -e "\t<item label=\"${1}\" />"
+		echo "<item label=\"${1}\" />"
 	fi
 }
 
@@ -59,7 +59,7 @@ vol_menu() {
 		if [[ ${i} -ne ${cur} ]]; then
 			print_item "${i}%" "amixer sset ${2} ${i}%"
 		else
-			echo -e "\t<separator label=\"${cur}%\" />"
+			echo "<separator label=\"${cur}%\" />"
 		fi
 	done
 	echo '</menu>'
@@ -68,7 +68,7 @@ vol_menu() {
 echo "<openbox_pipe_menu>"
 	print_item "Open mixer" "urxvtc -e alsamixer"
 	# Implement speaker
-	#echo -e "\t<separator label=\"Speaker ($(jack_state "Line Out Jack"))\" />"
+	#echo "<separator label=\"Speaker ($(jack_state "Line Out Jack"))\" />"
 	#if [[ $(control_state "Master") == "on" ]]; then
 		#print_item "Mute" "amixer sset Master toggle"
 	#else
@@ -76,7 +76,7 @@ echo "<openbox_pipe_menu>"
 	#fi
 	#vol_menu "vol-master" "Master"
 	#control_vol Master
-	echo -e "\t<separator label=\"Headphone ($(jack_state "Headphone Jack"))\" />"
+	echo "<separator label=\"Headphone ($(jack_state "Headphone Jack"))\" />"
 	if [[ $(control_state "Headphone") == "on" ]]; then
 		print_item "Mute" "amixer sset Headphone toggle"
 	else

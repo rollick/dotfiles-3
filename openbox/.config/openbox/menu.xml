@@ -188,6 +188,7 @@
 </menu>
 
 <menu id="pipe-moc-menu" label="mocp" execute="ob-mocp-pipe" />
+<menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe" />
 
 <menu id="root-menu" label="Openbox 3">
 	<separator label="Applications" />
@@ -198,6 +199,7 @@
 	<menu id="apps-system-menu"/>
 	<separator label="Control" />
 	<menu id="pipe-moc-menu" />
+	<menu id="pipe-alsa-menu" />
 	<separator label="System" />
 	<menu id="system-administration-menu"/>
 	<menu id="system-openbox-menu"/>

@@ -1,0 +1,87 @@
+#!/bin/bash
+print_item() {
+	# ${1} -- Label
+	# ${2} -- Command
+	if [[ ! -z ${2} ]]; then
+		echo -e "\t<item label=\"${1}\">"
+		echo -e "\t\t<action name=\"Execute\"><command>${2}</command></action>"
+		echo -e "\t</item>"
+	else
+		echo -e "\t<item label=\"${1}\" />"
+	fi
+}
+
+control_state() {
+	echo $(amixer sget ${1}| grep "Left:" | cut -d " " -f 9| tr -d "\[\]")
+}
+
+control_vol() {
+	local left
+
+	left=$(amixer sget ${1}| grep "Front Left:" | cut -d " " -f 7| tr -d "\[\]\%")
+
+	if [[ "${left}" != "" ]]; then
+		echo ${left}
+	else
+		echo $(amixer sget ${1}| grep "Mono:" | cut -d " " -f 6| tr -d "\[\]\%")
+	fi
+}
+
+jack_state() {
+	local state
+	state=$(amixer -c 0 contents| grep --after 2 "${1}"| awk -F "=" 'NR == 3 {print $2}')
+	if [[ "${state}" == "on" ]]; then
+		echo "Connected"
+	else
+		echo "Disconnected"
+	fi
+}
+
+vol_menu() {
+	# $1 = id
+	# $2 = control
+	local i
+	local cur
+	cur=$(control_vol ${2})
+	old=$cur
+
+	if [[ $(( ${cur} % 5 )) -ne 0 ]]; then
+		mod=$(( $cur % 5 ))
+		if [[ ${mod} -ge 3 ]]; then
+			cur=$(( $cur - $mod + 5 ))
+		else
+			cur=$(( $cur - $mod ))
+		fi
+	fi
+	#echo "${old}->${cur}"
+
+	echo "<menu label=\"Volume\" id=\"${1}\">"
+	for i in $(seq 0 5 100); do
+		if [[ ${i} -ne ${cur} ]]; then
+			print_item "${i}%" "amixer sset ${2} ${i}%"
+		else
+			echo -e "\t<separator label=\"${cur}%\" />"
+		fi
+	done
+	echo '</menu>'
+}
+
+echo "<openbox_pipe_menu>"
+	# Implement speaker
+	#echo -e "\t<separator label=\"Speaker ($(jack_state "Line Out Jack"))\" />"
+	#if [[ $(control_state "Master") == "on" ]]; then
+		#print_item "Mute" "amixer sset Master toggle"
+	#else
+		#print_item "Unmute" "amixer sset Master toggle"
+	#fi
+	#vol_menu "vol-master" "Master"
+	#control_vol Master
+	echo -e "\t<separator label=\"Headphone ($(jack_state "Headphone Jack"))\" />"
+	if [[ $(control_state "Headphone") == "on" ]]; then
+		print_item "Mute" "amixer sset Headphone toggle"
+	else
+		print_item "Unmute" "amixer sset Headphone toggle"
+	fi
+	vol_menu "vol-headphone" "Headphone"
+
+echo "</openbox_pipe_menu>"

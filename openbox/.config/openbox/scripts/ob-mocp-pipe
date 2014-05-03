@@ -21,9 +21,7 @@ get_mocdir() {
 
 control_commands() {
 	# Print commands to control mocp.
-	if [[ "${1}" != "unstop" ]]; then
-		echo "<separator label=\"Commands\" />"
-	fi
+	echo "<separator label=\"Commands\" />"
 
 	if [[ "${1}" == "play" ]]; then
 		print_item "Play" "mocp --toggle-pause"
@@ -57,6 +55,50 @@ calc_playlistn() {
 	echo "${playlistn}"
 }
 
+song_info_stop() {
+	# Print information about the currently selected song.
+	get_line() {
+		echo "$(grep "EXTINF.*," ${1}| awk 'NR==1'| cut -d ',' -f 2)"
+	}
+	get_trackn() {
+		echo "$(get_line ${1} | cut -d ' ' -f 1)"
+	}
+	get_artist() {
+		echo "$(get_line ${1}| cut -d '-' -f 1 | cut -d ' ' -f 2-)"
+	}
+	get_album() {
+		count="$(get_line "${1}"| cut -d '-' -f 2-| grep -o "("| wc -l)"
+		echo "$(get_line "${1}"| cut -d '-' -f 2-| cut -d "(" -f $(( ${count} + 1))| tr -d ')')"
+	}
+	get_songtitle() {
+		count="$(get_line "${1}"| cut -d '-' -f 2-| grep -o "("| wc -l)"
+		if [[ count -eq 1 ]]; then
+			echo "$(get_line "${1}"| cut -d '-' -f 2-| cut -d "(" -f ${count})"
+		else
+			echo "$(get_line "${1}"| cut -d '-' -f 2-| cut -d "(" -f -${count})"
+		fi
+	}
+	local album
+	local artist
+	local cmd
+	local mocdir
+	local playlist
+	local songtitle
+	local trackn
+
+	cmd="urxvtc -e mocp"
+	mocdir="$(get_mocdir)"
+	playlist="${mocdir}/playlist.m3u"
+
+	artist="$(get_artist ${playlist})"
+	album="$(get_album ${playlist})"
+	songtitle="$(get_songtitle ${playlist})"
+
+	print_item "Artist: ${artist}" "${cmd}"
+	print_item "Title: ${songtitle}" "${cmd}"
+	print_item "Album: ${album}" "${cmd}"
+	print_item "Track: 1/$(calc_playlistn "${playlist}")" "${cmd}"
+}
 song_info() {
 	# Print information about the currently selected song.
 	local album
@@ -95,6 +137,7 @@ echo "<openbox_pipe_menu>"
 		control_commands play
 	elif [[ "${state}" == "STOP" ]]; then
 		echo '<separator label="Stopped" />'
+		song_info_stop
 		control_commands unstop
 	else
 		echo '\ŧ<separator label="Not running" />'

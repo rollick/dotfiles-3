@@ -12,6 +12,7 @@ print_item() {
 }
 
 get_mocdir() {
+	# Print MOC directory.
 	local mocdir
 
 	mocdir="$(grep "MOCDir" "${HOME}/.moc/config"| cut -d '=' -f 2| tr -d " ")"
@@ -19,6 +20,7 @@ get_mocdir() {
 }
 
 control_commands() {
+	# Print commands to control mocp.
 	if [[ "${1}" != "unstop" ]]; then
 		echo "<separator label=\"Commands\" />"
 	fi
@@ -42,6 +44,8 @@ control_commands() {
 }
 
 calc_playlistn() {
+	# Calculate # of items in mocp's default playlist.
+	# ${1} -- Path of playlist
 	local playlistn
 
 	if [[ -f "${1}" ]]; then
@@ -54,6 +58,7 @@ calc_playlistn() {
 }
 
 song_info() {
+	# Print information about the currently selected song.
 	local album
 	local artist
 	local cmd

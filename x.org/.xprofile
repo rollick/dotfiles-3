@@ -1,7 +1,7 @@
 #!/bin/bash
 if which urxvtd >/dev/null 2>&1; then
-	mkdir -p "${XDG_CACHE:-${HOME}/.cache}/urxvt"
-	export RXVT_SOCKET="${XDG_CACHE:-${HOME}/.cache}/urxvt/$(hostname)"
+	mkdir -p "${XDG_CACHE:-${HOME}/.cache}"
+	export RXVT_SOCKET="${XDG_CACHE:-${HOME}/.cache}/urxvt.socket"
 fi
 if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
 	export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"

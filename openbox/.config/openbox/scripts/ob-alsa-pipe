@@ -25,6 +25,7 @@ print_separator() {
 control_state() {
 	# Print control state
 	# ${1} -- Control
+	local left
 	left=$(amixer sget ${1}| grep "Left:" | cut -d " " -f 9| tr -d "\[\]")
 	if [[ "${left}" != "" ]]; then
 		echo ${left}
@@ -82,7 +83,16 @@ vol_menu() {
 		fi
 	fi
 
-	echo "<menu label=\"Volume\" id=\"${1}\">"
+	echo "<menu id=\"${1}\" label=\"${3}\">"
+
+	if [[ $(control_state "${2}") == "on" ]]; then
+		print_item "Mute" "amixer sset ${2} toggle"
+	else
+		print_item "Unmute" "amixer sset ${2} toggle"
+	fi
+
+	print_separator
+
 	for i in $(seq 0 5 100); do
 		if [[ ${i} -ne ${cur} ]]; then
 			print_item "${i}%" "amixer sset ${2} ${i}%"
@@ -95,30 +105,13 @@ vol_menu() {
 
 echo "<openbox_pipe_menu>"
 	print_item "Open mixer" "urxvtc -e alsamixer"
+	print_separator "Audio Control"
 
-	print_separator "Headphones ($(jack_state "Headphone Jack"))"
-	if [[ $(control_state "Headphone") == "on" ]]; then
-		print_item "Mute" "amixer sset Headphone toggle"
-	else
-		print_item "Unmute" "amixer sset Headphone toggle"
-	fi
-	vol_menu "vol-headphone" "Headphone"
+	vol_menu "vol-headphone" "Headphone" "Headphones ($(jack_state "Headphone Jack"))"
 
 	if amixer| grep -q "Speaker"; then
-		print_separator "Speaker ($(jack_state "Speaker"))"
-		if [[ $(control_state "Speaker") == "on" ]]; then
-			print_item "Mute" "amixer sset Speaker toggle"
-		else
-			print_item "Unmute" "amixer sset Speaker toggle"
-		fi
-		vol_menu "vol-speaker" "Speaker"
+		vol_menu "vol-speaker" "Speaker" "Speaker ($(jack_state "Speaker"))"
 	fi
 
-	print_separator "Master"
-	if [[ $(control_state "Master") == "on" ]]; then
-		print_item "Mute" "amixer sset Master toggle"
-	else
-		print_item "Unmute" "amixer sset Master toggle"
-	fi
-	vol_menu "vol-master" "Master"
+	vol_menu "vol-master" "Master" "Master"
 echo "</openbox_pipe_menu>"

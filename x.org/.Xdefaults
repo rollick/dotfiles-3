@@ -1,7 +1,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! lal
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lal.color: black
+lal.color: white
 lal.font: Droid Sans
 lal.fontsize: 18
 lal.format: %R

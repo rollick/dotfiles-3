@@ -96,14 +96,6 @@ vol_menu() {
 echo "<openbox_pipe_menu>"
 	print_item "Open mixer" "urxvtc -e alsamixer"
 
-	print_separator "Master"
-	if [[ $(control_state "Master") == "on" ]]; then
-		print_item "Mute" "amixer sset Master toggle"
-	else
-		print_item "Unmute" "amixer sset Master toggle"
-	fi
-	vol_menu "vol-master" "Master"
-
 	if amixer| grep -q "Speaker"; then
 		print_separator "Speaker ($(jack_state "Speaker"))"
 		if [[ $(control_state "Speaker") == "on" ]]; then
@@ -121,4 +113,12 @@ echo "<openbox_pipe_menu>"
 		print_item "Unmute" "amixer sset Headphone toggle"
 	fi
 	vol_menu "vol-headphone" "Headphone"
+
+	print_separator "Master"
+	if [[ $(control_state "Master") == "on" ]]; then
+		print_item "Mute" "amixer sset Master toggle"
+	else
+		print_item "Unmute" "amixer sset Master toggle"
+	fi
+	vol_menu "vol-master" "Master"
 echo "</openbox_pipe_menu>"

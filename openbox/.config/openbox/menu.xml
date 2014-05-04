@@ -128,6 +128,11 @@
 			<command>urxvtc -e vim ~/.config/openbox/autostart</command>
 		</action>
 	</item>
+	<item label="Edit Openbox configuration">
+		<action name="Execute">
+			<command>urxvtc -e vim ~/.config/openbox/rc.xml</command>
+		</action>
+	</item>
 	<item label="Edit Openbox environment">
 		<action name="Execute">
 			<command>urxvtc -e vim ~/.config/openbox/environment</command>
@@ -136,11 +141,6 @@
 	<item label="Edit Openbox menu">
 		<action name="Execute">
 			<command>urxvtc -e vim ~/.config/openbox/menu.xml</command>
-		</action>
-	</item>
-	<item label="Edit Openbox configuration">
-		<action name="Execute">
-			<command>urxvtc -e vim ~/.config/openbox/rc.xml</command>
 		</action>
 	</item>
 	<separator />

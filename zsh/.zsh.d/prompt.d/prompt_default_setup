@@ -16,7 +16,6 @@ function prompt_default_setup() {
     command -v tmux &>/dev/null && add-zsh-hook precmd prompt_default_tmux
     command -v zftp &>/dev/null && add-zsh-hook precmd prompt_default_zftp
 	add-zsh-hook precmd prompt_default_prompt
-	add-zsh-hook precmd prompt_default_xtitle
 
 	# Information about this prompt
 	##################
@@ -97,13 +96,6 @@ function prompt_default_zftp() {
 	fi
 }
 
-function prompt_default_xtitle() {
-	case "${TERM}" in
-		xterm* | rxvt* )	print -Pn "\e]0;%n@%m: %~\a";;
-		screen*)			print -Pn "\ek%n@%m: %~\e\\";;
-	esac
-}
-
 function prompt_default_prompt() {
 	# Set local variables
 	##################
@@ -167,6 +159,15 @@ function prompt_default_prompt() {
 	prompt_gfx_rparent="${prompt_color_div})"
 	prompt_gfx_separator="${prompt_color_div}|"
 	prompt_gfx_tlc="${prompt_color_line}${prompt_char_tlc}"
+
+
+	# Set terminal title
+	####################
+	case "${TERM}" in
+		xterm* | rxvt* )	print -Pn "\e]0;%n@%m: %~\a";;
+		screen*)			print -Pn "\ek%n@%m: %~\e\\";;
+	esac
+
 	# Main prompt
 	####################
 	# Start prompt

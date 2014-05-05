@@ -22,50 +22,6 @@ function prompt_default_setup() {
 	##################
 	export PROMPT_LINES=2
 
-	# Set color information
-	##################
-	if (( ${UID} == 0 )); then
-		prompt_color_user='%{$fg_bold[red]%}'
-	else
-		prompt_color_user='%{$fg_bold[green]%}'
-	fi
-	prompt_color_dir='%{$fg_bold[blue]%}'
-	prompt_color_div='%{$fg_bold[black]%}'
-	prompt_color_error='%{$fg_bold[red]%}'
-	prompt_color_line='%{$fg_bold[cyan]%}'
-	prompt_color_rprompt="${prompt_color_dir}"
-
-	# Use some ANSI characters if supported
-	##################
-	#if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-	   #[[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-		prompt_char_tlc=$'\u250C'
-		prompt_char_blc=$'\u2514'
-		prompt_char_close=$'\u25B6'
-		prompt_char_mlc=$'\u251C'
-		prompt_char_hyphen=$'\u2500'
-	#else
-		#prompt_char_tlc='.'
-		#prompt_char_blc='\`'
-		#prompt_char_close='>'
-		#prompt_char_mlc='|'
-		#prompt_char_hyphen='-'
-	#fi
-
-	# Combine colors and characters
-	##################
-	prompt_gfx_blc="${prompt_color_line}${prompt_char_blc}"
-	prompt_gfx_close="${prompt_color_line}${prompt_char_close}"
-	prompt_gfx_colon="${prompt_color_div}:"
-	prompt_gfx_hyphen="${prompt_color_line}${prompt_char_hyphen}"
-	prompt_gfx_lbracket="${prompt_color_div}["
-	prompt_gfx_lparent="${prompt_color_div}("
-	prompt_gfx_mlc="${prompt_color_div}${prompt_char_mlc}"
-	prompt_gfx_plus="${prompt_color_line}+"
-	prompt_gfx_rbracket="${prompt_color_div}]"
-	prompt_gfx_rparent="${prompt_color_div})"
-	prompt_gfx_separator="${prompt_color_div}|"
-	prompt_gfx_tlc="${prompt_color_line}${prompt_char_tlc}"
 }
 
 function prompt_default_git() {
@@ -175,6 +131,77 @@ function prompt_default_xtitle() {
 }
 
 function prompt_default_prompt() {
+	# Set local variables
+	##################
+	local prompt_char_tlc
+	local prompt_char_blc
+	local prompt_char_close
+	local prompt_char_mlc
+	local prompt_char_hyphen
+	local prompt_color_div
+	local prompt_color_dir
+	local prompt_color_error
+	local prompt_color_line
+	local prompt_color_rprompt
+	local prompt_color_user
+
+	local prompt_gfx_blc
+	local prompt_gfx_close
+	local prompt_gfx_colon
+	local prompt_gfx_hyphen
+	local prompt_gfx_lbracket
+	local prompt_gfx_lparent
+	local prompt_gfx_mlc
+	local prompt_gfx_plus
+	local prompt_gfx_rbracket
+	local prompt_gfx_rparent
+	local prompt_gfx_separator
+	local prompt_gfx_tlc
+
+	# Set color information
+	##################
+	if (( ${UID} == 0 )); then
+		local prompt_color_user='%{$fg_bold[red]%}'
+	else
+		local prompt_color_user='%{$fg_bold[green]%}'
+	fi
+	prompt_color_dir='%{$fg_bold[blue]%}'
+	prompt_color_div='%{$fg_bold[black]%}'
+	prompt_color_error='%{$fg_bold[red]%}'
+	prompt_color_line='%{$fg_bold[cyan]%}'
+	prompt_color_rprompt="${prompt_color_dir}"
+
+	# Use some ANSI characters if supported
+	##################
+	#if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
+	   #[[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
+		prompt_char_tlc=$'\u250C'
+		prompt_char_blc=$'\u2514'
+		prompt_char_close=$'\u25B6'
+		prompt_char_mlc=$'\u251C'
+		prompt_char_hyphen=$'\u2500'
+	#else
+		#prompt_char_tlc='.'
+		#prompt_char_blc='\`'
+		#prompt_char_close='>'
+		#prompt_char_mlc='|'
+		#prompt_char_hyphen='-'
+	#fi
+
+	# Combine colors and characters
+	##################
+	prompt_gfx_blc="${prompt_color_line}${prompt_char_blc}"
+	prompt_gfx_close="${prompt_color_line}${prompt_char_close}"
+	prompt_gfx_colon="${prompt_color_div}:"
+	prompt_gfx_hyphen="${prompt_color_line}${prompt_char_hyphen}"
+	prompt_gfx_lbracket="${prompt_color_div}["
+	prompt_gfx_lparent="${prompt_color_div}("
+	prompt_gfx_mlc="${prompt_color_div}${prompt_char_mlc}"
+	prompt_gfx_plus="${prompt_color_line}+"
+	prompt_gfx_rbracket="${prompt_color_div}]"
+	prompt_gfx_rparent="${prompt_color_div})"
+	prompt_gfx_separator="${prompt_color_div}|"
+	prompt_gfx_tlc="${prompt_color_line}${prompt_char_tlc}"
 	# Main prompt
 	####################
 	# Start prompt

@@ -103,6 +103,7 @@ path = .xprofile
 path = .Xresources
 path = .zlogin
 path = .zlogout
+path = .zprofile
 path = .zshenv
 path = .zshrc
 path = .ssh/config

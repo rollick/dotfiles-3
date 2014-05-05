@@ -26,7 +26,7 @@
 <menu id="apps-multimedia-menu" label="Multimedia">
 	<item label="easymp3gain">
 		<action name="Execute">
-			<command>easyMP3Gain</command>
+			<command>easymp3gain</command>
 		</action>
 	</item>
 	<item label="MP3Diags">

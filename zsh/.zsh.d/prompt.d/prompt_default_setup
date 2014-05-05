@@ -11,10 +11,6 @@ function prompt_default_setup() {
 
 	# Initialize precmd hooks
 	##################
-	command -v git &>/dev/null && add-zsh-hook precmd prompt_default_git
-	add-zsh-hook precmd prompt_default_jobs
-    command -v tmux &>/dev/null && add-zsh-hook precmd prompt_default_tmux
-    command -v zftp &>/dev/null && add-zsh-hook precmd prompt_default_zftp
 	add-zsh-hook precmd prompt_default_prompt
 
 	# Information about this prompt
@@ -22,83 +18,13 @@ function prompt_default_setup() {
 	export PROMPT_LINES=2
 }
 
-function prompt_default_git() {
-	local ref
-	local stash
-
-	unset prompt_info_git
-
-	ref=${$(git symbolic-ref HEAD 2>|/dev/null)#refs/heads/}
-	if [[ ! -z ${ref} ]]; then
-		prompt_info_git=$'\u00B1 '
-
-		# Set branch
-		prompt_info_git+="${ref}"
-
-		# Set status icon
-		prompt_info_git+=" "
-		if [[ -n $(git status -s 2>|/dev/null) ]]; then
-			# Ballot X
-			prompt_info_git+=$'\u2717'
-		else
-			# Checkmark
-			prompt_info_git+=$'\u2713'
-		fi
-
-		# Stash
-		stash=$(git stash list 2>|/dev/null |wc -l)
-		if (( ${stash} > 0 )); then
-			# Eight spoked asterisk
-			prompt_info_git+=$' \u2733'
-		fi
-	fi
-}
-
-function prompt_default_jobs() {
-	local count
-
-	unset prompt_info_jobs
-
-	count="$(jobs -l |wc -l)"
-
-	if [[ ${count} -ne 0 ]]; then
-		prompt_info_jobs="Jobs: ${count}"
-	fi
-}
-
-function prompt_default_tmux() {
-	unset prompt_info_tmux
-
-	if [[ -z ${TMUX_PANE} ]] && tmux list-session &>|/dev/null; then
-		prompt_info_tmux=$'\u2B12 '
-
-		prompt_info_tmux+="$(tmux list-sessions |wc -l)"
-	fi
-}
-
-function prompt_default_zftp() {
-	unset prompt_info_zftp
-
-	if [[ ! -z ${ZFTP_HOST} ]]; then
-		if [[ ! -z ${ZFTP_USER} ]]; then
-			prompt_info_zftp+="${ZFTP_USER}@"
-		fi
-
-		prompt_info_zftp+="${ZFTP_HOST}"
-
-		if [[ ! -z ${ZFTP_PORT} ]]; then
-			if [[ ${ZFTP_PORT} -ne 21 ]]; then
-				prompt_info_zftp+=":${ZFTP_PORT}"
-			fi
-		fi
-
-		prompt_info_zftp+=" ${ZFTP_PWD}"
-	fi
-}
-
 function prompt_default_prompt() {
 	# Set local variables
 	##################
+	local count
+	local ref
+	local stash
+
 	local prompt_char_tlc
 	local prompt_char_blc
 	local prompt_char_close
@@ -123,6 +49,10 @@ function prompt_default_prompt() {
 	local prompt_gfx_rparent
 	local prompt_gfx_separator
 	local prompt_gfx_tlc
+
+	local prompt_info_jobs
+	local prompt_info_tmux
+	local prompt_info_zftp
 
 	# Set color information
 	##################
@@ -160,6 +90,70 @@ function prompt_default_prompt() {
 	prompt_gfx_separator="${prompt_color_div}|"
 	prompt_gfx_tlc="${prompt_color_line}${prompt_char_tlc}"
 
+	# ZFTP information for RPROMPT
+	####################
+	if [[ ! -z ${ZFTP_HOST} ]]; then
+		if [[ ! -z ${ZFTP_USER} ]]; then
+			prompt_info_zftp+="${ZFTP_USER}@"
+		fi
+
+		prompt_info_zftp+="${ZFTP_HOST}"
+
+		if [[ ! -z ${ZFTP_PORT} ]]; then
+			if [[ ${ZFTP_PORT} -ne 21 ]]; then
+				prompt_info_zftp+=":${ZFTP_PORT}"
+			fi
+		fi
+
+		prompt_info_zftp+=" ${ZFTP_PWD}"
+	fi
+
+	# tmux information for RPROMPT
+	####################
+	if command -v tmux &>|/dev/null; then
+		if [[ -z ${TMUX_PANE} ]] && tmux list-session &>|/dev/null; then
+			prompt_info_tmux=$'\u2B12 '
+
+			prompt_info_tmux+="$(tmux list-sessions |wc -l)"
+		fi
+	fi
+
+	# job information for RPROMPT
+	####################
+	count="$(jobs -l |wc -l)"
+
+	if [[ ${count} -ne 0 ]]; then
+		prompt_info_jobs="Jobs: ${count}"
+	fi
+
+	# git information for RPROMPT
+	####################
+	if command -v git &>|/dev/null; then
+		ref=${$(git symbolic-ref HEAD 2>|/dev/null)#refs/heads/}
+		if [[ ! -z ${ref} ]]; then
+			prompt_info_git=$'\u00B1 '
+
+			# Set branch
+			prompt_info_git+="${ref}"
+
+			# Set status icon
+			prompt_info_git+=" "
+			if [[ -n $(git status -s 2>|/dev/null) ]]; then
+				# Ballot X
+				prompt_info_git+=$'\u2717'
+			else
+				# Checkmark
+				prompt_info_git+=$'\u2713'
+			fi
+
+			# Stash
+			stash=$(git stash list 2>|/dev/null |wc -l)
+			if (( ${stash} > 0 )); then
+				# Eight spoked asterisk
+				prompt_info_git+=$' \u2733'
+			fi
+		fi
+	fi
 
 	# Set terminal title
 	####################

@@ -43,6 +43,7 @@ ignore = Path .local/share/icc/*
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/numlock_on
 ignore = Path .local/share/recently-used.xbel
+ignore = Path .local/share/urxvt
 ignore = Path .vim/.recently-used
 
 ####################

@@ -21,7 +21,6 @@ function prompt_default_setup() {
 	# Information about this prompt
 	##################
 	export PROMPT_LINES=2
-
 }
 
 function prompt_default_git() {
@@ -32,12 +31,7 @@ function prompt_default_git() {
 
 	ref=${$(git symbolic-ref HEAD 2>|/dev/null)#refs/heads/}
 	if [[ ! -z ${ref} ]]; then
-		if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-		   [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-			prompt_info_git=$'\u00B1 '
-		else
-			prompt_info_git="+- "
-		fi
+		prompt_info_git=$'\u00B1 '
 
 		# Set branch
 		prompt_info_git+="${ref}"
@@ -45,33 +39,18 @@ function prompt_default_git() {
 		# Set status icon
 		prompt_info_git+=" "
 		if [[ -n $(git status -s 2>|/dev/null) ]]; then
-			if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-			   [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-				# Ballot X
-				prompt_info_git+=$'\u2717'
-			else
-				prompt_info_git+="*"
-			fi
+			# Ballot X
+			prompt_info_git+=$'\u2717'
 		else
-			if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-			   [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-				# Checmark
-				prompt_info_git+=$'\u2713'
-			else
-				prompt_info_git+="."
-			fi
+			# Checkmark
+			prompt_info_git+=$'\u2713'
 		fi
 
 		# Stash
 		stash=$(git stash list 2>|/dev/null |wc -l)
 		if (( ${stash} > 0 )); then
-			if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-			   [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-				# Eight spoked asterisk
-				prompt_info_git+=$' \u2733'
-			else
-				prompt_info_git+="^${stash}"
-			fi
+			# Eight spoked asterisk
+			prompt_info_git+=$' \u2733'
 		fi
 	fi
 }
@@ -92,12 +71,7 @@ function prompt_default_tmux() {
 	unset prompt_info_tmux
 
 	if [[ -z ${TMUX_PANE} ]] && tmux list-session &>|/dev/null; then
-		if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-		   [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-			prompt_info_tmux=$'\u2B12 '
-		else
-			prompt_info_git="tmux "
-		fi
+		prompt_info_tmux=$'\u2B12 '
 
 		prompt_info_tmux+="$(tmux list-sessions |wc -l)"
 	fi
@@ -173,20 +147,11 @@ function prompt_default_prompt() {
 
 	# Use some ANSI characters if supported
 	##################
-	#if [[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *utf8* ]] ||
-	   #[[ ${LC_ALL:-${LC_CTYPE:-$LANG}} = *UTF-8* ]]; then
-		prompt_char_tlc=$'\u250C'
-		prompt_char_blc=$'\u2514'
-		prompt_char_close=$'\u25B6'
-		prompt_char_mlc=$'\u251C'
-		prompt_char_hyphen=$'\u2500'
-	#else
-		#prompt_char_tlc='.'
-		#prompt_char_blc='\`'
-		#prompt_char_close='>'
-		#prompt_char_mlc='|'
-		#prompt_char_hyphen='-'
-	#fi
+	prompt_char_tlc=$'\u250C'
+	prompt_char_blc=$'\u2514'
+	prompt_char_close=$'\u25B6'
+	prompt_char_mlc=$'\u251C'
+	prompt_char_hyphen=$'\u2500'
 
 	# Combine colors and characters
 	##################

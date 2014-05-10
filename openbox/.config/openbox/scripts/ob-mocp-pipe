@@ -139,24 +139,28 @@ song_info() {
 	print_item "Track: ${trackn}/$(calc_playlistn "${playlist}")" "${cmd}"
 }
 
-state=$(LC_ALL=C mocp --info 2>/dev/null | grep State | cut -d ' ' -f 2)
-
 echo "<openbox_pipe_menu>"
-	if [[ "${state}" == "PLAY" ]]; then
-		print_separator "Playing"
-		song_info
-		control_commands pause
-	elif [[ "${state}" == "PAUSE" ]]; then
-		print_separator "Paused"
-		song_info
-		control_commands play
-	elif [[ "${state}" == "STOP" ]]; then
-		print_separator "Stopped"
-		song_info_stop
-		control_commands unstop
+	if which mocp >/dev/null 2>&1; then
+		state=$(LC_ALL=C mocp --info 2>/dev/null | grep State | cut -d ' ' -f 2)
+
+		if [[ "${state}" == "PLAY" ]]; then
+			print_separator "Playing"
+			song_info
+			control_commands pause
+		elif [[ "${state}" == "PAUSE" ]]; then
+			print_separator "Paused"
+			song_info
+			control_commands play
+		elif [[ "${state}" == "STOP" ]]; then
+			print_separator "Stopped"
+			song_info_stop
+			control_commands unstop
+		else
+			print_separator "Not running"
+			print_item "Start mocp server" "mocp --server"
+			print_item "Show mocp" "urxvtc -e mocp"
+		fi
 	else
-		print_separator "Not running"
-		print_item "Start mocp server" "mocp --server"
-		print_item "Show mocp" "urxvtc -e mocp"
+		print_item "mocp is not installed"
 	fi
 echo "</openbox_pipe_menu>"

@@ -2,6 +2,11 @@
 # These things are run when an Openbox X Session is started.
 #
 
+# Start light-locker
+if which light-locker >/dev/null 2>&1; then
+	light-locker --lock-on-suspend &
+fi
+
 # Load keyboard tweaks
 if which xmodmap >/dev/null 2>&1; then
 	if [[ -e ${HOME}/.Xmodmap ]]; then

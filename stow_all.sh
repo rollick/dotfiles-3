@@ -1,12 +1,12 @@
 #!/bin/bash
 mkdir --verbose -p "${HOME}/.moc"
-mkdir -p "${HOME}/.ssh"
+mkdir --verbose -p "${HOME}/.ssh"
 mkdir --verbose -p "${HOME}/.unison"
-mkdir -p "${HOME}/.icons"
-mkdir -p "${XDG_CONFIG_HOME:-${HOME}/.config}"
-mkdir -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
-mkdir -p "${XDG_DATA_HOME:-${HOME}/.local/share}"
-mkdir -p "${XDG_DATA_HOME:-${HOME}/.local/share/urxvt}"
+mkdir --verbose -p "${HOME}/.icons"
+mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}"
+mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
+mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}"
+mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share/urxvt}"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} moc

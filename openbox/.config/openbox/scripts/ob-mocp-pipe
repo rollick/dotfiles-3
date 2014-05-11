@@ -48,7 +48,7 @@ control_commands() {
 		print_item "Stop" "mocp --stop"
 	fi
 	print_separator
-	print_item "Show mocp" "urxvtc -e mocp"
+	print_item "Show Music On Console" "urxvtc -e mocp"
 	print_item "Exit" "mocp --exit"
 }
 
@@ -157,10 +157,10 @@ echo "<openbox_pipe_menu>"
 			control_commands unstop
 		else
 			print_separator "Not running"
-			print_item "Start mocp server" "mocp --server"
-			print_item "Show mocp" "urxvtc -e mocp"
+			print_item "Start Music On Console server" "mocp --server"
+			print_item "Show Music On Console" "urxvtc -e mocp"
 		fi
 	else
-		print_item "mocp is not installed"
+		print_item "Music On Console is not installed"
 	fi
 echo "</openbox_pipe_menu>"

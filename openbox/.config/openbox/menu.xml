@@ -3,7 +3,7 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <!-- Pipe menus -->
-<menu id="pipe-moc-menu" label="mocp" execute="ob-mocp-pipe" />
+<menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe" />
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe" />
 
 <!-- Static menus -->

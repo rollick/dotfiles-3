@@ -51,7 +51,6 @@ function prompt_default_prompt() {
 
 	local prompt_info_jobs
 	local prompt_info_tmux
-	local prompt_info_zftp
 
 	# Set color information
 	##################
@@ -87,24 +86,6 @@ function prompt_default_prompt() {
 	prompt_gfx_rparent="${prompt_color_div})"
 	prompt_gfx_separator="${prompt_color_div}|"
 	prompt_gfx_tlc="${prompt_color_line}${prompt_char_tlc}"
-
-	# ZFTP information for RPROMPT
-	####################
-	if [[ ! -z ${ZFTP_HOST} ]]; then
-		if [[ ! -z ${ZFTP_USER} ]]; then
-			prompt_info_zftp+="${ZFTP_USER}@"
-		fi
-
-		prompt_info_zftp+="${ZFTP_HOST}"
-
-		if [[ ! -z ${ZFTP_PORT} ]]; then
-			if [[ ${ZFTP_PORT} -ne 21 ]]; then
-				prompt_info_zftp+=":${ZFTP_PORT}"
-			fi
-		fi
-
-		prompt_info_zftp+=" ${ZFTP_PWD}"
-	fi
 
 	# tmux information for RPROMPT
 	####################

@@ -6,7 +6,6 @@
 
 # Load zsh (upstream) functions
 autoload -U zmv
-autoload -U zfinit && zfinit
 
 # Include external additions
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"

@@ -32,7 +32,6 @@ function prompt_default_prompt() {
 	local prompt_char_hyphen
 	local prompt_color_div
 	local prompt_color_dir
-	local prompt_color_error
 	local prompt_color_line
 	local prompt_color_rprompt
 	local prompt_color_user
@@ -63,7 +62,6 @@ function prompt_default_prompt() {
 	fi
 	prompt_color_dir='%{$fg_bold[blue]%}'
 	prompt_color_div='%{$fg_bold[black]%}'
-	prompt_color_error='%{$fg_bold[red]%}'
 	prompt_color_line='%{$fg_bold[cyan]%}'
 	prompt_color_rprompt="${prompt_color_dir}"
 

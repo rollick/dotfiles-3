@@ -32,9 +32,9 @@ get_mocdir() {
 
 control_commands() {
 	# Print commands to control mocp.
-	print_separator "Commands"
-
 	if [[ ! -z ${1} ]]; then
+		print_separator "Commands"
+
 		if [[ "${1}" == "play" ]]; then
 			print_item "Play" "mocp --toggle-pause"
 		elif [[ "${1}" == "pause" ]]; then

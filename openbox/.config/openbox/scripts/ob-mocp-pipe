@@ -34,20 +34,22 @@ control_commands() {
 	# Print commands to control mocp.
 	print_separator "Commands"
 
-	if [[ "${1}" == "play" ]]; then
-		print_item "Play" "mocp --toggle-pause"
-	elif [[ "${1}" == "pause" ]]; then
-		print_item "Pause" "mocp --toggle-pause"
-	else
-		print_item "Play" "mocp --play"
-	fi
+	if [[ ! -z ${1} ]]; then
+		if [[ "${1}" == "play" ]]; then
+			print_item "Play" "mocp --toggle-pause"
+		elif [[ "${1}" == "pause" ]]; then
+			print_item "Pause" "mocp --toggle-pause"
+		else
+			print_item "Play" "mocp --play"
+		fi
 
-	if [[ "${1}" != "unstop" ]]; then
-		print_item "Previous" "mocp --prev"
-		print_item "Next" "mocp --next"
-		print_item "Stop" "mocp --stop"
+		if [[ "${1}" != "unstop" ]]; then
+			print_item "Previous" "mocp --prev"
+			print_item "Next" "mocp --next"
+			print_item "Stop" "mocp --stop"
+		fi
+		print_separator
 	fi
-	print_separator
 	print_item "Show Music On Console" "urxvtc -e mocp"
 	print_item "Exit" "mocp --exit"
 }
@@ -157,8 +159,7 @@ echo "<openbox_pipe_menu>"
 			control_commands unstop
 		else
 			print_separator "Not running"
-			print_item "Start Music On Console server" "mocp --server"
-			print_item "Show Music On Console" "urxvtc -e mocp"
+			control_commands
 		fi
 	else
 		print_item "Music On Console is not installed"

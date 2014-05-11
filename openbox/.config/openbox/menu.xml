@@ -159,6 +159,12 @@
 </menu>
 
 <menu id="system-session-menu" label="Session">
+	<item label="Lock screen">
+		<action name="Execute">
+			<prompt>Are you sure you want to lock the screen?</prompt>
+			<command>light-locker-command --lock</command>
+		</action>
+	</item>
 	<item label="Log Out">
 		<action name="Exit">
 			<prompt>yes</prompt>

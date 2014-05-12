@@ -4,7 +4,7 @@
 
 <!-- Pipe menus -->
 <menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe" />
-<menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe" />
+<menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe.py" />
 
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">

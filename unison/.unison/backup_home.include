@@ -85,6 +85,7 @@ path = .MP3Diags.dat
 path = .asunder
 path = .easyMP3Gain
 path = .face
+path = .fehbg
 path = .gitconfig
 path = .gitignore
 path = .gtk-bookmarks

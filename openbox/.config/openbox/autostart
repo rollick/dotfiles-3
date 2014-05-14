@@ -42,6 +42,6 @@ fi
 
 # Load docker-tray
 if which docker >/dev/null 2>&1; then
-	docker -vertical &
+	(sleep 3; docker -vertical) &
 fi
 # vim: ft=sh

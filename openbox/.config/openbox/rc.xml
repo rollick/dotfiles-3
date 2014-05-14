@@ -521,14 +521,13 @@
 	</keybind>
 
 	<!-- Keybindings for running applications -->
-	<keybind key="W-e">
-		<action name="Execute">
-			<startupnotify>
-			<enabled>true</enabled>
-			<name>Konqueror</name>
-			</startupnotify>
-			<command>kfmclient openProfile filemanagement</command>
-		</action>
+	<keybind key="W-e" chroot="true">
+		<keybind key="t">
+			<action name="Execute">
+				<command>urxvtc</command>
+			</action>
+			<action name="BreakChroot"/>
+		</keybind>
 	</keybind>
 </keyboard>
 

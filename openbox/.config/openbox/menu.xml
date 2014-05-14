@@ -58,6 +58,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Transmission">
+		<action name="Execute">
+			<command>transmission-gtk</command>
+      			<startupnotify>
+        			<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Unison">
 		<action name="Execute">
 			<command>unison-gtk2</command>

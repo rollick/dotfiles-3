@@ -522,6 +522,9 @@
 
 	<!-- Keybindings for running applications -->
 	<keybind key="W-e" chroot="true">
+		<keybind key="Escape">
+			<action name="BreakChroot"/>
+		</keybind>
 		<keybind key="r">
 			<action name="Execute">
 				<command>openbox --reconfigure</command>

@@ -39,4 +39,9 @@ fi
 if which lal >/dev/null 2>&1; then
 	lal &
 fi
+
+# Load docker-tray
+if which docker >/dev/null 2>&1; then
+	docker -vertical &
+fi
 # vim: ft=sh

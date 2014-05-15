@@ -117,19 +117,6 @@
 	</item>
 </menu>
 
-<menu id="system-administration-menu" label="Administration">
-	<item label="Manage Cups Printers">
-		<action name="Execute">
-			<command>firefox http://localhost:631/</command>
-			<startupnotify>
-				<enabled>no</enabled>
-				<icon>cups</icon>
-			</startupnotify>
-		</action>
-	</item>
-	<menu id="pipe-alsa-menu" />
-</menu>
-
 <menu id="system-openbox-menu" label="Openbox">
 	<item label="Edit autostart">
 		<action name="Execute">
@@ -206,6 +193,20 @@
 	</item>
 </menu>
 
+<menu id="system-administration-menu" label="Administration">
+	<item label="Manage Cups Printers">
+		<action name="Execute">
+			<command>firefox http://localhost:631/</command>
+			<startupnotify>
+				<enabled>no</enabled>
+				<icon>cups</icon>
+			</startupnotify>
+		</action>
+	</item>
+	<menu id="system-openbox-menu"/>
+	<menu id="pipe-alsa-menu" />
+</menu>
+
 
 <menu id="root-menu" label="Openbox 3">
 	<separator label="Applications" />
@@ -219,7 +220,6 @@
 	<menu id="pipe-alsa-menu" />
 	<separator label="System" />
 	<menu id="system-administration-menu"/>
-	<menu id="system-openbox-menu"/>
 	<separator />
 	<menu id="system-session-menu"/>
 </menu>

@@ -183,7 +183,7 @@ function prompt_default_prompt() {
 		if [[ ! -z ${RPROMPT} ]]; then
 			RPROMPT+="${prompt_gfx_rbracket}%{$reset_color%}"
 		fi
-	} ${prompt_info_zftp} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}
+	} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}
 
 	# Prompt for spelling correction
 	####################

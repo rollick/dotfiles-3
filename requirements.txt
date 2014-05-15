@@ -3,6 +3,7 @@ openbox:
  - lal
  - xorg-xmodmap
  - numlockx
+ - docker-tray
 
 rxvt-unicode:
  - urxvt-perls

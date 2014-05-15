@@ -49,8 +49,9 @@ function prompt_default_prompt() {
 	local prompt_gfx_separator
 	local prompt_gfx_tlc
 
-	local prompt_info_jobs
-	local prompt_info_tmux
+	local prompt_info_git=""
+	local prompt_info_jobs=""
+	local prompt_info_tmux=""
 
 	# Set color information
 	##################

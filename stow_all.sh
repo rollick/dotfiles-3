@@ -15,5 +15,6 @@ stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison
+stow --verbose -R -t ${HOME} virtualenvs
 stow --verbose -R -t ${HOME} x.org
 stow --verbose -R -t ${HOME} zsh

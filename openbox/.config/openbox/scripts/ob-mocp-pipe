@@ -50,7 +50,7 @@ control_commands() {
 		fi
 		print_separator
 	fi
-	print_item "Show Music On Console" "urxvtc -e mocp"
+	print_item "Show Music On Console" "termopen mocp"
 	print_item "Exit" "mocp --exit"
 }
 
@@ -99,7 +99,7 @@ song_info_stop() {
 	local songtitle
 	local trackn
 
-	cmd="urxvtc -e mocp"
+	cmd="termopen mocp"
 	mocdir="$(get_mocdir)"
 	playlist="${mocdir}/playlist.m3u"
 
@@ -126,7 +126,7 @@ song_info() {
 	local songtitle
 	local trackn
 
-	cmd="urxvtc -e mocp"
+	cmd="termopen mocp"
 	mocdir="$(get_mocdir)"
 	playlist="${mocdir}/playlist.m3u"
 

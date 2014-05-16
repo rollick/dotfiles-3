@@ -36,7 +36,7 @@
 	</item>
 	<item label="Music On Console">
 		<action name="Execute">
-			<command>urxvtc -e mocp</command>
+			<command>termopen mocp</command>
 		</action>
 	</item>
 </menu>
@@ -102,12 +102,12 @@
 <menu id="apps-system-menu" label="System">
 	<item label="Editor">
 		<action name="Execute">
-			<command>urxvtc -e vim</command>
+			<command>termopen vim</command>
 		</action>
 	</item>
 	<item label="System monitor">
 		<action name="Execute">
-			<command>urxvtc -e htop</command>
+			<command>termopen htop</command>
 		</action>
 	</item>
 	<item label="Terminal">
@@ -120,22 +120,22 @@
 <menu id="system-openbox-menu" label="Openbox">
 	<item label="Edit autostart">
 		<action name="Execute">
-			<command>urxvtc -e vim ~/.config/openbox/autostart</command>
+			<command>termopen vim ~/.config/openbox/autostart</command>
 		</action>
 	</item>
 	<item label="Edit Openbox configuration">
 		<action name="Execute">
-			<command>urxvtc -e vim ~/.config/openbox/rc.xml</command>
+			<command>termopen vim ~/.config/openbox/rc.xml</command>
 		</action>
 	</item>
 	<item label="Edit Openbox environment">
 		<action name="Execute">
-			<command>urxvtc -e vim ~/.config/openbox/environment</command>
+			<command>termopen vim ~/.config/openbox/environment</command>
 		</action>
 	</item>
 	<item label="Edit Openbox menu">
 		<action name="Execute">
-			<command>urxvtc -e vim ~/.config/openbox/menu.xml</command>
+			<command>termopen vim ~/.config/openbox/menu.xml</command>
 		</action>
 	</item>
 	<separator />

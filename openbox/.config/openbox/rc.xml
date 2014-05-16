@@ -527,7 +527,7 @@
 		</keybind>
 		<keybind key="m">
 			<action name="Execute">
-				<command>urxvtc -e mocp</command>
+				<command>termopen mocp</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

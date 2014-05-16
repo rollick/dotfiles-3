@@ -427,18 +427,6 @@
 			<wrap>no</wrap>
 		</action>
 	</keybind>
-	<keybind key="C-A-Up">
-		<action name="GoToDesktop">
-			<to>up</to>
-			<wrap>no</wrap>
-		</action>
-	</keybind>
-	<keybind key="C-A-Down">
-		<action name="GoToDesktop">
-			<to>down</to>
-			<wrap>no</wrap>
-		</action>
-	</keybind>
 	<keybind key="S-A-Left">
 		<action name="SendToDesktop">
 			<to>left</to>
@@ -448,18 +436,6 @@
 	<keybind key="S-A-Right">
 		<action name="SendToDesktop">
 			<to>right</to>
-			<wrap>no</wrap>
-		</action>
-	</keybind>
-	<keybind key="S-A-Up">
-		<action name="SendToDesktop">
-			<to>up</to>
-			<wrap>no</wrap>
-		</action>
-	</keybind>
-	<keybind key="S-A-Down">
-		<action name="SendToDesktop">
-			<to>down</to>
 			<wrap>no</wrap>
 		</action>
 	</keybind>
@@ -483,7 +459,7 @@
 			<to>4</to>
 		</action>
 	</keybind>
-		<keybind key="W-d">
+	<keybind key="W-d">
 		<action name="ToggleShowDesktop"/>
 	</keybind>
 
@@ -512,16 +488,6 @@
 	</keybind>
 	<keybind key="A-S-Tab">
 		<action name="PreviousWindow">
-			<finalactions>
-				<action name="Focus"/>
-				<action name="Raise"/>
-				<action name="Unshade"/>
-			</finalactions>
-		</action>
-	</keybind>
-	<keybind key="C-A-Tab">
-		<action name="NextWindow">
-			<panels>yes</panels><desktop>yes</desktop>
 			<finalactions>
 				<action name="Focus"/>
 				<action name="Raise"/>

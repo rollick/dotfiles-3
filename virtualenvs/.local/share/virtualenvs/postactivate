@@ -1,2 +1,4 @@
 #!/usr/bin/zsh
 # This hook is run after every virtualenv is activated.
+# Don't pollute my environment
+unset PS1

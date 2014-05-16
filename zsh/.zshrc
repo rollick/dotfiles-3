@@ -10,7 +10,8 @@ autoload -U zmv
 # Include external additions
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
 				 "/etc/zsh_command_not_found"
-				 "/usr/share/zsh/site-functions/git-flow-completion.zsh")
+				 "/usr/share/zsh/site-functions/git-flow-completion.zsh"
+				 "/usr/bin/virtualenvwrapper.sh" )
 for f in ${ext_additions}; do
 	[[ -e "${f}" ]] && source ${f}
 done

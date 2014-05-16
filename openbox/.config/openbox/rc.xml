@@ -416,40 +416,72 @@
 
 	<!-- Keybindings for desktop switching -->
 	<keybind key="C-A-Left">
-		<action name="GoToDesktop"><to>left</to><wrap>no</wrap></action>
+		<action name="GoToDesktop">
+			<to>left</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="C-A-Right">
-		<action name="GoToDesktop"><to>right</to><wrap>no</wrap></action>
+		<action name="GoToDesktop">
+			<to>right</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="C-A-Up">
-		<action name="GoToDesktop"><to>up</to><wrap>no</wrap></action>
+		<action name="GoToDesktop">
+			<to>up</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="C-A-Down">
-		<action name="GoToDesktop"><to>down</to><wrap>no</wrap></action>
+		<action name="GoToDesktop">
+			<to>down</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="S-A-Left">
-		<action name="SendToDesktop"><to>left</to><wrap>no</wrap></action>
+		<action name="SendToDesktop">
+			<to>left</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="S-A-Right">
-		<action name="SendToDesktop"><to>right</to><wrap>no</wrap></action>
+		<action name="SendToDesktop">
+			<to>right</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="S-A-Up">
-		<action name="SendToDesktop"><to>up</to><wrap>no</wrap></action>
+		<action name="SendToDesktop">
+			<to>up</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="S-A-Down">
-		<action name="SendToDesktop"><to>down</to><wrap>no</wrap></action>
+		<action name="SendToDesktop">
+			<to>down</to>
+			<wrap>no</wrap>
+		</action>
 	</keybind>
 	<keybind key="W-F1">
-		<action name="GoToDesktop"><to>1</to></action>
+		<action name="GoToDesktop">
+			<to>1</to>
+		</action>
 	</keybind>
 	<keybind key="W-F2">
-		<action name="GoToDesktop"><to>2</to></action>
+		<action name="GoToDesktop">
+			<to>2</to>
+		</action>
 	</keybind>
 	<keybind key="W-F3">
-		<action name="GoToDesktop"><to>3</to></action>
+		<action name="GoToDesktop">
+			<to>3</to>
+		</action>
 	</keybind>
 	<keybind key="W-F4">
-		<action name="GoToDesktop"><to>4</to></action>
+		<action name="GoToDesktop">
+			<to>4</to>
+		</action>
 	</keybind>
 		<keybind key="W-d">
 		<action name="ToggleShowDesktop"/>
@@ -587,22 +619,34 @@
 		</mousebind>
 
 		<mousebind button="A-Up" action="Click">
-			<action name="GoToDesktop"><to>previous</to></action>
+			<action name="GoToDesktop">
+				<to>previous</to>
+			</action>
 		</mousebind>
 		<mousebind button="A-Down" action="Click">
-			<action name="GoToDesktop"><to>next</to></action>
+			<action name="GoToDesktop">
+				<to>next</to>
+			</action>
 		</mousebind>
 		<mousebind button="C-A-Up" action="Click">
-			<action name="GoToDesktop"><to>previous</to></action>
+			<action name="GoToDesktop">
+				<to>previous</to>
+			</action>
 		</mousebind>
 		<mousebind button="C-A-Down" action="Click">
-			<action name="GoToDesktop"><to>next</to></action>
+			<action name="GoToDesktop">
+				<to>next</to>
+			</action>
 		</mousebind>
 		<mousebind button="A-S-Up" action="Click">
-			<action name="SendToDesktop"><to>previous</to></action>
+			<action name="SendToDesktop">
+				<to>previous</to>
+			</action>
 		</mousebind>
 		<mousebind button="A-S-Down" action="Click">
-			<action name="SendToDesktop"><to>next</to></action>
+			<action name="SendToDesktop">
+				<to>next</to>
+			</action>
 		</mousebind>
 	</context>
 

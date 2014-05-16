@@ -2,6 +2,11 @@
 # These things are run when an Openbox X Session is started.
 #
 
+# Load compton
+if which compton >/dev/null 2>&1; then
+	compton -b &
+fi
+
 # Start light-locker
 if which light-locker >/dev/null 2>&1; then
 	light-locker --lock-on-suspend &
@@ -43,10 +48,5 @@ fi
 # Load docker-tray
 if which docker >/dev/null 2>&1; then
 	(sleep 3; docker -vertical) &
-fi
-
-# Load compton
-if which compton >/dev/null 2>&1; then
-	compton -b &
 fi
 # vim: ft=sh

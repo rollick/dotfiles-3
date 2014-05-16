@@ -203,6 +203,11 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Notifications">
+		<action name="Execute">
+			<command>xfce4-notifyd-config</command>
+		</action>
+	</item>
 	<menu id="system-openbox-menu"/>
 	<menu id="pipe-alsa-menu" />
 </menu>

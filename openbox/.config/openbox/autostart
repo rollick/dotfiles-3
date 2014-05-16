@@ -44,4 +44,9 @@ fi
 if which docker >/dev/null 2>&1; then
 	(sleep 3; docker -vertical) &
 fi
+
+# Load compton
+if which compton >/dev/null 2>&1; then
+	compton -b &
+fi
 # vim: ft=sh

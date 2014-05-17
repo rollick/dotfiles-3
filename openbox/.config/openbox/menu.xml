@@ -122,7 +122,7 @@
 	</item>
 	<item label="Terminal">
 		<action name="Execute">
-			<command>urxvtc</command>
+			<command>gnome-terminal</command>
 		</action>
 	</item>
 </menu>

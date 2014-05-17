@@ -35,11 +35,6 @@ if which feh >/dev/null 2>&1; then
 	fi
 fi
 
-# Load URxvtd
-if which urxvtd >/dev/null 2>&1; then
-	urxvtd -q -o -f &
-fi
-
 # Load lal
 if which lal >/dev/null 2>&1; then
 	lal &

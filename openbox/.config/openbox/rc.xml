@@ -446,7 +446,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>urxvtc</command>
+				<command>gnome-terminal</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

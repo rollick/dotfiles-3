@@ -29,6 +29,11 @@
 			<command>easymp3gain</command>
 		</action>
 	</item>
+	<item label="Ex Falso">
+		<action name="Execute">
+			<command>exfalso</command>
+		</action>
+	</item>
 	<item label="MP3Diags">
 		<action name="Execute">
 			<command>MP3Diags</command>

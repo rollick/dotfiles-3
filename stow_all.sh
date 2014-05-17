@@ -10,7 +10,6 @@ mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/urxvt"
 
 stow --verbose -R -t ${HOME} appearance
-stow --verbose -R -t ${HOME} compton
 stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} shells

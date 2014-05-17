@@ -96,6 +96,7 @@ path = .hidden
 path = .hushlogin
 path = .octaverc
 path = .profile
+path = .makepkg.conf
 path = .tmux.conf
 path = .vimrc
 path = .Xdefaults

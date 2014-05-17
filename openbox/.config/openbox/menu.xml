@@ -102,7 +102,7 @@
 <menu id="apps-system-menu" label="System">
 	<item label="Disk usage">
 		<action name="Execute">
-			<command>termopen ncdu</command>
+			<command>ncdu-select</command>
 		</action>
 	</item>
 	<item label="Editor">

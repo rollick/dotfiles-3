@@ -7,3 +7,6 @@ openbox:
 
 rxvt-unicode:
  - urxvt-perls
+
+ncdu-select:
+ - zenity

@@ -13,6 +13,7 @@ stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} compton
 stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} openbox
+stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison

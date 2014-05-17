@@ -100,6 +100,11 @@
 </menu>
 
 <menu id="apps-system-menu" label="System">
+	<item label="Avahi Discovery">
+		<action name="Execute">
+			<command>avahi-discover-standalone</command>
+		</action>
+	</item>
 	<item label="Disk usage">
 		<action name="Execute">
 			<command>ncdu-select</command>

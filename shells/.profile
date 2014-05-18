@@ -34,8 +34,13 @@ if which rsync >/dev/null 2>&1 && which ssh >/dev/null 2>&1; then
 		export RSYNC_RSH="ssh"
 fi
 
-# Set up virtual environments for python
-export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
+if which python >/dev/null 2>&1; then
+	# Don't write bytecode on importing
+	export PYTHONDONTWRITEBYTECODE=1
+
+	# Set up virtual environments for python
+	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
+fi
 
 # Set some paths for mpv
 export DVDCSS_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/dvdcss"

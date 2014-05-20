@@ -51,8 +51,9 @@ control_commands() {
 		print_separator
 		print_item "Show Music On Console" "termopen mocp"
 		print_item "Exit" "mocp --exit"
+	else
+		print_item "Start Music On Console" "termopen mocp"
 	fi
-	print_item "Start Music On Console" "termopen mocp"
 }
 
 calc_playlistn() {

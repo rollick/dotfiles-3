@@ -110,6 +110,11 @@
 			<command>calibre</command>
 		</action>
 	</item>
+	<item label="Evince">
+		<action name="Execute">
+			<command>evince</command>
+		</action>
+	</item>
 	<item label="LibreOffice Calc">
 		<action name="Execute">
 			<command>libreoffice --calc</command>

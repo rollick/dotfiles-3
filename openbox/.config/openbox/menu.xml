@@ -105,6 +105,11 @@
 </menu>
 
 <menu id="apps-office-menu" label="Office">
+	<item label="Calibre">
+		<action name="Execute">
+			<command>calibre</command>
+		</action>
+	</item>
 	<item label="LibreOffice Calc">
 		<action name="Execute">
 			<command>libreoffice --calc</command>

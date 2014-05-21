@@ -21,6 +21,11 @@
 			<command>libreoffice --draw</command>
 		</action>
 	</item>
+	<item label="Simple Scan">
+		<action name="Execute">
+			<command>simple-scan</command>
+		</action>
+	</item>
 </menu>
 
 <menu id="apps-devel-menu" label="Development">

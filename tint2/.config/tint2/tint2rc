@@ -7,13 +7,13 @@
 rounded = 0
 border_width = 0
 background_color = #34495E 100
-border_color = #FFFFFF 24
+border_color = #FFFFFF 22
 
 # ID 2
 rounded = 0
 border_width = 1
-background_color = #ECF0F1 61
-border_color = #F7F7F7 86
+background_color = #ECF0F1 60
+border_color = #F7F7F7 84
 
 # Panel
 panel_monitor = all
@@ -59,7 +59,7 @@ task_iconified_icon_asb = 100 0 0
 
 # Fonts
 task_font = Droid Sans 10
-task_font_color = #FFFFFF 41
+task_font_color = #FFFFFF 40
 task_active_font_color = #333333 100
 task_urgent_font_color = #FFFFFF 100
 task_iconified_font_color = #FFFFFF 100
@@ -98,8 +98,8 @@ mouse_scroll_up = none
 mouse_scroll_down = none
 
 # Battery
-battery = 1
-battery_low_status = 20
+battery = 0
+battery_low_status = 5
 battery_low_cmd = notify-send "battery low"
 battery_hide = 90
 bat1_font = Droid Sans 12

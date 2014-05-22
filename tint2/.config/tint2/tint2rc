@@ -7,13 +7,13 @@
 rounded = 0
 border_width = 0
 background_color = #34495E 100
-border_color = #FFFFFF 29
+border_color = #FFFFFF 27
 
 # ID 2
 rounded = 0
 border_width = 1
-background_color = #ECF0F1 66
-border_color = #F7F7F7 91
+background_color = #ECF0F1 64
+border_color = #F7F7F7 89
 
 # Panel
 panel_monitor = all
@@ -22,7 +22,7 @@ panel_size = 0 28
 panel_margin = 0 0
 panel_padding = 0 0 0
 panel_dock = 0
-wm_menu = 0
+wm_menu = 1
 panel_layer = bottom
 panel_background_id = 1
 
@@ -58,8 +58,8 @@ task_urgent_icon_asb = 100 0 0
 task_iconified_icon_asb = 100 0 0
 
 # Fonts
-task_font = Verdana 7
-task_font_color = #FFFFFF 46
+task_font = Droid Sans 10
+task_font_color = #FFFFFF 44
 task_active_font_color = #333333 100
 task_urgent_font_color = #FFFFFF 100
 task_iconified_font_color = #FFFFFF 100
@@ -75,24 +75,20 @@ systray_icon_asb = 100 0 0
 
 # Clock
 time1_format = %H:%M
-time1_font = Verdana Bold 10
+time1_font = Droid Sans Bold 10
 time2_format = %a %d %b
-time2_font = Ubuntu Light 6
+time2_font = Droid Sans 10
 clock_font_color = #F39C12 100
-clock_tooltip = 
 clock_padding = 8 0
 clock_background_id = 0
-time1_timezone = 
-time2_timezone = 
-clock_tooltip_timezone = 
 
 # Tooltips
 tooltip = 0
 tooltip_padding = 0 0
 tooltip_show_timeout = 0
 tooltip_hide_timeout = 0
-tooltip_background_id = 0
-tooltip_font = Sans 12
+tooltip_background_id = 1
+tooltip_font = Droid Sans 12
 tooltip_font_color = #FFFFFF 100
 
 # Mouse
@@ -102,12 +98,12 @@ mouse_scroll_up = none
 mouse_scroll_down = none
 
 # Battery
-battery = 0
+battery = 1
 battery_low_status = 20
 battery_low_cmd = notify-send "battery low"
 battery_hide = 90
-bat1_font = Sans 12
-bat2_font = Sans 12
+bat1_font = Droid Sans 12
+bat2_font = Droid Sans 12
 battery_font_color = #FFFFFF 100
 battery_padding = 0 0
 battery_background_id = 0

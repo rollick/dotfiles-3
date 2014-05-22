@@ -247,7 +247,7 @@
 			<command>tint2conf</command>
 		</action>
 	</item>
-	<item label="Manage Cups Printers">
+	<item label="Printers">
 		<action name="Execute">
 			<command>firefox http://localhost:631/</command>
 			<startupnotify>

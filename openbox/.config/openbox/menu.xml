@@ -242,6 +242,11 @@
 </menu>
 
 <menu id="system-administration-menu" label="Administration">
+	<item label="Panel">
+		<action name="Execute">
+			<command>tint2conf</command>
+		</action>
+	</item>
 	<item label="Manage Cups Printers">
 		<action name="Execute">
 			<command>firefox http://localhost:631/</command>

@@ -24,6 +24,11 @@ for f in ${ext_additions}; do
 	[[ -e "${f}" ]] && source ${f}
 done
 
+# Add prompts to fpath
+if [[ -d ${HOME}/.zsh.d/prompt.d ]]; then
+	fpath=(${HOME}/.zsh.d/prompt.d ${fpath})
+fi
+
 # Load own functions
 if [[ -d "${HOME}/.zsh.d/functions.d" ]]; then
 	fpath=("${HOME}/.zsh.d/functions.d" ${fpath})
@@ -37,7 +42,6 @@ which dircolors_setup &>/dev/null && dircolors_setup
 setting_files=("completions"
                "hashes"
                "keybindings"
-               "prompt"
                "zftp")
 for f in ${setting_files}; do
 	f="${HOME}/.zsh.d/${f}"
@@ -48,6 +52,11 @@ done
 for f in ${HOME}/.zsh.d/alias.d/*(.N); do
 	source ${f}
 done
+
+# Set prompt
+if promptinit; then
+	prompt default
+fi
 
 # Unset temporary variables
 unset {a-z}

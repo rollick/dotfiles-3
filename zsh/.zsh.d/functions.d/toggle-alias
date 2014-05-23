@@ -1,0 +1,6 @@
+#!/bin/zsh
+if [[ "${BUFFER[(w)1]}" == "="* ]]; then
+	BUFFER[(w)1]="${BUFFER[(w)1]/=/}"
+else
+	BUFFER[(w)1]="=${BUFFER[(w)1]}"
+fi

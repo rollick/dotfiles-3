@@ -1,11 +1,6 @@
 #!/bin/zsh
 # Loaded for interactive shells only
 
-# Load very important files
-for f in ${HOME}/.zsh.d/00-*(.N); do
-	source "${f}"
-done
-
 # Load zsh (upstream) functions
 autoload -U compinit && compinit
 autoload -U colors && colors
@@ -41,7 +36,7 @@ fi
 which dircolors_setup &>/dev/null && dircolors_setup
 
 # Include other settings
-for f in ${HOME}/.zsh.d/[1-9]*(.N); do
+for f in ${HOME}/.zsh.d/[0-9]*(.N); do
 	source "${f}"
 done
 

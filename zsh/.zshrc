@@ -1,8 +1,10 @@
 #!/bin/zsh
 # Loaded for interactive shells only
 
-# Load options
-[[ -e ${HOME}/.zsh.d/options ]] && source ${HOME}/.zsh.d/options
+# Load very important files
+for f in ${HOME}/.zsh.d/00-*(.N); do
+	source "${f}"
+done
 
 # Load zsh (upstream) functions
 autoload -U compinit && compinit
@@ -39,13 +41,8 @@ fi
 which dircolors_setup &>/dev/null && dircolors_setup
 
 # Include other settings
-setting_files=("completions"
-               "hashes"
-               "keybindings"
-               "zftp")
-for f in ${setting_files}; do
-	f="${HOME}/.zsh.d/${f}"
-	[[ -e "${f}" ]] && source "${f}"
+for f in ${HOME}/.zsh.d/[1-9]*(.N); do
+	source "${f}"
 done
 
 # Set aliases

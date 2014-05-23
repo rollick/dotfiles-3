@@ -1,8 +1,5 @@
 #!/bin/zsh
 # Load necessary functions and modules
-zmodload -e zsh/complist &>|/dev/null || zmodload -F zsh/complist
-which keeper &>|/dev/null || autoload -U keeper && keeper
-autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 # Functions and settings for the line editor

@@ -5,7 +5,15 @@
 [[ -e ${HOME}/.zsh.d/options ]] && source ${HOME}/.zsh.d/options
 
 # Load zsh (upstream) functions
+autoload -U compinit && compinit
+autoload -U colors && colors
+autoload -U keeper && keeper
+autoload -U promptinit
+autoload -U url-quote-magic
 autoload -U zmv
+
+# Load zsh modules
+zmodload -F zsh/complist
 
 # Include external additions
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"

@@ -1,9 +1,5 @@
 #!/bin/zsh
-# Load necessary functions and modules
-zmodload -e zsh/complist &>|/dev/null || zmodload -F zsh/complist
-which compinit &>|/dev/null || autoload -U compinit && compinit
-which colors &>|/dev/null || autoload -U colors && colors
-
+# Enable completion
 zstyle ':completion:*' verbose true
 
 # Allow completion for '..'

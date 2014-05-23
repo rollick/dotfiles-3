@@ -7,8 +7,8 @@ if [[ -d ${HOME}/.zsh.d/prompt.d ]]; then
 	typeset -u fpath
 fi
 
-#  Load needed functions
-which promptinit &>|/dev/null || autoload -U promptinit && promptinit
+# Initialize prompt
+promptinit
 
 # Set prompt
 prompt default

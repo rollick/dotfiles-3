@@ -1,10 +1,6 @@
 #!/bin/zsh
 
 function prompt_default_setup() {
-	# Inlcudes
-	##################
-	command -v colors &>|/dev/null || autoload -U colors && colors
-
 	# Options for rsc-default prompt
 	##################
 	prompt_opts=(cr subst percent)

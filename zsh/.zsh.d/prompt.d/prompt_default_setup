@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 function prompt_default_setup() {
 	# Options for rsc-default prompt
 	##################

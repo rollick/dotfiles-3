@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Aliases for network programs
 which ping &>|/dev/null && alias ping='ping -c4'
 which ping6 &>|/dev/null && alias ping6='ping6 -c4'

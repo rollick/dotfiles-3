@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Aliases for pager programs
 alias less='${PAGER}'
 alias more='${PAGER}'

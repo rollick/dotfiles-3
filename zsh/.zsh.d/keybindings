@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Load necessary functions and modules
 zle -N expand-global-alias
 zle -N get-help

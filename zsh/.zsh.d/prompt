@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Set up prompt
 
 # Add own prompts to fpath

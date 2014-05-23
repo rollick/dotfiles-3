@@ -1,3 +1,2 @@
-#!/bin/zsh
 which gcc &>|/dev/null && alias gcc="nice -n 19 gcc"
 which make &>|/dev/null && alias make="nice -n 19 make"

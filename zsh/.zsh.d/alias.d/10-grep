@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Aliases for grep
 if which grep &>|/dev/null; then
 	alias egrep='egrep --color=auto'

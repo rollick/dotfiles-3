@@ -1,4 +1,3 @@
-#!/bin/zsh
 if grep "Arch Linux" /etc/os-release &>|/dev/null; then
 	which paccache &>|/dev/null && alias paccache="paccache --verbose"
 

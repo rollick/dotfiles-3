@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Aliases for multimedia programs
 which pdf2ps &>|/dev/null && alias pdf2ps='pdf2ps -sPAPERSIZE=a4'
 which optipng &>|/dev/null && alias optipng='optipng -o7'

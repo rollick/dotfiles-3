@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Global aliases
 alias -g C="|wc -l"
 alias -g ES="2>&1"

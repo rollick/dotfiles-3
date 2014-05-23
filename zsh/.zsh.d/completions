@@ -1,5 +1,3 @@
-#!/bin/zsh
-# Enable completion
 zstyle ':completion:*' verbose true
 
 # Allow completion for '..'

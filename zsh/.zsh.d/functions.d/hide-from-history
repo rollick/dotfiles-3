@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Hide commands from history
 if [[ "${BUFFER}" == \ * ]]; then
 	BUFFER="${BUFFER/# /}"

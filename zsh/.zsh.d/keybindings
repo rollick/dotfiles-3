@@ -70,11 +70,6 @@ function get-man() {
 }
 zle -N get-man
 
-# Insert ISO date in the form of YYYY-MM-DD
-function insert-iso-date() {
-	LBUFFER+="$(date +%F)"
-}
-zle -N insert-iso-date
 # Load widgets
 [[ -r ${HOME}/.zsh.d/zle ]] && source ${HOME}/.zsh.d/zle
 

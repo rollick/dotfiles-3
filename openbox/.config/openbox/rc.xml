@@ -128,13 +128,13 @@
 			<command>mocp --previous</command>
 		</action>
 	</keybind>
+
+	<!-- Keybindings to change volume -->
 	<keybind key="XF86AudioRaiseVolume">
 		<action name="Execute">
 			<command>amixer set Master 5%+ unmute</command>
 		</action>
 	</keybind>
-
-	<!-- Keybindings to change volume -->
 	<keybind key="XF86AudioLowerVolume">
 		<action name="Execute">
 			<command>amixer set Master 5%- unmute</command>

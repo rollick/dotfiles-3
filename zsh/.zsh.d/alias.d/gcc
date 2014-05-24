@@ -1,0 +1,1 @@
+alias gcc="nice -n 19 gcc"

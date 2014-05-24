@@ -1,0 +1,1 @@
+alias ping6='ping6 -c4'

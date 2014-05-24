@@ -1,6 +1,0 @@
-# Aliases for network programs
-which ping &>|/dev/null && alias ping='ping -c4'
-which ping6 &>|/dev/null && alias ping6='ping6 -c4'
-which unison &>|/dev/null && alias unison='unison -ui text'
-which traceroute &>|/dev/null && alias traceroute6='traceroute -6'
-command -v httpserver &>|/dev/null && alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR:-$HOME/Public}"

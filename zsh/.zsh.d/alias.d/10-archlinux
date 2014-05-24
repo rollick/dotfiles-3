@@ -1,5 +1,0 @@
-if grep "Arch Linux" /etc/os-release &>|/dev/null; then
-	which paccache &>|/dev/null && alias paccache="paccache --verbose"
-
-	alias makepkg="nice -n 19 makepkg"
-fi

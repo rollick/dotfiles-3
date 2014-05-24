@@ -1,0 +1,3 @@
+alias zmv='zmv -o --verbose'
+alias zmv-all_low="zmv '(*)' '\${1:l}'"
+alias zmv-space2underscore="zmv '(*)' '\${1// /_}'"

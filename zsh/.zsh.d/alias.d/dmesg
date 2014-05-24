@@ -1,0 +1,1 @@
+alias dmesg='dmesg --color --decode --human --time-format ctime'

@@ -1,0 +1,2 @@
+alias octave='octave --silent'
+alias calc='noglob octave --silent --eval'

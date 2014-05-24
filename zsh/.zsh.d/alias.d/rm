@@ -1,0 +1,1 @@
+alias rm='rm --verbose --one-file-system'

@@ -14,9 +14,9 @@ zmodload -F zsh/complist
 
 # Include external additions
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
-				 "/etc/zsh_command_not_found"
-				 "/usr/share/zsh/site-functions/git-flow-completion.zsh"
-				 "/usr/bin/virtualenvwrapper.sh" )
+               "/etc/zsh_command_not_found"
+               "/usr/share/zsh/site-functions/git-flow-completion.zsh"
+               "/usr/bin/virtualenvwrapper.sh")
 for f in ${ext_additions}; do
 	[[ -e "${f}" ]] && source ${f}
 done
@@ -42,9 +42,10 @@ done
 
 # Set aliases
 for f in ${HOME}/.zsh.d/alias.d/*(.N); do
-	source ${f}
+	if which "$(basename "${f}")" &>|/dev/null; then
+		source "${f}"
+	fi
 done
-
 # Set prompt
 if promptinit; then
 	prompt default

@@ -6,5 +6,8 @@ which htop &>|/dev/null && alias uhtop='htop -u ${USER}'
 which top &>|/dev/null && alias utop='top -U ${USER}'
 alias cls='clear'
 alias lj='jobs -l'
-which octave &>|/dev/null && alias octave='octave --silent'
+if which octave &>|/dev/null; then
+	alias octave='octave --silent'
+	alias calc='noglob octave --silent --eval'
+fi
 alias dmesg='dmesg --color --decode --human --time-format ctime'

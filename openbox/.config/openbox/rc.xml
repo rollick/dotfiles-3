@@ -112,12 +112,29 @@
 <keyboard>
 	<chainQuitKey>C-g</chainQuitKey>
 
-	<!-- Keybindings to change volume -->
+	<!-- Keybindings to control Music On Console -->
+	<keybind key="XF86AudioNext">
+		<action name="Execute">
+			<command>mocp --next</command>
+		</action>
+	</keybind>
+	<keybind key="XF86AudioPlay">
+		<action name="Execute">
+			<command>mocp --toggle-pause</command>
+		</action>
+	</keybind>
+	<keybind key="XF86AudioPrev">
+		<action name="Execute">
+			<command>mocp --previous</command>
+		</action>
+	</keybind>
 	<keybind key="XF86AudioRaiseVolume">
 		<action name="Execute">
 			<command>amixer set Master 5%+ unmute</command>
 		</action>
 	</keybind>
+
+	<!-- Keybindings to change volume -->
 	<keybind key="XF86AudioLowerVolume">
 		<action name="Execute">
 			<command>amixer set Master 5%- unmute</command>

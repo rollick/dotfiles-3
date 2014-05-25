@@ -4,3 +4,12 @@
 Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintslight
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! lal
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+lal.color: white
+lal.font: Droid Sans
+lal.fontsize: 18
+lal.format: %R
+lal.bold: true

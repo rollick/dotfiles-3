@@ -14,7 +14,6 @@ stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
-stow --verbose -R -t ${HOME} tint2
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison
 stow --verbose -R -t ${HOME} virtualenvs

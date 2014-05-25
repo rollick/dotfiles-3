@@ -97,13 +97,13 @@
 </margins>
 
 <dock>
-	<position>Bottom</position>
+	<position>TopLeft</position>
 	<floatingX>0</floatingX>
 	<floatingY>0</floatingY>
 	<noStrut>no</noStrut>
-	<stacking>normal</stacking> <!-- 'Above', 'Normal', or 'Below' -->
+	<stacking>Above</stacking> <!-- 'Above', 'Normal', or 'Below' -->
 	<direction>Vertical</direction> <!-- 'Vertical' or 'Horizontal' -->
-	<autoHide>no</autoHide>
+	<autoHide>yes</autoHide>
 	<hideDelay>300</hideDelay>
 	<showDelay>300</showDelay>
 	<moveButton>Middle</moveButton> <!-- 'Left', 'Middle', 'Right' -->

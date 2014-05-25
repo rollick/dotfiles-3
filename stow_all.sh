@@ -7,7 +7,6 @@ mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}"
 mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
 mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}"
 mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
-mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/urxvt"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} moc

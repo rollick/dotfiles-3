@@ -469,7 +469,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>gnome-terminal</command>
+				<command>terminator</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

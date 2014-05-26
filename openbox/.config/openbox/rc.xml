@@ -29,37 +29,37 @@
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>
 	<font place="ActiveWindow">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>8</size>
 		<weight>bold</weight>
 		<slant>normal</slant>
 	</font>
 	<font place="InactiveWindow">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>8</size>
 		<weight>bold</weight>
 		<slant>normal</slant>
 	</font>
 	<font place="MenuHeader">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>9</size>
 		<weight>normal</weight>
 		<slant>normal</slant>
 	</font>
 	<font place="MenuItem">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>9</size>
 		<weight>normal</weight>
 		<slant>normal</slant>
 	</font>
 	<font place="ActiveOnScreenDisplay">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>9</size>
 		<weight>bold</weight>
 		<slant>normal</slant>
 	</font>
 	<font place="InactiveOnScreenDisplay">
-		<name>Droid Sans</name>
+		<name>Fira Sans</name>
 		<size>9</size>
 		<weight>bold</weight>
 		<slant>normal</slant>

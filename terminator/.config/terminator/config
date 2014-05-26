@@ -13,7 +13,7 @@
     cursor_color = "#ffffff"
     foreground_color = "#ffffff"
     show_titlebar = False
-    font = Droid Sans Mono 10
+    font = Fira Mono 10
     background_color = "#121212"
     scrollback_infinite = True
 [layouts]

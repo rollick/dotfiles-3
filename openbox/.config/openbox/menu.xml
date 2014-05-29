@@ -110,6 +110,11 @@
 			<command>calibre</command>
 		</action>
 	</item>
+	<item label="Ebook Viewer">
+		<action name="Execute">
+			<command>ebook-viewer --detach</command>
+		</action>
+	</item>
 	<item label="Evince">
 		<action name="Execute">
 			<command>evince</command>

@@ -45,6 +45,12 @@ ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/numlock_on
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/urxvt
+ignore = Path .moc/equalizer
+ignore = Path .moc/last_directory
+ignore = Path .moc/pid
+ignore = Path .moc/playlist.m3u
+ignore = Path .moc/socket2
+ignore = Path .moc/softmixer
 ignore = Path .vim/.recently-used
 
 ####################
@@ -99,6 +105,7 @@ path = .octaverc
 path = .profile
 path = .pylint-gui-history
 path = .makepkg.conf
+path = .moc/config
 path = .tmux.conf
 path = .vimrc
 path = .Xdefaults

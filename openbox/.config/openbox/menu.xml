@@ -47,6 +47,11 @@
 </menu>
 
 <menu id="apps-multimedia-menu" label="Multimedia">
+	<item label="Asunder">
+		<action name="Execute">
+			<command>asunder</command>
+		</action>
+	</item>
 	<item label="easymp3gain">
 		<action name="Execute">
 			<command>easymp3gain</command>

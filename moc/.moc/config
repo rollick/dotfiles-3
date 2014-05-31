@@ -172,7 +172,7 @@ SoundDriver = ALSA
 #HideFileExtension = no
 
 # Show file format in menu?
-#ShowFormat = yes
+ShowFormat = no
 
 # Show file time in menu?  Possible values: 'yes', 'no' and 'IfAvailable'
 # (meaning show the time only when it is already known, which often works

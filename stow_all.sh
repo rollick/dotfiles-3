@@ -9,6 +9,7 @@ mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}"
 mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 
 stow --verbose -R -t ${HOME} appearance
+stow --verbose -R -t ${HOME} cups
 stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} shells

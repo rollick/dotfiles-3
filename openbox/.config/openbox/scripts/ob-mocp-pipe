@@ -56,30 +56,13 @@ control_commands() {
 	fi
 }
 
-calc_playlistn() {
-	# Calculate # of items in mocp's default playlist.
-	# ${1} -- Path of playlist
-	local playlistn
-
-	if [[ -f "${1}" ]]; then
-		playlistn="$(wc -l "${1}"| cut -d ' ' -f 1)"
-		playlistn=$(( (${playlistn} -2) / 2))
-	else
-		playlistn="?"
-	fi
-	echo "${playlistn}"
-}
-
 song_info_stop() {
 	# Print information about the currently selected song.
 	get_line() {
 		echo "$(grep "EXTINF.*," ${1}| awk 'NR==1'| cut -d ',' -f 2)"
 	}
-	get_trackn() {
-		echo "$(get_line ${1} | cut -d ' ' -f 1)"
-	}
 	get_artist() {
-		echo "$(get_line ${1}| cut -d '-' -f 1 | cut -d ' ' -f 2-)"
+		echo "$(get_line ${1}| cut -d '-' -f 1 | cut -d ' ' -f 1-)"
 	}
 	get_album() {
 		count="$(get_line "${1}"| cut -d '-' -f 2-| grep -o "("| wc -l)"
@@ -99,7 +82,6 @@ song_info_stop() {
 	local mocdir
 	local playlist
 	local songtitle
-	local trackn
 
 	cmd="termopen mocp"
 	mocdir="$(get_mocdir)"
@@ -113,7 +95,6 @@ song_info_stop() {
 		print_item "Artist: ${artist}" "${cmd}"
 		print_item "Title: ${songtitle}" "${cmd}"
 		print_item "Album: ${album}" "${cmd}"
-		print_item "Track: 1/$(calc_playlistn "${playlist}")" "${cmd}"
 	else
 		print_item "Empty playlist"
 	fi
@@ -126,7 +107,6 @@ song_info() {
 	local mocdir
 	local playlist
 	local songtitle
-	local trackn
 
 	cmd="termopen mocp"
 	mocdir="$(get_mocdir)"
@@ -135,12 +115,10 @@ song_info() {
 	artist="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Artist:")"
 	songtitle="$(LC_ALL=C mocp --info 2>/dev/null| grep "^SongTitle:")"
 	album="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Album:")"
-	trackn="$(LC_ALL=C mocp --info 2>/dev/null| grep "^Title:"| cut -d ' ' -f 2)"
 
 	print_item "${artist}" "${cmd}"
 	print_item "${songtitle/SongTitle/Title}" "${cmd}"
 	print_item "${album}" "${cmd}"
-	print_item "Track: ${trackn}/$(calc_playlistn "${playlist}")" "${cmd}"
 }
 
 echo "<openbox_pipe_menu>"

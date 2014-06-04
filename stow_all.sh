@@ -5,8 +5,6 @@ mkdir --verbose -p "${HOME}/.unison"
 mkdir --verbose -p "${HOME}/.icons"
 mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}"
 mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
-mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}"
-mkdir --verbose -p "${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} cups
@@ -17,6 +15,5 @@ stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} terminator
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison
-stow --verbose -R -t ${HOME} virtualenvs
 stow --verbose -R -t ${HOME} x.org
 stow --verbose -R -t ${HOME} zsh

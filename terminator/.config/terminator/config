@@ -1,6 +1,7 @@
 [global_config]
   geometry_hinting = False
   enabled_plugins = ,
+  dbus = True
   inactive_color_offset = 0.83
 [keybindings]
 [profiles]
@@ -21,6 +22,7 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
     [[[window0]]]
       type = Window
       parent = ""

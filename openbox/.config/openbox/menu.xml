@@ -163,6 +163,11 @@
 			<command>termopen vim</command>
 		</action>
 	</item>
+	<item label="File manager">
+		<action name="Execute">
+			<command>pcmanfm</command>
+		</action>
+	</item>
 	<item label="System monitor">
 		<action name="Execute">
 			<command>termopen htop</command>

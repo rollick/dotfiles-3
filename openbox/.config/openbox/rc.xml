@@ -466,8 +466,8 @@
 			<action name="BreakChroot"/>
 		</keybind>
 		<keybind key="m">
-			<action name="ShowMenu">
-				<menu>pipe-moc-menu</menu>
+			<action name="Execute">
+				<command>termopen mocp</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

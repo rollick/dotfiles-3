@@ -168,6 +168,11 @@
 			<command>pcmanfm</command>
 		</action>
 	</item>
+	<item label="Fslint">
+		<action name="Execute">
+			<command>fslint-gui</command>
+		</action>
+	</item>
 	<item label="System monitor">
 		<action name="Execute">
 			<command>termopen htop</command>

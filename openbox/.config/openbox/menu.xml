@@ -160,7 +160,7 @@
 	</item>
 	<item label="Editor">
 		<action name="Execute">
-			<command>termopen vim</command>
+			<command>gvim</command>
 		</action>
 	</item>
 	<item label="File manager">

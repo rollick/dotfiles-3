@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 """
 import argparse
+import random
 import sys
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
@@ -73,9 +74,9 @@ def create_mixer_menu(parent, control):
     """
     mixer = alsa.Mixer(control)
     cur_vol = calc_volume(mixer.getvolume()[0])
+    menu_id = 'obalsa_{}-{}'.format(control, random.randint(1, 10**4))
 
-    menu = etree.SubElement(parent, 'menu', {'id': sys.argv[0] + '-' + control,
-                                             'label': control})
+    menu = etree.SubElement(parent, 'menu', {'id': menu_id, 'label': control})
 
     if mixer.getmute()[0] == 1:
         create_action(menu, 'Unmute', 'amixer sset {} unmute'.format(control))

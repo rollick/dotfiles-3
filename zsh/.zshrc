@@ -2,6 +2,7 @@
 # Loaded for interactive shells only
 
 # Load zsh (upstream) functions
+autoload -U add-zsh-hook
 autoload -U compinit && compinit
 autoload -U colors && colors
 autoload -U keeper && keeper
@@ -46,6 +47,7 @@ for f in ${HOME}/.zsh.d/alias.d/*(.N); do
 		source "${f}"
 	fi
 done
+
 # Set prompt
 if promptinit; then
 	prompt default

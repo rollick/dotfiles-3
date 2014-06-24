@@ -46,6 +46,14 @@
 	</item>
 </menu>
 
+<menu id="apps-games-menu" label="Games">
+	<item label="snes9x">
+		<action name="Execute">
+			<command>snes9x-gtk</command>
+		</action>
+	</item>
+</menu>
+
 <menu id="apps-multimedia-menu" label="Multimedia">
 	<item label="Asunder">
 		<action name="Execute">
@@ -284,6 +292,7 @@
 <menu id="root-menu" label="Openbox 3">
 	<separator label="Applications" />
 	<menu id="apps-devel-menu"/>
+	<menu id="apps-games-menu"/>
 	<menu id="apps-graphics-menu"/>
 	<menu id="apps-multimedia-menu"/>
 	<menu id="apps-net-menu"/>

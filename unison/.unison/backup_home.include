@@ -79,6 +79,7 @@ path = .local
 path = .mozilla
 path = .purple
 path = .pylint.d
+path = .snes9x
 path = .themes
 path = .unison
 path = .vim

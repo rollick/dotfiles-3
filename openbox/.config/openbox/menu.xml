@@ -168,12 +168,7 @@
 	</item>
 	<item label="Editor">
 		<action name="Execute">
-			<command>gvim</command>
-		</action>
-	</item>
-	<item label="File manager">
-		<action name="Execute">
-			<command>pcmanfm</command>
+			<command>termopen vim</command>
 		</action>
 	</item>
 	<item label="Fslint">

@@ -128,9 +128,9 @@
 			<command>ebook-viewer --detach</command>
 		</action>
 	</item>
-	<item label="Evince">
+	<item label="epdfview">
 		<action name="Execute">
-			<command>evince</command>
+			<command>epdfview</command>
 		</action>
 	</item>
 	<item label="LibreOffice Calc">

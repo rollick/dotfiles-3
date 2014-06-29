@@ -196,7 +196,7 @@ ShowTime = yes
 #
 # Example:    Theme = laras_theme
 #
-#Theme =
+Theme = transparent-background
 
 # The theme used when running on an xterm.
 #

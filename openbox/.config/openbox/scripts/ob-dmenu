@@ -1,0 +1,7 @@
+#!/bin/bash
+dmenu_run -fn "Droid Sans Mono-12" \
+		  -nb "#34495e" \
+		  -nf "#999999" \
+		  -sb "#34495e" \
+		  -sf "#f39c12" \
+		  -p "Run:"

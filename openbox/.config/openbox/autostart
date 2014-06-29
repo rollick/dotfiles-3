@@ -35,4 +35,9 @@ if which lal >/dev/null 2>&1; then
 	lal &
 fi
 
+# Enable transparency effects
+if which xcompmgr >/dev/null 2>&1; then
+	xcompmgr &
+fi
+
 # vim: ft=sh

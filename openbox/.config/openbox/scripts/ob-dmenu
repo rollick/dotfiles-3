@@ -1,7 +1,7 @@
 #!/bin/bash
-dmenu_run -fn "Droid Sans Mono-12" \
-		  -nb "#34495e" \
-		  -nf "#999999" \
-		  -sb "#34495e" \
-		  -sf "#f39c12" \
+dmenu_run -fn "Fira Mono-10" \
+		  -nb "#000000" \
+		  -nf "#747474" \
+		  -sb "#383838" \
+		  -sf "#00aecf" \
 		  -p "Run:"

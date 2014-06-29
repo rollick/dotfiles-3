@@ -8,7 +8,7 @@ Xft.hintstyle: hintslight
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! lal
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lal.color: #1FB79B
+lal.color: #00aecf
 lal.font: Fira Sans
 lal.fontsize: 18
 lal.format: %R

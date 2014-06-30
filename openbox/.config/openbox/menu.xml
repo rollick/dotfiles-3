@@ -3,8 +3,9 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <!-- Pipe menus -->
-<menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe" />
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe.py" />
+<menu id="pipe-firefox-menu" label="Firefox" execute="ob-firefox-pipe.py" />
+<menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe" />
 
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">
@@ -83,14 +84,7 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
-	<item label="Firefox">
-		<action name="Execute">
-			<command>firefox</command>
-      			<startupnotify>
-        			<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
+	<menu id="pipe-firefox-menu" />
 	<item label="Gmail">
 		<action name="Execute">
 			<command>firefox https://www.gmail.com</command>

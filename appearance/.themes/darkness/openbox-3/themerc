@@ -5,7 +5,8 @@ padding.width: 2
 padding.height: 2
 window.handle.width: 0
 window.client.padding.width: 0
-*.justify: center
+window.label.text.justify: left
+menu.title.text.justify: center
 
 
 !# Menu settings

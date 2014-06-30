@@ -4,12 +4,3 @@
 Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintslight
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! lal
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lal.color: #00aecf
-lal.font: Fira Sans
-lal.fontsize: 18
-lal.format: %R
-lal.bold: true

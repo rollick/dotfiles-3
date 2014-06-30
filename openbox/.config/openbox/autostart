@@ -30,11 +30,6 @@ if which feh >/dev/null 2>&1; then
 	fi
 fi
 
-# Load lal
-if which lal >/dev/null 2>&1; then
-	lal &
-fi
-
 # Enable transparency effects
 if which xcompmgr >/dev/null 2>&1; then
 	xcompmgr &

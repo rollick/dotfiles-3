@@ -73,30 +73,41 @@ def create_mixer_menu(parent, control):
     """
     mixer = alsa.Mixer(control)
     cur_vol = calc_volume(mixer.getvolume()[0])
-    menu_id = 'obalsa_{}'.format(control)
-
-    menu = etree.SubElement(parent, 'menu', {'id': menu_id, 'label': control})
 
     if mixer.getmute()[0] == 1:
-        create_action(menu, 'Unmute', 'amixer sset {} unmute'.format(control))
+        create_action(parent, 'Unmute', 'amixer sset {} unmute'.format(control))
     else:
-        create_action(menu, 'Mute', 'amixer sset {} mute'.format(control))
+        create_action(parent, 'Mute', 'amixer sset {} mute'.format(control))
 
-    create_separator(menu)
+    create_separator(parent)
 
     for vol in range(0, 101, 5):
         if vol == cur_vol:
-            create_separator(menu, '{}%'.format(vol))
+            create_separator(parent, '{}%'.format(vol))
         else:
-            create_action(menu,
+            create_action(parent,
                           '{}%'.format(vol),
                           'amixer sset {} {}%'.format(control, vol))
+
+
+def create_pipe_menu(parent, label, script):
+    """ Create a pipe menu.
+
+    Keyword arguments:
+        parent -- Parent etree.Element
+        label -- Label
+        script -- Script to execute
+    """
+    attribs = {'label': label,
+               'id': 'pipe-alsa-{}-menu'.format(label.lower()),
+               'execute': script}
+    etree.SubElement(parent, 'menu', attribs)
 
 
 def create_separator(parent, label=None):
     """ Create an separator element.
 
-    Keyword argguments:
+    Keyword arguments:
         parent -- Parent etree.Element
         label -- Label
 
@@ -170,6 +181,8 @@ def parse_arguments(argv=None):
                         action='store_true',
                         default=False,
                         help='debug output')
+    parser.add_argument('--card',
+                        default=None)
     parser.add_argument('--help',
                         action='help',
                         help='display this help and exit')
@@ -205,18 +218,26 @@ def main(argv=None):
                On Success == 0 (default)
 
     """
-    supported_mixers = ['Headphone', 'Speaker', 'Master']
-    available_mixers = alsa.mixers()
-
     # Parse argv
     args = parse_arguments(argv)
 
-    root = etree.Element('openbox_pipe_menu')
-    create_action(root, 'Open audio mixer', 'termopen alsamixer')
-    create_separator(root, 'Mixer')
+    supported_mixers = ['Headphone', 'Speaker', 'Master']
+    available_mixers = alsa.mixers()
+    mixers =  [x for x in supported_mixers if x in available_mixers]
 
-    for mixer in [x for x in supported_mixers if x in available_mixers]:
-            create_mixer_menu(root, mixer)
+    root = etree.Element('openbox_pipe_menu')
+
+    if not args.card:
+        create_action(root, 'Open audio mixer', 'termopen alsamixer')
+        create_separator(root, 'Mixer')
+
+        for mixer in mixers:
+            create_pipe_menu(root, mixer,
+                    '{} --card {}'.format(sys.argv[0], mixer))
+    else:
+        if args.card in mixers:
+            create_mixer_menu(root, args.card)
+
 
     # Print XML
     if args.debug:

@@ -75,7 +75,9 @@ def create_mixer_menu(parent, control):
     cur_vol = calc_volume(mixer.getvolume()[0])
 
     if mixer.getmute()[0] == 1:
-        create_action(parent, 'Unmute', 'amixer sset {} unmute'.format(control))
+        create_action(parent,
+                      'Unmute',
+                      'amixer sset {} unmute'.format(control))
     else:
         create_action(parent, 'Mute', 'amixer sset {} mute'.format(control))
 
@@ -223,7 +225,7 @@ def main(argv=None):
 
     supported_mixers = ['Headphone', 'Speaker', 'Master']
     available_mixers = alsa.mixers()
-    mixers =  [x for x in supported_mixers if x in available_mixers]
+    mixers = [x for x in supported_mixers if x in available_mixers]
 
     root = etree.Element('openbox_pipe_menu')
 
@@ -232,12 +234,12 @@ def main(argv=None):
         create_separator(root, 'Mixer')
 
         for mixer in mixers:
-            create_pipe_menu(root, mixer,
-                    '{} --card {}'.format(sys.argv[0], mixer))
+            create_pipe_menu(root,
+                             mixer,
+                             '{} --card {}'.format(sys.argv[0], mixer))
     else:
         if args.card in mixers:
             create_mixer_menu(root, args.card)
-
 
     # Print XML
     if args.debug:

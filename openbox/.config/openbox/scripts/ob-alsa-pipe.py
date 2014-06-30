@@ -215,7 +215,7 @@ def main(argv=None):
     create_action(root, 'Open audio mixer', 'termopen alsamixer')
     create_separator(root, 'Mixer')
 
-    for mixer in [x for  x in supported_mixers if x in available_mixers]:
+    for mixer in [x for x in supported_mixers if x in available_mixers]:
             create_mixer_menu(root, mixer)
 
     # Print XML

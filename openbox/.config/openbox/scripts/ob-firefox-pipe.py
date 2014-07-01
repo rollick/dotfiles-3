@@ -169,7 +169,7 @@ def main(argv=None):
         if e.startswith('Profile'):
             profile = config[e]['name']
             create_action(root,
-                          profile,
+                          profile.title(),
                           'firefox -no-remote -P {}'.format(profile))
 
     create_separator(root)

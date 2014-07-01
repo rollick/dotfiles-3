@@ -14,7 +14,7 @@ menu.title.text.justify: center
 menu.border.width: 0
 menu.title.bg: solid flat
 menu.title.bg.color: #202020
-menu.title.text.color: #006bcf
+menu.title.text.color: #00aecf
 menu.items.bg: Flat Solid
 menu.items.bg.color: #000000
 menu.items.text.color: #7e7e7e
@@ -31,7 +31,7 @@ menu.separator.color: #7e7e7e
 !# Border
 !# --------------------------------------
 window.*.handle.bg: Flat Solid
-window.active.handle.bg.color: #383838
+window.active.handle.bg.color: #262626
 window.inactive.handle.bg.color: #202020
 window.*.grip.bg: ParentRelative
 window.*.border.color: #202020
@@ -39,21 +39,21 @@ window.*.border.color: #202020
 
 !# Active window
 !# --------------------------------------
-window.active.border.color: #383838
-window.active.title.separator.color: #383838
+window.active.border.color: #262626
+window.active.title.separator.color: #262626
 window.active.label.bg: Parentrelative
 window.active.label.text.color: #00aecf
 window.active.title.bg: Flat Solid
-window.active.title.bg.color: #383838
+window.active.title.bg.color: #262626
 window.active.button.*.bg: Parentrelative
 window.active.button.*.image.color: #00aecf
 window.active.button.*.hover.bg: Flat Solid
 window.active.button.*.hover.image.color: #7e7e7e
-window.active.button.*.hover.bg.color: #383838
-window.active.button.*.hover.bg.border.color: #383838
+window.active.button.*.hover.bg.color: #262626
+window.active.button.*.hover.bg.border.color: #262626
 window.active.button.*.pressed.bg: Flat Solid border
-window.active.button.*.pressed.bg.color: #383838
-window.active.button.*.pressed.bg.border.color: #383838
+window.active.button.*.pressed.bg.color: #262626
+window.active.button.*.pressed.bg.border.color: #262626
 
 
 !# Inactive window
@@ -73,4 +73,4 @@ window.inactive.button.*.bg.color: #202020
 osd.hilight.bg: Solid Flat
 osd.hilight.bg.color: #00aecf
 osd.unhilight.bg: Solid Flat
-osd.unhilight.bg.color: #383838
+osd.unhilight.bg.color: #262626

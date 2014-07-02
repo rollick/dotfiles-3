@@ -73,11 +73,12 @@ def parse_arguments(argv=None):
     argv = argv or sys.argv
 
     # Set up parsing of argv
-    desc = 'Generate an openbox pipe menu for volume control.'
+    desc = ('Generate an openbox pipe menu for starting different firefox'
+            ' profiles.')
     epilog = ('Report bugs to '
-              '<https://github.com/rscholer/ob-pipe-menus/issues/>\n'
+              '<https://github.com/rscholer/dotfiles/issues/>\n'
               '%(prog)s home page: '
-              '<https://github.com/rscholer/ob-pipe-menus/>')
+              '<https://github.com/rscholer/dotfiles/>')
     usage = '%(prog)s [OPTIONS]...'
     version = ('%(prog)s 1.0\n'
                'Copyright (C) 2014 by Raphael Scholer\n\n'

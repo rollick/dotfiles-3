@@ -2,6 +2,6 @@
 dmenu_run -fn "Fira Mono-10" \
 		  -nb "#000000" \
 		  -nf "#747474" \
-		  -sb "#383838" \
+		  -sb "#262626" \
 		  -sf "#00aecf" \
 		  -p "Run:"

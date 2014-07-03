@@ -25,7 +25,7 @@
 
 <theme>
 	<name>darkness</name>
-	<titleLayout>LIMC</titleLayout>
+	<titleLayout>LC</titleLayout>
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>
 	<font place="ActiveWindow">

@@ -15,11 +15,11 @@ menu.border.width: 0
 menu.title.bg: solid flat
 menu.title.bg.color: #202020
 menu.title.text.color: #00aecf
-menu.items.bg: Flat Solid
+menu.items.bg: flat solid
 menu.items.bg.color: #000000
 menu.items.text.color: #7e7e7e
 menu.items.disabled.text.color: #606060
-menu.items.active.bg: Flat Solid
+menu.items.active.bg: flat solid
 menu.items.active.bg.color: #202020
 menu.items.active.text.color: #00aecf
 menu.separator.width: 1
@@ -28,12 +28,12 @@ menu.separator.padding.height: 2
 menu.separator.color: #7e7e7e
 
 
-!# Border
+!# border
 !# --------------------------------------
-window.*.handle.bg: Flat Solid
+window.*.handle.bg: flat solid
 window.active.handle.bg.color: #262626
 window.inactive.handle.bg.color: #202020
-window.*.grip.bg: ParentRelative
+window.*.grip.bg: parentrelative
 window.*.border.color: #202020
 
 
@@ -41,17 +41,17 @@ window.*.border.color: #202020
 !# --------------------------------------
 window.active.border.color: #262626
 window.active.title.separator.color: #262626
-window.active.label.bg: Parentrelative
+window.active.label.bg: parentrelative
 window.active.label.text.color: #00aecf
-window.active.title.bg: Flat Solid
+window.active.title.bg: flat solid
 window.active.title.bg.color: #262626
-window.active.button.*.bg: Parentrelative
+window.active.button.*.bg: parentrelative
 window.active.button.*.image.color: #00aecf
-window.active.button.*.hover.bg: Flat Solid
+window.active.button.*.hover.bg: flat solid
 window.active.button.*.hover.image.color: #7e7e7e
 window.active.button.*.hover.bg.color: #262626
 window.active.button.*.hover.bg.border.color: #262626
-window.active.button.*.pressed.bg: Flat Solid border
+window.active.button.*.pressed.bg: flat solid border
 window.active.button.*.pressed.bg.color: #262626
 window.active.button.*.pressed.bg.border.color: #262626
 
@@ -60,17 +60,17 @@ window.active.button.*.pressed.bg.border.color: #262626
 !# --------------------------------------
 window.inactive.border.color: #202020
 window.inactive.title.separator.color: #202020
-window.inactive.label.bg: Parentrelative
+window.inactive.label.bg: parentrelative
 window.inactive.label.text.color: #747474
-window.inactive.title.bg: Flat Solid
+window.inactive.title.bg: flat solid
 window.inactive.title.bg.color: #202020
 window.inactive.button.*.image.color: #747474
-window.inactive.button.*.bg: Parentrelative
+window.inactive.button.*.bg: parentrelative
 window.inactive.button.*.bg.color: #202020
 
 !# OSD
 !# --------------------------------------
-osd.hilight.bg: Solid Flat
+osd.hilight.bg: solid flat
 osd.hilight.bg.color: #00aecf
-osd.unhilight.bg: Solid Flat
+osd.unhilight.bg: solid flat
 osd.unhilight.bg.color: #262626

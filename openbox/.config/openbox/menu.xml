@@ -122,11 +122,6 @@
 			<command>ebook-viewer --detach</command>
 		</action>
 	</item>
-	<item label="epdfview">
-		<action name="Execute">
-			<command>epdfview</command>
-		</action>
-	</item>
 	<item label="LibreOffice Calc">
 		<action name="Execute">
 			<command>libreoffice --calc</command>
@@ -145,6 +140,11 @@
 	<item label="LibreOffice Writer">
 		<action name="Execute">
 			<command>libreoffice --writer</command>
+		</action>
+	</item>
+	<item label="zathura">
+		<action name="Execute">
+			<command>zathura</command>
 		</action>
 	</item>
 </menu>

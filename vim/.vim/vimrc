@@ -1,15 +1,3 @@
-" Header
-" Vim configuration for vim/gvim >= 7.3
-" Maintainer: Raphael Scholer <rscholer@gmx.de>
-"
-" Sections:
-"	* Plugin management with pathogen
-"	* General
-" Plugins:
-"	* molokai
-"	* easymotion
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin management with Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,21 +125,6 @@ endif
 set printdevice=PDF-Printer
 set printoptions=number:n,syntax:n
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Editor
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Default encoding
-"if has("multi_byte")
-	"if &termencoding == ""
-		"let &termencoding = &encoding
-	"endif
-
-	"set encoding=utf-8
-	"setglobal fileencoding=utf-8 bomb
-	"set fileencodings=ucs.bom,utf-8,latin1
-"endif
-
 " Set dictionary for spell checking
 set spelllang=en
 
@@ -208,9 +181,6 @@ autocmd! BufWritePost .vim/* source ~/.vimrc
 " (This should be OK, except you use an esoteric programming language like
 " Whitespace.)
 autocmd BufWritePre * :call StripTrailingWhitespace()
-
-" Disable weird behaviour of some colorschemes
-"autocmd VimLeave * highlight clear
 
 " Set filetypes
 autocmd BufNewFile,Bufread */openbox-3/themerc set filetype=xdefaults
@@ -302,14 +272,6 @@ let g:NERDTreeQuitOnOpen=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: Taglist
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Tlist_Show_One_File=1
-let g:Tlist_SHow_Menu=1
-let g:Tlist_WinWidth=37
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: TaskList
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:tlWindowPosition=0 "0=Top, 1=Bottom
@@ -348,9 +310,6 @@ nmap <silent><leader>p :set paste!<BAR>:silent set paste?<cr>
 
 " Select recently used files
 nmap <silent><leader>f :MRU<cr>
-
-" Toggle Taglist
-"nmap <silent><leader>s :TlistToggle<CR>
 
 " Toggle NERDTree
 nmap <silent><leader>b :NERDTreeToggle<CR>

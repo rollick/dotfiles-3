@@ -1,0 +1,423 @@
+" Header
+" Vim configuration for vim/gvim >= 7.3
+" Maintainer: Raphael Scholer <rscholer@gmx.de>
+"
+" Sections:
+"	* Plugin management with pathogen
+"	* General
+" Plugins:
+"	* molokai
+"	* easymotion
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin management with Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vim/vundle.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable vi compatibility
+set nocompatible
+
+" Enable filetype plugin
+filetype plugin indent on
+
+" Maximum number of changes that can be undone
+set undolevels=1000
+
+" Maximum number of lines to save for undo on a buffer reload
+set undoreload=1000
+
+" Don't use backupfiles that's what a VCS is for.
+set nobackup
+
+" Swap files? Never needed them.
+set noswapfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" UI settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set title
+" Enable syntax highlightning
+if &t_Co > 2 || has("gui_running")
+	syntax on
+endif
+
+" Size of foldcolumn (max: 12)
+set foldcolumn=2
+
+" Show line numbers
+set number
+
+" dfjhdskjf
+set textwidth=79
+
+" Setup colorschemes
+colorscheme molokai
+
+" Enable colorcolumn and cursorline
+if &t_Co > 2 || has("gui_running")
+	set colorcolumn=+1
+	set cursorline
+endif
+
+" Set font for GUI
+if has("gui_running")
+	set guifont=Droid\ Sans\ Mono\ 10
+endif
+
+" Show mode in cmdline
+set showmode
+
+" Show incomplete command in cmdline
+set showcmd
+
+" Show statusline
+set ruler
+set laststatus=2 "0 = Never, 1=2+ Windows, 2=Always
+
+" Set height of cmdline
+set cmdheight=1
+
+" Keep n lines above/under cursor
+set scrolloff=3
+
+" Keep n columns left/right of cursor
+set sidescrolloff=3
+
+" Use wildmenu
+set wildmenu
+
+" Window size and position (GUI)
+if has("gui_running")
+	if hostname() == "obelix"
+		autocmd! GuiEnter * set lines=50
+		autocmd GuiEnter * set columns=120
+	else
+		autocmd! GuiEnter * set lines=27
+		autocmd GuiEnter * set columns=90
+	endif
+endif
+
+" Set incremental search
+set incsearch
+
+" Highlight search results
+set hlsearch
+
+" Show invisible characters
+" See dig for characters
+" Ctrl+k vv: │
+" Ctrl+k <<: «
+" Ctrl+k >>: »
+" Ctrl+k .M: ·
+" Ctrl+k FB: █
+" Ctrl+k PI: ¶
+set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
+
+" Remove GUI elements (GUI)
+if has("gui_running")
+	set guioptions-=T	" Remove toolbar
+	set guioptions-=l	" Remove right-hand scrollbar
+	set guioptions-=L	" Remove right-hand scrollbar
+	set guioptions-=r	" Remove right-hand scrollbar
+	set guioptions-=R	" Remove right-hand scrollbar
+	set guioptions-=b	" Remove bottom scrollbar
+	set guioptions-=m	" remove titlebar
+	set guioptions-=t	" Disable tear-off menus
+	set guioptions+=g	" Make inactive menu items grey.
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Printing
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set printdevice=PDF-Printer
+set printoptions=number:n,syntax:n
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Editor
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Default encoding
+"if has("multi_byte")
+	"if &termencoding == ""
+		"let &termencoding = &encoding
+	"endif
+
+	"set encoding=utf-8
+	"setglobal fileencoding=utf-8 bomb
+	"set fileencodings=ucs.bom,utf-8,latin1
+"endif
+
+" Set dictionary for spell checking
+set spelllang=en
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Wildmenu
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Ignore audio files
+set wildignore+=*.flac,*.ogg,*.mp3,*.wav,*.wma
+
+" Ignore backup files
+set wildignore+=*~,*.backup,*.bak,*.swp
+
+" Ignore bash files
+set wildignore+=~/.bash_history
+
+" Ignore databases
+set wildignore+=*.db,*.sqlite
+
+" Ignore image files
+set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
+
+" Ignore matlab files
+set wildignore+=matlab_crash_dump*
+
+" Ignore miscellaneous files
+set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
+set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
+
+" Ignore object files
+set wildignore+=*.o,*.obj,*.pyc
+
+" Ignore octave files
+set wildignore+=octave-core,~/octave_hist
+
+" Ignore video files
+set wildignore+=*.avi,*.flv,*.mkv,*.mp4,*.mpeg,*.mpg,*.ogv,*.wmv
+
+" Ignore zsh files
+set wildignore+=~/.zcompdump,~/.zsh_history
+
+" Ignore X files
+set wildignore+=~/.ICEauthority,~/.Xauthority
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Reload ~/.vimrc when vim settings were edited
+autocmd! BufWritePost .vimrc source ~/.vimrc
+autocmd! BufWritePost .vim/* source ~/.vimrc
+
+" Strip trailing whitespace on saving a file
+" (This should be OK, except you use an esoteric programming language like
+" Whitespace.)
+autocmd BufWritePre * :call StripTrailingWhitespace()
+
+" Disable weird behaviour of some colorschemes
+"autocmd VimLeave * highlight clear
+
+" Set filetypes
+autocmd BufNewFile,Bufread */openbox-3/themerc set filetype=xdefaults
+autocmd BufNewFile,BufRead *.menu set filetype=xml
+autocmd BufNewFile,BufRead *tmux.conf set filetype=tmux
+autocmd BufNewFile,BufRead CHANGELOG set filetype=changelog
+autocmd BufNewFile,BufRead NEWS set filetype=changelog
+autocmd BufNewFile,BufRead PKGBUILD set filetype=PKGBUILD
+autocmd BufNewFile,BufRead ~/.devilspie/*.ds set filetype=lisp
+autocmd BufNewFile,BufRead ~/.ssh.local/*/config set filetype=sshconfig
+autocmd BufNewFile,BufRead */.unison/*.prf set filetype=config
+autocmd BufNewFile,BufRead */.unison/*.inc set filetype=config
+autocmd BufNewFile,Bufread ~/.vim/vimencrypt set filetype=vim
+autocmd BufNewFile,BufRead */.zsh.d/* set filetype=zsh
+autocmd BufNewFile,BufRead /etc/sudoers.d set filetype=sudoer
+autocmd BufNewFile,BufRead /etc/systemd/*.conf set filetype=systemd
+autocmd BufNewFile,BufRead /usr/share/tmux/*.conf set filetype=tmux
+autocmd BufNewFile,BufRead /usr/share/zsh/*functions/* set filetype=zsh
+
+" C files
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType c set shiftwidth=4
+autocmd FileType c set tabstop=4
+
+" XDG-Menu files
+autocmd BufNewFile,BufRead *.menu set shiftwidth=4
+autocmd BufNewFile,BufRead *.menu set tabstop=4
+
+" Changelog files
+autocmd FileType changelog set colorcolumn=0
+
+" Markdown
+autocmd FileType markdown set textwidth=0
+autocmd FileType mkd set filetype=markdown  " Use markdown plugin instead of built-in
+autocmd FileType mkd set textwidth=0
+
+" ReStructured Text
+autocmd FileType rst set textwidth=0
+
+" Python settings (PEP-8)
+autocmd FileType python set autoindent
+autocmd FileType python set expandtab
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set softtabstop=4
+autocmd FileType python set tabstop=8
+autocmd FileType python set textwidth=79
+
+" (Ba)sh files
+autocmd FileType sh set shiftwidth=4
+autocmd FileType sh set tabstop=4
+
+" fstab
+autocmd FileType fstab set expandtab
+autocmd FileType fstab set shiftwidth=4
+autocmd FileType fstab set softtabstop=4
+autocmd FileType fstab set tabstop=8
+
+" Vim files
+autocmd FileType vim set shiftwidth=4
+autocmd FileType vim set tabstop=4
+
+" Zsh files
+autocmd FileType zsh set shiftwidth=4
+autocmd FileType zsh set tabstop=4
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: MRU
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:MRU_File=expand('~/.vim/.recently-used')
+let g:MRU_Max_Entries=10
+let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*|.vimrc$'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDChristmasTree=1
+let g:NERDTreeHighlightCursorline=0
+let g:NERDTreeHijackNetrw=1
+let g:NERDTreeQuitOnOpen=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: Taglist
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Tlist_Show_One_File=1
+let g:Tlist_SHow_Menu=1
+let g:Tlist_WinWidth=37
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin: TaskList
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tlWindowPosition=0 "0=Top, 1=Bottom
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax: python
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python_highlight_all = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Set <leader>
+let mapleader=","
+let g:mapleader=","
+
+" Fast reload of ~/.vimrc
+nmap <leader>r :source ~/.vimrc<cr>
+
+" Don't move cursor when repeating last command with "."
+nmap . .`[
+
+" Easy use of tabs
+nmap <leader>to :tabnew<cr>
+nmap <leader>tc :tabclose<cr>
+nmap <leader>tn :tabnext<cr>
+nmap <leader>tp :tabprevious<cr>
+
+" Toggle folds
+noremap <space> za
+
+" Toggle pastemode
+nmap <silent><leader>p :set paste!<BAR>:silent set paste?<cr>
+
+" Select recently used files
+nmap <silent><leader>f :MRU<cr>
+
+" Toggle Taglist
+"nmap <silent><leader>s :TlistToggle<CR>
+
+" Toggle NERDTree
+nmap <silent><leader>b :NERDTreeToggle<CR>
+
+" Avoid accidental hits of <F1> while aiming for <ESC>
+noremap <F1> <Esc>
+
+" Quick close of VIm
+nmap <leader>q :quit<CR>
+
+" Quick save of VIm
+nmap <leader>w :write<CR>
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+nnoremap <leader>nc <C-w>v<C-w>l
+
+" Clears the search register
+nmap <silent><leader>/ :nohlsearch<CR>
+
+" Jump to matching pairs easily, with Tab
+nnoremap <Tab> %
+
+" Toggle 'set list'
+nmap <silent><leader>l :set list!<CR>
+
+" Easy access to vimrc
+nmap <silent><leader>e :e ~/.vimrc<CR>
+
+" Don't use ex-mode
+nnoremap Q gq
+
+let g:EasyMotion_leader_key = '<leader><leader>'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""
+function! StripTrailingWhitespace()
+	" Strip Trailing Whitespace
+
+	" Save cursor position
+	let line = line(".")
+	let col = col(".")
+
+	" Remove trailing whitespace
+	%s:\s\+$::e
+
+	" Restore cursor position
+	call cursor(line, col)
+endfunction
+
+function! MyFoldText()
+	let line = getline(v:foldstart)
+
+	let nucolwidth = &fdc + &number * &numberwidth
+	let windowwidth = winwidth(0) - nucolwidth - 3
+	let foldedlinecount = v:foldend - v:foldstart
+
+	" expand tabs into spaces
+	let onetab = strpart('          ', 0, &tabstop)
+	let line = substitute(line, '\t', onetab, 'g')
+
+	let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+	let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+	return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction

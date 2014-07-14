@@ -2,4 +2,4 @@
 # This script is run on closing a login shell.
 
 # Always clear screen
-clear
+[[ -z ${SSH_TTY} ]] && clear

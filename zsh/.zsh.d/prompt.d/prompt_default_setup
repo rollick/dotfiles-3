@@ -84,7 +84,7 @@ function prompt_default_prompt() {
 
 	# tmux information for RPROMPT
 	####################
-	if command -v tmux &>|/dev/null; then
+	if which tmux &>|/dev/null; then
 		if [[ -z ${TMUX_PANE} ]] && tmux list-session &>|/dev/null; then
 			prompt_info_tmux=$'\u2B12 '
 
@@ -102,7 +102,7 @@ function prompt_default_prompt() {
 
 	# git information for RPROMPT
 	####################
-	if command -v git &>|/dev/null; then
+	if which git &>|/dev/null; then
 		ref=${$(git symbolic-ref HEAD 2>|/dev/null)#refs/heads/}
 		if [[ ! -z ${ref} ]]; then
 			prompt_info_git=$'\u00B1 '

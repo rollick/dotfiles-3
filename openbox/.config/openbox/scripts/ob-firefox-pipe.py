@@ -25,38 +25,8 @@ import argparse
 import configparser
 import os.path
 import sys
-import xml.etree.ElementTree as etree
-import xml.dom.minidom as minidom
 
-
-def create_action(parent, label, cmd):
-    """ Create an action element.
-
-    Keyword argguments:
-        parent -- Parent etree.Element
-        label -- Label
-        cmd -- Command to be executed
-
-    """
-    item = etree.SubElement(parent, 'item', {'label': label})
-    action = etree.SubElement(item, 'action', {'name': 'Execute'})
-    command = etree.SubElement(action, 'command')
-    command.text = cmd
-
-
-def create_separator(parent, label=None):
-    """ Create an separator element.
-
-    Keyword argguments:
-        parent -- Parent etree.Element
-        label -- Label
-
-    """
-    if label is not None:
-        attribs = {'label': label}
-    else:
-        attribs = {}
-    etree.SubElement(parent, 'separator', attribs)
+import obmenu as obm
 
 
 def parse_arguments(argv=None):
@@ -133,18 +103,6 @@ def parse_arguments(argv=None):
     return parser.parse_args(argv[1:])
 
 
-def prettyprint_xml(parent):
-    """ Output etree in a nicely formated way.
-
-    Keyword argguments:
-        element -- etree.Element to process
-
-    """
-    xml_str = etree.tostring(parent, encoding='utf-8', method='xml')
-    xml = minidom.parseString(xml_str)
-    print(xml.toprettyxml())
-
-
 def profiles():
     """ Return all firefox profiles.
 
@@ -173,23 +131,23 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    root = etree.Element('openbox_pipe_menu')
+    root = obm.create_root()
 
     for profile in profiles():
-        create_action(root,
+        obm.create_action(root,
                       profile.title(),
                       'firefox -no-remote -P {}'.format(profile))
 
-    create_separator(root)
-    create_action(root,
+    obm.create_separator(root)
+    obm.create_action(root,
                   'Profile Manager',
                   'firefox -no-remote -ProfileManager')
 
     # Print XML
     if args.debug:
-        prettyprint_xml(root)
+        obm.prettyprint(root)
     else:
-        etree.dump(root)
+        obm.dump(root)
 
     return 0
 

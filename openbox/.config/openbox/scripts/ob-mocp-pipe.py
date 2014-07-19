@@ -106,22 +106,32 @@ def commands(parent, state):
     if state != moc.STATES['NOT RUNNING']:
         obm.create_separator(parent, 'Commands')
         if state == moc.STATES['PLAY']:
-            obm.create_action(parent, 'Pause', 'mocp --toggle-pause')
+            obm.create_action(parent,
+                              'Pause',
+                              '{} --toggle-pause'.format(moc.MOC_BIN))
         else:
-            obm.create_action(parent, 'Play', 'mocp --toggle-pause')
+            obm.create_action(parent,
+                              'Play',
+                              '{} --toggle-pause'.format(moc.MOC_BIN))
 
         if not state == moc.STATES['STOP']:
-            obm.create_action(parent, 'Previous', 'mocp --prev')
-            obm.create_action(parent, 'Next', 'mocp --next')
-            obm.create_action(parent, 'Stop', 'mocp --stop')
+            obm.create_action(parent,
+                              'Previous',
+                              '{} --prev'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
 
         obm.create_separator(parent)
 
     if state != moc.STATES['NOT RUNNING']:
-        obm.create_action(parent, "Show Music On Console", "termopen mocp")
-        obm.create_action(parent, "Exit", "mocp --exit")
+        obm.create_action(parent,
+                          "Show Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
+        obm.create_action(parent, "Exit", "{} --exit".format(moc.MOC_BIN))
     else:
-        obm.create_action(parent, "Start Music On Console", "termopen mocp")
+        obm.create_action(parent,
+                          "Start Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
 
 
 

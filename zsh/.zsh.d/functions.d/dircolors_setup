@@ -3,11 +3,12 @@
 ####################
 if which dircolors &>|/dev/null; then
 	local CACHEDIR="${XDG_CACHE_HOME:-${HOME}/.cache}"
+	local CACHEFILE="${CACHEDIR}/dircolors"
 	[[ ! -d "${CACHEDIR}" ]] && mkdir -p "${CACHEDIR}"
-	[[ ! -f "${CACHEDIR}" ]] && touch "${CACHEDIR}/dircolors"
+	[[ ! -f "${CACHEFILE}" ]] && touch "${CACHEFILE}"
 
-	if [[ "$(dircolors --version)" != $(<"${CACHEDIR}/dircolors") ]]; then
-		dircolors --version >| "${CACHEDIR}/dircolors"
+	if [[ "$(dircolors --version)" != $(<"${CACHEFILE}") ]]; then
+		dircolors --version >| "${CACHEFILE}"
 
 		# Don't overwrite user settings
 		# Since most users don't touch their dircolors configuration,

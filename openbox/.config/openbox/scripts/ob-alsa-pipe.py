@@ -24,8 +24,9 @@ THE SOFTWARE.
 import argparse
 import sys
 
-import alsaaudio as alsa  # http://pyalsaaudio.sourceforge.net/
 import obmenu as obm
+
+import alsaaudio as alsa  # http://pyalsaaudio.sourceforge.net/
 
 
 def calc_volume(cur_vol=None):
@@ -60,10 +61,12 @@ def create_mixer_menu(parent, control):
 
     if mixer.getmute()[0] == 1:
         obm.create_action(parent,
-                      'Unmute',
-                      'amixer sset {} unmute'.format(control))
+                          'Unmute',
+                          'amixer sset {} unmute'.format(control))
     else:
-        obm.create_action(parent, 'Mute', 'amixer sset {} mute'.format(control))
+        obm.create_action(parent,
+                          'Mute',
+                          'amixer sset {} mute'.format(control))
 
     obm.create_separator(parent)
 
@@ -72,8 +75,8 @@ def create_mixer_menu(parent, control):
             obm.create_separator(parent, '{}%'.format(vol))
         else:
             obm.create_action(parent,
-                          '{}%'.format(vol),
-                          'amixer sset {} {}%'.format(control, vol))
+                              '{}%'.format(vol),
+                              'amixer sset {} {}%'.format(control, vol))
 
 
 def parse_arguments(argv=None):

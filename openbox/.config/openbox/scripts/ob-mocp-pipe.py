@@ -102,6 +102,7 @@ def parse_arguments(argv=None):
 
     return parser.parse_args(argv[1:])
 
+
 def commands(parent, state):
     if state != moc.STATES['NOT RUNNING']:
         obm.create_separator(parent, 'Commands')
@@ -134,7 +135,6 @@ def commands(parent, state):
                           "termopen {}".format(moc.MOC_BIN))
 
 
-
 def song_info():
     track = moc.playlist_get()[0][0]
     artist = track.partition(' - ')[0]
@@ -142,9 +142,9 @@ def song_info():
     songtitle = track.partition(' - ')[2].rpartition(' (')[0]
     return {'artist': artist, 'album': album, 'songtitle': songtitle}
 
+
 def header(parent, info):
     state = info['state']
-
 
     if state == moc.STATES['NOT RUNNING']:
         obm.create_separator(parent, 'Not running')
@@ -169,6 +169,7 @@ def header(parent, info):
         obm.create_action(parent, 'Title: {}'.format(songtitle), None)
         obm.create_action(parent, 'Album: {}'.format(album), None)
 
+
 def main(argv=None):
     """ Main function
 
@@ -187,7 +188,6 @@ def main(argv=None):
     info = moc.info()
     state = info['state']
     root = obm.create_root()
-
 
     header(root, info)
     commands(root, state)

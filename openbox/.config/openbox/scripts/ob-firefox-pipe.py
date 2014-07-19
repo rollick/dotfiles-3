@@ -135,13 +135,13 @@ def main(argv=None):
 
     for profile in profiles():
         obm.create_action(root,
-                      profile.title(),
-                      'firefox -no-remote -P {}'.format(profile))
+                          profile.title(),
+                          'firefox -no-remote -P {}'.format(profile))
 
     obm.create_separator(root)
     obm.create_action(root,
-                  'Profile Manager',
-                  'firefox -no-remote -ProfileManager')
+                      'Profile Manager',
+                      'firefox -no-remote -ProfileManager')
 
     # Print XML
     if args.debug:

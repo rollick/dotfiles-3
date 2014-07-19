@@ -145,6 +145,19 @@ def prettyprint_xml(parent):
     print(xml.toprettyxml())
 
 
+def profiles():
+    """ Return all firefox profiles.
+
+    Return value:
+        list -- List containing all profiles
+    """
+    firefox_profile = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+    cfg = configparser.ConfigParser()
+    cfg.read(firefox_profile)
+
+    return [cfg[e]['name'] for e in cfg.sections() if e.startswith('Profile')]
+
+
 def main(argv=None):
     """ Main function
 
@@ -160,18 +173,12 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    firefox_profile = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
-    config = configparser.ConfigParser()
-    config.read(firefox_profile)
-
     root = etree.Element('openbox_pipe_menu')
 
-    for e in config.sections():
-        if e.startswith('Profile'):
-            profile = config[e]['name']
-            create_action(root,
-                          profile.title(),
-                          'firefox -no-remote -P {}'.format(profile))
+    for profile in profiles():
+        create_action(root,
+                      profile.title(),
+                      'firefox -no-remote -P {}'.format(profile))
 
     create_separator(root)
     create_action(root,

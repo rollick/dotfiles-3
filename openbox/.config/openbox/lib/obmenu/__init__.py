@@ -83,7 +83,7 @@ def create_pipe_menu(parent, id, label, script):
         script -- Script to execute
     """
     attribs = {'label': label,
-               'id': 'pipe-{}-{}-menu'.format(id.lower(), label.lower()),
+               'id': id.lower(),
                'execute': script}
     etree.SubElement(parent, 'menu', attribs)
 

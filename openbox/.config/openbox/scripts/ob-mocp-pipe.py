@@ -84,11 +84,11 @@ def entries(parent):
                           'Start Music On Console',
                           'termopen {}'.format(moc.MOC_BIN))
     else:
-            obm.create_separator(parent)
-            obm.create_action(parent,
-                              'Show Music On Console',
-                              'termopen {}'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
+        obm.create_separator(parent)
+        obm.create_action(parent,
+                          'Show Music On Console',
+                          'termopen {}'.format(moc.MOC_BIN))
+        obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
 
 
 def parse_arguments(argv=None):
@@ -193,8 +193,7 @@ def song_info(parent):
     obm.create_item(parent, 'Artist: {}'.format(artist))
     obm.create_item(parent, 'Title: {}'.format(songtitle))
     obm.create_item(parent, 'Album: {}'.format(album))
-    obm.create_item(parent,
-                      'Track: {}/{}'.format(tracknumber, total_tracks))
+    obm.create_item(parent, 'Track: {}/{}'.format(tracknumber, total_tracks))
 
 
 def main(argv=None):

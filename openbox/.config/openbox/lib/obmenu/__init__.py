@@ -58,6 +58,7 @@ def create_item(parent, label):
     """
     return etree.SubElement(parent, 'item', {'label': label})
 
+
 def create_pipe_menu(parent, id, label, script):
     """ Create a pipe menu.
 

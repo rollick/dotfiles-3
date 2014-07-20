@@ -166,6 +166,7 @@ def song_info(parent, info=None):
     info = info or moc.info()
     playlist = moc.playlist_get()
     total_tracks = len(playlist)
+    tracknumber = '1'
 
     try:
         artist = info['artist']

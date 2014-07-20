@@ -146,6 +146,7 @@ def song_info():
 
 
 def header(parent, info):
+    playlist = moc.playlist_get()
     state = info['state']
 
     if state == moc.STATES['NOT RUNNING']:
@@ -162,14 +163,25 @@ def header(parent, info):
         artist = info['artist']
         album = info['album']
         songtitle = info['songtitle']
+
+        for tracknumber, track in enumerate(playlist, start=1):
+            if track[1] == info['file']:
+                break
+
+        tracknumber = str(tracknumber)
     except KeyError:
         artist = song_info()['artist']
         album = song_info()['album']
         songtitle = song_info()['songtitle']
+        tracknumber = "1"
     finally:
+        total_tracks = len(playlist)
         obm.create_action(parent, 'Artist: {}'.format(artist), None)
         obm.create_action(parent, 'Title: {}'.format(songtitle), None)
         obm.create_action(parent, 'Album: {}'.format(album), None)
+        obm.create_action(parent,
+                          'Track: {}/{}'.format(tracknumber, total_tracks),
+                          None)
 
 
 def main(argv=None):

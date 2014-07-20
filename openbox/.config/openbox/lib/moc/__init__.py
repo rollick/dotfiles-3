@@ -20,6 +20,10 @@
 # THE SOFTWARE.
 """ Python 3.x bindings for MusicOnConsole.
 
+Constants:
+    MOC_BIN -- MOC binary.
+    STATES -- MOC states.
+
 Exceptions:
     MocError -- Undefined MOC error.
     MocNotInstalled -- Moc binary (mocp) could not be found.

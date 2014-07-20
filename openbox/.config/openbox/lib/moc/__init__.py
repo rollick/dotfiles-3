@@ -169,9 +169,7 @@ def playlist_get(mocdir=None):
         mocdir -- Path to MOCDIR. (Default: None)
 
     Return value:
-        list -- list containing tuples of the form:
-                ('Song info', 'Path').
-                Song info is of the form: '<artist> - <title> (<album>)'.
+        list -- list containing dictionaries
     """
     mocdir = mocdir or os.path.expanduser('~/.moc')
     playlist_path = os.path.join(mocdir, 'playlist.m3u')
@@ -186,17 +184,33 @@ def playlist_get(mocdir=None):
                header[1].startswith('#MOCSERIAL'):
 
                 for line in playlist_file:
-                    line = line.partition(',')[2]
+                    # Split line in needed parts
+                    totalsecs, _, line = line.partition(',')
+
+                    # Artist
                     artist = line.partition(' - ')[0].strip()
+
+                    # Album
                     album = line.rpartition(' (')[2].strip()[:-1]
+
+                    # Song title
                     title = line.partition(' - ')[2].rpartition(' (')[0]
                     title = title.strip()
 
+                    # Calculate totaltime
+                    totalsecs = totalsecs.partition(':')[2]
+                    _min, sec = divmod(int(totalsecs), 60)
+                    _min = str(_min).zfill(2)
+                    sec = str(sec).zfill(2)
+                    totaltime = '{}:{}'.format(_min, sec)
+
                     info = {'artist': artist,
                             'album': album,
-                            'songtitle': title}
-                    path = next(playlist_file)
+                            'songtitle': title,
+                            'totalsecs': totalsecs,
+                            'totaltime': totaltime,
+                            'file': next(playlist_file).strip()}
 
-                    entries.append((info, path.strip()))
+                    entries.append(info)
 
     return entries

@@ -185,7 +185,7 @@ def song_info(parent):
 
         tracknumber = str(tracknumber)
     except KeyError:
-        track = moc.playlist_get()[0][0]
+        track = moc.playlist_get()[0]
         artist = track['artist']
         album = track['album']
         songtitle = track['songtitle']

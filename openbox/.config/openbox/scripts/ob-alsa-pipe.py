@@ -177,7 +177,7 @@ def main(argv=None):
 
         for mixer in mixers:
             obm.create_pipe_menu(root,
-                                 'alsa',
+                                 'pipe-alsa-{}-menu'.format(mixer.lower()),
                                  mixer,
                                  '{} --card {}'.format(sys.argv[0], mixer))
     else:

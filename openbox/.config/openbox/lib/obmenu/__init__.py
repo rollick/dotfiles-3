@@ -1,5 +1,4 @@
 #!/bin/env python3
-""" Module doc """
 # Copyright (C) 2014 by Raphael Scholer
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,6 +18,16 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
+""" Helper function for creating openbox pipe menus.
+
+Functions:
+    create_action -- Create an action element.
+    create_pipe_menu -- Create a pipe menu.
+    create_root -- Create root element.
+    create_separator -- Create an separator element.
+    dump -- Alias for xml.etree.ElementTree.dump().
+    prettyprint -- Output etree in a nicely formatted way.
+"""
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 

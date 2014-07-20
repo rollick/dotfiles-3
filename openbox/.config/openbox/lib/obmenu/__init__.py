@@ -22,6 +22,7 @@
 
 Functions:
     create_action -- Create an action element.
+    create_action -- Create an item element.
     create_pipe_menu -- Create a pipe menu.
     create_root -- Create root element.
     create_separator -- Create an separator element.
@@ -32,7 +33,7 @@ import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
 
 
-def create_action(parent, label, cmd=None):
+def create_action(parent, label, cmd):
     """ Create an action element.
 
     Keyword argguments:
@@ -40,12 +41,22 @@ def create_action(parent, label, cmd=None):
         label -- Label
         cmd -- Command to be executed (default: None)
     """
-    item = etree.SubElement(parent, 'item', {'label': label})
-    if cmd:
-        action = etree.SubElement(item, 'action', {'name': 'Execute'})
-        command = etree.SubElement(action, 'command')
-        command.text = cmd
+    item = create_item(parent, label)
+    action = etree.SubElement(item, 'action', {'name': 'Execute'})
+    command = etree.SubElement(action, 'command')
+    command.text = cmd
 
+
+def create_item(parent, label):
+    """ Create an item element.
+    Keyword argguments:
+        parent -- Parent etree.Element
+        label -- Label
+
+    Return value:
+        etree.ElementTree
+    """
+    return etree.SubElement(parent, 'item', {'label': label})
 
 def create_pipe_menu(parent, id, label, script):
     """ Create a pipe menu.

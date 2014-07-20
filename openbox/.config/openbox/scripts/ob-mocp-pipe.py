@@ -190,12 +190,11 @@ def song_info(parent):
         album = track.rpartition(' (')[2][:-1]
         songtitle = track.partition(' - ')[2].rpartition(' (')[0]
 
-    obm.create_action(parent, 'Artist: {}'.format(artist), None)
-    obm.create_action(parent, 'Title: {}'.format(songtitle), None)
-    obm.create_action(parent, 'Album: {}'.format(album), None)
-    obm.create_action(parent,
-                      'Track: {}/{}'.format(tracknumber, total_tracks),
-                      None)
+    obm.create_item(parent, 'Artist: {}'.format(artist))
+    obm.create_item(parent, 'Title: {}'.format(songtitle))
+    obm.create_item(parent, 'Album: {}'.format(album))
+    obm.create_item(parent,
+                      'Track: {}/{}'.format(tracknumber, total_tracks))
 
 
 def main(argv=None):

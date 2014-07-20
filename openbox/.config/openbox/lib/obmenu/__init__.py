@@ -22,7 +22,7 @@
 
 Functions:
     create_action -- Create an action element.
-    create_action -- Create an item element.
+    create_item -- Create an item element.
     create_pipe_menu -- Create a pipe menu.
     create_root -- Create root element.
     create_separator -- Create an separator element.

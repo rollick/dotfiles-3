@@ -138,7 +138,7 @@ def parse_arguments(argv=None):
                         action='store_true',
                         default=False,
                         help='debug output')
-    parser.add_argument('--card',
+    parser.add_argument('--mixer',
                         default=None)
     parser.add_argument('--help',
                         action='help',
@@ -171,7 +171,7 @@ def main(argv=None):
 
     root = obm.create_root()
 
-    if not args.card:
+    if not args.mixer:
         obm.create_action(root, 'Open audio mixer', 'termopen alsamixer')
         obm.create_separator(root, 'Mixer')
 
@@ -179,10 +179,10 @@ def main(argv=None):
             obm.create_pipe_menu(root,
                                  'pipe-alsa-{}-menu'.format(mixer.lower()),
                                  mixer,
-                                 '{} --card {}'.format(sys.argv[0], mixer))
+                                 '{} --mixer {}'.format(sys.argv[0], mixer))
     else:
-        if args.card in mixers:
-            create_mixer_menu(root, args.card)
+        if args.mixer in mixers:
+            create_mixer_menu(root, args.mixer)
 
     # Print XML
     if args.debug:

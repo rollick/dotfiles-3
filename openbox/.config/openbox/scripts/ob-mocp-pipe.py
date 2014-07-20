@@ -112,10 +112,14 @@ def commands(parent, state):
             obm.create_action(parent,
                               'Pause',
                               '{} --toggle-pause'.format(moc.MOC_BIN))
-        else:
+        elif state == moc.STATES['PAUSE']:
             obm.create_action(parent,
                               'Play',
                               '{} --toggle-pause'.format(moc.MOC_BIN))
+        else:
+            obm.create_action(parent,
+                              'Play',
+                              '{} --play'.format(moc.MOC_BIN))
 
         if not state == moc.STATES['STOP']:
             obm.create_action(parent,

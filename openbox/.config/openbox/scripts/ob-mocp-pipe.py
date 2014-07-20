@@ -105,63 +105,67 @@ def parse_arguments(argv=None):
     return parser.parse_args(argv[1:])
 
 
-def commands(parent, state):
-    if state != moc.STATES['NOT RUNNING']:
-        obm.create_separator(parent, 'Commands')
-        if state == moc.STATES['PLAY']:
-            obm.create_action(parent,
-                              'Pause',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-        elif state == moc.STATES['PAUSE']:
-            obm.create_action(parent,
-                              'Play',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-        else:
-            obm.create_action(parent,
-                              'Play',
-                              '{} --play'.format(moc.MOC_BIN))
-
-        if not state == moc.STATES['STOP']:
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-
-        obm.create_separator(parent)
-
-    if state != moc.STATES['NOT RUNNING']:
-        obm.create_action(parent,
-                          "Show Music On Console",
-                          "termopen {}".format(moc.MOC_BIN))
-        obm.create_action(parent, "Exit", "{} --exit".format(moc.MOC_BIN))
-    else:
-        obm.create_action(parent,
-                          "Start Music On Console",
-                          "termopen {}".format(moc.MOC_BIN))
-
-
-def song_info():
-    track = moc.playlist_get()[0][0]
-    artist = track.partition(' - ')[0]
-    album = track.rpartition(' (')[2][:-1]
-    songtitle = track.partition(' - ')[2].rpartition(' (')[0]
-    return {'artist': artist, 'album': album, 'songtitle': songtitle}
-
-
-def header(parent, info):
-    playlist = moc.playlist_get()
+def entries(parent):
+    info = moc.info()
     state = info['state']
 
     if state == moc.STATES['NOT RUNNING']:
         obm.create_separator(parent, 'Not running')
-        return
+        obm.create_action(parent,
+                          "Start Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
     elif state == moc.STATES['PLAY']:
         obm.create_separator(parent, 'Playing')
+        song_info(parent, info)
+        obm.create_separator(parent, 'Commands')
+        obm.create_action(parent,
+                          'Pause',
+                          '{} --toggle-pause'.format(moc.MOC_BIN))
+        obm.create_action(parent,
+                          'Previous',
+                          '{} --prev'.format(moc.MOC_BIN))
+        obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+        obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+        obm.create_separator(parent)
+        obm.create_action(parent,
+                          "Show Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
+        obm.create_action(parent, "Exit", "{} --exit".format(moc.MOC_BIN))
     elif state == moc.STATES['PAUSE']:
         obm.create_separator(parent, 'Paused')
+        song_info(parent, info)
+        obm.create_separator(parent, 'Commands')
+        obm.create_action(parent,
+                          'Play',
+                          '{} --toggle-pause'.format(moc.MOC_BIN))
+        obm.create_action(parent,
+                          'Previous',
+                          '{} --prev'.format(moc.MOC_BIN))
+        obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+        obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+        obm.create_separator(parent)
+        obm.create_action(parent,
+                          "Show Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
+        obm.create_action(parent, "Exit", "{} --exit".format(moc.MOC_BIN))
     elif state == moc.STATES['STOP']:
         obm.create_separator(parent, 'Stopped')
+        song_info(parent, info)
+        obm.create_separator(parent, 'Commands')
+        obm.create_action(parent,
+                          'Play',
+                          '{} --play'.format(moc.MOC_BIN))
+        obm.create_separator(parent)
+        obm.create_action(parent,
+                          "Show Music On Console",
+                          "termopen {}".format(moc.MOC_BIN))
+        obm.create_action(parent, "Exit", "{} --exit".format(moc.MOC_BIN))
+
+
+def song_info(parent, info=None):
+    info = info or moc.info()
+    playlist = moc.playlist_get()
+    total_tracks = len(playlist)
 
     try:
         artist = info['artist']
@@ -174,18 +178,17 @@ def header(parent, info):
 
         tracknumber = str(tracknumber)
     except KeyError:
-        artist = song_info()['artist']
-        album = song_info()['album']
-        songtitle = song_info()['songtitle']
-        tracknumber = "1"
-    finally:
-        total_tracks = len(playlist)
-        obm.create_action(parent, 'Artist: {}'.format(artist), None)
-        obm.create_action(parent, 'Title: {}'.format(songtitle), None)
-        obm.create_action(parent, 'Album: {}'.format(album), None)
-        obm.create_action(parent,
-                          'Track: {}/{}'.format(tracknumber, total_tracks),
-                          None)
+        track = moc.playlist_get()[0][0]
+        artist = track.partition(' - ')[0]
+        album = track.rpartition(' (')[2][:-1]
+        songtitle = track.partition(' - ')[2].rpartition(' (')[0]
+
+    obm.create_action(parent, 'Artist: {}'.format(artist), None)
+    obm.create_action(parent, 'Title: {}'.format(songtitle), None)
+    obm.create_action(parent, 'Album: {}'.format(album), None)
+    obm.create_action(parent,
+                      'Track: {}/{}'.format(tracknumber, total_tracks),
+                      None)
 
 
 def main(argv=None):
@@ -203,12 +206,9 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    info = moc.info()
-    state = info['state']
     root = obm.create_root()
 
-    header(root, info)
-    commands(root, state)
+    entries(root)
 
     # Print XML
     if args.debug:

@@ -38,7 +38,6 @@ def create_action(parent, label, cmd=None):
         command.text = cmd
 
 
-
 def create_pipe_menu(parent, id, label, script):
     """ Create a pipe menu.
 
@@ -49,8 +48,8 @@ def create_pipe_menu(parent, id, label, script):
         script -- Script to execute
     """
     attribs = {'label': label,
-    'id': 'pipe-{}-{}-menu'.format(id.lower(), label.lower()),
-    'execute': script}
+               'id': 'pipe-{}-{}-menu'.format(id.lower(), label.lower()),
+               'execute': script}
     etree.SubElement(parent, 'menu', attribs)
 
 

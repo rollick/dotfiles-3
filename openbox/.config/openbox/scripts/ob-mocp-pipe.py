@@ -50,7 +50,7 @@ def entries(parent):
 
     # Song information
     if state != moc.STATES['NOT RUNNING']:
-        song_info(parent, info)
+        song_info(parent)
 
     # Controls
     if state != moc.STATES['NOT RUNNING']:

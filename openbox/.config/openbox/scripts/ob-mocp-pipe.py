@@ -212,7 +212,10 @@ def main(argv=None):
 
     root = obm.create_root()
 
-    entries(root)
+    try:
+        entries(root)
+    except moc.MocNotFound:
+        obm.create_separator(root, 'MOC not installed')
 
     # Print XML
     if args.debug:

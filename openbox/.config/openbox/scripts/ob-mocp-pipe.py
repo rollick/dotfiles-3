@@ -33,6 +33,11 @@ import moc
 
 
 def entries(parent):
+    """ Set menu entries.
+
+    Keyword arguments:
+        parent -- Parent etree.Element
+    """
     info = moc.info()
     state = info['state']
 
@@ -162,8 +167,13 @@ def parse_arguments(argv=None):
     return parser.parse_args(argv[1:])
 
 
-def song_info(parent, info=None):
-    info = info or moc.info()
+def song_info(parent):
+    """ Set song information entries.
+
+    Keyword arguments:
+        parent -- Parent etree.Element
+    """
+    info = moc.info()
     playlist = moc.playlist_get()
     total_tracks = len(playlist)
     tracknumber = '1'

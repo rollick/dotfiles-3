@@ -107,7 +107,7 @@ def _exec_command(cmnds=None):
 
         # Only print relevant error messages
         errmsg = [x for x in errmsg if not x == ''
-                  and not x.startswith('Can\'t')]
+                  and not x.startswith('Can\'t load')]
         errmsg = ', '.join(errmsg)
 
         if 'server is not running' in errmsg:

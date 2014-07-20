@@ -170,30 +170,29 @@ def song_info(parent):
         parent -- Parent etree.Element
     """
     info = moc.info()
+    state = info['state']
     playlist = moc.playlist_get()
-    total_tracks = len(playlist)
-    tracknumber = '1'
+    totaltracks = len(playlist)
 
-    try:
-        artist = info['artist']
-        album = info['album']
-        songtitle = info['songtitle']
+    if state == moc.STATES['PLAY'] or state == moc.STATES['PAUSE']:
+        track = info
 
-        for tracknumber, track in enumerate(playlist, start=1):
-            if track[1] == info['file']:
+        for index, entry in enumerate(playlist, start=1):
+            if entry['file'] == info['file']:
                 break
 
-        tracknumber = str(tracknumber)
-    except KeyError:
-        track = moc.playlist_get()[0]
-        artist = track['artist']
-        album = track['album']
-        songtitle = track['songtitle']
+        track['tracknumber'] = str(index)
+    elif state == moc.STATES['STOP']:
+        track = playlist[0]
+        track['tracknumber'] = 1
+    else:
+        return
 
-    obm.create_item(parent, 'Artist: {}'.format(artist))
-    obm.create_item(parent, 'Title: {}'.format(songtitle))
-    obm.create_item(parent, 'Album: {}'.format(album))
-    obm.create_item(parent, 'Track: {}/{}'.format(tracknumber, total_tracks))
+    obm.create_item(parent, 'Artist: {}'.format(track['artist']))
+    obm.create_item(parent, 'Title: {}'.format(track['songtitle']))
+    obm.create_item(parent, 'Album: {}'.format(track['album']))
+    obm.create_item(parent,
+                    'Track: {}/{}'.format(track['tracknumber'], totaltracks))
 
 
 def main(argv=None):

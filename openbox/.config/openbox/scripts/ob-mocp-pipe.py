@@ -182,15 +182,18 @@ def song_info(parent):
                 break
 
         track['tracknumber'] = str(index)
+        length = '{}/{}'.format(track['currenttime'], track['totaltime'])
     elif state == moc.STATES['STOP']:
         track = playlist[0]
         track['tracknumber'] = 1
+        length = '{}'.format(track['totaltime'])
     else:
         return
 
     obm.create_item(parent, 'Artist: {}'.format(track['artist']))
     obm.create_item(parent, 'Title: {}'.format(track['songtitle']))
     obm.create_item(parent, 'Album: {}'.format(track['album']))
+    obm.create_item(parent, 'Length: {}'.format(length))
     obm.create_item(parent,
                     'Track: {}/{}'.format(track['tracknumber'], totaltracks))
 

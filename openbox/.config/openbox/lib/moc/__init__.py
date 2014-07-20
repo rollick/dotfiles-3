@@ -188,14 +188,13 @@ def playlist_get(mocdir=None):
                     totalsecs, _, line = line.partition(',')
 
                     # Artist
-                    artist = line.partition(' - ')[0].strip()
+                    artist = line.partition(' - ')[0]
 
                     # Album
-                    album = line.rpartition(' (')[2].strip()[:-1]
+                    album = line.rpartition(')')[0].rpartition(' (')[2]
 
                     # Song title
                     title = line.partition(' - ')[2].rpartition(' (')[0]
-                    title = title.strip()
 
                     # Calculate totaltime
                     totalsecs = totalsecs.partition(':')[2]
@@ -204,9 +203,9 @@ def playlist_get(mocdir=None):
                     sec = str(sec).zfill(2)
                     totaltime = '{}:{}'.format(_min, sec)
 
-                    info = {'artist': artist,
-                            'album': album,
-                            'songtitle': title,
+                    info = {'artist': artist.strip(),
+                            'album': album.strip(),
+                            'songtitle': title.strip(),
                             'totalsecs': totalsecs,
                             'totaltime': totaltime,
                             'file': next(playlist_file).strip()}

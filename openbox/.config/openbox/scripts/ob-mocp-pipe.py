@@ -186,9 +186,9 @@ def song_info(parent):
         tracknumber = str(tracknumber)
     except KeyError:
         track = moc.playlist_get()[0][0]
-        artist = track.partition(' - ')[0]
-        album = track.rpartition(' (')[2][:-1]
-        songtitle = track.partition(' - ')[2].rpartition(' (')[0]
+        artist = track['artist']
+        album = track['album']
+        songtitle = track['songtitle']
 
     obm.create_item(parent, 'Artist: {}'.format(artist))
     obm.create_item(parent, 'Title: {}'.format(songtitle))

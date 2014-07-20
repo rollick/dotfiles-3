@@ -186,9 +186,17 @@ def playlist_get(mocdir=None):
                header[1].startswith('#MOCSERIAL'):
 
                 for line in playlist_file:
-                    title = line.partition(',')[2]
+                    line = line.partition(',')[2]
+                    artist = line.partition(' - ')[0].strip()
+                    album = line.rpartition(' (')[2].strip()[:-1]
+                    title = line.partition(' - ')[2].rpartition(' (')[0]
+                    title = title.strip()
+
+                    info = {'artist': artist,
+                            'album': album,
+                            'songtitle': title}
                     path = next(playlist_file)
 
-                    entries.append((title.strip(), path.strip()))
+                    entries.append((info, path.strip()))
 
     return entries

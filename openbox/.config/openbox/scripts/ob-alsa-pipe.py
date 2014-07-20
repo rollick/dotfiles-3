@@ -37,7 +37,6 @@ def calc_volume(cur_vol=None):
 
     Return values:
         int
-
     """
     mod = cur_vol % 5
     cur_vol = cur_vol - mod
@@ -54,7 +53,6 @@ def create_mixer_menu(parent, control):
     Keyword argguments:
         parent -- Parent etree.Element
         control -- Control wich will be affected
-
     """
     mixer = alsa.Mixer(control)
     cur_vol = calc_volume(mixer.getvolume()[0])
@@ -88,7 +86,6 @@ def parse_arguments(argv=None):
 
     Return values:
         argparse.Namespace
-
     """
     argv = argv or sys.argv
 
@@ -164,7 +161,6 @@ def main(argv=None):
     Return value (int):
         int -- On Failure >= 1
                On Success == 0 (default)
-
     """
     # Parse argv
     args = parse_arguments(argv)

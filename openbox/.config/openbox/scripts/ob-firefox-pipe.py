@@ -37,7 +37,6 @@ def parse_arguments(argv=None):
 
     Return values:
         argparse.Namespace
-
     """
     argv = argv or sys.argv
 
@@ -125,7 +124,6 @@ def main(argv=None):
     Return value (int):
         int -- On Failure >= 1
                On Success == 0 (default)
-
     """
     # Parse argv
     args = parse_arguments(argv)

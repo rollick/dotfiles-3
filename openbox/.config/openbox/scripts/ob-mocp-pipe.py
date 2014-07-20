@@ -32,6 +32,63 @@ import obmenu as obm
 import moc
 
 
+def entries(parent):
+    info = moc.info()
+    state = info['state']
+
+    # Set header
+    if state == moc.STATES['NOT RUNNING']:
+        obm.create_separator(parent, 'Not running')
+    elif state == moc.STATES['PLAY']:
+        obm.create_separator(parent, 'Playing')
+    elif state == moc.STATES['PAUSE']:
+        obm.create_separator(parent, 'Paused')
+    elif state == moc.STATES['STOP']:
+        obm.create_separator(parent, 'Stopped')
+
+    # Song information
+    if state != moc.STATES['NOT RUNNING']:
+        song_info(parent, info)
+
+    # Controls
+    if state != moc.STATES['NOT RUNNING']:
+        obm.create_separator(parent, 'Commands')
+        if state == moc.STATES['PLAY']:
+            obm.create_action(parent,
+                              'Pause',
+                              '{} --toggle-pause'.format(moc.MOC_BIN))
+            obm.create_action(parent,
+                              'Previous',
+                              '{} --prev'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+        elif state == moc.STATES['PAUSE']:
+            obm.create_action(parent,
+                              'Play',
+                              '{} --toggle-pause'.format(moc.MOC_BIN))
+            obm.create_action(parent,
+                              'Previous',
+                              '{} --prev'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+        elif state == moc.STATES['STOP']:
+            obm.create_action(parent,
+                              'Play',
+                              '{} --play'.format(moc.MOC_BIN))
+
+    # Server control
+    if state == moc.STATES['NOT RUNNING']:
+        obm.create_action(parent,
+                          'Start Music On Console',
+                          'termopen {}'.format(moc.MOC_BIN))
+    else:
+            obm.create_separator(parent)
+            obm.create_action(parent,
+                              'Show Music On Console',
+                              'termopen {}'.format(moc.MOC_BIN))
+            obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
+
+
 def parse_arguments(argv=None):
     """ Parse arguments.
 
@@ -103,63 +160,6 @@ def parse_arguments(argv=None):
                         version=version)
 
     return parser.parse_args(argv[1:])
-
-
-def entries(parent):
-    info = moc.info()
-    state = info['state']
-
-    # Set header
-    if state == moc.STATES['NOT RUNNING']:
-        obm.create_separator(parent, 'Not running')
-    elif state == moc.STATES['PLAY']:
-        obm.create_separator(parent, 'Playing')
-    elif state == moc.STATES['PAUSE']:
-        obm.create_separator(parent, 'Paused')
-    elif state == moc.STATES['STOP']:
-        obm.create_separator(parent, 'Stopped')
-
-    # Song information
-    if state != moc.STATES['NOT RUNNING']:
-        song_info(parent, info)
-
-    # Controls
-    if state != moc.STATES['NOT RUNNING']:
-        obm.create_separator(parent, 'Commands')
-        if state == moc.STATES['PLAY']:
-            obm.create_action(parent,
-                              'Pause',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == moc.STATES['PAUSE']:
-            obm.create_action(parent,
-                              'Play',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == moc.STATES['STOP']:
-            obm.create_action(parent,
-                              'Play',
-                              '{} --play'.format(moc.MOC_BIN))
-
-    # Server control
-    if state == moc.STATES['NOT RUNNING']:
-        obm.create_action(parent,
-                          'Start Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
-    else:
-            obm.create_separator(parent)
-            obm.create_action(parent,
-                              'Show Music On Console',
-                              'termopen {}'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
 
 
 def song_info(parent, info=None):

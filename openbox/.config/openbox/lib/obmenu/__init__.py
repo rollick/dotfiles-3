@@ -23,6 +23,7 @@
 Functions:
     create_action -- Create an action element.
     create_item -- Create an item element.
+    create_menu -- Create a menu.
     create_pipe_menu -- Create a pipe menu.
     create_root -- Create root element.
     create_separator -- Create an separator element.
@@ -57,6 +58,19 @@ def create_item(parent, label):
         etree.ElementTree
     """
     return etree.SubElement(parent, 'item', {'label': label})
+
+
+def create_menu(parent, id, label):
+    """ Create a menu.
+
+    Keyword arguments:
+        parent -- Parent etree.Element
+        id -- ID
+        label -- Label
+    """
+    attribs = {'label': label,
+               'id': id.lower()}
+    return etree.SubElement(parent, 'menu', attribs)
 
 
 def create_pipe_menu(parent, id, label, script):

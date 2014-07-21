@@ -41,11 +41,6 @@ import subprocess
 
 MOC_BIN = 'mocp'
 
-STATES = {'NOT RUNNING': -1,
-          'STOP': 0,
-          'PAUSE': 1,
-          'PLAY': 2}
-
 
 class MocError(Exception):
     """ Base class for exceptions. """
@@ -147,11 +142,9 @@ def info():
     try:
         output = _exec_command({'info': None})
     except MocNotRunning:
-        return {'state': STATES['NOT RUNNING']}
+        return {'state': 'NOT RUNNING'}
 
-    output = _generate_info(output)
-    output.update({'state': STATES[output['state']]})
-    return output
+    return _generate_info(output)
 
 
 def playlist_get(mocdir=None):

@@ -39,23 +39,23 @@ def entries(parent):
     state = info['state']
 
     # Set header
-    if state == moc.STATES['NOT RUNNING']:
+    if state == 'NOT RUNNING':
         obm.create_separator(parent, 'Not running')
-    elif state == moc.STATES['PLAY']:
+    elif state == 'PLAY':
         obm.create_separator(parent, 'Playing')
-    elif state == moc.STATES['PAUSE']:
+    elif state == 'PAUSE':
         obm.create_separator(parent, 'Paused')
-    elif state == moc.STATES['STOP']:
+    elif state == 'STOP':
         obm.create_separator(parent, 'Stopped')
 
     # Song information
-    if state != moc.STATES['NOT RUNNING']:
+    if state != 'NOT RUNNING':
         song_info(parent)
 
     # Controls
-    if state != moc.STATES['NOT RUNNING']:
+    if state != 'NOT RUNNING':
         obm.create_separator(parent, 'Commands')
-        if state == moc.STATES['PLAY']:
+        if state == 'PLAY':
             obm.create_action(parent,
                               'Pause',
                               '{} --toggle-pause'.format(moc.MOC_BIN))
@@ -64,7 +64,7 @@ def entries(parent):
                               '{} --prev'.format(moc.MOC_BIN))
             obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
             obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == moc.STATES['PAUSE']:
+        elif state == 'PAUSE':
             obm.create_action(parent,
                               'Play',
                               '{} --toggle-pause'.format(moc.MOC_BIN))
@@ -73,13 +73,13 @@ def entries(parent):
                               '{} --prev'.format(moc.MOC_BIN))
             obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
             obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == moc.STATES['STOP']:
+        elif state == 'STOP':
             obm.create_action(parent,
                               'Play',
                               '{} --play'.format(moc.MOC_BIN))
 
     # Server control
-    if state == moc.STATES['NOT RUNNING']:
+    if state == 'NOT RUNNING':
         obm.create_action(parent,
                           'Start Music On Console',
                           'termopen {}'.format(moc.MOC_BIN))
@@ -174,7 +174,7 @@ def song_info(parent):
     playlist = moc.playlist_get()
     totaltracks = len(playlist)
 
-    if state == moc.STATES['PLAY'] or state == moc.STATES['PAUSE']:
+    if state == 'PLAY' or state == 'PAUSE':
         track = info
 
         for index, entry in enumerate(playlist, start=1):
@@ -183,7 +183,7 @@ def song_info(parent):
 
         track['tracknumber'] = str(index)
         length = '{}/{}'.format(track['currenttime'], track['totaltime'])
-    elif state == moc.STATES['STOP']:
+    elif state == 'STOP':
         track = playlist[0]
         track['tracknumber'] = 1
         length = '{}'.format(track['totaltime'])

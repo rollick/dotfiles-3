@@ -22,8 +22,8 @@ import argparse
 import os.path
 import sys
 
-myPath = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, myPath + '/../lib')
+curdir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, curdir + '/../lib')
 import obmenu as obm
 
 import alsaaudio as alsa  # http://pyalsaaudio.sourceforge.net/

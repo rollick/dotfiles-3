@@ -65,7 +65,7 @@ def _exec_command(cmnds=None):
     Keyword arguments:
         cmds -- Dictionary containing option/argument pairs. If an option has
                  no argument set argument to None. (Default: None)
-                 Example: {'play': None, 'config' '/tmp/moc'}
+                 Example: {'play': None, 'config': '/tmp/moc'}
 
     Raised Exceptions:
         MocNotFound
@@ -76,13 +76,11 @@ def _exec_command(cmnds=None):
         str -- Standard output of mocp
     """
     cmdline = [MOC_BIN]
+
+    # Create cmdline
     for option, argument in cmnds.items():
         cmdline.append('--{}'.format(option))
         if argument is not None:
-            if isinstance(argument, (tuple, list)):
-                for arg in argument:
-                    cmdline.append(arg)
-            else:
                 cmdline.append(argument)
 
     # Make sure to only use english language output
@@ -118,30 +116,24 @@ def _exec_command(cmnds=None):
     return stdout
 
 
-def _generate_info(text, ignored_keys=None):
+def _generate_info(text):
     """ Convert text to dict.
 
         Keyword arguments:
             text -- String containing a key/value pair on each line separated
                     by a colon.
-            ignored_keys -- List of keys which will be ignored. (Default: None)
 
         Return value:
             dict
     """
     dct = {}
-    ignored_keys = ignored_keys or []
-
-    # Make sure ignored keys are always lowercase
-    ignored_keys = [x.lower() for x in ignored_keys]
 
     for elem in text.splitlines():
         key, _, value = elem.partition(':')
         key = key.strip()
         key = key.lower()
         value = value.strip()
-        if key and key not in ignored_keys:
-            dct.update({key: value})
+        dct.update({key: value})
 
     return dct
 

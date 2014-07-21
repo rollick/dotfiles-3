@@ -181,7 +181,7 @@ def song_info(parent):
             if entry['file'] == info['file']:
                 break
 
-        track['tracknumber'] = str(index)
+        track['tracknumber'] = index
         length = '{}/{}'.format(track['currenttime'], track['totaltime'])
     elif state == 'STOP':
         track = playlist[0]

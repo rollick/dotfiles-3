@@ -40,19 +40,21 @@ def entries(parent):
     # Set header
     if state == 'NOT RUNNING':
         obm.create_separator(parent, 'Not running')
-    elif state == 'PLAY':
-        obm.create_separator(parent, 'Playing')
-    elif state == 'PAUSE':
-        obm.create_separator(parent, 'Paused')
-    elif state == 'STOP':
-        obm.create_separator(parent, 'Stopped')
+        obm.create_action(parent,
+                          'Start Music On Console',
+                          'termopen {}'.format(moc.MOC_BIN))
+    else:
+        if state == 'PLAY':
+            obm.create_separator(parent, 'Playing')
+        elif state == 'PAUSE':
+            obm.create_separator(parent, 'Paused')
+        elif state == 'STOP':
+            obm.create_separator(parent, 'Stopped')
 
-    # Song information
-    if state != 'NOT RUNNING':
+        # Song information
         song_info(parent)
 
-    # Controls
-    if state != 'NOT RUNNING':
+        # Controls
         obm.create_separator(parent, 'Commands')
         if state == 'PLAY':
             obm.create_action(parent,
@@ -77,12 +79,7 @@ def entries(parent):
                               'Play',
                               '{} --play'.format(moc.MOC_BIN))
 
-    # Server control
-    if state == 'NOT RUNNING':
-        obm.create_action(parent,
-                          'Start Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
-    else:
+        # Server control
         obm.create_separator(parent)
         obm.create_action(parent,
                           'Show Music On Console',

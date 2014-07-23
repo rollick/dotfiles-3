@@ -22,16 +22,12 @@
 
 Constants:
     MOC_BIN -- MOC binary.
-    STATES -- MOC states.
 
 Exceptions:
     MocError -- Undefined MOC error.
     MocNotInstalled -- Moc binary (mocp) could not be found.
-    MocNotRunning -- Server is not running.
 
 Functions:
-    _exec_command -- Execute MOC commands
-    _generate_info -- Convert text to dict.
     info --  Retrieve information about the current track.
     playlist_get -- Get all playlist entries
 """
@@ -50,16 +46,14 @@ class MocNotFound(MocError):
     """ Moc binary (mocp) could not be found. """
 
 
-class MocNotRunning(MocError):
-    """ Server is not running. """
-
-
-def _get_info_output():
-    """ Get output of `mocp --info`
+def info():
+    """  Retrieve information about the current track.
 
     Return value:
-        str
+        dict -- Dictionary containing all info
     """
+    dct = {}
+
     # Make sure to only use english language output
     environ = os.environ
     environ.update({'LC_ALL': 'C'})
@@ -78,26 +72,11 @@ def _get_info_output():
 
     if cmd.returncode:
         if 'server is not running' in stderr:
-            raise MocNotRunning
+            return {'state': 'NOT RUNNING'}
         else:
             raise MocError(errmsg)
 
-    return stdout
-
-
-def _generate_info(text):
-    """ Convert text to dict.
-
-        Keyword arguments:
-            text -- String containing a key/value pair on each line separated
-                    by a colon.
-
-        Return value:
-            dict
-    """
-    dct = {}
-
-    for elem in text.splitlines():
+    for elem in stdout.splitlines():
         key, _, value = elem.partition(':')
         key = key.strip()
         key = key.lower()
@@ -105,20 +84,6 @@ def _generate_info(text):
         dct.update({key: value})
 
     return dct
-
-
-def info():
-    """  Retrieve information about the current track.
-
-    Return value:
-        dict -- Dictionary containing all info
-    """
-    try:
-        output = _get_info_output()
-    except MocNotRunning:
-        return {'state': 'NOT RUNNING'}
-
-    return _generate_info(output)
 
 
 def playlist_get(mocdir=None):

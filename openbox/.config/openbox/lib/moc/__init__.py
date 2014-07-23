@@ -77,15 +77,7 @@ def _get_info_output():
     stderr = stderr.decode()
 
     if cmd.returncode:
-        errmsg = stderr.strip()
-        errmsg = errmsg.splitlines()
-
-        # Only print relevant error messages
-        errmsg = [x for x in errmsg if not x == ''
-                  and not x.startswith('Can\'t load')]
-        errmsg = ', '.join(errmsg)
-
-        if 'server is not running' in errmsg:
+        if 'server is not running' in stderr:
             raise MocNotRunning
         else:
             raise MocError(errmsg)

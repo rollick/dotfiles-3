@@ -54,36 +54,18 @@ class MocNotRunning(MocError):
     """ Server is not running. """
 
 
-def _exec_command(cmnds=None):
-    """ Execute MOC commands
-
-    Keyword arguments:
-        cmds -- Dictionary containing option/argument pairs. If an option has
-                 no argument set argument to None. (Default: None)
-                 Example: {'play': None, 'config': '/tmp/moc'}
-
-    Raised Exceptions:
-        MocNotFound
-        MocNotRunning
-        ocError
+def _get_info_output():
+    """ Get output of `mocp --info`
 
     Return value:
-        str -- Standard output of mocp
+        str
     """
-    cmdline = [MOC_BIN]
-
-    # Create cmdline
-    for option, argument in cmnds.items():
-        cmdline.append('--{}'.format(option))
-        if argument is not None:
-                cmdline.append(argument)
-
     # Make sure to only use english language output
     environ = os.environ
     environ.update({'LC_ALL': 'C'})
 
     try:
-        cmd = subprocess.Popen(cmdline,
+        cmd = subprocess.Popen([MOC_BIN, '--info'],
                                env=environ,
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
@@ -140,7 +122,7 @@ def info():
         dict -- Dictionary containing all info
     """
     try:
-        output = _exec_command({'info': None})
+        output = _get_info_output()
     except MocNotRunning:
         return {'state': 'NOT RUNNING'}
 

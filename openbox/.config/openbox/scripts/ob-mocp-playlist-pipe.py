@@ -120,14 +120,16 @@ def main(argv=None):
                           '{} --append "{}"'.format(moc.MOC_BIN, directory))
         obm.create_action(root,
                           'Replace',
-                          '{} --clear --append "{}" --play'.format(moc.MOC_BIN, directory))
+                          '{} --clear --append "{}" --play'.format(moc.MOC_BIN,
+                                                                   directory))
         if dircnt:
             obm.create_separator(root)
         for d in dircnt:
             obm.create_pipe_menu(root,
                                  'moc-playlist-pipe-{}'.format(d[1]),
                                  d[0],
-                                 '{} --directory "{}"'.format(sys.argv[0], d[1]))
+                                 '{} --directory "{}"'.format(sys.argv[0],
+                                                              d[1]))
 
     # Print XML
     if args.debug:

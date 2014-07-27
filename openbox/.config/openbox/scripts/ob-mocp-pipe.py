@@ -203,7 +203,7 @@ def song_info(parent):
     obm.create_item(parent, 'Length: {}'.format(length))
     obm.create_item(parent,
                     'Track: {}/{}'.format(track['tracknumber'],
-                    totaltracks))
+                                          totaltracks))
 
 
 def main(argv=None):

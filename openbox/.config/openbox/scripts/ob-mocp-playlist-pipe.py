@@ -19,80 +19,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 import argparse
-import os.path
+import os
 import sys
 
 curdir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, curdir + '/../lib')
-import obmenu as obm
 import moc
-
-
-def entries(parent):
-    """ Set menu entries.
-
-    Keyword arguments:
-        parent -- Parent etree.Element
-    """
-    info = moc.info()
-    state = info['state']
-
-    # Set header
-    if state == 'NOT RUNNING':
-        obm.create_separator(parent, 'Not running')
-        obm.create_action(parent,
-                          'Start Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
-    else:
-        if state == 'PLAY':
-            obm.create_separator(parent, 'Playing')
-        elif state == 'PAUSE':
-            obm.create_separator(parent, 'Paused')
-        elif state == 'STOP':
-            obm.create_separator(parent, 'Stopped')
-
-        # Song information
-        song_info(parent)
-
-        # Playlist control
-        obm.create_separator(parent, 'Playlist')
-        obm.create_action(parent, 'Clear', '{} --clear'.format(moc.MOC_BIN))
-        obm.create_pipe_menu(parent,
-                             'mocp-playlist-pipe',
-                             'Edit',
-                             'ob-mocp-playlist-pipe.py --directory ~/Music')
-
-        # Controls
-        obm.create_separator(parent, 'Commands')
-        if state == 'PLAY':
-            obm.create_action(parent,
-                              'Pause',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == 'PAUSE':
-            obm.create_action(parent,
-                              'Play',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
-        elif state == 'STOP':
-            obm.create_action(parent,
-                              'Play',
-                              '{} --play'.format(moc.MOC_BIN))
-
-        # Server control
-        obm.create_separator(parent)
-        obm.create_action(parent,
-                          'Show Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
-        obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
+import obmenu as obm
 
 
 def parse_arguments(argv=None):
@@ -108,7 +41,8 @@ def parse_arguments(argv=None):
     argv = argv or sys.argv
 
     # Set up parsing of argv
-    desc = 'Generate an openbox pipe menu for controling MOC'
+    desc = ('Generate an openbox pipe menu for editing MOC\' playlist'
+            ' profiles.')
     epilog = ('Report bugs to '
               '<https://github.com/rscholer/dotfiles/issues/>\n'
               '%(prog)s home page: '
@@ -152,6 +86,7 @@ def parse_arguments(argv=None):
                                      formatter_class=formatter,
                                      usage=usage)
 
+    parser.add_argument('--directory', nargs=1, default='./')
     parser.add_argument('--debug',
                         action='store_true',
                         default=False,
@@ -167,65 +102,32 @@ def parse_arguments(argv=None):
     return parser.parse_args(argv[1:])
 
 
-def song_info(parent):
-    """ Set song information entries.
-
-    Keyword arguments:
-        parent -- Parent etree.Element
-    """
-    track = moc.info()
-    state = track['state']
-    playlist = moc.playlist_get()
-    totaltracks = len(playlist)
-
-    if state == 'PLAY' or state == 'PAUSE':
-        index = 0
-
-        for index, entry in enumerate(playlist, start=1):
-            if entry['file'] == track['file']:
-                break
-
-        track['tracknumber'] = index
-        length = '{}/{}'.format(track['currenttime'], track['totaltime'])
-    elif state == 'STOP' and playlist:
-        track = playlist[0]
-        track['tracknumber'] = 1
-        length = '{}'.format(track['totaltime'])
-    elif state == 'STOP' and not playlist:
-        obm.create_item(parent, 'Empty playlist')
-        return
-    else:
-        return
-
-    obm.create_item(parent, 'Artist: {}'.format(track['artist']))
-    obm.create_item(parent, 'Title: {}'.format(track['songtitle']))
-    obm.create_item(parent, 'Album: {}'.format(track['album']))
-    obm.create_item(parent, 'Length: {}'.format(length))
-    obm.create_item(parent,
-                    'Track: {}/{}'.format(track['tracknumber'],
-                    totaltracks))
-
-
 def main(argv=None):
-    """ Main function
-
-    Keyword arguments:
-        argv -- list containing commandline arguments.
-                If None use current sys.argv. (default: None)
-
-    Return value (int):
-        int -- On Failure >= 1
-               On Success == 0 (default)
-    """
     # Parse argv
     args = parse_arguments(argv)
 
     root = obm.create_root()
 
-    try:
-        entries(root)
-    except moc.MocNotFound:
-        obm.create_separator(root, 'MOC not installed')
+    if args.directory:
+        directory = os.path.expanduser(args.directory[0])
+        dircnt = os.listdir(directory)
+        dircnt.sort()
+        dircnt = [(d, os.path.join(directory, d)) for d in dircnt]
+        dircnt = [d for d in dircnt if os.path.isdir(d[1])]
+
+        obm.create_action(root,
+                          'Append',
+                          '{} --append "{}"'.format(moc.MOC_BIN, directory))
+        obm.create_action(root,
+                          'Replace',
+                          '{} --clear --append "{}" --play'.format(moc.MOC_BIN, directory))
+        if dircnt:
+            obm.create_separator(root)
+        for d in dircnt:
+            obm.create_pipe_menu(root,
+                                 'moc-playlist-pipe-{}'.format(d[1]),
+                                 d[0],
+                                 '{} --directory "{}"'.format(sys.argv[0], d[1]))
 
     # Print XML
     if args.debug:

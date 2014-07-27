@@ -171,6 +171,7 @@ def song_info(parent):
     totaltracks = len(playlist)
 
     if state == 'PLAY' or state == 'PAUSE':
+        index = 0
         track = info
 
         for index, entry in enumerate(playlist, start=1):
@@ -179,10 +180,13 @@ def song_info(parent):
 
         track['tracknumber'] = index
         length = '{}/{}'.format(track['currenttime'], track['totaltime'])
-    elif state == 'STOP':
+    elif state == 'STOP' and playlist:
         track = playlist[0]
         track['tracknumber'] = 1
         length = '{}'.format(track['totaltime'])
+    elif state == 'STOP' and not playlist:
+        obm.create_item(parent, 'Empty playlist')
+        return
     else:
         return
 
@@ -191,7 +195,8 @@ def song_info(parent):
     obm.create_item(parent, 'Album: {}'.format(track['album']))
     obm.create_item(parent, 'Length: {}'.format(length))
     obm.create_item(parent,
-                    'Track: {}/{}'.format(track['tracknumber'], totaltracks))
+                    'Track: {}/{}'.format(track['tracknumber'],
+                    totaltracks))
 
 
 def main(argv=None):

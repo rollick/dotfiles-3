@@ -165,17 +165,16 @@ def song_info(parent):
     Keyword arguments:
         parent -- Parent etree.Element
     """
-    info = moc.info()
-    state = info['state']
+    track = moc.info()
+    state = track['state']
     playlist = moc.playlist_get()
     totaltracks = len(playlist)
 
     if state == 'PLAY' or state == 'PAUSE':
         index = 0
-        track = info
 
         for index, entry in enumerate(playlist, start=1):
-            if entry['file'] == info['file']:
+            if entry['file'] == track['file']:
                 break
 
         track['tracknumber'] = index

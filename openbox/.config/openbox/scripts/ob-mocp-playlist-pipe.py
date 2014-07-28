@@ -121,7 +121,7 @@ def main(argv=None):
         dircnt = [(d, os.path.join(directory, d)) for d in dircnt]
         dircnt = [d for d in dircnt if os.path.isdir(d[1])]
 
-        if not args.start:
+        if not dircnt:
             obm.create_action(root,
                               'Append',
                               '{} --append "{}"'.format(moc.MOC_BIN, directory))
@@ -130,8 +130,6 @@ def main(argv=None):
                               '{} {} "{}" --play'.format(moc.MOC_BIN,
                                                          '--clear --append',
                                                          directory))
-            if dircnt:
-                obm.create_separator(root)
 
         last_cat = ""
         parent = root

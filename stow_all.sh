@@ -9,6 +9,7 @@ mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} cups
+stow --verbose -R -t ${HOME} dunst
 stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} shells

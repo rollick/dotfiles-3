@@ -121,7 +121,31 @@ def main(argv=None):
         dircnt = [(d, os.path.join(directory, d)) for d in dircnt]
         dircnt = [d for d in dircnt if os.path.isdir(d[1])]
 
-        if not dircnt:
+        if dircnt:
+            digits = [str(i) for i in range(0,9,1)]
+            last_cat = ""
+            parent = root
+
+            for d in dircnt:
+                if args.start and not last_cat == d[0][0].lower():
+                    last_cat = d[0][0].lower()
+
+                    # Set category name
+                    if d[0][0] in digits:
+                        cat = "0-9"
+                    else:
+                        cat = d[0][0].upper()
+
+                    parent = obm.create_menu(root,
+                                             'moc-playlist-{}-pipe'.format(cat),
+                                             cat)
+
+                obm.create_pipe_menu(parent,
+                                     'moc-playlist-{}-pipe'.format(d[1]),
+                                     d[0],
+                                     '{} --directory "{}"'.format(sys.argv[0],
+                                                                  d[1]))
+        else:
             obm.create_action(root,
                               'Append',
                               '{} --append "{}"'.format(moc.MOC_BIN, directory))
@@ -130,31 +154,6 @@ def main(argv=None):
                               '{} {} "{}" --play'.format(moc.MOC_BIN,
                                                          '--clear --append',
                                                          directory))
-
-        digits = [str(i) for i in range(0,9,1)]
-        last_cat = ""
-        parent = root
-
-        for d in dircnt:
-            if args.start and not last_cat == d[0][0].lower():
-                last_cat = d[0][0].lower()
-
-                # Set category name
-                if d[0][0] in digits:
-                    cat = "0-9"
-                else:
-                    cat = d[0][0].upper()
-
-                parent = obm.create_menu(root,
-                                         'moc-playlist-{}-pipe'.format(cat),
-                                         cat)
-
-            obm.create_pipe_menu(parent,
-                                 'moc-playlist-{}-pipe'.format(d[1]),
-                                 d[0],
-                                 '{} --directory "{}"'.format(sys.argv[0],
-                                                              d[1]))
-
     # Print XML
     obm.output(root, args.debug)
 

@@ -156,10 +156,7 @@ def main(argv=None):
                                                               d[1]))
 
     # Print XML
-    if args.debug:
-        obm.prettyprint(root)
-    else:
-        obm.dump(root)
+    obm.output(root, args.debug)
 
     return 0
 

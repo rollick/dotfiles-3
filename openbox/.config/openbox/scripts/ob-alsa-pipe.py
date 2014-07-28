@@ -185,10 +185,7 @@ def main(argv=None):
             create_mixer_menu(root, args.mixer)
 
     # Print XML
-    if args.debug:
-        obm.prettyprint(root)
-    else:
-        obm.dump(root)
+    obm.output(root, args.debug)
 
     return 0
 

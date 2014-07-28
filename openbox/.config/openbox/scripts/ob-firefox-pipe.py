@@ -141,10 +141,7 @@ def main(argv=None):
                       'firefox -no-remote -ProfileManager')
 
     # Print XML
-    if args.debug:
-        obm.prettyprint(root)
-    else:
-        obm.dump(root)
+    obm.output(root, args.debug)
 
     return 0
 

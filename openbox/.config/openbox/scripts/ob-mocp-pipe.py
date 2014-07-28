@@ -228,10 +228,7 @@ def main(argv=None):
         obm.create_separator(root, 'MOC not installed')
 
     # Print XML
-    if args.debug:
-        obm.prettyprint(root)
-    else:
-        obm.dump(root)
+    obm.output(root, args.debug)
 
     return 0
 

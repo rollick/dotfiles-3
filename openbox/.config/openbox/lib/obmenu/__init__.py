@@ -27,8 +27,7 @@ Functions:
     create_pipe_menu -- Create a pipe menu.
     create_root -- Create root element.
     create_separator -- Create an separator element.
-    dump -- Alias for xml.etree.ElementTree.dump().
-    prettyprint -- Output etree in a nicely formatted way.
+    output -- Output etree in a nicely formatted way.
 """
 import xml.etree.ElementTree as etree
 import xml.dom.minidom as minidom
@@ -111,19 +110,20 @@ def create_separator(parent, label=None):
     etree.SubElement(parent, 'separator', attribs)
 
 
-def prettyprint(parent):
+
+
+def output(parent, debug=False):
     """ Output etree in a nicely formatted way.
 
     Keyword arguments:
         element -- etree.Element to process
     """
-    xml_str = etree.tostring(parent, encoding='utf-8', method='xml')
-    xml = minidom.parseString(xml_str)
-    print(xml.toprettyxml())
-
-
-# Aliases
-dump = etree.dump
+    if debug:
+        xml_str = etree.tostring(parent, encoding='utf-8', method='xml')
+        xml = minidom.parseString(xml_str)
+        print(xml.toprettyxml())
+    else:
+        etree.dump(parent)
 
 
 if __name__ == "__main__":

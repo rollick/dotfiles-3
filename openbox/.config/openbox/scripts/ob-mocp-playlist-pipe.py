@@ -131,14 +131,16 @@ def main(argv=None):
                                                          '--clear --append',
                                                          directory))
 
+        digits = [str(i) for i in range(0,9,1)]
         last_cat = ""
         parent = root
+
         for d in dircnt:
             if args.start and not last_cat == d[0][0].lower():
                 last_cat = d[0][0].lower()
 
                 # Set category name
-                if d[0][0] in ('0','1','2','3','4','5','6','7','8','9'):
+                if d[0][0] in digits:
                     cat = "0-9"
                 else:
                     cat = d[0][0].upper()

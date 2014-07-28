@@ -86,11 +86,17 @@ def parse_arguments(argv=None):
                                      formatter_class=formatter,
                                      usage=usage)
 
-    parser.add_argument('--directory', nargs=1, default='./')
+    parser.add_argument('--directory',
+                        nargs=1,
+                        help='directory to inspect')
     parser.add_argument('--debug',
                         action='store_true',
                         default=False,
                         help='debug output')
+    parser.add_argument('--start',
+                        action='store_true',
+                        default=False,
+                        help='Categorize content based on first letter')
     parser.add_argument('--help',
                         action='help',
                         help='display this help and exit')
@@ -115,18 +121,36 @@ def main(argv=None):
         dircnt = [(d, os.path.join(directory, d)) for d in dircnt]
         dircnt = [d for d in dircnt if os.path.isdir(d[1])]
 
-        obm.create_action(root,
-                          'Append',
-                          '{} --append "{}"'.format(moc.MOC_BIN, directory))
-        obm.create_action(root,
-                          'Replace',
-                          '{} --clear --append "{}" --play'.format(moc.MOC_BIN,
-                                                                   directory))
-        if dircnt:
-            obm.create_separator(root)
+        if not args.start:
+            obm.create_action(root,
+                              'Append',
+                              '{} --append "{}"'.format(moc.MOC_BIN, directory))
+            obm.create_action(root,
+                              'Replace',
+                              '{} {} "{}" --play'.format(moc.MOC_BIN,
+                                                         '--clear --append',
+                                                         directory))
+            if dircnt:
+                obm.create_separator(root)
+
+        last_cat = ""
+        parent = root
         for d in dircnt:
-            obm.create_pipe_menu(root,
-                                 'moc-playlist-pipe-{}'.format(d[1]),
+            if args.start and not last_cat == d[0][0].lower():
+                last_cat = d[0][0].lower()
+
+                # Set category name
+                if d[0][0] in ('0','1','2','3','4','5','6','7','8','9'):
+                    cat = "0-9"
+                else:
+                    cat = d[0][0].upper()
+
+                parent = obm.create_menu(root,
+                                         'moc-playlist-{}-pipe'.format(cat),
+                                         cat)
+
+            obm.create_pipe_menu(parent,
+                                 'moc-playlist-{}-pipe'.format(d[1]),
                                  d[0],
                                  '{} --directory "{}"'.format(sys.argv[0],
                                                               d[1]))

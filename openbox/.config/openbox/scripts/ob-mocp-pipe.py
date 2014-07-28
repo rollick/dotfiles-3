@@ -60,7 +60,7 @@ def entries(parent):
         obm.create_pipe_menu(parent,
                              'mocp-playlist-pipe',
                              'Edit',
-                             'ob-mocp-playlist-pipe.py --directory ~/Music')
+                             'ob-mocp-playlist-pipe.py --start --directory ~/Music')
 
         # Controls
         obm.create_separator(parent, 'Commands')

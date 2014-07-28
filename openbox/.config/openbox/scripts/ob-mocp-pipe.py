@@ -176,7 +176,7 @@ def song_info(parent):
     track = moc.info()
     state = track['state']
     playlist = moc.playlist_get()
-    totaltracks = len(playlist)
+    totaltracks = str(len(playlist))
 
     if state == 'PLAY' or state == 'PAUSE':
         index = 0
@@ -185,11 +185,11 @@ def song_info(parent):
             if entry['file'] == track['file']:
                 break
 
-        track['tracknumber'] = index
+        track['tracknumber'] = str(index).zfill(len(totaltracks))
         length = '{}/{}'.format(track['currenttime'], track['totaltime'])
     elif state == 'STOP' and playlist:
         track = playlist[0]
-        track['tracknumber'] = 1
+        track['tracknumber'] = "1".zfill(len(totaltracks))
         length = '{}'.format(track['totaltime'])
     elif state == 'STOP' and not playlist:
         obm.create_item(parent, 'Empty playlist')

@@ -118,7 +118,29 @@
 		</action>
 	</keybind>
 
+	<!-- Misc. keybindings -->
+	<keybind key="XF86Calculator">
+		<action name="Execute">
+			<command>termopen octave</command>
+		</action>
+	</keybind>
+	<keybind key="XF86HomePage">
+		<action name="Execute">
+			<command>firefox</command>
+		</action>
+	</keybind>
+	<keybind key="XF86Mail">
+		<action name="Execute">
+			<command>firefox https://www.gmail.com/</command>
+		</action>
+	</keybind>
+
 	<!-- Keybindings to control Music On Console -->
+	<keybind key="XF86Tools">
+		<action name="Execute">
+			<command>termopen mocp</command>
+		</action>
+	</keybind>
 	<keybind key="XF86AudioNext">
 		<action name="Execute">
 			<command>mocp --next</command>

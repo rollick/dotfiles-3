@@ -4,7 +4,6 @@
 
 <!-- Pipe menus -->
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe.py" />
-<menu id="pipe-firefox-menu" label="Firefox" execute="ob-firefox-pipe.py" />
 <menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe.py" />
 
 <!-- Static menus -->
@@ -84,7 +83,14 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
-	<menu id="pipe-firefox-menu" />
+	<item label="Firefox">
+		<action name="Execute">
+			<command>firefox</command>
+      			<startupnotify>
+        			<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Gmail">
 		<action name="Execute">
 			<command>firefox https://www.gmail.com</command>

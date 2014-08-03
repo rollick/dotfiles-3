@@ -25,7 +25,7 @@ import sys
 curdir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, curdir + '/../lib')
 import moc
-import obmenu as obm
+import obpm
 
 
 def parse_arguments(argv=None):
@@ -112,7 +112,7 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    root = obm.create_root()
+    root = obpm.create_root()
 
     if args.directory:
         directory = os.path.expanduser(args.directory[0])
@@ -122,7 +122,7 @@ def main(argv=None):
         dircnt = [d for d in dircnt if os.path.isdir(d[1])]
 
         if dircnt:
-            digits = [str(i) for i in range(0,9,1)]
+            digits = [str(i) for i in range(0, 9, 1)]
             last_cat = ""
             parent = root
 
@@ -136,26 +136,26 @@ def main(argv=None):
                     else:
                         cat = d[0][0].upper()
 
-                    parent = obm.create_menu(root,
-                                             'moc-playlist-{}-pipe'.format(cat),
-                                             cat)
+                    parent = obpm.create_menu(root,
+                                              'moc-playlist-{}-pipe'.format(cat),
+                                              cat)
 
-                obm.create_pipe_menu(parent,
-                                     'moc-playlist-{}-pipe'.format(d[1]),
-                                     d[0],
-                                     '{} --directory "{}"'.format(sys.argv[0],
-                                                                  d[1]))
+                obpm.create_pipe_menu(parent,
+                                      'moc-playlist-{}-pipe'.format(d[1]),
+                                      d[0],
+                                      '{} --directory "{}"'.format(sys.argv[0],
+                                                                   d[1]))
         else:
-            obm.create_action(root,
-                              'Append',
-                              '{} --append "{}"'.format(moc.MOC_BIN, directory))
-            obm.create_action(root,
-                              'Replace',
-                              '{} {} "{}" --play'.format(moc.MOC_BIN,
-                                                         '--clear --append',
-                                                         directory))
+            obpm.create_action(root,
+                               'Append',
+                               '{} --append "{}"'.format(moc.MOC_BIN, directory))
+            obpm.create_action(root,
+                               'Replace',
+                               '{} {} "{}" --play'.format(moc.MOC_BIN,
+                                                          '--clear --append',
+                                                          directory))
     # Print XML
-    obm.output(root, args.debug)
+    obpm.output(root, args.debug)
 
     return 0
 

@@ -22,11 +22,8 @@ import argparse
 import os.path
 import sys
 
-curdir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, curdir + '/../lib')
-import obmenu as obm
-
 import alsaaudio as alsa  # http://pyalsaaudio.sourceforge.net/
+import obpm
 
 
 def calc_volume(cur_vol=None):
@@ -58,23 +55,23 @@ def create_mixer_menu(parent, control):
     cur_vol = calc_volume(mixer.getvolume()[0])
 
     if mixer.getmute()[0] == 1:
-        obm.create_action(parent,
-                          'Unmute',
-                          'amixer sset {} unmute'.format(control))
+        obpm.create_action(parent,
+                           'Unmute',
+                           'amixer sset {} unmute'.format(control))
     else:
-        obm.create_action(parent,
-                          'Mute',
-                          'amixer sset {} mute'.format(control))
+        obpm.create_action(parent,
+                           'Mute',
+                           'amixer sset {} mute'.format(control))
 
-    obm.create_separator(parent)
+    obpm.create_separator(parent)
 
     for vol in range(0, 101, 5):
         if vol == cur_vol:
-            obm.create_separator(parent, '{}%'.format(vol))
+            obpm.create_separator(parent, '{}%'.format(vol))
         else:
-            obm.create_action(parent,
-                              '{}%'.format(vol),
-                              'amixer sset {} {}%'.format(control, vol))
+            obpm.create_action(parent,
+                               '{}%'.format(vol),
+                               'amixer sset {} {}%'.format(control, vol))
 
 
 def parse_arguments(argv=None):
@@ -169,23 +166,23 @@ def main(argv=None):
     available_mixers = alsa.mixers()
     mixers = [x for x in supported_mixers if x in available_mixers]
 
-    root = obm.create_root()
+    root = obpm.create_root()
 
     if not args.mixer:
-        obm.create_action(root, 'Open audio mixer', 'termopen alsamixer')
-        obm.create_separator(root, 'Mixer')
+        obpm.create_action(root, 'Open audio mixer', 'termopen alsamixer')
+        obpm.create_separator(root, 'Mixer')
 
         for mixer in mixers:
-            obm.create_pipe_menu(root,
-                                 'pipe-alsa-{}-menu'.format(mixer.lower()),
-                                 mixer,
-                                 '{} --mixer {}'.format(sys.argv[0], mixer))
+            obpm.create_pipe_menu(root,
+                                  'pipe-alsa-{}-menu'.format(mixer.lower()),
+                                  mixer,
+                                  '{} --mixer {}'.format(sys.argv[0], mixer))
     else:
         if args.mixer in mixers:
             create_mixer_menu(root, args.mixer)
 
     # Print XML
-    obm.output(root, args.debug)
+    obpm.output(root, args.debug)
 
     return 0
 

@@ -24,7 +24,7 @@ import sys
 
 curdir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, curdir + '/../lib')
-import obmenu as obm
+import obpm
 import moc
 
 
@@ -39,60 +39,60 @@ def entries(parent):
 
     # Set header
     if state == 'NOT RUNNING':
-        obm.create_separator(parent, 'Not running')
-        obm.create_action(parent,
-                          'Start Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
+        obpm.create_separator(parent, 'Not running')
+        obpm.create_action(parent,
+                           'Start Music On Console',
+                           'termopen {}'.format(moc.MOC_BIN))
     else:
         if state == 'PLAY':
-            obm.create_separator(parent, 'Playing')
+            obpm.create_separator(parent, 'Playing')
         elif state == 'PAUSE':
-            obm.create_separator(parent, 'Paused')
+            obpm.create_separator(parent, 'Paused')
         elif state == 'STOP':
-            obm.create_separator(parent, 'Stopped')
+            obpm.create_separator(parent, 'Stopped')
 
         # Song information
         song_info(parent)
 
         # Playlist control
-        obm.create_separator(parent, 'Playlist')
-        obm.create_action(parent, 'Clear', '{} --clear'.format(moc.MOC_BIN))
-        obm.create_pipe_menu(parent,
-                             'mocp-playlist-pipe',
-                             'Edit',
-                             'ob-mocp-playlist-pipe.py --start --directory ~/Music')
+        obpm.create_separator(parent, 'Playlist')
+        obpm.create_action(parent, 'Clear', '{} --clear'.format(moc.MOC_BIN))
+        obpm.create_pipe_menu(parent,
+                              'mocp-playlist-pipe',
+                              'Edit',
+                              'ob-mocp-playlist-pipe.py --start --directory ~/Music')
 
         # Controls
-        obm.create_separator(parent, 'Commands')
+        obpm.create_separator(parent, 'Commands')
         if state == 'PLAY':
-            obm.create_action(parent,
-                              'Pause',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+            obpm.create_action(parent,
+                               'Pause',
+                               '{} --toggle-pause'.format(moc.MOC_BIN))
+            obpm.create_action(parent,
+                               'Previous',
+                               '{} --prev'.format(moc.MOC_BIN))
+            obpm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+            obpm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
         elif state == 'PAUSE':
-            obm.create_action(parent,
-                              'Play',
-                              '{} --toggle-pause'.format(moc.MOC_BIN))
-            obm.create_action(parent,
-                              'Previous',
-                              '{} --prev'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
-            obm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
+            obpm.create_action(parent,
+                               'Play',
+                               '{} --toggle-pause'.format(moc.MOC_BIN))
+            obpm.create_action(parent,
+                               'Previous',
+                               '{} --prev'.format(moc.MOC_BIN))
+            obpm.create_action(parent, 'Next', '{} --next'.format(moc.MOC_BIN))
+            obpm.create_action(parent, 'Stop', '{} --stop'.format(moc.MOC_BIN))
         elif state == 'STOP':
-            obm.create_action(parent,
-                              'Play',
-                              '{} --play'.format(moc.MOC_BIN))
+            obpm.create_action(parent,
+                               'Play',
+                               '{} --play'.format(moc.MOC_BIN))
 
         # Server control
-        obm.create_separator(parent)
-        obm.create_action(parent,
-                          'Show Music On Console',
-                          'termopen {}'.format(moc.MOC_BIN))
-        obm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
+        obpm.create_separator(parent)
+        obpm.create_action(parent,
+                           'Show Music On Console',
+                           'termopen {}'.format(moc.MOC_BIN))
+        obpm.create_action(parent, 'Exit', '{} --exit'.format(moc.MOC_BIN))
 
 
 def parse_arguments(argv=None):
@@ -192,18 +192,18 @@ def song_info(parent):
         track['tracknumber'] = "1".zfill(len(totaltracks))
         length = '{}'.format(track['totaltime'])
     elif state == 'STOP' and not playlist:
-        obm.create_item(parent, 'Empty playlist')
+        obpm.create_item(parent, 'Empty playlist')
         return
     else:
         return
 
-    obm.create_item(parent, 'Artist: {}'.format(track['artist']))
-    obm.create_item(parent, 'Title: {}'.format(track['songtitle']))
-    obm.create_item(parent, 'Album: {}'.format(track['album']))
-    obm.create_item(parent, 'Length: {}'.format(length))
-    obm.create_item(parent,
-                    'Track: {}/{}'.format(track['tracknumber'],
-                                          totaltracks))
+    obpm.create_item(parent, 'Artist: {}'.format(track['artist']))
+    obpm.create_item(parent, 'Title: {}'.format(track['songtitle']))
+    obpm.create_item(parent, 'Album: {}'.format(track['album']))
+    obpm.create_item(parent, 'Length: {}'.format(length))
+    obpm.create_item(parent,
+                     'Track: {}/{}'.format(track['tracknumber'],
+                                           totaltracks))
 
 
 def main(argv=None):
@@ -220,15 +220,15 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    root = obm.create_root()
+    root = obpm.create_root()
 
     try:
         entries(root)
     except moc.MocNotFound:
-        obm.create_separator(root, 'MOC not installed')
+        obpm.create_separator(root, 'MOC not installed')
 
     # Print XML
-    obm.output(root, args.debug)
+    obpm.output(root, args.debug)
 
     return 0
 

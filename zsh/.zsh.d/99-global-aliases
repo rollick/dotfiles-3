@@ -1,6 +1,7 @@
 # Global aliases
 alias -g C="|wc -l"
 alias -g ES="2>&1"
+alias -g F="&|"
 alias -g G="|grep"
 alias -g GE="|grep -E"
 alias -g GI="|grep -i"

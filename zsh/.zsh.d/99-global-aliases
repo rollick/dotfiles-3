@@ -10,6 +10,7 @@ alias -g H="|head"
 alias -g K="|keep"
 alias -g NE="2>|/dev/null"
 alias -g NO="&>|/dev/null"
+alias -g NOF="&>|/dev/null &|"
 alias -g P='|${PAGER}'
 alias -g S="|sort"
 alias -g SU="|sort -u"

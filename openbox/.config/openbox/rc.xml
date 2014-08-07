@@ -519,6 +519,11 @@
 			<action name="BreakChroot"/>
 		</keybind>
 	</keybind>
+
+	<!-- Toggle window decorations -->
+	<keybind key="A-S-d">
+		<action name="ToggleDecorations"/>
+	</keybind>
 </keyboard>
 
 <mouse>

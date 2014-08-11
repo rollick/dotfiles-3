@@ -7,6 +7,11 @@ if which light-locker >/dev/null 2>&1; then
 	light-locker --lock-on-suspend &
 fi
 
+# Start automount daemon
+if which udiskie >/dev/null 2>&1; then
+	udiskie &
+fi
+
 # Load keyboard tweaks
 if which xmodmap >/dev/null 2>&1; then
 	if [[ -e ${HOME}/.Xmodmap ]]; then

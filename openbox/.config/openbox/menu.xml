@@ -52,6 +52,11 @@
 			<command>snes9x-gtk</command>
 		</action>
 	</item>
+	<item label="Visualboy Advance">
+		<action name="Execute">
+			<command>gvbam</command>
+		</action>
+	</item>
 </menu>
 
 <menu id="apps-multimedia-menu" label="Multimedia">

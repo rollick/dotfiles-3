@@ -9,7 +9,11 @@ fi
 
 # Start automount daemon
 if which udiskie >/dev/null 2>&1; then
-	udiskie &
+	if which umount.udisks2 >/dev/null 2>&1; then
+		udiskie -2 &
+	else
+		udiskie &
+	fi
 fi
 
 # Load keyboard tweaks

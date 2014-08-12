@@ -44,4 +44,3 @@ fi
 
 # Set some paths for mpv
 export DVDCSS_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/dvdcss"
-export MPV_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/mpv"

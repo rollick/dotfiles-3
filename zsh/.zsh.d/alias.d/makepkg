@@ -1,1 +1,1 @@
-alias makepkg="PYTHONDONTWRITEBYTECODE="" nice -n 19 makepkg"
+alias makepkg='PYTHONDONTWRITEBYTECODE="" nice -n 19 makepkg'

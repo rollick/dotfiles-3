@@ -360,7 +360,7 @@
 	</item>
 	<item label="Notifications">
 		<action name="Execute">
-			<command>xfce4-notifyd-config</command>
+			<command>termopen vim ~/.config/dunst/dunstrc</command>
       			<startupnotify>
         			<enabled>yes</enabled>
 			</startupnotify>

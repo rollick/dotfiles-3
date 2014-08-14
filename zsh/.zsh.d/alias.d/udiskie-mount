@@ -1,0 +1,3 @@
+if which umount.udisks2 &>|/dev/null; then
+	alias udiskie-mount='udiskie-mount -2'
+fi

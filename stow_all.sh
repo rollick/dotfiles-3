@@ -11,6 +11,7 @@ stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} cups
 stow --verbose -R -t ${HOME} dunst
 stow --verbose -R -t ${HOME} moc
+stow --verbose -R -t ${HOME} octave
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh

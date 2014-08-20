@@ -22,10 +22,8 @@ import argparse
 import os.path
 import sys
 
-curdir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, curdir + '/../lib')
-import obpm
 import moc
+import obpm
 
 
 def entries(parent):
@@ -34,8 +32,7 @@ def entries(parent):
     Keyword arguments:
         parent -- Parent etree.Element
     """
-    info = moc.info()
-    state = info['state']
+    state = moc.information.state()
 
     # Set header
     if state == 'NOT RUNNING':
@@ -173,25 +170,20 @@ def song_info(parent):
     Keyword arguments:
         parent -- Parent etree.Element
     """
-    track = moc.info()
-    state = track['state']
-    playlist = moc.playlist_get()
-    totaltracks = str(len(playlist))
+    state = moc.information.state()
+    totaltracks = str(moc.playlist.item_position('')[1])
 
     if state == 'PLAY' or state == 'PAUSE':
-        index = 0
+        track = moc.information.song()
+        index = str(moc.playlist.item_position(track['file'])[0])
 
-        for index, entry in enumerate(playlist, start=1):
-            if entry['file'] == track['file']:
-                break
-
-        track['tracknumber'] = str(index).zfill(len(totaltracks))
+        track['tracknumber'] = index.zfill(len(totaltracks))
         length = '{}/{}'.format(track['currenttime'], track['totaltime'])
-    elif state == 'STOP' and playlist:
-        track = playlist[0]
+    elif state == 'STOP' and not totaltracks == '0':
+        track = moc.playlist.content()[0]
         track['tracknumber'] = "1".zfill(len(totaltracks))
-        length = '{}'.format(track['totaltime'])
-    elif state == 'STOP' and not playlist:
+        length = track['totaltime']
+    elif state == 'STOP' and totaltracks == '0':
         obpm.create_item(parent, 'Empty playlist')
         return
     else:

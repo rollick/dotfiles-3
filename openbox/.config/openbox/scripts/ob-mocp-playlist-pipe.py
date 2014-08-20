@@ -22,9 +22,7 @@ import argparse
 import os
 import sys
 
-curdir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, curdir + '/../lib')
-import moc
+from moc import MOC_BIN
 import obpm
 
 
@@ -148,10 +146,10 @@ def main(argv=None):
         else:
             obpm.create_action(root,
                                'Append',
-                               '{} --append "{}"'.format(moc.MOC_BIN, directory))
+                               '{} --append "{}"'.format(MOC_BIN, directory))
             obpm.create_action(root,
                                'Replace',
-                               '{} {} "{}" --play'.format(moc.MOC_BIN,
+                               '{} {} "{}" --play'.format(MOC_BIN,
                                                           '--clear --append',
                                                           directory))
     # Print XML

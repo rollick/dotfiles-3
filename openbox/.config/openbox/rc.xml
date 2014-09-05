@@ -24,7 +24,7 @@
 </placement>
 
 <theme>
-	<name>darkness</name>
+	<name>solarized</name>
 	<titleLayout>LC</titleLayout>
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>

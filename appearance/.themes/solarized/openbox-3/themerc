@@ -1,0 +1,64 @@
+!# General settings
+!# --------------------------------------
+border.width: 1
+menu.title.text.justify: center
+padding.height: 2
+padding.width: 2
+window.client.padding.width: 0
+window.handle.width: 0
+window.label.text.justify: left
+
+
+!# Menu settings
+!# --------------------------------------
+menu.border.width: 1
+menu.items.bg: solid flat
+menu.items.bg.color: #002b36
+menu.items.active.bg: solid flat
+menu.items.active.bg.color: #073642
+menu.items.active.text.color: #839496
+menu.items.disabled.text.color: #073642
+menu.items.text.color: #839496
+menu.separator.color: #073642
+menu.separator.width: 1
+menu.title.bg: solid flat
+menu.title.bg.color: #073642
+menu.title.text.color: #839496
+
+!# Window handle
+!# --------------------------------------
+window.*.border.color: #073642
+window.*.grip.bg: parentrelative
+window.*.handle.bg: solid flat
+window.active.handle.bg.color: #002b36
+window.inactive.handle.bg.color: #002b36
+
+!# Windows
+!# --------------------------------------
+window.*.border.color: #073642
+window.*.button.*.bg: parentrelative
+window.*.button.*.*.bg: solid flat
+window.*.button.*.*.bg.color: #002b36
+window.*.button.*.hover.bg.border.color: #002b36
+window.*.button.*.image.color: #cb4b16
+window.*.label.bg: parentrelative
+window.*.title.bg: solid flat
+window.*.title.bg.color: #002b36
+window.*.title.separator.color: #002b36
+
+!# Active window
+!# --------------------------------------
+window.active.button.*.hover.image.color: #839496
+window.active.label.text.color: #cb4b16
+
+!# Inactive window
+!# --------------------------------------
+window.inactive.button.*.image.color: #586e75
+window.inactive.label.text.color: #586e75
+
+!# OSD
+!# --------------------------------------
+osd.hilight.bg: solid flat
+osd.hilight.bg.color: #839496
+osd.unhilight.bg: solid flat
+osd.unhilight.bg.color: #002b36

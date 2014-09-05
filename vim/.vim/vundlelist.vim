@@ -7,7 +7,8 @@ Plugin 'TaskList.vim'
 
 " Git plugins
 "Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'

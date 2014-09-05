@@ -196,13 +196,13 @@ ShowTime = yes
 #
 # Example:    Theme = laras_theme
 #
-Theme = transparent-background
+Theme = solarized
 
 # The theme used when running on an xterm.
 #
 # Example:    XTermTheme = transparent-background
 #
-XTermTheme = transparent-background
+XTermTheme = solarized
 
 # Should MOC try to autoload the default lyrics file for an audio?  (The
 # default lyrics file is a text file with the same file name as the audio

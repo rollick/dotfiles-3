@@ -6,4 +6,7 @@ if [[ -d "${XDG_CONFIG_HOME:-${HOME}/.config}/openbox/scripts" ]]; then
 fi
 
 export GNOME_DESKTOP_SESSION_ID=1
+
+# Remove missing accessibility bus messages
+export NO_AT_BRIDGE=1
 # vim: ft=sh

@@ -44,8 +44,7 @@ set number
 set textwidth=79
 
 " Setup colorschemes
-set background=dark
-colorscheme solarized
+colorscheme molokai
 
 " Enable colorcolumn and cursorline
 if &t_Co > 2 || has("gui_running")
@@ -247,13 +246,6 @@ autocmd FileType vim set tabstop=4
 " Zsh files
 autocmd FileType zsh set shiftwidth=4
 autocmd FileType zsh set tabstop=4
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: Airline
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""

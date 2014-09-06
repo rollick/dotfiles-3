@@ -55,9 +55,9 @@ function prompt_default_prompt() {
 		local prompt_color_user='%{$fg_bold[green]%}'
 	fi
 	prompt_color_dir='%{$fg_bold[blue]%}'
-	prompt_color_div='%{$fg_bold[cyan]%}'
+	prompt_color_div='%{$fg_bold[black]%}'
 	prompt_color_line='%{$fg_bold[cyan]%}'
-	prompt_color_rprompt='%{$fg_bold[magenta]%}'
+	prompt_color_rprompt="${prompt_color_dir}"
 
 	# Use some ANSI characters if supported
 	##################

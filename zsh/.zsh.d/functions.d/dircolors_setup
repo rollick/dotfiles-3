@@ -33,6 +33,7 @@ if which dircolors &>|/dev/null; then
 	# Load dircolors settings
 	if [[ "${TERM}" == *-256color && -f "${HOME}/.dircolors-sd" ]]; then
 		eval $(dircolors -b "${HOME}/.dircolors-sd")
+		print lol
 	else
 		eval $(dircolors -b "${HOME}/.dircolors")
 	fi

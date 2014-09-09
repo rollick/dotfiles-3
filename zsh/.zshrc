@@ -13,15 +13,6 @@ autoload -U zmv
 # Load zsh modules
 zmodload -F zsh/complist
 
-# Include external additions
-ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
-               "/etc/zsh_command_not_found"
-               "/usr/share/zsh/site-functions/git-flow-completion.zsh"
-               "/usr/bin/virtualenvwrapper.sh")
-for f in ${ext_additions}; do
-	[[ -e "${f}" ]] && source ${f}
-done
-
 # Add prompts to fpath
 if [[ -d ${HOME}/.zsh.d/prompt.d ]]; then
 	fpath=(${HOME}/.zsh.d/prompt.d ${fpath})
@@ -52,6 +43,16 @@ done
 if promptinit; then
 	prompt default
 fi
+
+# Include external additions
+ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
+               "/etc/zsh_command_not_found"
+               "/usr/share/zsh/site-functions/git-flow-completion.zsh"
+               "/usr/bin/virtualenvwrapper.sh"
+			   "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
+for f in ${ext_additions}; do
+	[[ -e "${f}" ]] && source ${f}
+done
 
 # Unset temporary variables
 unset {a-z}

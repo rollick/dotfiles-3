@@ -85,7 +85,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 	rmdir \
 	tail \
 	udisks \
-	watch \
 
 # Enable completion for some wrappers
 compdef _diff colordiff

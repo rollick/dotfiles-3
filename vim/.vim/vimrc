@@ -360,6 +360,11 @@ let g:EasyMotion_leader_key = '<leader><leader>'
 function! StripTrailingWhitespace()
 	" Strip Trailing Whitespace
 
+	" Don't run on some filetypes
+	if &ft =~ 'markdown'
+		return
+	endif
+
 	" Save cursor position
 	let line = line(".")
 	let col = col(".")

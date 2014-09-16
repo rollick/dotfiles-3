@@ -22,6 +22,9 @@ setopt HIST_VERIFY			# Never run a command with history expansions directly
 setopt INC_APPEND_HISTORY	# Incrementaly update histpry
 setopt SHARE_HISTORY		# Share history between two sessions
 
+# Jobs
+setopt BG_NICE				# Run background jobs at lower priority
+
 # Input/Output
 setopt CORRECT				# Correct spelling of commands
 setopt HASH_CMDS			# Hash location of each command

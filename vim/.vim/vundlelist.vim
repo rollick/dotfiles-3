@@ -5,6 +5,7 @@ Plugin 'TaskList.vim'
 
 " Git plugins
 Plugin 'bling/vim-airline'
+Plugin 'nvie/vim-flake8'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'

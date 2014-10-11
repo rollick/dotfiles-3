@@ -10,7 +10,7 @@
 
 <focus>
 	<focusNew>yes</focusNew>
-	<followMouse>no</followMouse>
+	<followMouse>yes</followMouse>
 	<focusLast>yes</focusLast>
 	<underMouse>no</underMouse>
 	<focusDelay>200</focusDelay>
@@ -19,8 +19,8 @@
 
 <placement>
 	<policy>Smart</policy> <!-- 'Smart' or 'UnderMouse' -->
-	<monitor>Primary</monitor> <!-- 'Any', 'Mouse', 'Active', 'Primary' -->
-	<primaryMonitor>1</primaryMonitor> <!-- Number, 'Mouse', 'Active' -->
+	<monitor>Mouse</monitor> <!-- 'Any', 'Mouse', 'Active', 'Primary' -->
+	<primaryMonitor>Mouse</primaryMonitor> <!-- Number, 'Mouse', 'Active' -->
 </placement>
 
 <theme>

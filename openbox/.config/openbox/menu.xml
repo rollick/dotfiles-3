@@ -236,7 +236,7 @@
 	</item>
 	<item label="Editor">
 		<action name="Execute">
-			<command>termopen vim</command>
+			<command>gvim</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -263,7 +263,7 @@
 <menu id="system-openbox-menu" label="Openbox">
 	<item label="Edit autostart">
 		<action name="Execute">
-			<command>termopen vim ~/.config/openbox/autostart</command>
+			<command>gvim ~/.config/openbox/autostart</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -271,7 +271,7 @@
 	</item>
 	<item label="Edit Openbox configuration">
 		<action name="Execute">
-			<command>termopen vim ~/.config/openbox/rc.xml</command>
+			<command>gvim ~/.config/openbox/rc.xml</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -279,7 +279,7 @@
 	</item>
 	<item label="Edit Openbox environment">
 		<action name="Execute">
-			<command>termopen vim ~/.config/openbox/environment</command>
+			<command>gvim ~/.config/openbox/environment</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -287,7 +287,7 @@
 	</item>
 	<item label="Edit Openbox menu">
 		<action name="Execute">
-			<command>termopen vim ~/.config/openbox/menu.xml</command>
+			<command>gvim ~/.config/openbox/menu.xml</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

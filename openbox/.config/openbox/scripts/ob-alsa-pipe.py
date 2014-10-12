@@ -19,7 +19,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 import argparse
-import os.path
 import sys
 
 import alsaaudio as alsa  # http://pyalsaaudio.sourceforge.net/
@@ -57,11 +56,11 @@ def create_mixer_menu(parent, control):
     if mixer.getmute()[0] == 1:
         obpm.create_action(parent,
                            'Unmute',
-                           'amixer sset {} unmute'.format(control))
+                           'alsavol --mixer {} unmute'.format(control))
     else:
         obpm.create_action(parent,
                            'Mute',
-                           'amixer sset {} mute'.format(control))
+                           'alsavol --mixer {} mute'.format(control))
 
     obpm.create_separator(parent)
 
@@ -71,7 +70,8 @@ def create_mixer_menu(parent, control):
         else:
             obpm.create_action(parent,
                                '{}%'.format(vol),
-                               'amixer sset {} {}%'.format(control, vol))
+                               'alsavol --mixer {} set {}%'.format(control,
+                                                                   vol))
 
 
 def parse_arguments(argv=None):

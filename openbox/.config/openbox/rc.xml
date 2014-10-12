@@ -160,17 +160,17 @@
 	<!-- Keybindings to change volume -->
 	<keybind key="XF86AudioRaiseVolume">
 		<action name="Execute">
-			<command>amixer set Master 5%+ unmute</command>
+			<command>alsavol up</command>
 		</action>
 	</keybind>
 	<keybind key="XF86AudioLowerVolume">
 		<action name="Execute">
-			<command>amixer set Master 5%- unmute</command>
+			<command>alsavol down</command>
 		</action>
 	</keybind>
 	<keybind key="XF86AudioMute">
 		<action name="Execute">
-			<command>amixer set Master toggle</command>
+			<command>alsavol toggle</command>
 		</action>
 	</keybind>
 

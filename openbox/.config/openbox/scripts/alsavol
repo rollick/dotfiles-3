@@ -1,0 +1,164 @@
+#!/bin/env python3
+"""
+Copyright (C) 2014 Raphael Scholer
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+"""
+import argparse
+import sys
+
+import alsaaudio as alsa
+from gi.repository import Notify
+
+
+def parse_arguments(argv=None):
+    """ Parse arguments.
+
+    Keyword arguments:
+        argv -- list containing commandline arguments.
+        If None use current sys.argv. (default: None)
+
+    Return values:
+            argparse.Namespace
+    """
+    argv = argv or sys.argv
+
+    # Set up parsing of argv
+    desc = 'Generate an openbox pipe menu for volume control.'
+    epilog = ('Report bugs to '
+              '<https://github.com/rscholer/dotfiles/issues/>\n'
+              '%(prog)s home page: '
+              '<https://github.com/rscholer/dotfiles/>')
+    usage = '%(prog)s [OPTIONS]...'
+    version = ('%(prog)s 1.0\n'
+               'Copyright (C) 2014 by Raphael Scholer\n\n'
+               'Permission is hereby granted, free of charge, '
+               'to any person obtaining a copy\n'
+               'of this software and associated documentation files '
+               '(the "Software"), to deal\n'
+               'in the Software without restriction, '
+               'including without limitation the rights\n'
+               'to use, copy, modify, merge, publish, distribute, '
+               'sublicense, and/or sell\n'
+               'copies of the Software, and to permit persons '
+               'to whom the Software is\n'
+               'furnished to do so, subject to the following conditions:\n\n'
+               'The above copyright notice and this permission notice '
+               'shall be included in\n'
+               'all copies or substantial portions of the Software.\n\n'
+               'THE SOFTWARE IS PROVIDED "AS IS", '
+               'WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n'
+               'IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES '
+               'OF MERCHANTABILITY,\n'
+               'FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. '
+               'IN NO EVENT SHALL THE\n'
+               'AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, '
+               'DAMAGES OR OTHER\n'
+               'LIABILITY, WHETHER IN AN ACTION OF CONTRACT, '
+               'TORT OR OTHERWISE, ARISING FROM,\n'
+               'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE '
+               'OR OTHER DEALINGS IN\n'
+               'THE SOFTWARE.')
+
+    formatter = argparse.RawTextHelpFormatter
+
+    parser = argparse.ArgumentParser(add_help=False,
+                                     description=desc,
+                                     epilog=epilog,
+                                     formatter_class=formatter,
+                                     usage=usage)
+    parser.add_argument('action', default="up", nargs='*')
+    parser.add_argument('--mixer',
+                        default='Master')
+    parser.add_argument('--help',
+                        action='help',
+                        help='display this help and exit')
+    parser.add_argument('--version',
+                        action='version',
+                        help='output version information and exit',
+                        version=version)
+
+    return parser.parse_args(argv[1:])
+
+
+def main(argv=None):
+    """ Main function
+
+    Keyword arguments:
+        argv -- list containing commandline arguments.
+                If None use current sys.argv. (default: None)
+
+    Return value (int):
+        On Failure -- Integer >= 1
+        On Success -- Integer == 0 (default)
+
+    """
+    args = parse_arguments(argv)
+
+    mixer = alsa.Mixer(args.mixer)
+
+    # Set volume
+    if args.action[0] == 'toggle':
+        mixer.setmute(not mixer.getmute()[0])
+
+    elif args.action[0] == 'mute':
+        mixer.setmute(True)
+    elif args.action[0] == 'unmute':
+        mixer.setmute(False)
+    elif args.action[0] == 'set':
+        new_vol = args.action[1].replace('%', '')
+        mixer.setvolume(int(new_vol))
+    else:
+        cur_vol = mixer.getvolume()[0]
+
+        if args.action[0] == 'up':
+            mixer.setmute(False)
+            mixer.setvolume(cur_vol + 5)
+        elif args.action[0] == 'down':
+            mixer.setmute(False)
+            mixer.setvolume(cur_vol - 5)
+        else:
+            print('Unknown action.', file=sys.stderr)
+
+    if mixer.getmute()[0]:
+        vol = 'Mute'
+    else:
+        vol = '{}%'.format(mixer.getvolume()[0])
+
+    # Show notification
+    Notify.init(sys.argv[0])
+
+    if mixer.getmute():
+        icon = 'audio-volume-muted'
+    else:
+        if vol == 0:
+            icon = 'audio-volume-off'
+        elif vol < 33:
+            icon = 'audio-volume-low'
+        elif vol < 66:
+            icon = 'audio-volume-medium'
+        else:
+            icon = 'audio-volume-high'
+
+    notify = Notify.Notification.new("Volume Control - {}".format(args.mixer),
+                                     vol, icon)
+    notify.set_hint_int32('transient', int(True))
+
+    notify.show()
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,33 @@
+{
+	"cursor": {
+		"shape": "underline",
+		"blink_mode": "system"
+	},
+	"colors": {
+		"foreground": "#a0a0a0a0a0a0",
+		"palette": [
+			"#121212121212",
+			"#f9f926267272",
+			"#8282b4b41414",
+			"#fdfd97971f1f",
+			"#5656c2c2d6d6",
+			"#8c8c5454fefe",
+			"#464654545757",
+			"#ccccccccc6c6",
+			"#505053535454",
+			"#ffff59599595",
+			"#b6b6e3e35454",
+			"#fefeeded6c6c",
+			"#8c8cededffff",
+			"#9e9e6f6ffefe",
+			"#89899c9ca1a1",
+			"#f8f8f8f8f2f2"
+		],
+		"background": "#121212121212"
+	},
+	"general": {
+		"mouse_autohide": true,
+		"font": "monospace, antialias=true hinting=true 10",
+		"scrollback_lines": 10000
+	}
+}

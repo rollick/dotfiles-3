@@ -14,6 +14,7 @@ stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} mpv
 stow --verbose -R -t ${HOME} octave
 stow --verbose -R -t ${HOME} openbox
+stow --verbose -R -t ${HOME} profile-cleaner
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} smallterm
 stow --verbose -R -t ${HOME} ssh

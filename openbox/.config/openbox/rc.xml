@@ -514,7 +514,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>smallterm</command>
+				<command>urxvt</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

@@ -48,8 +48,7 @@ fi
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
                "/etc/zsh_command_not_found"
                "/usr/share/zsh/site-functions/git-flow-completion.zsh"
-               "/usr/bin/virtualenvwrapper.sh"
-			   "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
+			   "/usr/bin/virtualenvwrapper.sh")
 for f in ${ext_additions}; do
 	[[ -e "${f}" ]] && source ${f}
 done

@@ -24,9 +24,9 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Simple Scan">
+	<item label="xsane">
 		<action name="Execute">
-			<command>simple-scan</command>
+			<command>xsane</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

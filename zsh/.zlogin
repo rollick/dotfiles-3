@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ "${TTY}" == "/dev/tty1" ]] && ! pgrep Xorg.bin; then
+if [[ -z ${DISPLAY} && ${XDG_VTNR} -eq 1 ]]; then
 	if which startx &>|/dev/null; then
 		exec startx
 	fi

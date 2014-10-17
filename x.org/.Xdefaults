@@ -24,6 +24,10 @@ URxvt.font: xft:Fira Mono:size=10
 ! Scrollbar settings
 URxvt.scrollBar: false
 
+! Scrollback buffer in secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
 ! Make URLs clickable
 URxvt.url-launcher: firefox
 URxvt.matcher.button: 1

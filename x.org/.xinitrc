@@ -40,4 +40,4 @@ if which feh >/dev/null 2>&1; then
 	fi
 fi
 
-exec openbox
+exec openbox-session

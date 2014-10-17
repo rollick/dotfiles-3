@@ -175,9 +175,9 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Evince">
+	<item label="Epdfview">
 		<action name="Execute">
-			<command>evince</command>
+			<command>epdfview</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

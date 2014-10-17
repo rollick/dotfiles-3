@@ -19,7 +19,7 @@ URxvt.cursorBlink: true
 URxvt.cursorUnderline: true
 
 ! Font settings
-URxvt.font: xft:Fira Mono:size=10
+URxvt.font: xft:Droid Sans Mono:size=10
 
 ! Scrollbar settings
 URxvt.scrollBar: false

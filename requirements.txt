@@ -1,9 +1,9 @@
 openbox:
  - feh
- - lal
  - xorg-xmodmap
  - numlockx
- - docker-tray
+ - xfce4-notifyd
+ - xfce4-volumed
 
 ncdu-select:
  - zenity

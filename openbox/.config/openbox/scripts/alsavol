@@ -79,7 +79,7 @@ def parse_arguments(argv=None):
                                      epilog=epilog,
                                      formatter_class=formatter,
                                      usage=usage)
-    parser.add_argument('action', default="up", nargs='*')
+    parser.add_argument('action', default='up', nargs='*')
     parser.add_argument('--mixer',
                         default='Master')
     parser.add_argument('--help',
@@ -134,15 +134,9 @@ def main(argv=None):
 
     if mixer.getmute()[0]:
         vol = 'Mute'
-    else:
-        vol = '{}%'.format(mixer.getvolume()[0])
-
-    # Show notification
-    Notify.init(sys.argv[0])
-
-    if mixer.getmute():
         icon = 'audio-volume-muted'
     else:
+        vol = mixer.getvolume()[0]
         if vol == 0:
             icon = 'audio-volume-off'
         elif vol < 33:
@@ -151,14 +145,19 @@ def main(argv=None):
             icon = 'audio-volume-medium'
         else:
             icon = 'audio-volume-high'
+        vol = '{}%'.format(vol)
 
-    notify = Notify.Notification.new("Volume Control - {}".format(args.mixer),
-                                     vol, icon)
+    # Show notification
+    Notify.init(sys.argv[0])
+
+    notify = Notify.Notification.new('Volume Control',
+                                     '{}: {}'.format(args.mixer, vol),
+                                     icon)
     notify.set_hint_int32('transient', int(True))
 
     notify.show()
 
     return 0
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     sys.exit(main())

@@ -124,6 +124,14 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
+	<item label="Deluge">
+		<action name="Execute">
+			<command>deluge-gtk</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Firefox">
 		<action name="Execute">
 			<command>firefox</command>
@@ -135,14 +143,6 @@
 	<item label="Gmail">
 		<action name="Execute">
 			<command>firefox https://www.gmail.com</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
-	<item label="Transmission">
-		<action name="Execute">
-			<command>transmission-gtk</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

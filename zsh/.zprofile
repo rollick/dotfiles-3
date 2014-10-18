@@ -7,3 +7,10 @@
 if [[ -e "${HOME}/.profile" ]]; then
 	source "${HOME}/.profile"
 fi
+
+# Start X session
+if [[ -z ${DISPLAY} && ${XDG_VTNR} -eq 1 ]]; then
+	if which startx &>|/dev/null; then
+		exec startx
+	fi
+fi

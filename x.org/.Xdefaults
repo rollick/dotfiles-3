@@ -11,7 +11,7 @@ Xft.hintstyle: hintslight
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! General settings
 URxvt.geometry: 90x20
-URxvt.perl-ext-common: default,clipboard,matcher,fullscreen
+URxvt.perl-ext-common: default,clipboard,fullscreen,matcher,url-select
 URxvt.iconFile: /usr/share/icons/elementary-xfce/apps/128/terminal.svg
 
 ! Cursor settings
@@ -31,8 +31,13 @@ URxvt.secondaryScroll: 0
 ! Make URLs clickable
 URxvt.url-launcher: firefox
 URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg8
+URxvt.url-select.launcher: firefox
+URxvt.url-select.underline: true
 
+! Keybindings
 URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.keysym.M-u: perl:url-select:select_next
 
 ! Molokai colorscheme
 URxvt.color0: #121212121212

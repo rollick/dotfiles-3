@@ -1,11 +1,13 @@
 #!/bin/bash
+CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 mkdir --verbose -p "${HOME}/.moc"
 mkdir --verbose -p "${HOME}/.ssh"
 mkdir --verbose -p "${HOME}/.unison"
 mkdir --verbose -p "${HOME}/.icons"
 mkdir --verbose -p "${HOME}/.vim"
-mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}"
-mkdir --verbose -p "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0"
+mkdir --verbose -p "${CONFIG_HOME}"
+mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
+mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} cups
@@ -20,5 +22,6 @@ stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison
 stow --verbose -R -t ${HOME} vim
+stow --verbose -R -t ${HOME} xfce4-notifyd
 stow --verbose -R -t ${HOME} x.org
 stow --verbose -R -t ${HOME} zsh

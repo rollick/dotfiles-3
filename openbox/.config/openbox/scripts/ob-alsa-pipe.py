@@ -53,14 +53,14 @@ def create_mixer_menu(parent, control):
     mixer = alsa.Mixer(control)
     cur_vol = calc_volume(mixer.getvolume()[0])
 
-    if mixer.getmute()[0] == 1:
+    if mixer.getmute()[0]:
         obpm.create_action(parent,
                            'Unmute',
-                           'alsavol --mixer {} unmute'.format(control))
+                           'amixer sset {} unmute'.format(control))
     else:
         obpm.create_action(parent,
                            'Mute',
-                           'alsavol --mixer {} mute'.format(control))
+                           'amixer sset {} mute'.format(control))
 
     obpm.create_separator(parent)
 
@@ -70,8 +70,8 @@ def create_mixer_menu(parent, control):
         else:
             obpm.create_action(parent,
                                '{}%'.format(vol),
-                               'alsavol --mixer {} set {}%'.format(control,
-                                                                   vol))
+                               'amixer sset {} {}%'.format(control,
+                                                           vol))
 
 
 def parse_arguments(argv=None):

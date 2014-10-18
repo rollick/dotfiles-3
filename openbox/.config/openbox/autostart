@@ -7,4 +7,8 @@ if which xcompmgr >/dev/null 2>&1; then
 	xcompmgr &
 fi
 
+# Handle multimedia keys
+if which xfce4-volumed >/dev/null 2>&1; then
+	xfce4-volumed &
+fi
 # vim: ft=sh

@@ -10,7 +10,7 @@ Xft.hintstyle: hintslight
 ! URxvt
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! General settings
-URxvt.geometry: 90x20
+URxvt.geometry: 90x30
 URxvt.perl-ext-common: default,clipboard,fullscreen,matcher,url-select,vtwheel
 URxvt.iconFile: /usr/share/icons/elementary-xfce/apps/128/terminal.svg
 

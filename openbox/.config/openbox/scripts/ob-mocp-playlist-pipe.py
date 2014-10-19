@@ -45,7 +45,7 @@ def parse_arguments(argv=None):
               '<https://github.com/rscholer/dotfiles/issues/>\n'
               '%(prog)s home page: '
               '<https://github.com/rscholer/dotfiles/>')
-    usage = '%(prog)s [OPTIONS]...'
+    usage = '%(prog)s [OPTIONS]... DIR'
     version = ('%(prog)s 1.0\n'
                'Copyright (C) 2014 by Raphael Scholer\n\n'
                'Permission is hereby granted, free of charge, '
@@ -84,8 +84,9 @@ def parse_arguments(argv=None):
                                      formatter_class=formatter,
                                      usage=usage)
 
-    parser.add_argument('--directory',
+    parser.add_argument('directory',
                         nargs=1,
+                        metavar='DIR',
                         help='directory to inspect')
     parser.add_argument('--debug',
                         action='store_true',
@@ -141,7 +142,7 @@ def main(argv=None):
                 obpm.create_pipe_menu(parent,
                                       'moc-playlist-{}-pipe'.format(d[1]),
                                       d[0],
-                                      '{} --directory "{}"'.format(sys.argv[0],
+                                      '{} "{}"'.format(sys.argv[0],
                                                                    d[1]))
         else:
             obpm.create_action(root,

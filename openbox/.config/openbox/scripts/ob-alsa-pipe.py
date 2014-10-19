@@ -92,7 +92,7 @@ def parse_arguments(argv=None):
               '<https://github.com/rscholer/dotfiles/issues/>\n'
               '%(prog)s home page: '
               '<https://github.com/rscholer/dotfiles/>')
-    usage = '%(prog)s [OPTIONS]...'
+    usage = '%(prog)s [OPTIONS]... MIXER'
     version = ('%(prog)s 1.0\n'
                'Copyright (C) 2014 by Raphael Scholer\n\n'
                'Permission is hereby granted, free of charge, '
@@ -131,12 +131,15 @@ def parse_arguments(argv=None):
                                      formatter_class=formatter,
                                      usage=usage)
 
+    parser.add_argument('mixer',
+                        metavar='MIXER',
+                        nargs='?',
+                        default=None,
+                        help="mixer to control")
     parser.add_argument('--debug',
                         action='store_true',
                         default=False,
                         help='debug output')
-    parser.add_argument('--mixer',
-                        default=None)
     parser.add_argument('--help',
                         action='help',
                         help='display this help and exit')
@@ -176,7 +179,7 @@ def main(argv=None):
             obpm.create_pipe_menu(root,
                                   'pipe-alsa-{}-menu'.format(mixer.lower()),
                                   mixer,
-                                  '{} --mixer {}'.format(sys.argv[0], mixer))
+                                  '{} {}'.format(sys.argv[0], mixer))
     else:
         if args.mixer in mixers:
             create_mixer_menu(root, args.mixer)

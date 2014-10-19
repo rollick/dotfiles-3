@@ -1,5 +1,6 @@
 openbox:
  - feh
+ - lal
  - xorg-xmodmap
  - numlockx
  - xfce4-notifyd

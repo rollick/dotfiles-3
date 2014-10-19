@@ -1,2 +1,0 @@
-#!/bin/bash
-notify-send -u low -i date -t 1500 "$(date +%F)" "$(date +%R)"

@@ -1,4 +1,12 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! lal
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+lal*bold: true
+lal*color: #dcdcdc
+lal*font: Droid Sans
+lal*width: 90
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Xft
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Xft.antialias: true

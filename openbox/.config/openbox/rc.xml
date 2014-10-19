@@ -477,12 +477,6 @@
 		<keybind key="Escape">
 			<action name="BreakChroot"/>
 		</keybind>
-		<keybind key="d">
-			<action name="Execute">
-				<command>ob-clock</command>
-			</action>
-			<action name="BreakChroot"/>
-		</keybind>
 		<keybind key="m">
 			<action name="Execute">
 				<command>termopen mocp</command>

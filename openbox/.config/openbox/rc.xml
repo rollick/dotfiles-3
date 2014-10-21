@@ -24,7 +24,7 @@
 </placement>
 
 <theme>
-	<name>Numix Frost</name>
+	<name>Numix</name>
 	<titleLayout>LC</titleLayout>
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>

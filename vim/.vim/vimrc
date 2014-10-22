@@ -44,7 +44,9 @@ set number
 set textwidth=79
 
 " Setup colorschemes
-colorscheme molokai
+if &t_Co == 256 || has("gui_running")
+	colorscheme distinguished
+endif
 
 " Enable colorcolumn and cursorline
 if &t_Co > 2 || has("gui_running")

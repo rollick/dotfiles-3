@@ -50,7 +50,7 @@ URxvt.keysym.F11: perl:fullscreen:switch
 URxvt.keysym.M-u: perl:url-select:select_next
 
 ! Molokai colorscheme
-URxvt.color0: #121212121212
+URxvt.color0: #000000000000
 URxvt.color1: #f9f926267272
 URxvt.color2: #8282b4b41414
 URxvt.color3: #fdfd97971f1f
@@ -67,4 +67,4 @@ URxvt.color13: #9e9e6f6ffefe
 URxvt.color14: #89899c9ca1a1
 URxvt.color15: #f8f8f8f8f2f2
 URxvt.foreground: #a0a0a0a0a0a0
-URxvt.background: #121212121212
+URxvt.background: #000000000000

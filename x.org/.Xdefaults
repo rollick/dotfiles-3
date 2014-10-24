@@ -20,7 +20,7 @@ Xft.hintstyle: hintslight
 ! General settings
 URxvt.geometry: 90x30
 URxvt.perl-ext-common: default,clipboard,fullscreen,matcher,url-select,vtwheel
-URxvt.iconFile: /usr/share/icons/gnome/32x32/apps/utilities-terminal.png
+URxvt.iconFile: /usr/share/icons/Numix-Circle/scalable/apps/utilities_terminal.svg
 
 ! Cursor settings
 URxvt.cursorBlink: true

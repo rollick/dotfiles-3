@@ -49,22 +49,22 @@ URxvt.keysym.C-S-v: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 URxvt.keysym.M-u: perl:url-select:select_next
 
-! Molokai colorscheme
-URxvt.color0: #000000000000
-URxvt.color1: #f9f926267272
-URxvt.color2: #8282b4b41414
-URxvt.color3: #fdfd97971f1f
-URxvt.color4: #5656c2c2d6d6
-URxvt.color5: #8c8c5454fefe
-URxvt.color6: #464654545757
-URxvt.color7: #ccccccccc6c6
-URxvt.color8: #505053535454
-URxvt.color9: #ffff59599595
-URxvt.color10: #b6b6e3e35454
-URxvt.color11: #fefeeded6c6c
-URxvt.color12: #8c8cededffff
-URxvt.color13: #9e9e6f6ffefe
-URxvt.color14: #89899c9ca1a1
-URxvt.color15: #f8f8f8f8f2f2
-URxvt.foreground: #a0a0a0a0a0a0
-URxvt.background: #000000000000
+! Tango colortheme
+URxvt.background: #000000
+URxvt.foreground: #ffffff
+URxvt.color0: #2E2E34343636
+URxvt.color1: #CCCC00000000
+URxvt.color2: #4E4E9A9A0606
+URxvt.color3: #C4C4A0A00000
+URxvt.color4: #34346565A4A4
+URxvt.color5: #757550507B7B
+URxvt.color6: #060698209A9A
+URxvt.color7: #D3D3D7D7CFCF
+URxvt.color8: #555557575353
+URxvt.color9: #EFEF29292929
+URxvt.color10: #8A8AE2E23434
+URxvt.color11: #FCFCE9E94F4F
+URxvt.color12: #72729F9FCFCF
+URxvt.color13: #ADAD7F7FA8A8
+URxvt.color14: #3434E2E2E2E2
+URxvt.color15: #EEEEEEEEECEC

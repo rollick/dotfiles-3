@@ -44,8 +44,8 @@ URxvt.url-select.launcher: firefox
 URxvt.url-select.underline: true
 
 ! Keybindings
-URxvt.keysym.C-c: perl:clipboard:copy
-URxvt.keysym.C-v: perl:clipboard:paste
+URxvt.keysym.C-S-c: perl:clipboard:copy
+URxvt.keysym.C-S-v: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 URxvt.keysym.M-u: perl:url-select:select_next
 

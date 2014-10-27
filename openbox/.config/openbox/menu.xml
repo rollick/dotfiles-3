@@ -252,7 +252,7 @@
 	</item>
 	<item label="Terminal">
 		<action name="Execute">
-			<command>urxvt</command>
+			<command>smallterm</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

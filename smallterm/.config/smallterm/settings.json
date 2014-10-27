@@ -1,0 +1,10 @@
+{
+	"cursor": {
+		"blink_mode": "system",
+		"shape": "underline"
+	},
+	"general": {
+		"mouse_autohide": true,
+		"scrollback_lines": 10000
+	}
+}

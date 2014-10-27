@@ -12,17 +12,16 @@ mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
 
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} cups
-stow --verbose -R -t ${HOME} dunst
 stow --verbose -R -t ${HOME} moc
 stow --verbose -R -t ${HOME} mpv
 stow --verbose -R -t ${HOME} octave
 stow --verbose -R -t ${HOME} openbox
 stow --verbose -R -t ${HOME} profile-cleaner
 stow --verbose -R -t ${HOME} shells
+stow --verbose -R -t ${HOME} smallterm
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} unison
 stow --verbose -R -t ${HOME} vim
-stow --verbose -R -t ${HOME} xfce4-notifyd
 stow --verbose -R -t ${HOME} x.org
 stow --verbose -R -t ${HOME} zsh

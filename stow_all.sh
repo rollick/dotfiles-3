@@ -11,7 +11,6 @@ if [[ ${UID} -ne 0 ]]; then
 	CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 	mkdir --verbose -p "${HOME}/.moc"
 	mkdir --verbose -p "${HOME}/.unison"
-	mkdir --verbose -p "${HOME}/.icons"
 	mkdir --verbose -p "${HOME}/.themes"
 	mkdir --verbose -p "${CONFIG_HOME}"
 	mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"

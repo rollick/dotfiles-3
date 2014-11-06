@@ -25,7 +25,7 @@
 
 <theme>
 	<name>Numix</name>
-	<titleLayout>LC</titleLayout>
+	<titleLayout>DLC</titleLayout>
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>
 	<font place="ActiveWindow">

@@ -637,7 +637,7 @@ MOCDir = ~/.moc
 #
 # Example:    OnSongChange = "/home/jack/.moc/myscript %a %r"
 #
-OnSongChange = "/home/raphael/.moc/notify.sh %t %a %r"
+OnSongChange = "/home/raphael/.moc/notify.sh %t %a %r %f"
 
 # If RepeatSongChange is 'yes' then MOC will execute the command every time
 # a song starts playing regardless of whether or not it is just repeating.

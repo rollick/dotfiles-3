@@ -12,6 +12,9 @@ if which xfce4-volumed >/dev/null 2>&1; then
 	xfce4-volumed &
 fi
 
+if which thunar >/dev/null 2>&1; then
+	thunar --daemon &
+fi
 # Display clock
 if which ob-clock.sh >/dev/null 2>&1; then
 	ob-clock.sh &

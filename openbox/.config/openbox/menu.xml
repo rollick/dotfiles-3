@@ -242,6 +242,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="File Manager">
+		<action name="Execute">
+			<command>thunar</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="System monitor">
 		<action name="Execute">
 			<command>termopen htop</command>
@@ -349,15 +357,6 @@
 </menu>
 
 <menu id="system-administration-menu" label="Administration">
-	<item label="Printers">
-		<action name="Execute">
-			<command>firefox http://localhost:631/</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-				<icon>cups</icon>
-			</startupnotify>
-		</action>
-	</item>
 	<item label="Notifications">
 		<action name="Execute">
 			<command>xfce4-notifyd-config</command>
@@ -367,6 +366,23 @@
 		</action>
 	</item>
 	<menu id="system-openbox-menu"/>
+	<item label="Printers">
+		<action name="Execute">
+			<command>firefox http://localhost:631/</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+				<icon>cups</icon>
+			</startupnotify>
+		</action>
+	</item>
+	<item label="Removable Drives">
+		<action name="Execute">
+			<command>thunar-volman-settings</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<menu id="pipe-alsa-menu" />
 </menu>
 

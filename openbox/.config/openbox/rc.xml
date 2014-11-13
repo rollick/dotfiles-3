@@ -138,22 +138,7 @@
 	<!-- Keybindings to control Music On Console -->
 	<keybind key="XF86Tools">
 		<action name="Execute">
-			<command>termopen mocp</command>
-		</action>
-	</keybind>
-	<keybind key="XF86AudioNext">
-		<action name="Execute">
-			<command>mocp --next</command>
-		</action>
-	</keybind>
-	<keybind key="XF86AudioPlay">
-		<action name="Execute">
-			<command>mocp --toggle-pause</command>
-		</action>
-	</keybind>
-	<keybind key="XF86AudioPrev">
-		<action name="Execute">
-			<command>mocp --previous</command>
+			<command>quodlibet</command>
 		</action>
 	</keybind>
 
@@ -164,11 +149,7 @@
 		</action>
 	</keybind>
 
-	<keybind key="W-m">
-		<action name="ShowMenu">
-			<menu>pipe-moc-menu</menu>
-		</action>
-	</keybind>
+	<!-- Keybindings for volume menu -->
 	<keybind key="W-v">
 		<action name="ShowMenu">
 			<menu>pipe-alsa-menu</menu>
@@ -475,12 +456,6 @@
 	<!-- Keybindings for running applications -->
 	<keybind key="W-e" chroot="true">
 		<keybind key="Escape">
-			<action name="BreakChroot"/>
-		</keybind>
-		<keybind key="m">
-			<action name="Execute">
-				<command>termopen mocp</command>
-			</action>
 			<action name="BreakChroot"/>
 		</keybind>
 		<keybind key="r">

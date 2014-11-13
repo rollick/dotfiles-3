@@ -4,7 +4,6 @@
 
 <!-- Pipe menus -->
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe.py" />
-<menu id="pipe-moc-menu" label="Music On Console" execute="ob-mocp-pipe.py" />
 
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">
@@ -113,9 +112,9 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Music On Console">
+	<item label="Quod Libet">
 		<action name="Execute">
-			<command>termopen mocp</command>
+			<command>quodlibet</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -396,9 +395,8 @@
 	<menu id="apps-net-menu"/>
 	<menu id="apps-office-menu"/>
 	<menu id="apps-system-menu"/>
-	<separator label="Control" />
-	<menu id="pipe-moc-menu" />
-	<menu id="pipe-alsa-menu" />
+	<!--<separator label="Control" />-->
+	<!--<menu id="pipe-alsa-menu" />-->
 	<separator label="System" />
 	<menu id="system-administration-menu"/>
 	<separator />

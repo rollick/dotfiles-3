@@ -9,7 +9,6 @@ stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
 	CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-	mkdir --verbose -p "${HOME}/.moc"
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${HOME}/.themes"
 	mkdir --verbose -p "${CONFIG_HOME}"
@@ -17,7 +16,6 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} cups
-	stow --verbose -R -t ${HOME} moc
 	stow --verbose -R -t ${HOME} mpv
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox

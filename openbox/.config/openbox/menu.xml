@@ -249,6 +249,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="FSlint">
+		<action name="Execute">
+			<command>fslint-gui</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="System monitor">
 		<action name="Execute">
 			<command>termopen htop</command>
@@ -356,6 +364,14 @@
 </menu>
 
 <menu id="system-administration-menu" label="Administration">
+	<item label="Desktop backgrounds">
+		<action name="Execute">
+			<command>nitrogen</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Notifications">
 		<action name="Execute">
 			<command>xfce4-notifyd-config</command>

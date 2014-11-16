@@ -25,10 +25,8 @@ if which numlockx >/dev/null 2>&1; then
 fi
 
 # Set Wallpaper
-if which feh >/dev/null 2>&1; then
-	if [[ -e "${HOME}/.fehbg" ]];then
-		. "${HOME}/.fehbg" &
-	fi
+if which nitrogen >/dev/null 2>&1; then
+	nitrogen --restore &
 fi
 
 exec openbox-session

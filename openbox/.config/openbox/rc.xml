@@ -458,6 +458,13 @@
 		</action>
 	</keybind>
 
+	<!-- Lock screen -->
+	<keybind key="W-l">
+		<action name="Execute">
+			<command>ob-lock.sh</command>
+		</action>
+	</keybind>
+
 	<!-- Keybindings for running applications -->
 	<keybind key="W-e" chroot="true">
 		<keybind key="Escape">

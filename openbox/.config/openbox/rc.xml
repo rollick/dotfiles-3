@@ -461,7 +461,7 @@
 	<!-- Lock screen -->
 	<keybind key="W-l">
 		<action name="Execute">
-			<command>ob-lock.sh</command>
+			<command>xautolock -locknow</command>
 		</action>
 	</keybind>
 

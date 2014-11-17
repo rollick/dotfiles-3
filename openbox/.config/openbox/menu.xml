@@ -327,7 +327,7 @@
 	<item label="Lock screen">
 		<action name="Execute">
 			<prompt>Are you sure you want to lock the screen?</prompt>
-			<command>ob-lock.sh</command>
+			<command>xautolock -locknow</command>
 		</action>
 	</item>
 	<item label="Log Out">

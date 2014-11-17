@@ -24,9 +24,4 @@ if which numlockx >/dev/null 2>&1; then
 	fi
 fi
 
-# Set Wallpaper
-if which nitrogen >/dev/null 2>&1; then
-	nitrogen --restore &
-fi
-
 exec openbox-session

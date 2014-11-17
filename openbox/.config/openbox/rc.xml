@@ -163,6 +163,11 @@
 		</action>
 	</keybind>
 
+	<!-- Keybinding for toggling fullscreen mode -->
+	<keybind key="A-F11">
+		<action name="ToggleFullscreen" />
+	</keybind>
+
 	<!-- Edge tiling -->
 	<keybind key="W-a" chroot="true">
 		<!-- Break chroot -->

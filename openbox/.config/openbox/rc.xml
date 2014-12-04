@@ -121,7 +121,7 @@
 	<!-- Misc. keybindings -->
 	<keybind key="XF86Calculator">
 		<action name="Execute">
-			<command>termopen octave</command>
+			<command>termopen octave --silent</command>
 		</action>
 	</keybind>
 	<keybind key="XF86HomePage">

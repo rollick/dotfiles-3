@@ -126,12 +126,12 @@
 	</keybind>
 	<keybind key="XF86HomePage">
 		<action name="Execute">
-			<command>firefox</command>
+			<command>chromium</command>
 		</action>
 	</keybind>
 	<keybind key="XF86Mail">
 		<action name="Execute">
-			<command>firefox https://www.gmail.com/</command>
+			<command>chromium --app=https://www.gmail.com/</command>
 		</action>
 	</keybind>
 

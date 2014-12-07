@@ -131,6 +131,14 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
+	<item label="Chromium">
+		<action name="Execute">
+			<command>chromium</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Deluge">
 		<action name="Execute">
 			<command>deluge-gtk</command>
@@ -139,17 +147,9 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Firefox">
-		<action name="Execute">
-			<command>firefox</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 	<item label="Gmail">
 		<action name="Execute">
-			<command>firefox https://www.gmail.com</command>
+			<command>chromium --app=https://www.gmail.com</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -383,7 +383,7 @@
 	<menu id="system-openbox-menu"/>
 	<item label="Printers">
 		<action name="Execute">
-			<command>firefox http://localhost:631/</command>
+			<command>chromium --app=http://localhost:631/</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 				<icon>cups</icon>

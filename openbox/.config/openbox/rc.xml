@@ -726,6 +726,12 @@
 
 <applications>
 <!-- See "/etc/xdg/openbox/rc.xml". -->
+	<application name="smallterm">
+		<size>
+			<width>750</width>
+			<height>400</height>
+		</size>
+	</application>
 	<application name="simpleterm">
 		<size>
 			<width>750</width>

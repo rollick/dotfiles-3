@@ -54,6 +54,11 @@ ignore = Path .moc/pid
 ignore = Path .moc/playlist.m3u
 ignore = Path .moc/socket2
 ignore = Path .moc/softmixer
+ignore = Path .quodlibet/accels
+ignore = Path .quodlibet/control
+ignore = Path .quodlibet/current
+ignore = Path .quodlibet/queue
+ignore = Path .quodlibet/songinfo
 ignore = Path .vim/.recently-used
 
 ####################
@@ -82,6 +87,7 @@ path = .local
 path = .mozilla
 path = .purple
 path = .pylint.d
+path = .quodlibet
 path = .snes9x
 path = .themes
 path = .unison

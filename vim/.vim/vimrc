@@ -192,6 +192,7 @@ autocmd BufNewFile,BufRead CHANGELOG set filetype=changelog
 autocmd BufNewFile,BufRead NEWS set filetype=changelog
 autocmd BufNewFile,BufRead PKGBUILD set filetype=PKGBUILD
 autocmd BufNewFile,BufRead ~/.devilspie/*.ds set filetype=lisp
+autocmd BufNewFile,BufRead ~/.makepkg.conf set filetype=sh
 autocmd BufNewFile,BufRead ~/.ssh.local/*/config set filetype=sshconfig
 autocmd BufNewFile,BufRead */.unison/*.prf set filetype=config
 autocmd BufNewFile,BufRead */.unison/*.inc set filetype=config

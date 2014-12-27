@@ -1,9 +1,0 @@
-#!/bin/bash
-if which zenity >/dev/null 2>&1; then
-	path="$(zenity --file-selection --directory)"
-	if [[ ! -z ${path} ]]; then
-		termopen ncdu "${path}"
-	fi
-else
-	termopen ncdu
-fi

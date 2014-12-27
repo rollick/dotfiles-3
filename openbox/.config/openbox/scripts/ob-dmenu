@@ -1,7 +1,0 @@
-#!/bin/bash
-dmenu_run -fn "Droid Sans-10" \
-		  -nb "#2d2d2d" \
-		  -nf "#dcdcdc" \
-		  -sb "#d64937" \
-		  -sf "#f9f9f9" \
-		  -p "Run:"

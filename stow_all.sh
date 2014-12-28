@@ -12,7 +12,6 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${CONFIG_HOME}"
 	stow --verbose -R -t ${HOME} appearance
-	stow --verbose -R -t ${HOME} cups
 	stow --verbose -R -t ${HOME} profile-cleaner
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org

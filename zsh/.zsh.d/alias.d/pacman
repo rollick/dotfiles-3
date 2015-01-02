@@ -1,0 +1,5 @@
+if [[ ${UID} -ne 0 ]]; then
+	if which pacaur &>|/dev/null; then
+		alias pacman='pacaur'
+	fi
+fi

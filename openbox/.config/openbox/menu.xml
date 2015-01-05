@@ -166,25 +166,9 @@
 </menu>
 
 <menu id="apps-office-menu" label="Office">
-	<item label="Atril">
-		<action name="Execute">
-			<command>atril</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 	<item label="Calibre">
 		<action name="Execute">
 			<command>calibre</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
-	<item label="Ebook Viewer">
-		<action name="Execute">
-			<command>ebook-viewer --detach</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

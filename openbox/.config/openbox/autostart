@@ -1,0 +1,36 @@
+#
+# These things are run when an Openbox X Session is started.
+#
+
+# Set wallpaper
+if which feh >/dev/null 2>&1; then
+	if [[ -f ${HOME}/.fehbg ]]; then
+		. "${HOME}/.fehbg" &
+	fi
+fi
+
+# Enable transparency effects
+if which xcompmgr >/dev/null 2>&1; then
+	xcompmgr &
+fi
+
+# Handle multimedia keys
+if which xfce4-volumed >/dev/null 2>&1; then
+	xfce4-volumed &
+fi
+
+# Start X session locker
+if which xautolock >/dev/null 2>&1; then
+	xautolock &
+fi
+
+# Run thunar as daemon (Allows auto-mounting of devices)
+if which thunar >/dev/null 2>&1; then
+	thunar --daemon &
+fi
+
+# Display clock
+if which ob-clock.sh >/dev/null 2>&1; then
+	ob-clock.sh &
+fi
+# vim: ft=sh

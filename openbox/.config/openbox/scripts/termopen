@@ -1,0 +1,3 @@
+#!/bin/sh
+# Wrapper for opening a program inside a terminal.
+simpleterm -e ${@} &

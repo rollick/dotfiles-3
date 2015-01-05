@@ -29,4 +29,4 @@ if which numlockx >/dev/null 2>&1; then
 	fi
 fi
 
-exec mate-session
+exec openbox-session

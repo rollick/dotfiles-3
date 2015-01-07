@@ -478,7 +478,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>simpleterm</command>
+				<command>sakura</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>
@@ -732,7 +732,7 @@
 			<height>400</height>
 		</size>
 	</application>
-	<application name="simpleterm">
+	<application name="sakura">
 		<size>
 			<width>750</width>
 			<height>400</height>

@@ -259,7 +259,7 @@
 	</item>
 	<item label="Terminal">
 		<action name="Execute">
-			<command>simpleterm</command>
+			<command>sakura</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

@@ -114,7 +114,7 @@
 	<!-- Keybinding for application launcher -->
 	<keybind key="A-F2">
 		<action name="Execute">
-			<command>ob-dmenu</command>
+			<command>dmenu_run -p "Run:"</command>
 		</action>
 	</keybind>
 

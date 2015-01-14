@@ -70,8 +70,7 @@ def create_mixer_menu(parent, control):
         else:
             obpm.create_action(parent,
                                '{}%'.format(vol),
-                               'amixer sset {} {}%'.format(control,
-                                                           vol))
+                               'amixer sset {} {}%'.format(control, vol))
 
 
 def parse_arguments(argv=None):

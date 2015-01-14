@@ -164,9 +164,8 @@ def main(argv=None):
     # Parse argv
     args = parse_arguments(argv)
 
-    supported_mixers = ['Headphone', 'Speaker', 'Master']
-    available_mixers = alsa.mixers()
-    mixers = [x for x in supported_mixers if x in available_mixers]
+    supported_mixers = ('Headphone', 'Speaker', 'Master')
+    mixers = (x for x in supported_mixers if x in alsa.mixers())
 
     root = obpm.create_root()
 

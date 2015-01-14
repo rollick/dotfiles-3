@@ -34,12 +34,23 @@ if which rsync >/dev/null 2>&1 && which ssh >/dev/null 2>&1; then
 		export RSYNC_RSH="ssh"
 fi
 
-if which python >/dev/null 2>&1; then
+if which python >/dev/null 2>&1 || which python2 >/dev/null; then
 	# Don't write bytecode on importing
 	export PYTHONDONTWRITEBYTECODE=1
 
 	# Set up virtual environments for python
 	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
+
+	# Move cache for zipped eggs
+	if [[ ! -d "/tmp/python-eggs-${UID}" ]]; then
+		mkdir "/tmp/python-eggs-${UID}"
+		chmod 700 "/tmp/python-eggs-${UID}"
+	fi
+	export PYTHON_EGG_CACHE="/tmp/python-eggs-${UID}"
+
+	if which pylint >/dev/null 2>&1; then
+		export PYLINTHOME="${XDG_CACHE:-${HOME}/.cache/pylint}"
+	fi
 fi
 
 # Set some paths for mpv

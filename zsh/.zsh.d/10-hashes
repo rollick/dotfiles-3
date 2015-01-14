@@ -1,4 +1,7 @@
 # Add some directories to the hashtable
+CACHE_HOME="${XDG_CACHE_HOME:-${HOME}/.cache}"
+
+[[ -d "$CACHE_HOME/aur-src" ]] && hash -d aurcache="${CACHE_HOME}/aur-src"
 [[ -d '/var/log' ]] && hash -d log='/var/log'
 [[ -d '/var/log/old' ]] && hash -d alog='/var/log/old'
 [[ -d "/var/spool/cups-pdf/${USER}" ]] && hash -d cups-pdf="/var/spool/cups-pdf/${USER}"
@@ -18,3 +21,5 @@ for d in "${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"/Code/{Local,Remote}/*(FN); do
 		hash -d "git-$(basename ${d})"=${d}
 	fi
 done
+
+unset CACHE_HOME

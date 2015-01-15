@@ -1,8 +1,3 @@
 alias view="rview"
 alias vim="vim -p"
 alias vi='vim'
-if [[ -f "${HOME}/.vim/vimencrypt.vim" ]]; then
-		alias vime="vim -p -u \"${HOME}/.vim/vimencrypt.vim\" -x"
-else
-	alias vime="vim -p -x"
-fi

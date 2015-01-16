@@ -382,6 +382,11 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Screensaver">
+		<action name="Execute">
+			<command>screensaver_toggle.sh</command>
+		</action>
+	</item>
 	<menu id="pipe-alsa-menu" />
 </menu>
 

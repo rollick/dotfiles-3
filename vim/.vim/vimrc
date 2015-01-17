@@ -199,7 +199,6 @@ autocmd BufNewFile,BufRead */.unison/*.inc set filetype=config
 autocmd BufNewFile,Bufread ~/.vim/vimencrypt set filetype=vim
 autocmd BufNewFile,BufRead */.zsh.d/* set filetype=zsh
 autocmd BufNewFile,BufRead /etc/sudoers.d set filetype=sudoer
-autocmd BufNewFile,BufRead /etc/systemd/*.conf set filetype=systemd
 autocmd BufNewFile,BufRead /usr/share/tmux/*.conf set filetype=tmux
 autocmd BufNewFile,BufRead /usr/share/zsh/*functions/* set filetype=zsh
 

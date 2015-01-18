@@ -400,8 +400,6 @@
 	<menu id="apps-net-menu"/>
 	<menu id="apps-office-menu"/>
 	<menu id="apps-system-menu"/>
-	<!--<separator label="Control" />-->
-	<!--<menu id="pipe-alsa-menu" />-->
 	<separator label="System" />
 	<menu id="system-administration-menu"/>
 	<separator />

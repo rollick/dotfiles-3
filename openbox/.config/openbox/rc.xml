@@ -470,6 +470,12 @@
 		<keybind key="Escape">
 			<action name="BreakChroot"/>
 		</keybind>
+		<keybind key="f">
+			<action name="Execute">
+				<command>thunar</command>
+			</action>
+			<action name="BreakChroot"/>
+		</keybind>
 		<keybind key="r">
 			<action name="Execute">
 				<command>openbox --reconfigure</command>

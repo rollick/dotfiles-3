@@ -11,10 +11,10 @@ dmenu.selforeground: #f9f9f9
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! lal
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lal*bold: true
-lal*color: #dcdcdc
-lal*font: Droid Sans
-lal*width: 90
+lal.bold: true
+lal.color: #dcdcdc
+lal.font: Droid Sans
+lal.width: 90
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

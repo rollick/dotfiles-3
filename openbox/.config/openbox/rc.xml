@@ -484,7 +484,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>sakura</command>
+				<command>urxvt</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>
@@ -732,7 +732,7 @@
 
 <applications>
 <!-- See "/etc/xdg/openbox/rc.xml". -->
-	<application name="sakura">
+	<application name="urxvt">
 		<size>
 			<width>750</width>
 			<height>400</height>

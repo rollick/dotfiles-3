@@ -104,7 +104,7 @@ function prompt_default_prompt() {
 	####################
 	if which git &>|/dev/null; then
 		ref=${$(git symbolic-ref HEAD 2>|/dev/null)#refs/heads/}
-		if [[ ! -z ${ref} ]]; then
+		if [[ -n "${ref}" ]]; then
 			prompt_info_git=$'\u00B1 '
 
 			# Set branch

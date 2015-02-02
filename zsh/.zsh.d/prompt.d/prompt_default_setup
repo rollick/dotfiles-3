@@ -85,7 +85,7 @@ function prompt_default_prompt() {
 	# tmux information for RPROMPT
 	####################
 	if which tmux &>|/dev/null; then
-		if [[ -z ${TMUX_PANE} ]] && tmux list-session &>|/dev/null; then
+		if [[ -z "${TMUX_PANE}" ]] && tmux list-session &>|/dev/null; then
 			prompt_info_tmux=$'\u2B12 '
 
 			prompt_info_tmux+="$(tmux list-sessions |wc -l)"
@@ -165,7 +165,7 @@ function prompt_default_prompt() {
 	####################
 	() {
 		unset RPROMPT
-		until [[ -z ${1} ]]; do
+		until [[ -z "${1}" ]]; do
 			if [[ "${RPROMPT}" != "" ]]; then
 				RPROMPT+="${prompt_gfx_separator}"
 			else
@@ -174,7 +174,7 @@ function prompt_default_prompt() {
 			RPROMPT+="${prompt_color_rprompt}${1}"
 			shift
 		done
-		if [[ ! -z ${RPROMPT} ]]; then
+		if [[ ! -z "${RPROMPT}" ]]; then
 			RPROMPT+="${prompt_gfx_rbracket}%{$reset_color%}"
 		fi
 	} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}

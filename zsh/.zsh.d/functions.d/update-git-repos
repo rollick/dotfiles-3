@@ -16,7 +16,7 @@ if ! which git &>|/dev/null; then
 	return 1
 fi
 
-if [[ -z ${1} ]]; then
+if [[ -z "${1}" ]]; then
 	local first
 	first=1
 	for d in $(hash -d |grep "^git-" |cut -d "=" -f 2); do
@@ -31,7 +31,7 @@ if [[ -z ${1} ]]; then
 		fi
 	done
 else
-	until [[ -z ${1} ]]; do
+	until [[ -z "${1}" ]]; do
 		if [[ -d "${1}/.git" ]] && [[ ! -f "${1}/.local-repo" ]]; then
 			printhl "$(basename "${1}")"
 			(cd "${1}"; git pull)

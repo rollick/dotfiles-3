@@ -19,6 +19,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} profile-cleaner
+	stow --verbose -R -t ${HOME} sakura
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org
 fi

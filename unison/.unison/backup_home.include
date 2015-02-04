@@ -9,6 +9,7 @@ root = /home/raphael/
 confirmbigdel = false
 log = false
 prefer = newer
+watch = false
 
 ####################
 # Always exclude Unison cache files

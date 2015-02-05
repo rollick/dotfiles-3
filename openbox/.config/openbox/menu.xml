@@ -139,17 +139,17 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Deluge">
+	<item label="Gmail">
 		<action name="Execute">
-			<command>deluge-gtk</command>
+			<command>chromium --app=https://www.gmail.com</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Gmail">
+	<item label="Transmission">
 		<action name="Execute">
-			<command>chromium --app=https://www.gmail.com</command>
+			<command>transmission-gtk</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

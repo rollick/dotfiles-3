@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Setup environment for X sessions
+
+# Fix GTK2+
+if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
+	export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
+fi
+
+# Remove missing accessibility bus messages
+export NO_AT_BRIDGE=1
+# vim: ft=sh

@@ -16,10 +16,10 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} cups
+	stow --verbose -R -t ${HOME} dwt
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} profile-cleaner
-	stow --verbose -R -t ${HOME} sakura
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org
 fi

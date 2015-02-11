@@ -174,7 +174,7 @@ function prompt_default_prompt() {
 			RPROMPT+="${prompt_color_rprompt}${1}"
 			shift
 		done
-		if [[ ! -z "${RPROMPT}" ]]; then
+		if [[ -n "${RPROMPT}" ]]; then
 			RPROMPT+="${prompt_gfx_rbracket}%{$reset_color%}"
 		fi
 	} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}

@@ -1,8 +1,9 @@
 #!/bin/bash
 # Fix for unknown terminals
-if [[ ! -z "${SSH_CONNECTION}" ]] || [[ ! -z "${SSH_TTY}" ]]; then
+if [[ -n "${SSH_CONNECTION}" ]] || [[ ! -z "${SSH_TTY}" ]]; then
 	export TERM=xterm
 fi
+
 # Add some directories to path
 [[ -d "${HOME}/.local/bin" ]] && export PATH="${PATH}:${HOME}/.local/bin"
 

@@ -49,12 +49,9 @@ zstyle ':completion:*:manuals*' insert-sections true
 # Completions for lp
 zstyle ':completion:*:*:lp*:*' tag-order jobs
 
+# Only list non daemon users
 zstyle ':completion:*:*:*:users' ignored-patterns \
-	adm apache at avahi bin bitlbee courier cron daemon dbus exim ftp \
-	git games gdm haldaemon halt hplip http kdm mail man messagebus mysql \
-	nobody ntp lp operator portage postfix postgres postmaster \
-    qmail{d,l,p,q,r,s} shutdown smmsp squid sshd sync usbmux uucp \
-	vpopmail xfs dnsmasq transmission lightdm polkitd git uuidd xbmc rtkit
+	$(awk -F: '{if ($3 > 0 && $3 < 1000) print $1}' /etc/passwd)
 
 # Use the generic gnu-style help (command --help) for the following commands
 () {

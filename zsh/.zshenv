@@ -16,6 +16,5 @@ esac
 
 # Set up syntax highlighting
 if [[ -d "/usr/share/zsh/plugins/zsh-syntax-highlighting/" ]]; then
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-	export ZSH_HIGHLIGHT_HIGHLIGHTERS
+	export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 fi

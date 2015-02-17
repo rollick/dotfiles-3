@@ -40,6 +40,7 @@ ignore = Path .config/nitrogen/bg-saved.cfg
 ignore = Path .config/pulse
 ignore = Path .config/transmission/resume
 ignore = Path .config/transmission/torrents
+ignore = Path .gnupg/S.gpg-agent*
 ignore = Path .local/share/moc
 ignore = Path .local/share/Trash
 ignore = Path .local/share/icc/*

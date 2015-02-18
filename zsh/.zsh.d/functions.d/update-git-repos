@@ -19,7 +19,7 @@ fi
 if [[ -z "${1}" ]]; then
 	local first
 	first=1
-	for d in $(hash -d |sort |grep "^git-" |cut -d "=" -f 2); do
+	for d in $(hash -d |grep "^git-" |cut -d "=" -f 2 |sort); do
 		if [[ -d "${d}/.git" ]] && [[ ! -f "${d}/.local-repo" ]]; then
 			if [[ ${first} -eq 0 ]]; then
 				print ""

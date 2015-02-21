@@ -5,7 +5,7 @@
 dmenu.background: #2d2d2d
 dmenu.foreground: #dcdcdc
 dmenu.font: xft:Droid Sans:size=10
-dmenu.selbackground: #d64937
+dmenu.selbackground: #1793d1
 dmenu.selforeground: #f9f9f9
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!

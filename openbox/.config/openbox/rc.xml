@@ -24,7 +24,7 @@
 </placement>
 
 <theme>
-	<name>Numix</name>
+	<name>Numix-ArchBlue</name>
 	<titleLayout>DLC</titleLayout>
 	<keepBorder>yes</keepBorder>
 	<animateIconify>yes</animateIconify>

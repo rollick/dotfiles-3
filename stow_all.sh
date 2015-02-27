@@ -17,6 +17,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} cups
 	stow --verbose -R -t ${HOME} dwt
+	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} profile-cleaner

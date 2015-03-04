@@ -484,7 +484,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>dwt</command>
+				<command>simpleterm</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>
@@ -732,12 +732,6 @@
 
 <applications>
 <!-- See "/etc/xdg/openbox/rc.xml". -->
-	<application name="dwt">
-		<size>
-			<width>750</width>
-			<height>400</height>
-		</size>
-	</application>
 	<application name="simpleterm">
 		<size>
 			<width>750</width>

@@ -22,6 +22,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} profile-cleaner
 	stow --verbose -R -t ${HOME} unison
+	stow --verbose -R -t ${HOME} xfce4
 	stow --verbose -R -t ${HOME} xfce4-terminal
 	stow --verbose -R -t ${HOME} x.org
 fi

@@ -484,7 +484,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>simpleterm</command>
+				<command>xfce4-terminal</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>
@@ -732,11 +732,5 @@
 
 <applications>
 <!-- See "/etc/xdg/openbox/rc.xml". -->
-	<application name="simpleterm">
-		<size>
-			<width>750</width>
-			<height>400</height>
-		</size>
-	</application>
 </applications>
 </openbox_config>

@@ -1,6 +1,7 @@
 #!/bin/lua
 do
-    local classes = {'Simpleterm',
+    local classes = {'Sakura',
+                     'Simpleterm',
                      'Xfce4-terminal'}
 
     for _, class in ipairs(classes) do

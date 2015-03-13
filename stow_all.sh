@@ -17,7 +17,6 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
 	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} appearance
-	stow --verbose -R -t ${HOME} cups
 	stow --verbose -R -t ${HOME} devilspie2
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} octave

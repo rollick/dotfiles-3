@@ -484,7 +484,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>xfce4-terminal</command>
+				<command>sakura</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

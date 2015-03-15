@@ -13,11 +13,7 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${HOME}/.themes"
 	mkdir --verbose -p "${CONFIG_HOME}"
 	mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
-	mkdir --verbose -p "${CONFIG_HOME}/xfce4"
-	mkdir --verbose -p "${CONFIG_HOME}/xfce4/xfconf/xfce-perchannel-xml"
-	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} appearance
-	stow --verbose -R -t ${HOME} devilspie2
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
@@ -25,6 +21,5 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} ristretto
 	stow --verbose -R -t ${HOME} sakura
 	stow --verbose -R -t ${HOME} unison
-	stow --verbose -R -t ${HOME} xfce4
 	stow --verbose -R -t ${HOME} x.org
 fi

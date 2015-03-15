@@ -170,7 +170,9 @@ def main(argv=None):
     root = obpm.create_root()
 
     if not args.mixer:
-        obpm.create_action(root, 'Open audio mixer', 'termopen alsamixer')
+        obpm.create_action(root,
+                           'Open audio mixer',
+                           'exo-open --launch TerminalEmulator alsamixer')
         obpm.create_separator(root, 'Mixer')
 
         for mixer in mixers:

@@ -2,8 +2,8 @@
 if which zenity >/dev/null 2>&1; then
 	path="$(zenity --file-selection --directory)"
 	if [[ -n "${path}" ]]; then
-		termopen ncdu "${path}"
+		exo-open --launch TerminalEmulator ncdu "${path}"
 	fi
 else
-	termopen ncdu
+	exo-open --launch TerminalEmulator ncdu
 fi

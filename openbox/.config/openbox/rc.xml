@@ -121,7 +121,7 @@
 	<!-- Misc. keybindings -->
 	<keybind key="XF86Calculator">
 		<action name="Execute">
-			<command>termopen octave --silent</command>
+			<command>exo-open --launch TerminalEmulator octave --silent</command>
 		</action>
 	</keybind>
 	<keybind key="XF86HomePage">
@@ -484,7 +484,7 @@
 		</keybind>
 		<keybind key="t">
 			<action name="Execute">
-				<command>sakura</command>
+				<command>exo-open --launch TerminalEmulator</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

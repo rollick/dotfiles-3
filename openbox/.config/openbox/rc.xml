@@ -126,12 +126,12 @@
 	</keybind>
 	<keybind key="XF86HomePage">
 		<action name="Execute">
-			<command>chromium</command>
+			<command>exo-open --launch WebBrowser</command>
 		</action>
 	</keybind>
 	<keybind key="XF86Mail">
 		<action name="Execute">
-			<command>chromium --app=https://www.gmail.com/</command>
+			<command>exo-open --launch WebBrowser https://www.gmail.com/</command>
 		</action>
 	</keybind>
 
@@ -472,7 +472,7 @@
 		</keybind>
 		<keybind key="f">
 			<action name="Execute">
-				<command>thunar</command>
+				<command>exo-open --launch FileManager</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

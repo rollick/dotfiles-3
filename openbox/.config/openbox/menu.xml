@@ -131,9 +131,9 @@
 </menu>
 
 <menu id="apps-net-menu" label="Internet">
-	<item label="Chromium">
+	<item label="Browser">
 		<action name="Execute">
-			<command>chromium</command>
+			<command>exo-open --launch WebBrowser</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -141,7 +141,7 @@
 	</item>
 	<item label="Gmail">
 		<action name="Execute">
-			<command>chromium --app=https://www.gmail.com</command>
+			<command>exo-open --launch WebBrowser https://www.gmail.com</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -235,7 +235,7 @@
 	</item>
 	<item label="File Manager">
 		<action name="Execute">
-			<command>thunar</command>
+			<command>exo-open --launch FileManager</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
@@ -367,7 +367,7 @@
 	<menu id="system-openbox-menu"/>
 	<item label="Printers">
 		<action name="Execute">
-			<command>chromium --app=http://localhost:631/</command>
+			<command>exo-open --launch WebBrowser http://localhost:631/</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 				<icon>cups</icon>

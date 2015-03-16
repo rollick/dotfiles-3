@@ -731,6 +731,12 @@
 </menu>
 
 <applications>
-<!-- See "/etc/xdg/openbox/rc.xml". -->
+	<!-- See "/etc/xdg/openbox/rc.xml". -->
+	<application class="Simpleterm">
+		<size>
+			<height>450</height>
+			<width>750</width>
+		</size>
+	</application>
 </applications>
 </openbox_config>

@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir --verbose -p "${HOME}/.ssh"
 mkdir --verbose -p "${HOME}/.vim"
+stow --verbose -R -t ${HOME} git
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux

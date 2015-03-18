@@ -1,0 +1,17 @@
+[alias]
+	br = branch
+	ci = commit
+	cia = commit --all
+	co = checkout
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	rba = rebase --abort
+	rbc = rebase --continue
+[core]
+	pager =
+[merge]
+	tool = vimdiff3
+[user]
+	email = rascholer@gmail.com
+	name = Raphael Scholer
+[push]
+	default = simple

@@ -254,9 +254,6 @@ autocmd FileType fstab set shiftwidth=4
 autocmd FileType fstab set softtabstop=4
 autocmd FileType fstab set tabstop=8
 
-" Snippets
-autocmd FileType snippets set nofoldenable
-
 " Vim files
 autocmd FileType vim set shiftwidth=4
 autocmd FileType vim set tabstop=4

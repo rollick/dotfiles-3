@@ -29,8 +29,8 @@ if which thunar >/dev/null 2>&1; then
 	thunar --daemon &
 fi
 
-# Display clock
-if which ob-clock.sh >/dev/null 2>&1; then
-	ob-clock.sh &
+# Run xfce4-panel
+if which xfce4-panel >/dev/null 2>&1; then
+	xfce4-panel &
 fi
 # vim: ft=sh

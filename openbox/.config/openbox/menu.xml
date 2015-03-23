@@ -2,9 +2,6 @@
 
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-<!-- Pipe menus -->
-<menu id="pipe-alsa-menu" label="Volume" execute="ob-alsa-pipe.py" />
-
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">
 	<item label="Gimp">
@@ -393,9 +390,19 @@
 	<item label="Screensaver">
 		<action name="Execute">
 			<command>screensaver_toggle.sh</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
 		</action>
 	</item>
-	<menu id="pipe-alsa-menu" />
+	<item label="Volume">
+		<action name="Execute">
+			<command>xfce4-mixer</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 </menu>
 
 

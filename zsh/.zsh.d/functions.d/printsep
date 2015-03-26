@@ -1,2 +1,2 @@
 #!/bin/zsh
-print "${fg_bold[black]}   ------------------------------${reset_color}"
+print "${fg_bold[black]}   ${(l:30::-:)}${reset_color}"

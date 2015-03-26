@@ -10,17 +10,7 @@ if ! ping -c 1 google.com &>| /dev/null; then
 fi
 
 # Check for curl
-if ! which curl &>|/dev/null; then
-	print "curl is not installed."
-
-	# List packages which contain curl
-	if which command_not_found_handler &>|/dev/null; then
-		print ""
-		command_not_found_handler curl
-	fi
-
-	return 1
-fi
+no_cmd_handler curl || return 1
 
 # Retrive IP address
 for url in ${urls}; do

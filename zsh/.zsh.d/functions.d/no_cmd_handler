@@ -1,0 +1,14 @@
+#!/bin/zsh
+# Print warning about no installed cmd and suggest packacges
+if ! which "${1}" &>|/dev/null; then
+	print "${1} is not installed."
+
+	# List packages which contain curl
+	if which command_not_found_handler &>|/dev/null; then
+		print ""
+		command_not_found_handler ${1}
+	fi
+	return 1
+else
+	return 0
+fi

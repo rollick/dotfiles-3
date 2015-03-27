@@ -372,10 +372,9 @@
 	<menu id="system-openbox-menu"/>
 	<item label="Printers">
 		<action name="Execute">
-			<command>exo-open --launch WebBrowser http://localhost:631/</command>
+			<command>system-config-printer</command>
 			<startupnotify>
 				<enabled>yes</enabled>
-				<icon>cups</icon>
 			</startupnotify>
 		</action>
 	</item>

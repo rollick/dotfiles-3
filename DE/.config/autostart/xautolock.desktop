@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Terminal=false
-Name=xautolock
-Comment=An automatic X screen-locker/screen-saver
-Exec=xautolock
-OnlyShowIn=OPENBOX;

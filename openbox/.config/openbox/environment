@@ -1,9 +1,0 @@
-#
-# Set user-specific environment variables here for Openbox
-#
-if [[ -d "${XDG_CONFIG_HOME:-${HOME}/.config}/openbox/scripts" ]]; then
-	export PATH="${PATH}:${XDG_CONFIG_HOME:-${HOME}/.config}/openbox/scripts"
-fi
-
-export GNOME_DESKTOP_SESSION_ID=1
-# vim: ft=sh

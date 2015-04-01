@@ -14,6 +14,7 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${CONFIG_HOME}"
 	mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
 	stow --verbose -R -t ${HOME} appearance
+	stow --verbose -R -t ${HOME} devilspie2
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} pacman

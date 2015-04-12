@@ -13,8 +13,9 @@ if [[ ${UID} -ne 0 ]]; then
 	DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${CONFIG_HOME}"
-	mkdir --verbose -p "${DATA_HOME}/applications"
+	mkdir --verbose -p "${CONFIG_HOME}/autostart"
 	mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
+	mkdir --verbose -p "${DATA_HOME}/applications"
 	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} devilspie2

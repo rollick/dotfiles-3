@@ -67,6 +67,9 @@
 				<Category>X-GNOME-NetworkSettings</Category>
 			</Or>
 		</Include>
+		<Exclude>
+			<Filename>cups.desktop</Filename>
+		</Exclude>
 	</Menu>
 
 	<Menu>

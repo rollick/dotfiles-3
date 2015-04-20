@@ -3,6 +3,7 @@
 		"shape": "underline"
 	},
 	"general": {
-		"honor_resize_hint": false
+		"honor_resize_hint": false,
+		"show_about_dialog": false
 	}
 }

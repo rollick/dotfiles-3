@@ -1,9 +1,5 @@
 {
-	"cursor": {
-		"shape": "underline"
-	},
-	"general": {
-		"honor_resize_hint": false,
-		"show_about_dialog": false
-	}
+	"cursor-shape": "underline",
+	"honor_resize_hint": false,
+	"show_about_dialog": false
 }

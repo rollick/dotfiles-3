@@ -50,14 +50,6 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Pylint">
-		<action name="Execute">
-			<command>pylint-gui</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 </menu>
 
 <menu id="apps-games-menu" label="Games">

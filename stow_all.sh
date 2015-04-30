@@ -20,7 +20,6 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${DATA_HOME}/applications"
 	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} appearance
-	stow --verbose -R -t ${HOME} devilspie2
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox

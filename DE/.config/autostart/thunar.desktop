@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Name=Thunar
+Comment=Modern file manager for Xfce (Daemon mode)
+Exec=thunar --daemon
+OnlyShowIn=OPENBOX;

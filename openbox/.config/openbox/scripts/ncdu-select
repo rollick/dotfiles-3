@@ -1,0 +1,9 @@
+#!/bin/bash
+if which zenity >/dev/null 2>&1; then
+	path="$(zenity --file-selection --directory)"
+	if [[ -n "${path}" ]]; then
+		exo-open --launch TerminalEmulator ncdu "${path}"
+	fi
+else
+	exo-open --launch TerminalEmulator ncdu
+fi

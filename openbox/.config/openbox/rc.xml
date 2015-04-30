@@ -149,6 +149,13 @@
 		</action>
 	</keybind>
 
+	<!-- Keybindings for volume menu -->
+	<keybind key="W-v">
+		<action name="ShowMenu">
+			<menu>pipe-alsa-menu</menu>
+		</action>
+	</keybind>
+
 	<!-- Keybindings for session menu -->
 	<keybind key="XF86Sleep">
 		<action name="ShowMenu">
@@ -478,12 +485,6 @@
 		<keybind key="t">
 			<action name="Execute">
 				<command>exo-open --launch TerminalEmulator</command>
-			</action>
-			<action name="BreakChroot"/>
-		</keybind>
-		<keybind key="v">
-			<action name="Execute">
-				<command>xfce4-mixer</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

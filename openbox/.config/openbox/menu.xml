@@ -34,6 +34,14 @@
 </menu>
 
 <menu id="apps-devel-menu" label="Development">
+	<item label="Glade">
+		<action name="Execute">
+			<command>glade</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="octave">
 		<action name="Execute">
 			<command>exo-open --launch TerminalEmulator octave --silent</command>

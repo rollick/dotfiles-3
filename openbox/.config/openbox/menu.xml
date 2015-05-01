@@ -42,14 +42,6 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="gitk">
-		<action name="Execute">
-			<command>gitk</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 </menu>
 
 <menu id="apps-games-menu" label="Games">

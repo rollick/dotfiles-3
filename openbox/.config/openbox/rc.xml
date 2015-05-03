@@ -138,7 +138,7 @@
 	<!-- Keybindings to control Music On Console -->
 	<keybind key="XF86Tools">
 		<action name="Execute">
-			<command>quodlibet</command>
+			<command>exo-open --launch TerminalEmulator mocp</command>
 		</action>
 	</keybind>
 

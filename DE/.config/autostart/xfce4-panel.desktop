@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Terminal=false
-Name=XFCE Panel
-Comment=Panel for the Xfce desktop environment
-Exec=xfce4-panel
-OnlyShowIn=OPENBOX;

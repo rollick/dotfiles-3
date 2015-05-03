@@ -11,6 +11,7 @@ stow --verbose -R -t ${HOME} zsh
 if [[ ${UID} -ne 0 ]]; then
 	CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 	DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+	mkdir --verbose -p "${HOME}/.moc"
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${HOME}/.themes"
 	mkdir --verbose -p "${CONFIG_HOME}"
@@ -21,6 +22,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} fontconfig
+	stow --verbose -R -t ${HOME} moc
 	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} pacman

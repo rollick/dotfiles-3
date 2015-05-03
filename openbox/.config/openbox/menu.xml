@@ -4,6 +4,7 @@
 
 <!-- Pipe menus -->
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-pipe-alsa" />
+<menu id="pipe-mocp-menu" label="Music On Console" execute="ob-pipe-mocp" />
 
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">
@@ -96,17 +97,10 @@
 			</startupnotify>
 		</action>
 	</item>
+	<menu id="pipe-mocp-menu" />
 	<item label="MP3Diags">
 		<action name="Execute">
 			<command>MP3Diags</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
-	<item label="Quod Libet">
-		<action name="Execute">
-			<command>quodlibet</command>
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>

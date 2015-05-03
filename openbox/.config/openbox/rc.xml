@@ -150,6 +150,13 @@
 	</keybind>
 
 	<!-- Keybindings for volume menu -->
+	<keybind key="W-m">
+		<action name="ShowMenu">
+			<menu>pipe-mocp-menu</menu>
+		</action>
+	</keybind>
+
+	<!-- Keybindings for volume menu -->
 	<keybind key="W-v">
 		<action name="ShowMenu">
 			<menu>pipe-alsa-menu</menu>

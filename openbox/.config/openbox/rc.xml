@@ -483,6 +483,12 @@
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>
+		<keybind key="m">
+			<action name="Execute">
+				<command>exo-open --launch TerminalEmulator mocp</command>
+			</action>
+			<action name="BreakChroot"/>
+		</keybind>
 		<keybind key="r">
 			<action name="Execute">
 				<command>openbox --reconfigure</command>

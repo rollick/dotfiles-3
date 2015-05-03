@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Terminal=false
-Name=ob-clock
-Comment=A simple clock for openbox' dock
-Exec=sh -c 'lal --format "%A" & sleep 1; lal --format "%F" & sleep 1; lal --format"%R"'
-OnlyShowIn=OPENBOX;

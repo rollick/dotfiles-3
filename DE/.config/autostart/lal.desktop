@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Name=lal
+Comment=A simple dockapp to display the date and/or time
+Exec=sh -c 'lal --format "%A" & sleep 1; lal --format "%F" & sleep 1; lal --format "%R"'
+OnlyShowIn=OPENBOX;

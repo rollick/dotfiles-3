@@ -17,12 +17,6 @@ lal.font: Droid Sans
 lal.width: 90
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Xautolock
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Xautolock.locker: i3lock -e -c 000000
-Xautolock.time: 10
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Xft
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Xft.antialias: true

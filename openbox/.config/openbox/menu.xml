@@ -305,7 +305,7 @@
 	<item label="Lock screen">
 		<action name="Execute">
 			<prompt>Are you sure you want to lock the screen?</prompt>
-			<command>xautolock -locknow</command>
+			<command>i3lock -e -c 000000</command>
 		</action>
 	</item>
 	<item label="Log Out">

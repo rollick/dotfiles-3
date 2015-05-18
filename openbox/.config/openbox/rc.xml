@@ -473,7 +473,7 @@
 	<!-- Lock screen -->
 	<keybind key="W-l">
 		<action name="Execute">
-			<command>xautolock -locknow</command>
+			<command>i3lock -e -c 000000</command>
 		</action>
 	</keybind>
 

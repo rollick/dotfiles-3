@@ -211,14 +211,6 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Disk usage">
-		<action name="Execute">
-			<command>ncdu-select</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 	<item label="Editor">
 		<action name="Execute">
 			<command>gvim</command>
@@ -381,11 +373,6 @@
 			<startupnotify>
 				<enabled>yes</enabled>
 			</startupnotify>
-		</action>
-	</item>
-	<item label="Screensaver">
-		<action name="Execute">
-			<command>screensaver_toggle.sh</command>
 		</action>
 	</item>
 	<menu id="pipe-alsa-menu" />

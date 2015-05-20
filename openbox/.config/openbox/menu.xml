@@ -43,14 +43,6 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="octave">
-		<action name="Execute">
-			<command>exo-open --launch TerminalEmulator octave --silent</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 </menu>
 
 <menu id="apps-games-menu" label="Games">

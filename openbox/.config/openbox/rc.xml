@@ -121,7 +121,7 @@
 	<!-- Misc. keybindings -->
 	<keybind key="XF86Calculator">
 		<action name="Execute">
-			<command>exo-open --launch TerminalEmulator octave --silent</command>
+			<command>exo-open --launch TerminalEmulator python</command>
 		</action>
 	</keybind>
 	<keybind key="XF86HomePage">

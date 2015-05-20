@@ -22,7 +22,6 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} moc
-	stow --verbose -R -t ${HOME} octave
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} pacman
 	stow --verbose -R -t ${HOME} profile-cleaner

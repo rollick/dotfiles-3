@@ -43,6 +43,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Python">
+		<action name="Execute">
+			<command>exo-open --launch TerminalEmulator python</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 </menu>
 
 <menu id="apps-games-menu" label="Games">

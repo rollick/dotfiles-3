@@ -56,6 +56,8 @@ if which python >/dev/null 2>&1 || which python2 >/dev/null; then
 	if which pylint >/dev/null 2>&1; then
 		export PYLINTHOME="${XDG_CACHE:-${HOME}/.cache/pylint}"
 	fi
+
+	export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
 fi
 
 # Set some paths for mpv

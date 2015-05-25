@@ -5,6 +5,7 @@
 <!-- Pipe menus -->
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-pipe-alsa" />
 <menu id="pipe-mocp-menu" label="Music On Console" execute="ob-pipe-mocp" />
+<menu id="pipe-places-menu" label="Places" execute="ob-pipe-places" />
 
 <!-- Static menus -->
 <menu id="apps-graphics-menu" label="Graphics">
@@ -390,6 +391,7 @@
 	<menu id="apps-system-menu"/>
 	<separator label="System" />
 	<menu id="system-administration-menu"/>
+	<menu id="pipe-places-menu" />
 	<separator />
 	<menu id="system-session-menu"/>
 </menu>

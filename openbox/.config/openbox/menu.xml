@@ -368,7 +368,7 @@
 			</startupnotify>
 		</action>
 	</item>
-	<item label="Removable Drives">
+	<item label="Removable Drives and Media">
 		<action name="Execute">
 			<command>thunar-volman-settings</command>
 			<startupnotify>

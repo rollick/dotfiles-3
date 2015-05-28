@@ -255,14 +255,6 @@
 </menu>
 
 <menu id="system-openbox-menu" label="Openbox">
-	<item label="Edit autostart">
-		<action name="Execute">
-			<command>gvim ~/.config/openbox/autostart</command>
-			<startupnotify>
-				<enabled>yes</enabled>
-			</startupnotify>
-		</action>
-	</item>
 	<item label="Edit Openbox configuration">
 		<action name="Execute">
 			<command>gvim ~/.config/openbox/rc.xml</command>

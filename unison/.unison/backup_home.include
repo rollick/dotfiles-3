@@ -136,3 +136,5 @@ path = .zprofile
 path = .zshenv
 path = .zshrc
 path = .ssh/config
+path = .ssh/id_rsa-aur
+path = .ssh/id_rsa-aur.pub

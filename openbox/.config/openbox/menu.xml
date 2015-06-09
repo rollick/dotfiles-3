@@ -327,6 +327,14 @@
 </menu>
 
 <menu id="system-administration-menu" label="Administration">
+	<item label="Network">
+		<action name="Execute">
+			<command>exo-open --launch TerminalEmulator nmtui</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Notifications">
 		<action name="Execute">
 			<command>xfce4-notifyd-config</command>
@@ -381,3 +389,4 @@
 </menu>
 
 </openbox_menu>
+<!-- vim: set textwidth=0: -->

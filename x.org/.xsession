@@ -1,5 +1,17 @@
 #!/bin/bash
-# Merger user Xdefaults
+# Start policykit agent
+if [[ -x //usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
+	/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+fi
+
+# Start GNOME Keyring daemon
+if which gnome-keyring-daemon >/dev/null 2>&1; then
+	for v in $(gnome-keyring-daemon --start 2>/dev/null); do
+		export "${v}"
+	done
+fi
+
+# Merge user Xdefaults
 if which xrdb >/dev/null 2>&1; then
 	xrdb -merge ~/.Xdefaults &
 fi

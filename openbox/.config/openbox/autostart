@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# Set wallpaper
+if which feh >/dev/null 2>&1; then
+	sh ~/.fehbg &
+fi
+
+# Start composite manager
+if which xcompmgr >/dev/null 2>&1; then
+	xcompmgr &
+fi
+
+# Show clock
+if which lal >/dev/null 2>&1; then
+	sh -c 'lal --format "%A" & sleep 1; lal --format "%F" & sleep 1; lal --format "%R"' &
+fi
+
+# Start thunar as a daemon
+if which thunar >/dev/null 2>&1; then
+	thunar --daemon &
+fi
+
+# Volume daemon
+if which xfce4-volumed >/dev/null 2>&1; then
+	xfce4-volumed &
+fi
+# vim: set ft=sh et:

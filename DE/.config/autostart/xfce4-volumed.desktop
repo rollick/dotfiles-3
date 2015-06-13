@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Terminal=false
-Name=XFCE Volume Daemon
-Comment=Daemon managing the volume multimedia keys and displaying volume notifications
-Exec=xfce4-volumed
-OnlyShowIn=XFCE;OPENBOX;

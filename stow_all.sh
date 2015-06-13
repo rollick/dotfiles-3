@@ -18,9 +18,7 @@ stow --verbose -R -t ${HOME} zsh
 if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${HOME}/.moc"
 	mkdir --verbose -p "${HOME}/.unison"
-	mkdir --verbose -p "${CONFIG_HOME}/autostart"
 	mkdir --verbose -p "${DATA_HOME}/applications"
-	stow --verbose -R -t ${HOME} DE
 	stow --verbose -R -t ${HOME} moc
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} pacman

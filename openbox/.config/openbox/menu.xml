@@ -344,7 +344,7 @@
 		</action>
 	</item>
 	<menu id="system-openbox-menu"/>
-	<item label="Partittion Editor">
+	<item label="Partition Editor">
 		<action name="Execute">
 			<command>gparted_polkit</command>
 			<startupnotify>

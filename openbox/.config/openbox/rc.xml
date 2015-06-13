@@ -188,8 +188,8 @@
 		<keybind key="c">
 			<action name="UnmaximizeFull"/>
 			<action name="MoveResizeTo">
-				<x>10%</x>
-				<y>10%</y>
+				<x>center</x>
+				<y>center</y>
 				<width>80%</width>
 				<height>80%</height>
 			</action>

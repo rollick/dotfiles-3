@@ -352,6 +352,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Passwords and Keys">
+		<action name="Execute">
+			<command>seahorse</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="Preferred applications">
 		<action name="Execute">
 			<command>exo-preferred-applications</command>

@@ -750,6 +750,12 @@
 
 <applications>
 	<!-- See "/etc/xdg/openbox/rc.xml". -->
+	<application class="Gcr-prompter">
+		<position>
+			<x>center</x>
+			<y>center</y>
+		</position>
+	</application>
 	<application class="Simpleterm">
 		<size>
 			<height>450</height>

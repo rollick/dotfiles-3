@@ -138,12 +138,12 @@
 	<!-- Keybindings to control Music On Console -->
 	<keybind key="XF86AudioPlay">
 		<action name="Execute">
-			<command>mocp --toggle-pause</command>
+			<command>cmus-remote --pause</command>
 		</action>
 	</keybind>
 	<keybind key="XF86Tools">
 		<action name="Execute">
-			<command>exo-open --launch TerminalEmulator mocp</command>
+			<command>exo-open --launch TerminalEmulator cmus_wrapper</command>
 		</action>
 	</keybind>
 
@@ -151,13 +151,6 @@
 	<keybind key="W-space">
 		<action name="ShowMenu">
 			<menu>root-menu</menu>
-		</action>
-	</keybind>
-
-	<!-- Keybindings for volume menu -->
-	<keybind key="W-m">
-		<action name="ShowMenu">
-			<menu>pipe-mocp-menu</menu>
 		</action>
 	</keybind>
 
@@ -490,7 +483,7 @@
 		</keybind>
 		<keybind key="m">
 			<action name="Execute">
-				<command>exo-open --launch TerminalEmulator mocp</command>
+				<command>exo-open --launch TerminalEmulator cmus_wrapper</command>
 			</action>
 			<action name="BreakChroot"/>
 		</keybind>

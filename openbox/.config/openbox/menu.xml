@@ -4,7 +4,6 @@
 
 <!-- Pipe menus -->
 <menu id="pipe-alsa-menu" label="Volume" execute="ob-pipe-alsa" />
-<menu id="pipe-mocp-menu" label="Music On Console" execute="ob-pipe-mocp" />
 <menu id="pipe-places-menu" label="Places" execute="ob-pipe-places" />
 
 <!-- Static menus -->
@@ -82,6 +81,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="cmus">
+		<action name="Execute">
+			<command>exo-open --launch TerminalEmulator cmus_wrapper</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="easymp3gain">
 		<action name="Execute">
 			<command>easymp3gain</command>
@@ -98,7 +105,6 @@
 			</startupnotify>
 		</action>
 	</item>
-	<menu id="pipe-mocp-menu" />
 	<item label="MP3Diags">
 		<action name="Execute">
 			<command>MP3Diags</command>

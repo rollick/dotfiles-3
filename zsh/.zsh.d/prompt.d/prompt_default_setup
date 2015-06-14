@@ -86,9 +86,10 @@ function prompt_default_prompt() {
 	####################
 	if which tmux &>|/dev/null; then
 		if [[ -z "${TMUX_PANE}" ]] && tmux list-session &>|/dev/null; then
+			tmux_sessions="$(tmux list-sessions |wc -l)"
 			prompt_info_tmux=$'\u2B12 '
 
-			prompt_info_tmux+="$(tmux list-sessions |wc -l)"
+			prompt_info_tmux+="${tmux_sessions}"
 		fi
 	fi
 

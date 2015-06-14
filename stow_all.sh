@@ -16,10 +16,8 @@ stow --verbose -R -t ${HOME} vim
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
-	mkdir --verbose -p "${HOME}/.moc"
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${DATA_HOME}/applications"
-	stow --verbose -R -t ${HOME} moc
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} pacman
 	stow --verbose -R -t ${HOME} profile-cleaner

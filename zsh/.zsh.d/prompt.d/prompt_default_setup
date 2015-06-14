@@ -87,10 +87,18 @@ function prompt_default_prompt() {
 	if which tmux &>|/dev/null; then
 		if [[ -z "${TMUX_PANE}" ]] && tmux list-session &>|/dev/null; then
 			tmux_sessions="$(tmux list-sessions |wc -l)"
-			prompt_info_tmux=$'\u2B12 '
 
-			prompt_info_tmux+="${tmux_sessions}"
+			if tmux list-sessions |grep -q '^cmus: '; then
+				tmux_sessions=$(( tmux_sessions - 1 ))
+			fi
+
+			if [[ ${tmux_sessions} -gt 0 ]]; then
+				prompt_info_tmux=$'\u2B12 '
+
+				prompt_info_tmux+="${tmux_sessions}"
+			fi
 		fi
+		unset tmux_sessions
 	fi
 
 	# job information for RPROMPT

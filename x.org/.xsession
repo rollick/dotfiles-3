@@ -6,9 +6,9 @@ fi
 
 # Start GNOME Keyring daemon
 if which gnome-keyring-daemon >/dev/null 2>&1; then
-	for v in $(gnome-keyring-daemon --start 2>/dev/null); do
-		export "${v}"
-	done
+	eval $(gnome-keyring-daemon --start)
+	export GPG_AGENT_INFO
+	export SSH_AUTH_SOCK
 fi
 
 # Merge user Xdefaults

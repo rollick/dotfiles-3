@@ -1,14 +1,17 @@
 #!/bin/bash
-# Start policykit agent
-if [[ -x //usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
-	/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-fi
+# Do some stuff if no Display Manager is used
+if [[ -z ${DESKTOP_SESSION} ]]; then
+	# Start policykit agent
+	if [[ -x //usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
+		/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+	fi
 
-# Start GNOME Keyring daemon
-if which gnome-keyring-daemon >/dev/null 2>&1; then
-	eval $(gnome-keyring-daemon --start)
-	export GPG_AGENT_INFO
-	export SSH_AUTH_SOCK
+	# Start GNOME Keyring daemon
+	if which gnome-keyring-daemon >/dev/null 2>&1; then
+		eval $(gnome-keyring-daemon --start)
+		export GPG_AGENT_INFO
+		export SSH_AUTH_SOCK
+	fi
 fi
 
 # Merge user Xdefaults

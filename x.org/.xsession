@@ -8,9 +8,7 @@ if [[ -z ${DESKTOP_SESSION} ]]; then
 
 	# Start GNOME Keyring daemon
 	if which gnome-keyring-daemon >/dev/null 2>&1; then
-		eval $(gnome-keyring-daemon --start)
-		export GPG_AGENT_INFO
-		export SSH_AUTH_SOCK
+		export $(gnome-keyring-daemon --start)
 	fi
 fi
 

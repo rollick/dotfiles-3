@@ -226,6 +226,14 @@
 			</startupnotify>
 		</action>
 	</item>
+	<item label="Disk Usage Analyzer">
+		<action name="Execute">
+			<command>mate-disk-usage-analyzer</command>
+			<startupnotify>
+				<enabled>yes</enabled>
+			</startupnotify>
+		</action>
+	</item>
 	<item label="File Manager">
 		<action name="Execute">
 			<command>exo-open --launch FileManager</command>

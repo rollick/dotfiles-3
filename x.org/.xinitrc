@@ -10,12 +10,12 @@ fi
 
 # Load xprofile
 if [[ -f  "${HOME}/.xprofile" ]]; then
-	. "${HOME}/.xprofile"
+	source "${HOME}/.xprofile"
 fi
 
 # Load session specific commands
 if [[ -f "${HOME}/.xsession" ]]; then
-	. "${HOME}/.xsession"
+	source "${HOME}/.xsession"
 fi
 
 # Start WM/DE

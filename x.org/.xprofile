@@ -9,4 +9,7 @@ fi
 
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1
+
+# Set terminal for i3
+export TERMINAL="exo-terminal"
 # vim: ft=sh

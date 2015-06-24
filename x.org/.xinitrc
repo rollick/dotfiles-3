@@ -19,4 +19,4 @@ if [[ -f "${HOME}/.xsession" ]]; then
 fi
 
 # Start WM/DE
-exec openbox-session
+exec i3

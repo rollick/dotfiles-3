@@ -7,14 +7,7 @@ dmenu.foreground: #dcdcdc
 dmenu.font: xft:Droid Sans:size=10
 dmenu.selbackground: #1793d1
 dmenu.selforeground: #f9f9f9
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Dzen2
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-dzen2.background: #2d2d2d
-dzen2.foreground: #dcdcdc
-dzen2.font: xft:Droid Sans:size=10
-
+dmenu.height: 20
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! lal

@@ -1,0 +1,154 @@
+##############################
+# Appearance
+##############################
+font pango:monospace 10
+# class                 border  backgr. foregr. indicator
+client.focused          #1793d1 #1793d1 #f9f9f9 #2d2d2d
+client.focused_inactive #2d2d2d #2d2d2d #dcdcdc #1793d1
+client.unfocused        #2d2d2d #2d2d2d #dcdcdc #1793d1
+client.urgent           #d64937 #d64937 #dcdcdc #1793d1
+
+# i3bar
+bar {
+	status_command i3status
+	position top
+	separator_symbol "]["
+	colors {
+		background #2d2d2d
+		statusline #dcdcdc
+		separator #484848
+		# class            border  backgr. foregr. indicator
+		focused_workspace  #1793d1 #1793d1 #f9f9f9 #2d2d2d
+		active_workspace   #484848 #484848 #dcdcdc #1793d1
+		inactive_workspace #2d2d2d #2d2d2d #dcdcdc #1793d1
+		urgent_workspace   #d64937 #d64937 #dcdcdc #1793d1
+	}
+}
+
+##############################
+# Keybindings
+##############################
+# Set modifier
+set $mod Mod4
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Toggle between tiling and floating
+bindsym $mod+Shift+space floating toggle
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+l focus right
+bindsym $mod+i focus up
+bindsym $mod+k focus down
+bindsym $mod+space focus mode_toggle
+
+# Change container layout
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+k move down
+
+# Focus container
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
+
+# Split in (h)orizontal or (vertical) orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move containter to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Resize window
+mode "resize" {
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+	bindsym i resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# i3 session control
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"
+
+# Start applications
+bindsym XF86AudioPlay exec cmus-remote --pause
+bindsym XF86AudioLowerVolume exec amixer --quiet sset Master 5%- unmute
+bindsym XF86AudioMute exec amixer --quiet sset Master toggle
+bindsym XF86AudioRaiseVolume exec amixer --quiet sset Master 5%+ unmute
+bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
+bindsym XF86HomePage exec exo-open --launch WebBrowser
+bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/
+bindsym XF86Tools exec i3-sensible-terminal -t cmus -e cmus_wrapper
+bindsym $mod+d exec dmenu_run -p "Run:"
+
+mode "execute" {
+	bindsym f exec thunar; mode "default"
+	bindsym m exec i3-sensible-terminal -t cmus -e cmus_wrapper; mode "default"
+	bindsym t exec i3-sensible-terminal; mode "default"
+	bindsym v exec i3-sensible-terminal -t "Volume control" -e alsamixer; mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+x mode "execute"
+
+# Session menu
+set $session_menu Session: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+mode "$session_menu" {
+	bindsym e exec i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"
+	bindsym h exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl hibernate"
+	bindsym l exec i3lock --color=000000; mode "default"
+	bindsym p exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl poweroff"
+	bindsym r exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl reboot"
+	bindsym s exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl suspend"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym XF86Sleep mode "$session_menu"
+bindsym $mod+Shift+s mode "$session_menu"
+
+##############################
+# Autostart
+##############################
+exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id xcompmgr
+exec thunar --daemon

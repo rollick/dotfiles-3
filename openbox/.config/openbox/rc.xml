@@ -135,7 +135,24 @@
 		</action>
 	</keybind>
 
-	<!-- Keybindings to control Music On Console -->
+	<!-- Keybindings to control volume -->
+	<keybind key="XF86AudioLowerVolume">
+		<action name="Execute">
+			<command>amixer sset Master 5%-</command>
+		</action>
+	</keybind>
+	<keybind key="XF86AudioRaiseVolume">
+		<action name="Execute">
+			<command>amixer sset Master 5%+</command>
+		</action>
+	</keybind>
+	<keybind key="XF86AudioMute">
+		<action name="Execute">
+			<command>amixer sset Master toggle</command>
+		</action>
+	</keybind>
+
+	<!-- Keybindings to control cmus -->
 	<keybind key="XF86AudioPlay">
 		<action name="Execute">
 			<command>cmus-remote --pause</command>

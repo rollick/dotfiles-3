@@ -1,0 +1,44 @@
+general {
+        colors = true
+	color_bad = "#fc6f5d"
+	color_degraded = "#888888"
+	color_good = "#6ffc5d"
+	color_separator = "#484848"
+        interval = 1
+	separator = " ][ "
+}
+
+order += "ethernet _first_"
+order += "wireless _first_"
+order += "disk /"
+order += "disk /home"
+order += "volume master"
+order += "time"
+
+disk "/" {
+	format = "/: %avail of %total free"
+}
+
+disk "/home" {
+	format = "/home: %avail of %total free"
+}
+
+ethernet _first_ {
+        format_up = "Ethernet: up"
+        format_down = "Ethernet: down"
+}
+
+time {
+	format = "%Y-%m-%d %H:%M"
+	align = "right"
+}
+
+volume master {
+	format = "Volume: %volume"
+	format_muted = "Volume: Mute"
+}
+
+wireless _first_ {
+	format_up = "Wifi: %essid"
+	format_down = "Wifi: down"
+}

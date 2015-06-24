@@ -18,6 +18,7 @@ stow --verbose -R -t ${HOME} zsh
 if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${HOME}/.unison"
 	mkdir --verbose -p "${DATA_HOME}/applications"
+	stow --verbose -R -t ${HOME} i3status
 	stow --verbose -R -t ${HOME} openbox
 	stow --verbose -R -t ${HOME} pacman
 	stow --verbose -R -t ${HOME} profile-cleaner

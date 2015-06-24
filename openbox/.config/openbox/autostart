@@ -15,18 +15,13 @@ if which xcompmgr >/dev/null 2>&1; then
 	xcompmgr &
 fi
 
-# Show clock
-if which lal >/dev/null 2>&1; then
-	sh -c 'lal --format "%A" & sleep 1; lal --format "%F" & sleep 1; lal --format "%R"' &
+# Start dzen and populate it
+if which i3status >/dev/null 2>&1 && which dzen2 >/dev/null 2>&1; then
+    sh -c 'sleep 1; i3status |dzen2 -xs 1 -dock' &
 fi
 
 # Start thunar as a daemon
 if which thunar >/dev/null 2>&1; then
 	thunar --daemon &
-fi
-
-# Volume daemon
-if which xfce4-volumed >/dev/null 2>&1; then
-	xfce4-volumed &
 fi
 # vim: set ft=sh et:

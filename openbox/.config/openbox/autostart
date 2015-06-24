@@ -17,7 +17,7 @@ fi
 
 # Start dzen and populate it
 if which i3status >/dev/null 2>&1 && which dzen2 >/dev/null 2>&1; then
-    sh -c 'sleep 1; i3status |dzen2 -xs 1 -dock' &
+    sh -c 'sleep 1; i3status |dzen2 -xs 1 -dock -e "button2=;"' &
 fi
 
 # Start thunar as a daemon

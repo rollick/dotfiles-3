@@ -2,12 +2,23 @@ workspace_auto_back_and_forth yes
 ##############################
 # Appearance
 ##############################
+set $focused_bg #1793d1
+set $focused_fg #f9f9f9
+set $unfocused_bg #2d2d2d
+set $unfocused_fg #dcdcdc
+set $urgent_bg #d64937
+set $urgent_fg $unfocused_bg
+set $separator_fg #484848
+
+# Set font
 font pango:monospace 10
-# class                 border  backgr. foregr. indicator
-client.focused          #1793d1 #1793d1 #f9f9f9 #2d2d2d
-client.focused_inactive #2d2d2d #2d2d2d #dcdcdc #1793d1
-client.unfocused        #2d2d2d #2d2d2d #dcdcdc #1793d1
-client.urgent           #d64937 #d64937 #dcdcdc #1793d1
+
+# Set colors for window decorations
+# class                 border        background    foreground indicator
+client.focused          $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
+client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
+client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
+client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $focused_bg
 
 # i3bar
 bar {
@@ -15,14 +26,14 @@ bar {
 	position top
 	separator_symbol "]["
 	colors {
-		background #2d2d2d
-		statusline #dcdcdc
-		separator #484848
-		# class            border  backgr. foregr. indicator
-		focused_workspace  #1793d1 #1793d1 #f9f9f9 #2d2d2d
-		active_workspace   #484848 #484848 #dcdcdc #1793d1
-		inactive_workspace #2d2d2d #2d2d2d #dcdcdc #1793d1
-		urgent_workspace   #d64937 #d64937 #dcdcdc #1793d1
+		background $unfocused_bg
+		statusline $unfocused_fg
+		separator $separator_fg
+		# class            border        background    foreground    indicator
+		focused_workspace  $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
+		active_workspace   $separator_fg $separator_fg $unfocused_fg $focused_bg
+		inactive_workspace $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
+		urgent_workspace   $urgent_bg    $urgent_bg    $unfocused_fg $focused_bg
 	}
 }
 

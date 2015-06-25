@@ -120,7 +120,7 @@ bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
 bindsym XF86HomePage exec exo-open --launch WebBrowser
 bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/
 bindsym XF86Tools exec i3-sensible-terminal -t cmus -e cmus_wrapper
-bindsym $mod+d exec --no-startup-id dmenu_run -p "Run:"
+bindsym $mod+d exec --no-startup-id dmenu_run -h 20 -p "Run:"
 
 mode "execute" {
 	bindsym f exec thunar; mode "default"

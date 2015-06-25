@@ -109,18 +109,18 @@ bindsym $mod+r mode "resize"
 # i3 session control
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"
+bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"
 
 # Start applications
-bindsym XF86AudioPlay exec cmus-remote --pause
-bindsym XF86AudioLowerVolume exec amixer --quiet sset Master 5%- unmute
-bindsym XF86AudioMute exec amixer --quiet sset Master toggle
-bindsym XF86AudioRaiseVolume exec amixer --quiet sset Master 5%+ unmute
+bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Master 5%+ unmute
 bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
 bindsym XF86HomePage exec exo-open --launch WebBrowser
 bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/
 bindsym XF86Tools exec i3-sensible-terminal -t cmus -e cmus_wrapper
-bindsym $mod+d exec dmenu_run -p "Run:"
+bindsym $mod+d exec --no-startup-id dmenu_run -p "Run:"
 
 mode "execute" {
 	bindsym f exec thunar; mode "default"
@@ -136,12 +136,12 @@ bindsym $mod+x mode "execute"
 # Session menu
 set $session_menu Session: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 mode "$session_menu" {
-	bindsym e exec i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"
-	bindsym h exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl hibernate"
-	bindsym l exec i3lock --color=000000; mode "default"
-	bindsym p exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl poweroff"
-	bindsym r exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl reboot"
-	bindsym s exec i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl suspend"
+	bindsym e exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"; mode "default"
+	bindsym h exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to hibernate?" -b "Yes" "systemctl hibernate"; mode "default"
+	bindsym l exec --no-startup-id i3lock --color=000000; mode "default"
+	bindsym p exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to shutdown?" -b "Yes" "systemctl poweroff"; mode "default"
+	bindsym r exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to reboot?" -b "Yes" "systemctl reboot"; mode "default"
+	bindsym s exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl suspend"; mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -154,4 +154,4 @@ bindsym $mod+Shift+s mode "$session_menu"
 ##############################
 exec --no-startup-id sh ~/.fehbg
 exec --no-startup-id xcompmgr
-exec thunar --daemon
+exec --no-startup-id thunar --daemon

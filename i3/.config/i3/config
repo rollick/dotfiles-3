@@ -144,21 +144,8 @@ mode "execute" {
 }
 bindsym $mod+x mode "execute"
 
-# Session menu
-set $session_menu Session: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-mode "$session_menu" {
-	bindsym e exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to log out?" -b "Yes" "i3-msg exit"; mode "default"
-	bindsym h exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to hibernate?" -b "Yes" "systemctl hibernate"; mode "default"
-	bindsym l exec --no-startup-id i3lock --color=000000; mode "default"
-	bindsym p exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to shutdown?" -b "Yes" "systemctl poweroff"; mode "default"
-	bindsym r exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to reboot?" -b "Yes" "systemctl reboot"; mode "default"
-	bindsym s exec --no-startup-id i3-nagbar -t warning -m "Are you sure you want to suspend?" -b "Yes" "systemctl suspend"; mode "default"
-
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-bindsym XF86Sleep mode "$session_menu"
-bindsym $mod+Shift+s mode "$session_menu"
+bindsym XF86Sleep exec --no-startup-id i3-exit
+bindsym $mod+Shift+s exec --no-startup-id i3-exit
 
 ##############################
 # Autostart

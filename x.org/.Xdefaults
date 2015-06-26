@@ -1,4 +1,3 @@
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Dmenu
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -8,14 +7,6 @@ dmenu.font: xft:Droid Sans:size=10
 dmenu.selbackground: #1a80b6
 dmenu.selforeground: #f9f9f9
 dmenu.height: 20
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! lal
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-lal.bold: true
-lal.color: #dcdcdc
-lal.font: Droid Sans
-lal.width: 90
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Xft

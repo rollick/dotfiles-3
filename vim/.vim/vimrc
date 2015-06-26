@@ -318,7 +318,7 @@ let g:tlWindowPosition=0 "0=Top, 1=Bottom
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin: YouCompletMe
 """""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_seed_identifiers_with_syntax = 0
+let g:ycm_seed_identifiers_with_syntax = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax: python

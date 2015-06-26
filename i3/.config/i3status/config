@@ -10,18 +10,8 @@ general {
 
 order += "ethernet _first_"
 order += "wireless _first_"
-order += "disk /"
-order += "disk /home"
 order += "volume master"
 order += "time"
-
-disk "/" {
-	format = "/: %avail of %total free"
-}
-
-disk "/home" {
-	format = "/home: %avail of %total free"
-}
 
 ethernet _first_ {
         format_up = "Ethernet: up"

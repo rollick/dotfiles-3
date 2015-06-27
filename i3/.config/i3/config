@@ -133,6 +133,7 @@ bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/
 bindsym XF86Tools exec i3-sensible-terminal -t cmus -e cmus_wrapper
 bindsym $mod+d exec --no-startup-id dmenu_run -h 20 -p "Run:"
 bindsym $mod+l exec --no-startup-id i3lock --color=000000
+bindsym $mod+Return exec i3-sensible-terminal
 
 mode "execute" {
 	bindsym f exec thunar; mode "default"

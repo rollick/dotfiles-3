@@ -117,6 +117,17 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+mode "scratchpad" {
+	bindsym m [title="^cmus$"] scratchpad show; modle "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+p mode "scratchpad"
+
 # i3 session control
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart

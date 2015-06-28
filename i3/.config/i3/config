@@ -160,6 +160,10 @@ bindsym $mod+x mode "execute"
 bindsym XF86Sleep exec --no-startup-id i3-exit
 bindsym $mod+Shift+s exec --no-startup-id i3-exit
 
+# Window rules
+for_window [title="^Edit .*" class="Glade"] floating enable
+for_window [class="Glade-previewer"] floating enable
+
 ##############################
 # Autostart
 ##############################

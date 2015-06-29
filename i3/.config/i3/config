@@ -163,6 +163,7 @@ bindsym $mod+Shift+s exec --no-startup-id i3-exit
 # Window rules
 for_window [title="^Edit .*" class="Glade"] floating enable
 for_window [class="Glade-previewer"] floating enable
+for_window [class="Xsane"] floating enable
 
 ##############################
 # Autostart

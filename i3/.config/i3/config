@@ -135,9 +135,9 @@ bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -m "Are you sure 
 
 # Start applications
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Master toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Master 5%- unmute && killall -USR1 i3status
+bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Master toggle && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Master 5%+ unmute && killall -USR1 i3status
 bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
 bindsym XF86HomePage exec exo-open --launch WebBrowser
 bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/

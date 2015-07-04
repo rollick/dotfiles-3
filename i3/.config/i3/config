@@ -161,10 +161,11 @@ bindsym XF86Sleep exec --no-startup-id i3-exit
 bindsym $mod+Shift+s exec --no-startup-id i3-exit --dmenu="rofi -dmenu"
 
 # Window rules
-for_window [title="^Edit .*" class="Glade"] floating enable
+for_window [class="Glade" title="^Edit .*"] floating enable
 for_window [class="Glade-previewer"] floating enable
+for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
 for_window [class="Xsane"] floating enable
-for_window [title="Task Manager - Chromium"] floating enable
+for_window [title="^Task Manager - Chromium$"] floating enable
 
 ##############################
 # Autostart

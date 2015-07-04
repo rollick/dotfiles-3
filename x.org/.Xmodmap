@@ -1,7 +1,3 @@
-! Useful when you run Wolfram Mathematica on a laptop
-! without a keypad
-!keysym Menu = KP_Enter
-
 ! Replace Caps Lock with Shift
 remove Lock = Caps_Lock
 keysym Caps_Lock = Shift_L

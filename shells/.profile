@@ -24,7 +24,7 @@ export MANWIDTH="80"
 # Settings for less
 export LESS="-~-J-R-s"
 export SYSTEMD_LESS="${LESS}"
-export LESSHISTFILE="/dev/null"
+export LESSHISTFILE="-"
 
 # Load lesspipe, which provides advanced functions for less
 which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)

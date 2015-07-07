@@ -6,18 +6,20 @@ set $focused_fg #f9f9f9
 set $unfocused_bg #2d2d2d
 set $unfocused_fg #dcdcdc
 set $urgent_bg #d64937
-set $urgent_fg $unfocused_bg
+set $urgent_fg #2d2d2d
 set $separator_fg #888888
+set $indicator_off #2d2d2d
+set $indicator_on #2d2d2d
 
 # Set font
 font pango:Droid Sans Bold 10
 
 # Set colors for window decorations
 # class                 border        background    foreground indicator
-client.focused          $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
-client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
-client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
-client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $focused_bg
+client.focused          $focused_bg   $focused_bg   $focused_fg   $indicator_on
+client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off
+client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off
+client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $urgent_bg
 
 # i3bar
 bar {

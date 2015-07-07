@@ -54,6 +54,16 @@ bar {
 workspace_auto_back_and_forth yes
 
 ##############################
+# Window rules
+##############################
+for_window [class="Firefox" window_role="^(?!browser$)"] floating enable
+for_window [class="Glade" title="^Edit .*"] floating enable
+for_window [class="Glade-previewer"] floating enable
+for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
+for_window [class="Xsane"] floating enable
+for_window [title="^Task Manager - Chromium$"] floating enable
+
+##############################
 # Keybindings
 ##############################
 # Set modifier
@@ -172,14 +182,3 @@ mode "execute" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+x mode "execute"
-
-
-##############################
-# Window rules
-##############################
-for_window [class="Firefox" window_role="^(?!browser$)"] floating enable
-for_window [class="Glade" title="^Edit .*"] floating enable
-for_window [class="Glade-previewer"] floating enable
-for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
-for_window [class="Xsane"] floating enable
-for_window [title="^Task Manager - Chromium$"] floating enable

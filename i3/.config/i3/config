@@ -1,4 +1,13 @@
 ##############################
+# Autostart
+##############################
+exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id xcompmgr
+exec --no-startup-id thunar --daemon
+# i3status needs to be updated or i3bar will hang
+exec --no-startup-id sleep 2 && killall -USR1 i3status
+
+##############################
 # Appearance
 ##############################
 set $focused_bg #1a80b6
@@ -174,12 +183,3 @@ for_window [class="Glade-previewer"] floating enable
 for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
 for_window [class="Xsane"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
-
-##############################
-# Autostart
-##############################
-exec --no-startup-id sh ~/.fehbg
-exec --no-startup-id xcompmgr
-exec --no-startup-id thunar --daemon
-# i3status needs to be updated or i3bar will hang
-exec --no-startup-id sleep 2 && killall -USR1 i3status

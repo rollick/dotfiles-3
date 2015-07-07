@@ -150,17 +150,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Master 5%+
 bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
 bindsym XF86HomePage exec exo-open --launch WebBrowser
 bindsym XF86Mail exec exo-open --launch WebBrowser https://www.gmail.com/
-bindsym XF86Tools exec i3-sensible-terminal -t cmus -e cmus_wrapper
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec --no-startup-id rofi -show run -p "Run:"
-bindsym $mod+l exec --no-startup-id i3lock --color=000000
+bindsym $mod+l exec --no-startup-id i3lock --color=2d2d2d
 
 mode "execute" {
 	bindsym b exec exo-open --launch WebBrowser; mode "default"
 	bindsym f exec thunar; mode "default"
-	bindsym m exec i3-sensible-terminal -t cmus -e cmus_wrapper; mode "default"
 	bindsym t exec i3-sensible-terminal; mode "default"
-	bindsym v exec i3-sensible-terminal -t "Volume control" -e alsamixer; mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"

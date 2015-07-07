@@ -171,6 +171,7 @@ bindsym $mod+x mode "execute"
 ##############################
 # Window rules
 ##############################
+for_window [class="Firefox" window_role="^(?!browser$)"] floating enable
 for_window [class="Glade" title="^Edit .*"] floating enable
 for_window [class="Glade-previewer"] floating enable
 for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable

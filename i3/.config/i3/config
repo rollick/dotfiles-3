@@ -129,7 +129,7 @@ bindsym $mod+v split v
 bindsym $mod+Shift+q kill
 
 # Enter fullscreen mode for the focused container
-bindsym $mod+Shift fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # Floating container
 bindsym $mod+space focus mode_toggle

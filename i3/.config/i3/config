@@ -68,8 +68,8 @@ for_window [title="^Task Manager - Chromium$"] floating enable
 # Keybindings
 ##############################
 # $mod -- Perform action on parent
-# $mod+Ctrl -- Perform action on a window/container
-# $mod+Shift -- Run command
+# $mod+Shift -- Perform action on a window/container
+# $mod+Ctrl -- Run command
 
 # Set modifier
 set $mod Mod4

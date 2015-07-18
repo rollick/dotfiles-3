@@ -201,8 +201,8 @@ bindsym $mod+Ctrl+d exec --no-startup-id rofi -show run -p "Run:"
 bindsym Menu exec --no-startup-id rofi -show run -p "Run:"
 
 # Session control
-bindsym XF86Sleep exec --no-startup-id i3-exit --dmenu="rofi -dmenu"
+bindsym XF86Sleep exec --no-startup-id i3-session --dmenu="rofi -dmenu"
 bindsym $mod+Ctrl+b mode "session-control"
 bindsym $mod+Ctrl+e mode "run"
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=2d2d2d
-bindsym $mod+Ctrl+s exec --no-startup-id i3-exit --dmenu="rofi -dmenu"
+bindsym $mod+Ctrl+s exec --no-startup-id i3-session --dmenu="rofi -dmenu"

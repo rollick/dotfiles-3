@@ -96,15 +96,6 @@ mode "run" {
 	bindsym Return mode "default"
 }
 
-mode "session-control" {
-	bindsym c reload; mode "default"
-	bindsym e exit; mode "default"
-	bindsym r restart; mode "default"
-
-	bindsym Escape mode "default"
-	bindsym Return mode "default"
-}
-
 # Change focus
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -202,7 +193,6 @@ bindsym Menu exec --no-startup-id rofi -show run -p "Run:"
 
 # Session control
 bindsym XF86Sleep exec --no-startup-id i3-session --dmenu="rofi -dmenu"
-bindsym $mod+Ctrl+b mode "session-control"
 bindsym $mod+Ctrl+e mode "run"
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=2d2d2d
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session --dmenu="rofi -dmenu"

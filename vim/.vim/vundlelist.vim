@@ -1,7 +1,5 @@
 " Static plugins
 Plugin 'lastpos.vim', {'name': 'lastpos'}
-Plugin 'SearchComplete'
-Plugin 'TaskList.vim', {'name': 'TaskList'}
 
 " Git plugins
 Plugin 'bling/vim-airline'

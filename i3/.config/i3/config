@@ -86,16 +86,6 @@ mode "resize" {
 	bindsym Return mode "default"
 }
 
-mode "run" {
-	bindsym b exec exo-open --launch WebBrowser; mode "default"
-	bindsym f exec exo-open --launch FileManager; mode "default"
-	bindsym m exec cmus_gui
-	bindsym t exec i3-sensible-terminal; mode "default"
-
-	bindsym Escape mode "default"
-	bindsym Return mode "default"
-}
-
 # Change focus
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -193,6 +183,5 @@ bindsym Menu exec --no-startup-id rofi -show run -p "Run:"
 
 # Session control
 bindsym XF86Sleep exec --no-startup-id i3-session --dmenu="rofi -dmenu"
-bindsym $mod+Ctrl+e mode "run"
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=2d2d2d
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session --dmenu="rofi -dmenu"

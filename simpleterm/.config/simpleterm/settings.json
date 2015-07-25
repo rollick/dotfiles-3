@@ -1,5 +1,4 @@
 {
     "__version": 1,
-    "cursor-shape": "underline",
-    "honor_resize_hint": false
+    "cursor-shape": "underline"
 }

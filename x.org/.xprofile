@@ -11,5 +11,5 @@ fi
 export NO_AT_BRIDGE=1
 
 # Set terminal for i3
-export TERMINAL="exo-terminal"
+export TERMINAL="simpleterm"
 # vim: ft=sh

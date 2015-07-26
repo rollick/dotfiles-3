@@ -30,7 +30,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""
 set title
 " Enable syntax highlightning
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2
 	syntax on
 endif
 
@@ -44,19 +44,14 @@ set number
 set textwidth=79
 
 " Setup colorschemes
-if &t_Co == 256 || has("gui_running")
+if &t_Co == 256
 	colorscheme distinguished
 endif
 
 " Enable colorcolumn and cursorline
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2
 	set colorcolumn=+1
 	set cursorline
-endif
-
-" Set font for GUI
-if has("gui_running")
-	set guifont=monospace\ 10
 endif
 
 " Show mode in cmdline
@@ -81,17 +76,6 @@ set sidescrolloff=3
 " Use wildmenu
 set wildmenu
 
-" Window size and position (GUI)
-if has("gui_running")
-	if hostname() == "obelix"
-		autocmd! GuiEnter * set lines=50
-		autocmd GuiEnter * set columns=120
-	else
-		autocmd! GuiEnter * set lines=27
-		autocmd GuiEnter * set columns=90
-	endif
-endif
-
 " Set incremental search
 set incsearch
 
@@ -107,19 +91,6 @@ set hlsearch
 " Ctrl+k FB: █
 " Ctrl+k PI: ¶
 set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
-
-" Remove GUI elements (GUI)
-if has("gui_running")
-	set guioptions-=T	" Remove toolbar
-	set guioptions-=l	" Remove right-hand scrollbar
-	set guioptions-=L	" Remove right-hand scrollbar
-	set guioptions-=r	" Remove right-hand scrollbar
-	set guioptions-=R	" Remove right-hand scrollbar
-	set guioptions-=b	" Remove bottom scrollbar
-	set guioptions-=m	" remove titlebar
-	set guioptions-=t	" Disable tear-off menus
-	set guioptions+=g	" Make inactive menu items grey.
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Printing

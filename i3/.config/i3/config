@@ -2,7 +2,6 @@
 # Autostart
 ##############################
 exec --no-startup-id sh ~/.fehbg
-exec --no-startup-id xcompmgr
 # i3status needs to be updated or i3bar will hang
 exec --no-startup-id sleep 2 && killall -USR1 i3status
 

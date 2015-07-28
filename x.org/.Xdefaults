@@ -20,7 +20,7 @@ Xft.hintstyle: hintslight
 ! URxvt
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! General settings
-URxvt.perl-ext-common: default,clipboard,matcher,url-select
+URxvt.perl-ext-common: default,clipboard,matcher,url-select,vtwheel
 
 ! Cursor settings
 URxvt.cursorBlink: true

@@ -35,7 +35,3 @@ if which numlockx >/dev/null 2>&1; then
 		numlockx off &
 	fi
 fi
-
-if which urxvtd 2>&1; then
-	urxvtd -q -f -o
-fi

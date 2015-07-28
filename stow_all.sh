@@ -23,7 +23,6 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} i3
 	stow --verbose -R -t ${HOME} pacman
 	stow --verbose -R -t ${HOME} profile-cleaner
-	stow --verbose -R -t ${HOME} simpleterm
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org
 fi

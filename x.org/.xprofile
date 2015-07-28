@@ -11,5 +11,9 @@ fi
 export NO_AT_BRIDGE=1
 
 # Set terminal for i3
-export TERMINAL="simpleterm"
+if which urxvtc &>/dev/null; then
+   export TERMINAL="urxvtc"
+else
+	export TERMINAL="simpleterm"
+fi
 # vim: ft=sh

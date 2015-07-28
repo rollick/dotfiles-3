@@ -27,11 +27,15 @@ if which xmodmap >/dev/null 2>&1; then
 	fi
 fi
 
-# Enable disable numlock
+# Enable/disable numlock
 if which numlockx >/dev/null 2>&1; then
 	if [[ -e "${XDG_DATA_HOME:-${HOME}/.local/share}/numlock_on" ]];then
 		numlockx on &
 	else
 		numlockx off &
 	fi
+fi
+
+if which urxvtd 2>&1; then
+	urxvtd -q -f -o
 fi

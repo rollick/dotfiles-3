@@ -1,0 +1,7 @@
+# Backup $HOME to asterix.local
+include backup_home.include
+
+# Set Destination
+root = /run/media/raphael/backup
+
+label = Backup $HOME to a local HDD.

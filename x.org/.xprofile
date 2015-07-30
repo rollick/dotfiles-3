@@ -12,8 +12,10 @@ export NO_AT_BRIDGE=1
 
 # Set terminal for i3
 if which urxvtcd &>/dev/null; then
-   export TERMINAL="urxvtcd"
+	export RXVT_SOCKET="${XDG_CACHE_HOME:-${HOME}/.cache}/urxvtd-$(hostname)"
+	export TERMINAL="urxvtcd"
 else
 	export TERMINAL="urxvt"
 fi
+export TERMCMD="${TERMINAL}"
 # vim: ft=sh

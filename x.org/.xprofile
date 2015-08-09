@@ -18,4 +18,9 @@ else
 	export TERMINAL="urxvt"
 fi
 export TERMCMD="${TERMINAL}"
+
+# Fix libreoffice theme
+if which libreoffice >/dev/null 2>&1; then
+	export SAL_USE_VCLPLUGIN="gtk"
+fi
 # vim: ft=sh

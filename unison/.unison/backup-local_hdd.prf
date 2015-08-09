@@ -2,6 +2,6 @@
 include rules-backup.include
 
 # Set Destination
-root = /run/media/raphael/backup
+root = /run/media/raphael/system-backup
 
 label = Backup $HOME to a local HDD.

@@ -9,15 +9,15 @@ exec --no-startup-id sleep 2 && killall -USR1 i3status
 ##############################
 # Appearance
 ##############################
-set $focused_bg #1a80b6
-set $focused_fg #f9f9f9
+set $focused_bg #2d2d2d
+set $focused_fg #1a80b6
 set $unfocused_bg #2d2d2d
 set $unfocused_fg #dcdcdc
 set $urgent_bg #d64937
 set $urgent_fg #2d2d2d
 set $separator_fg #888888
 set $indicator_off #2d2d2d
-set $indicator_on #2d2d2d
+set $indicator_on #1a80b6
 
 # Set font
 font pango:Droid Sans Bold 10

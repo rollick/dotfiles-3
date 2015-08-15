@@ -23,7 +23,7 @@ set $indicator_on #1a80b6
 font pango:Droid Sans Bold 10
 
 # Set colors for window decorations
-# class                 border        background    foreground indicator
+# class                 border        background    foreground    indicator
 client.focused          $focused_bg   $focused_bg   $focused_fg   $indicator_on
 client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off
 client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off

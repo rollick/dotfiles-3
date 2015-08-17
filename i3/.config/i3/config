@@ -3,8 +3,6 @@
 ##############################
 exec --no-startup-id sh ~/.fehbg
 exec --no-startup-id udiskie --quiet --no-file-manager
-# i3status needs to be updated or i3bar will hang
-exec --no-startup-id sleep 2 && killall -USR1 i3status
 
 ##############################
 # Appearance
@@ -31,7 +29,7 @@ client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $urgent_bg
 
 # i3bar
 bar {
-	status_command i3status
+	status_command python ~/.config/i3/py3status
 	font pango:Droid Sans 10
 	position top
 	separator_symbol "|"
@@ -171,10 +169,10 @@ bindsym $mod+Shift+KP_8 move container to workspace 8
 bindsym $mod+Shift+KP_9 move container to workspace 9
 
 # Start applications
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute && killall -USR1 i3status
-bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle && killall -USR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 5%+ unmute && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 5%+ unmute
 bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
 bindsym XF86HomePage exec firefox
 bindsym XF86Mail exec firefox https://www.gmail.com/

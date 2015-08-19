@@ -6,64 +6,85 @@ from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
 # Constants
-ETHERNET = {'asterix': 'enp4s0',
-            'obelix': 'enp4s0'}
-
+ETHERNET = {
+        'asterix': 'enp4s0',
+        'obelix': 'enp4s0'
+}
 HOSTNAME = socket.gethostname()
-
-WIFI = {'asterix': 'wlp3s0',
-        'obelix': 'wlp3s0'}
+WIFI = {
+        'asterix': 'wlp3s0',
+        'obelix': 'wlp3s0'
+}
 
 
 # Configure i3pystatus
 status = Status(standalone=True)
 
-status.register('clock',
-                color='#dcdcdc',
-                format='%Y-%m-%d %H:%M')
+status.register(
+        'clock',
+        color='#dcdcdc',
+        format='%Y-%m-%d %H:%M',
+)
 
-status.register('alsa',
-                color='#dcdcdc',
-                color_muted='#888888',
-                format='Volume: {volume}%',
-                format_muted='Volume: mute',
-                mixer='Headphone')
+status.register(
+        'alsa',
+        color='#dcdcdc',
+        color_muted='#888888',
+        format='Volume: {volume}%',
+        format_muted='Volume: mute',
+        mixer='Headphone',
+)
 
-status.register('keyboard_locks',
-                caps_on='C',
-                caps_off='_',
-                color='#dcdcdc',
-                format='{caps}{num}{scroll}',
-                num_on='N',
-                num_off='_',
-                scroll_on='S',
-                scroll_off='_')
+status.register(
+        'keyboard_locks',
+        caps_on='C',
+        caps_off='_',
+        color='#dcdcdc',
+        format='{caps}{num}{scroll}',
+        num_on='N',
+        num_off='_',
+        scroll_on='S',
+        scroll_off='_',
+)
 
-status.register('network',
-                format_down='Ethernet: down',
-                format_up='Wifi: {essid}',
-                interface=WIFI[HOSTNAME])
+status.register(
+        'network',
+        format_down='Ethernet: down',
+        format_up='Wifi: {essid}',
+        interface=WIFI[HOSTNAME],
+)
 
-status.register('network',
-                format_down='Ethernet: down',
-                format_up='Ethernet: up',
-                interface=ETHERNET[HOSTNAME])
+status.register(
+        'network',
+        format_down='Ethernet: down',
+        format_up='Ethernet: up',
+        interface=ETHERNET[HOSTNAME],
+)
 
-status.register('updates',
-                color='#dcdcdc',
-                format='AUR updates: {count}',
-                format_no_updates='',
-                backends=[cower.Cower()])
+status.register(
+        'updates',
+        backends=[cower.Cower()],
+        color='#dcdcdc',
+        format='AUR updates: {count}',
+        format_no_updates='',
+        interval=10*60,
+)
 
-status.register('updates',
-                backends=[pacman.Pacman()],
-                color='#dcdcdc',
-                format='Official updates: {count}',
-                format_no_updates='')
+status.register(
+        'updates',
+        backends=[pacman.Pacman()],
+        color='#dcdcdc',
+        format='Official updates: {count}',
+        format_no_updates='',
+        interval=10*60,
+)
 
-status.register('cmus',
-                color='#dcdcdc',
-                format=('{status} {artist} - {title} '
-                        '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]'))
+status.register(
+        'cmus',
+        color='#dcdcdc',
+        format=('{status} {artist} - {title} '
+                '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]'),
+        format_not_running="",
+)
 
 status.run()

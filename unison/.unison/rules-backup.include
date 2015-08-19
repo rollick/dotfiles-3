@@ -40,6 +40,7 @@ ignore = Path .config/cmus/*-history
 ignore = Path .config/cmus/*.pl
 ignore = Path .config/cmus/autosave.tmp
 ignore = Path .config/cmus/cache
+ignore = Path .config/freshwrapper-data
 ignore = Path .config/nitrogen/bg-saved.cfg
 ignore = Path .config/pulse
 ignore = Path .config/ranger/history

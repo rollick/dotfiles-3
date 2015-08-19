@@ -96,6 +96,7 @@ status.register(
                 account='Gmail',
             ),
         ],
+        interval=60,
 )
 
 status.register(

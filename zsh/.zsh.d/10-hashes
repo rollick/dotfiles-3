@@ -18,7 +18,7 @@ fi
 # Add all git repositories inside $HOME/Projects
 for d in "${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"/Code/{Local,Remote}/*(FN); do
 	if [[ -d "${d}/.git" ]]; then
-		hash -d "git-$(basename ${d})"=${d}
+		hash -d "git-${$(basename "$(dirname "${d}")"):l}-$(basename ${d})"=${d}
 	fi
 done
 

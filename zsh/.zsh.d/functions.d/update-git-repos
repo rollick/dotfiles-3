@@ -11,8 +11,8 @@ no_cmd_handler git || return 1
 if [[ -z "${1}" ]]; then
 	local first
 	first=1
-	for d in $(hash -d |grep "^git-" |cut -d "=" -f 2 |sort); do
-		if [[ -d "${d}/.git" ]] && [[ ! -f "${d}/.local-repo" ]]; then
+	for d in $(hash -d |grep "^git-remote" |cut -d "=" -f 2 |sort); do
+		if [[ -d "${d}/.git" ]]; then
 			if [[ ${first} -eq 0 ]]; then
 				print ""
 			else
@@ -24,7 +24,7 @@ if [[ -z "${1}" ]]; then
 	done
 else
 	until [[ -z "${1}" ]]; do
-		if [[ -d "${1}/.git" ]] && [[ ! -f "${1}/.local-repo" ]]; then
+		if [[ -d "${1}/.git" ]]; then
 			printhl "$(basename "${1}")"
 			(cd "${1}"; git pull)
 			if [[ ${#} -gt 0 ]]; then

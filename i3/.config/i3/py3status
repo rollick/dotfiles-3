@@ -62,7 +62,7 @@ status.register(
 
 status.register(
         'network',
-        format_down='Ethernet: down',
+        format_down='Wifi: down',
         format_up='Wifi: {essid}',
         interface=WIFI[HOSTNAME],
 )

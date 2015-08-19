@@ -43,6 +43,12 @@ status.register(
 )
 
 status.register(
+        'dpms',
+        color='#dcdcdc',
+        color_disabled='#888888',
+)
+
+status.register(
         'keyboard_locks',
         caps_on='C',
         caps_off='_',

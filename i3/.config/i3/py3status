@@ -52,19 +52,21 @@ status.register(
         scroll_off='_',
 )
 
-status.register(
-        'network',
-        format_down='Wifi: down',
-        format_up='Wifi: {essid}',
-        interface=WIFI[HOSTNAME],
-)
+if HOSTNAME in WIFI:
+    status.register(
+            'network',
+            format_down='Wifi: down',
+            format_up='Wifi: {essid}',
+            interface=WIFI[HOSTNAME],
+    )
 
-status.register(
-        'network',
-        format_down='Ethernet: down',
-        format_up='Ethernet: up',
-        interface=ETHERNET[HOSTNAME],
-)
+if HOSTNAME in ETHERNET:
+    status.register(
+            'network',
+            format_down='Ethernet: down',
+            format_up='Ethernet: up',
+            interface=ETHERNET[HOSTNAME],
+    )
 
 status.register(
         'updates',

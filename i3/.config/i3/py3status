@@ -11,6 +11,7 @@ ETHERNET = {
         'obelix': 'enp4s0'
 }
 HOSTNAME = socket.gethostname()
+LAPTOPS = ['asterix']
 WIFI = {
         'asterix': 'wlp3s0',
         'obelix': 'wlp3s0'
@@ -51,6 +52,13 @@ status.register(
         scroll_on='S',
         scroll_off='_',
 )
+
+if HOSTNAME in LAPTOPS:
+    status.register(
+            'backlight',
+            format='Backlight: {percentage}',
+            color='#dcdcdc',
+    )
 
 if HOSTNAME in WIFI:
     status.register(

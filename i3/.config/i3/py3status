@@ -1,24 +1,16 @@
 #!/bin/env python
-import configparser
-import os
 import socket
 
 from i3pystatus import Status
-from i3pystatus.mail import imap
 from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
 # Constants
-_XDG_CONFIG_HOME = os.path.expanduser(
-                       os.environ.get('XDG_CONFIG_HOME', '~/.config')
-                   )
 ETHERNET = {
         'asterix': 'enp4s0',
         'obelix': 'enp4s0'
 }
 HOSTNAME = socket.gethostname()
-MAIL_ACCOUNTS = configparser.ConfigParser()
-MAIL_ACCOUNTS.read(os.path.join(_XDG_CONFIG_HOME, 'mail_accounts'))
 WIFI = {
         'asterix': 'wlp3s0',
         'obelix': 'wlp3s0'
@@ -90,19 +82,6 @@ status.register(
         format='Official updates: {count}',
         format_no_updates='',
         interval=10*60,
-)
-
-status.register(
-        'mail',
-        backends=[
-            imap.IMAP(
-                host='imap.gmail.com',
-                username=MAIL_ACCOUNTS['Gmail']['user'],
-                password=MAIL_ACCOUNTS['Gmail']['password'],
-                account='Gmail',
-            ),
-        ],
-        interval=60,
 )
 
 status.register(

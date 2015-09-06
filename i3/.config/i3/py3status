@@ -121,6 +121,8 @@ status.register(
                 account='Gmail',
             ),
         ],
+        color='#dcdcdc',
+        color_unread='#dcdcdc',
         format='{account}: {unread} new mail',
         format_plural='{account}: {current_unread} new mails',
         interval=60,

@@ -8,22 +8,31 @@ from i3pystatus.mail import imap
 from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
+def first_network_interface(interface_type):
+    prefixes = {
+        'ethernet': 'e',
+        'loopback': 'l',
+        'wifi': 'w',
+    }
+    interfaces = os.listdir('/sys/class/net')
+
+    for interface in interfaces:
+        if interface.startswith(prefixes[interface_type]):
+            return interface
+    else:
+        return ''
+
+
 # Constants
 _XDG_CONFIG_HOME = os.path.expanduser(
                        os.environ.get('XDG_CONFIG_HOME', '~/.config')
                    )
-ETHERNET = {
-        'asterix': 'enp4s0',
-        'obelix': 'enp4s0'
-}
+ETHERNET_INTERFACE = first_network_interface('ethernet')
 HOSTNAME = socket.gethostname()
 LAPTOPS = ['asterix']
 MAIL_ACCOUNTS = configparser.ConfigParser()
 MAIL_ACCOUNTS.read(os.path.join(_XDG_CONFIG_HOME, 'mail_accounts'))
-WIFI = {
-        'asterix': 'wlp3s0',
-        'obelix': 'wlp3s0'
-}
+WIFI_INTERFACE = first_network_interface('wifi')
 
 # Configure i3pystatus
 status = Status(standalone=True)
@@ -68,20 +77,20 @@ if HOSTNAME in LAPTOPS:
             color='#dcdcdc',
     )
 
-if HOSTNAME in WIFI:
+if WIFI_INTERFACE:
     status.register(
             'network',
             format_down='Wifi: down',
             format_up='Wifi: {essid}',
-            interface=WIFI[HOSTNAME],
+            interface=WIFI_INTERFACE,
     )
 
-if HOSTNAME in ETHERNET:
+if ETHERNET_INTERFACE:
     status.register(
             'network',
             format_down='Ethernet: down',
             format_up='Ethernet: up',
-            interface=ETHERNET[HOSTNAME],
+            interface=ETHERNET_INTERFACE,
     )
 
 status.register(

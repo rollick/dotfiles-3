@@ -4,7 +4,6 @@ DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 mkdir --verbose -p "${HOME}/.ssh"
 mkdir --verbose -p "${HOME}/.vim"
 mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
-mkdir --verbose -p "${CONFIG_HOME}/octave"
 mkdir --verbose -p "${CONFIG_HOME}/ranger"
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} fontconfig

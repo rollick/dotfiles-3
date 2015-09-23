@@ -1,2 +1,2 @@
-alias octave='octave --silent'
+alias octave='octave --silent --nogui'
 alias calc='noglob octave --silent --eval'

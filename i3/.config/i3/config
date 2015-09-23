@@ -59,6 +59,7 @@ for_window [class="Glade" title="^Edit .*"] floating enable
 for_window [class="Glade-previewer"] floating enable
 for_window [class="Gvbam"] floating enable
 for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
+for_window [class="Octave-gui" title="^Figure .*$"] floating enable
 for_window [class="^Snes9x.*"] floating enable
 for_window [class="Xsane"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
@@ -173,7 +174,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 
 bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 5%+ unmute
-bindsym XF86Calculator exec i3-sensible-terminal -t Calculator -e python
+bindsym XF86Calculator exec octave
 bindsym XF86HomePage exec firefox
 bindsym XF86Mail exec firefox https://www.gmail.com/
 bindsym $mod+Ctrl+Return exec i3-sensible-terminal

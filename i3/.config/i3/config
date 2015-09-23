@@ -2,6 +2,7 @@
 # Autostart
 ##############################
 exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-file-manager
 
 ##############################

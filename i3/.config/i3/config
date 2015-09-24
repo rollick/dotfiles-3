@@ -8,15 +8,15 @@ exec --no-startup-id udiskie --quiet --no-file-manager
 ##############################
 # Appearance
 ##############################
-set $focused_bg #2d2d2d
-set $focused_fg #1a80b6
-set $unfocused_bg #2d2d2d
-set $unfocused_fg #dcdcdc
+set $focused_bg #5294e2
+set $focused_fg #ffffff
+set $unfocused_bg #2e343e
+set $unfocused_fg #d3dae3
 set $urgent_bg #d64937
-set $urgent_fg #2d2d2d
-set $separator_fg #888888
-set $indicator_off #2d2d2d
-set $indicator_on #1a80b6
+set $urgent_fg #5294e2
+set $separator_fg #7c818c
+set $indicator_off #5294e2
+set $indicator_on #d3dae3
 
 # Set font
 font pango:Droid Sans Bold 10

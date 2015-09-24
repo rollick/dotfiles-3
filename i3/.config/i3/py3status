@@ -6,6 +6,8 @@ from i3pystatus import Status
 from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
+COLOR_DEFAULT='#d3dae3'
+COLOR_DISABLED='#7c818c'
 
 def first_network_interface(interface_type):
     prefixes = {
@@ -36,14 +38,14 @@ status = Status(standalone=True)
 
 status.register(
         'clock',
-        color='#dcdcdc',
+        color=COLOR_DEFAULT,
         format='%Y-%m-%d %H:%M',
 )
 
 status.register(
         'alsa',
-        color='#dcdcdc',
-        color_muted='#888888',
+        color=COLOR_DEFAULT,
+        color_muted=COLOR_DISABLED,
         format='Volume: {volume}%',
         format_muted='Volume: mute',
         mixer='Headphone',
@@ -51,15 +53,15 @@ status.register(
 
 status.register(
         'dpms',
-        color='#dcdcdc',
-        color_disabled='#888888',
+        color=COLOR_DEFAULT,
+        color_disabled=COLOR_DISABLED,
 )
 
 status.register(
         'keyboard_locks',
         caps_on='C',
         caps_off='_',
-        color='#dcdcdc',
+        color=COLOR_DEFAULT,
         format='{caps}{num}{scroll}',
         num_on='N',
         num_off='_',
@@ -71,7 +73,7 @@ if HOSTNAME in LAPTOPS:
     status.register(
             'backlight',
             format='Backlight: {percentage}',
-            color='#dcdcdc',
+            color=COLOR_DEFAULT,
     )
 
 if WIFI_INTERFACE:
@@ -93,7 +95,7 @@ if ETHERNET_INTERFACE:
 status.register(
         'updates',
         backends=[cower.Cower()],
-        color='#dcdcdc',
+        color=COLOR_DEFAULT,
         format='AUR updates: {count}',
         format_no_updates='',
         interval=10*60,
@@ -102,7 +104,7 @@ status.register(
 status.register(
         'updates',
         backends=[pacman.Pacman()],
-        color='#dcdcdc',
+        color=COLOR_DEFAULT,
         format='Official updates: {count}',
         format_no_updates='',
         interval=10*60,
@@ -110,7 +112,7 @@ status.register(
 
 status.register(
         'cmus',
-        color='#dcdcdc',
+        color=COLOR_DEFAULT,
         format=('[{status} {artist} - {title} ({album}) '
                 '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]]'),
         format_not_running="",

@@ -66,6 +66,7 @@ for_window [class="^Snes9x.*"] floating enable
 for_window [class="Xsane"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
 
+
 ##############################
 # Keybindings
 ##############################
@@ -75,7 +76,7 @@ for_window [title="^Task Manager - Chromium$"] floating enable
 
 # Set modifier
 set $mod Mod4
-floating_modifier $mod
+floating_modifier $mod+Shift
 
 # Modes
 mode "resize" {

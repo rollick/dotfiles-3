@@ -24,10 +24,6 @@ Xft.hintstyle: hintslight
 ! General settings
 URxvt.perl-ext-common: default,clipboard,matcher,url-select,vtwheel
 
-! Cursor settings
-URxvt.cursorBlink: true
-URxvt.cursorUnderline: true
-
 ! Font settings
 URxvt.font: xft:Droid Sans Mono:size=9,xft:Symbola:size=9
 

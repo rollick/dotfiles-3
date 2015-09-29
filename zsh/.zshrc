@@ -25,10 +25,10 @@ if [[ -d "${HOME}/.zsh.d/functions.d" ]]; then
 fi
 
 # Setup $LS_COLORS
-if [[ ! -f "${XDG_HOME:-${HOME}/.config}/dircolors" ]]; then
-	dircolors --print-database >| "${XDG_HOME:-${HOME}/.config}/dircolors"
+if [[ ! -f "${XDG_CONFIG_HOME}/dircolors" ]]; then
+	dircolors --print-database >| "${XDG_CONFIG_HOME}/dircolors"
 fi
-eval $(dircolors --sh "${XDG_HOME:-${HOME}/.config}/dircolors")
+eval $(dircolors --sh "${XDG_CONFIG_HOME}/dircolors")
 
 # Include other settings
 for f in ${HOME}/.zsh.d/[0-9]*(.N); do

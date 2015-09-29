@@ -1,1 +1,1 @@
-alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR:-$HOME/Public}"
+alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR}"

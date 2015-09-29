@@ -6,7 +6,7 @@ autoload -U add-zsh-hook
 autoload -U compinit && compinit
 autoload -U colors && colors
 autoload -U keeper && keeper
-autoload -U promptinit
+autoload -U promptinit && promptinit
 autoload -U url-quote-magic
 autoload -U zmv
 
@@ -43,9 +43,7 @@ for f in ${HOME}/.zsh.d/alias.d/*(.N); do
 done
 
 # Set prompt
-if promptinit; then
-	prompt default
-fi
+promptinit && prompt default
 
 # Include external additions
 ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"

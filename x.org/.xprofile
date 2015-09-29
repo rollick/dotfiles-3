@@ -2,10 +2,10 @@
 
 # Setup environment for X sessions
 
-# Fix GTK2+
-if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
-	export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
-fi
+
+# Use XDG dirs
+export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp2"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1
@@ -18,9 +18,4 @@ else
 	export TERMINAL="urxvt"
 fi
 export TERMCMD="${TERMINAL}"
-
-# Fix libreoffice theme
-if which libreoffice >/dev/null 2>&1; then
-	export SAL_USE_VCLPLUGIN="gtk"
-fi
 # vim: ft=sh

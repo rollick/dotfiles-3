@@ -4,206 +4,37 @@
 source ~/.vim/vundle.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" General
+" General settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Disable vi compatibility
-set nocompatible
-
-" Enable filetype plugin
+colorscheme distinguished
 filetype plugin indent on
-
-" Maximum number of changes that can be undone
-set undolevels=1000
-
-" Maximum number of lines to save for undo on a buffer reload
-set undoreload=1000
-
-" Don't use backupfiles that's what a VCS is for.
-set nobackup
-
-" Swap files? Never needed them.
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" UI settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
-set title
-" Enable syntax highlightning
-if &t_Co > 2
-	syntax on
-endif
-
-" Size of foldcolumn (max: 12)
-set foldcolumn=2
-
-" Show line numbers
-set number
-
-" dfjhdskjf
-set textwidth=79
-
-" Setup colorschemes
-if &t_Co == 256
-	colorscheme distinguished
-endif
-
-" Enable colorcolumn and cursorline
-if &t_Co > 2
-	set colorcolumn=+1
-	set cursorline
-endif
-
-" Show mode in cmdline
-set showmode
-
-" Show incomplete command in cmdline
-set showcmd
-
-" Show statusline
-set ruler
-set laststatus=2 "0 = Never, 1=2+ Windows, 2=Always
-
-" Set height of cmdline
-set cmdheight=1
-
-" Keep n lines above/under cursor
-set scrolloff=3
-
-" Keep n columns left/right of cursor
-set sidescrolloff=3
-
-" Use wildmenu
-set wildmenu
-
-" Set incremental search
-set incsearch
-
-" Highlight search results
-set hlsearch
-
-" Show invisible characters
-" See dig for characters
-" Ctrl+k vv: │
-" Ctrl+k <<: «
-" Ctrl+k >>: »
-" Ctrl+k .M: ·
-" Ctrl+k FB: █
-" Ctrl+k PI: ¶
-set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Printing
-"""""""""""""""""""""""""""""""""""""""""""""""""
-set printdevice=PDF-Printer
-set printoptions=number:n,syntax:n
-
-" Set dictionary for spell checking
+syntax on
+set nocompatible  " Disable vi compatibility
+set nobackup  " Don't use backupfiles
+set noswapfile  " Disable swap files
 set spelllang=en
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Wildmenu
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Ignore audio files
-set wildignore+=*.flac,*.ogg,*.mp3,*.wav,*.wma
-
-" Ignore backup files
-set wildignore+=*~,*.backup,*.bak,*.swp
-
-" Ignore bash files
-set wildignore+=~/.bash_history
-
-" Ignore databases
-set wildignore+=*.db,*.sqlite
-
-" Ignore image files
-set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
-
-" Ignore matlab files
-set wildignore+=matlab_crash_dump*
-
-" Ignore miscellaneous files
-set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
-set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
-
-" Ignore object files
-set wildignore+=*.o,*.obj,*.pyc
-
-" Ignore octave files
-set wildignore+=octave-core,~/octave_hist
-
-" Ignore video files
-set wildignore+=*.avi,*.flv,*.mkv,*.mp4,*.mpeg,*.mpg,*.ogv,*.wmv
-
-" Ignore zsh files
-set wildignore+=~/.zcompdump,~/.zsh_history
-
-" Ignore X files
-set wildignore+=~/.ICEauthority,~/.Xauthority
-
+set undolevels=100  " Max number of changes that can be undone
+set undoreload=100  " Max number of lines to save for undo on a buffer reload
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" autocmd
+" Autocmd settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Strip trailing whitespace on saving a file
-" (This should be OK, except you use an esoteric programming language like
-" Whitespace.)
 autocmd BufWritePre * :call StripTrailingWhitespace()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: vim-airline
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_left_sep=""
-let g:airline_right_sep=""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: Markdown
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vim_markdown_folding_disabled=1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: MRU
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:MRU_File=expand('~/.vim/.recently-used')
-let g:MRU_Max_Entries=10
-let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*|.vimrc$'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin: NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDChristmasTree=1
-let g:NERDTreeHighlightCursorline=0
-let g:NERDTreeHijackNetrw=1
-let g:NERDTreeQuitOnOpen=1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax: python
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_highlight_all = 1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Set <leader>
-let mapleader=","
-let g:mapleader=","
+let mapleader=','
+let g:mapleader=','
 
-" Fast reload of ~/.vimrc
-nmap <leader>r :source ~/.vimrc<cr>
-
-" Don't move cursor when repeating last command with "."
+" Don't move cursor when repeating last command with '.'
 nmap . .`[
 
 " Easy use of tabs
-nmap <leader>to :tabnew<cr>
 nmap <leader>tc :tabclose<cr>
 nmap <leader>tn :tabnext<cr>
+nmap <leader>to :tabopen<cr>
 nmap <leader>tp :tabprevious<cr>
 
 " Toggle folds
@@ -249,14 +80,81 @@ nmap <silent><leader>e :e ~/.vimrc<CR>
 " Don't use ex-mode
 nnoremap Q gq
 
-let g:EasyMotion_leader_key = '<leader><leader>'
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:markdown_folding_disabled=1
+let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
+let g:MRU_File=expand('~/.vim/.recently-used')
+let g:MRU_Max_Entries=10
+let g:NERDChristmasTree=1
+let g:NERDTreeHighlightCursorline=0
+let g:NERDTreeHijackNetrw=1
+let g:NERDTreeQuitOnOpen=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Printer settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set printdevice=PDF-Printer
+set printoptions=number:n,syntax:n
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python_hightlight_all=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Text editing settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set textwidth=79
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" UI settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set cmdheight=1
+set colorcolumn=+1
+set cursorline
+set foldcolumn=2
+set hlsearch
+set incsearch
+set laststatus=2  " 0=Never, 1=2+ windows, 2=Always
+set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
+set number
+set ruler
+set scrolloff=5  " Keep n lines above/under cursor
+set sidescrolloff=5  " Keep n columns left/right of cursor
+set showcmd
+set showmode
+set title
+set wildmenu
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Wildmenu settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set wildignore+=*.flac,*.ogg,*.mp3,*.wav,*.wma
+set wildignore+=*~,*.backup,*.bak,*.swp
+set wildignore+=~/.bash_history
+set wildignore+=*.db,*.sqlite
+set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
+set wildignore+=matlab_crash_dump*
+set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
+set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
+set wildignore+=*.o,*.obj,*.pyc,*.pyo
+set wildignore+=octave-core,~/octave_hist
+set wildignore+=*.avi,*.flv,*.mkv,*.mp4,*.mpeg,*.mpg,*.ogv,*.wmv
+set wildignore+=~/.zcompdump,~/.zsh_history
+set wildignore+=~/.ICEauthority,~/.Xauthority
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""
 function! StripTrailingWhitespace()
-	" Strip Trailing Whitespace
+	" Strip trailing whitespace
 
 	" Don't run on some filetypes
 	if &ft =~ 'asciidoc\|markdown\|mkd'
@@ -264,28 +162,12 @@ function! StripTrailingWhitespace()
 	endif
 
 	" Save cursor position
-	let line = line(".")
-	let col = col(".")
+	let line = line('.')
+	let col = col('.')
 
 	" Remove trailing whitespace
 	%s:\s\+$::e
 
 	" Restore cursor position
 	call cursor(line, col)
-endfunction
-
-function! MyFoldText()
-	let line = getline(v:foldstart)
-
-	let nucolwidth = &fdc + &number * &numberwidth
-	let windowwidth = winwidth(0) - nucolwidth - 3
-	let foldedlinecount = v:foldend - v:foldstart
-
-	" expand tabs into spaces
-	let onetab = strpart('          ', 0, &tabstop)
-	let line = substitute(line, '\t', onetab, 'g')
-
-	let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-	let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-	return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction

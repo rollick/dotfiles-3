@@ -21,6 +21,7 @@ export DVDCSS_CACHE="${XDG_CACHE_HOME}/dvdcss"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export PYTHON_EGG_CACHE="${XDG_CACHE_HOME}/python-eggs"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python_startup.py"
+export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
 export WORKON_HOME="${XDG_DATA_HOME}/virtualenvs"
 
 # Fix for unknown terminals

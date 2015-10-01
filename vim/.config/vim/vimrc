@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin management with Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""
-source ~/.vim/vundle.vim
+source $XDG_CONFIG_HOME/vim/vundle.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -15,6 +15,7 @@ set noswapfile  " Disable swap files
 set spelllang=en
 set undolevels=100  " Max number of changes that can be undone
 set undoreload=100  " Max number of lines to save for undo on a buffer reload
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Autocmd settings
@@ -75,7 +76,7 @@ nnoremap <Tab> %
 nmap <silent><leader>l :set list!<CR>
 
 " Easy access to vimrc
-nmap <silent><leader>e :e ~/.vimrc<CR>
+nmap <silent><leader>e :e $XDG_CONFIG_HOME/vim/vimrc<CR>
 
 " Don't use ex-mode
 nnoremap Q gq
@@ -87,7 +88,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:markdown_folding_disabled=1
 let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
-let g:MRU_File=expand('~/.vim/.recently-used')
+let g:MRU_File=expand($XDG_CACHE_HOME . '/vim/recently-used')
 let g:MRU_Max_Entries=10
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=0

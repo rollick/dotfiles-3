@@ -102,8 +102,10 @@ let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
 let g:MRU_File=$XDG_CACHE_HOME . '/vim/recently-used'
 let g:MRU_Max_Entries=10
 let g:NERDChristmasTree=1
+let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/vim/NERDTreeBookmarks'
 let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeHijackNetrw=1
+let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeQuitOnOpen=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""

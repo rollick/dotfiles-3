@@ -1,4 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
+" Setup
+"""""""""""""""""""""""""""""""""""""""""""""""""
+if !filereadable($XDG_CACHE_HOME . '/vim/viminfo')
+	silent !mkdir -p $XDG_CACHE_HOME/vim
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin management with Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""
 source $XDG_CONFIG_HOME/vim/vundle.vim

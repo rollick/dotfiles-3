@@ -95,8 +95,8 @@ nnoremap Q gq
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:markdown_folding_disabled=1
 let g:netrw_home=$XDG_CACHE_HOME . '/vim'
+let g:vim_markdown_folding_disabled=1
 let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
 let g:MRU_File=$XDG_CACHE_HOME . '/vim/recently-used'
 let g:MRU_Max_Entries=10

@@ -4,19 +4,19 @@
 let vundle_installed=1
 
 " Bootstrap vundle
-if !filereadable($XDG_CACHE_HOME . '/vim/bundles/vundle/README.md')
+if !filereadable($XDG_DATA_HOME . '/vim/bundles/vundle/README.md')
 	let vundle_installed=0
 	echo 'Installing Vundle'
 	echo ''
-	silent !mkdir -p $XDG_CACHE_HOME/vim/bundles
-	silent !git clone https://github.com/VundleVim/Vundle.vim $XDG_CACHE_HOME/vim/bundles/vundle
+	silent !mkdir -p $XDG_DATA_HOME/vim/bundles
+	silent !git clone https://github.com/VundleVim/Vundle.vim $XDG_DATA_HOME/vim/bundles/vundle
 endif
 
 " Set up Vundle
 set nocompatible
 filetype off
-set rtp+=$XDG_CACHE_HOME/vim/bundles/vundle/
-call vundle#begin($XDG_CACHE_HOME . '/vim/bundles')
+set rtp+=$XDG_DATA_HOME/vim/bundles/vundle/
+call vundle#begin($XDG_DATA_HOME . '/vim/bundles')
 
 " Let Vundle manage itself
 

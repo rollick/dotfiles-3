@@ -30,7 +30,7 @@ if [[ -n "${SSH_CONNECTION}" ]] || [[ ! -z "${SSH_TTY}" ]]; then
 fi
 
 # Add some directories to path
-export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # Search these directories with pacdiff
 export DIFFSEARCHPATH="/boot /etc /usr /var"

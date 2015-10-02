@@ -1,0 +1,59 @@
+#!/bin/bash
+# Copyright (C) 2015 by Raphael Scholer
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+DMENU="dmenu -i"
+MAIN_ITEMS="$(echo -e "i3 \u2192")
+logout
+suspend
+hibernate
+reboot
+shutdown"
+
+I3_ITEMS="reconfigure
+restart"
+
+# Parse commandline arguments
+if [[ ! -z ${1} ]]; then
+	if [[ "$(cut -d= -f1 <<< "${1}")" == "--dmenu" ]]; then
+		DMENU="$(cut -d= -f2 <<< "${1}")"
+	fi
+
+	shift
+fi
+
+# Show menus
+if [[ -z ${1} ]]; then
+	choice=$(${DMENU} -p "session:" <<< "${MAIN_ITEMS}")
+	case ${choice} in
+		"i3 "* )      "${0}" --dmenu="${DMENU}" i3;;
+		"logout" )    i3-msg exit;;
+		"suspend" )   i3lock -c 2d2d2d && systemctl suspend;;
+		"hibernate" ) i3lock -c 2d2d2d && systemctl hibernate;;
+		"reboot" )    systemctl reboot;;
+		"shutdown" )  systemctl poweroff;;
+	esac
+elif [[ "${1}" == "i3" ]]; then
+	choice=$(${DMENU} -p "session - i3:" <<< "${I3_ITEMS}")
+	case ${choice} in
+		"reconfigure")  i3-msg reload;;
+		"restart") i3-msg restart;;
+		* ) ${0} --dmenu="${DMENU}";;
+	esac
+fi

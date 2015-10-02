@@ -1,12 +1,12 @@
-" Static plugins
-Plugin 'lastpos.vim', {'name': 'lastpos'}
+" Requirements for vim-markdown
+Plugin 'godlygeek/tabular'
 
-" Git plugins
+" Not required by anything
 Plugin 'bling/vim-airline'
+Plugin 'lastpos.vim', {'name': 'lastpos'}
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
-Plugin 'godlygeek/tabular'
 Plugin 'mitsuhiko/vim-rst'
 Plugin 'nvie/vim-flake8'
 Plugin 'PotatoesMaster/i3-vim-syntax'

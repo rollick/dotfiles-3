@@ -4,7 +4,7 @@
 let vundle_installed=1
 
 " Bootstrap vundle
-if !filereadable(expand($XDG_CACHE_HOME . '/vim/bundles/vundle/README.md'))
+if !filereadable($XDG_CACHE_HOME . '/vim/bundles/vundle/README.md')
 	let vundle_installed=0
 	echo 'Installing Vundle'
 	echo ''

@@ -1,14 +1,11 @@
 #!/bin/bash
-CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+mkdir --verbose -p "${HOME}/.config/gtk-2.0"
+mkdir --verbose -p "${HOME}/.config/gtk-3.0"
+mkdir --verbose -p "${HOME}/.config/ranger"
 mkdir --verbose -p "${HOME}/.ssh"
-mkdir --verbose -p "${CONFIG_HOME}/gtk-2.0"
-mkdir --verbose -p "${CONFIG_HOME}/gtk-3.0"
-mkdir --verbose -p "${CONFIG_HOME}/ranger"
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} fontconfig
 stow --verbose -R -t ${HOME} git
-stow --verbose -R -t ${HOME} octave
 stow --verbose -R -t ${HOME} python
 stow --verbose -R -t ${HOME} ranger
 stow --verbose -R -t ${HOME} shells
@@ -18,9 +15,8 @@ stow --verbose -R -t ${HOME} vim
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
+	mkdir --verbose -p "${HOME}/.local/bin"
 	mkdir --verbose -p "${HOME}/.unison"
-	mkdir --verbose -p "${DATA_HOME}/applications"
-	mkdir --verbose -p "${DATA_HOME}/bin"
 	stow --verbose -R -t ${HOME} dunst
 	stow --verbose -R -t ${HOME} i3
 	stow --verbose -R -t ${HOME} pacman

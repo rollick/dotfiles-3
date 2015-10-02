@@ -5,6 +5,8 @@ if !filereadable($XDG_CACHE_HOME . '/vim/viminfo')
 	silent !mkdir -p $XDG_CACHE_HOME/vim
 endif
 
+set runtimepath+=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin management with Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""

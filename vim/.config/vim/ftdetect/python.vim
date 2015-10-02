@@ -1,3 +1,4 @@
+" PEP 8 compatible
 autocmd FileType python set autoindent
 autocmd FileType python set expandtab
 autocmd FileType python set omnifunc=pythoncomplete#Complete

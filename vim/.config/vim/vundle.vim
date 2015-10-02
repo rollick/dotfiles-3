@@ -9,7 +9,7 @@ if !filereadable(expand($XDG_CACHE_HOME . '/vim/bundles/vundle/README.md'))
 	echo 'Installing Vundle'
 	echo ''
 	silent !mkdir -p $XDG_CACHE_HOME/vim/bundles
-	silent !git clone https://github.com/gmarik/Vundle.vim $XDG_CACHE_HOME/vim/bundles/vundle
+	silent !git clone https://github.com/VundleVim/Vundle.vim $XDG_CACHE_HOME/vim/bundles/vundle
 endif
 
 " Set up Vundle

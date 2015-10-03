@@ -28,6 +28,7 @@ from i3pystatus.updates import pacman
 
 
 COLOR_DEFAULT = '#d3dae3'
+COLOR_ERROR = '#d64937'
 COLOR_DISABLED = '#7c818c'
 
 
@@ -119,6 +120,15 @@ if ETHERNET_INTERFACE:
             format_down='Ethernet: down',
             format_up='Ethernet: up',
             interface=ETHERNET_INTERFACE,
+    )
+
+if ETHERNET_INTERFACE or WIFI_INTERFACE:
+    status.register(
+            'online',
+            color=COLOR_DEFAULT,
+            color_offline=COLOR_ERROR,
+            format_online='',
+            format_offline='No internet connection',
     )
 
 status.register(

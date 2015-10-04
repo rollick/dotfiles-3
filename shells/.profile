@@ -49,7 +49,7 @@ export MANWIDTH="80"
 
 # Settings for less
 export LESS="-~-J-R-s"
-export LESSHISTFILE="${HOME}/less_history"
+export LESSHISTFILE="${XDG_CACHE_HOME}/less_history"
 export SYSTEMD_LESS="${LESS}"
 
 # Load lesspipe, which provides advanced functions for less

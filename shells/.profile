@@ -18,6 +18,7 @@ export XDG_VIDEOS_DIR="${XDG_VIDEOS_DIR:-${HOME}/Videos}"
 
 # Use XDG dirs in various programs
 export DVDCSS_CACHE="${XDG_CACHE_HOME}/dvdcss"
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export PYTHON_EGG_CACHE="${XDG_CACHE_HOME}/python-eggs"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python_startup.py"

@@ -133,18 +133,9 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
 
 status.register(
         'updates',
-        backends=[cower.Cower()],
+        backends=[pacman.Pacman(), cower.Cower()],
         color=COLOR_DEFAULT,
-        format='AUR updates: {count}',
-        format_no_updates='',
-        interval=10*60,
-)
-
-status.register(
-        'updates',
-        backends=[pacman.Pacman()],
-        color=COLOR_DEFAULT,
-        format='Official updates: {count}',
+        format='Updates: {count}',
         format_no_updates='',
         interval=10*60,
 )

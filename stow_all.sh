@@ -20,6 +20,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} dunst
 	stow --verbose -R -t ${HOME} i3
 	stow --verbose -R -t ${HOME} pacman
+	stow --verbose -R -t ${HOME} pacaur
 	stow --verbose -R -t ${HOME} profile-cleaner
 	stow --verbose -R -t ${HOME} scripts
 	stow --verbose -R -t ${HOME} unison

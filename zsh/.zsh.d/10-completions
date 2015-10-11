@@ -66,6 +66,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 }  abs \
 	dircolors \
 	eyeD3 \
+	flake8 \
 	gpasswd \
 	head \
 	htop \

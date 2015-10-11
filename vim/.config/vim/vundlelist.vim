@@ -2,7 +2,7 @@
 Plugin 'godlygeek/tabular'
 
 " Not required by anything
-Plugin 'lastpos.vim', {'name': 'lastpos'}
+Plugin 'lastpos.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'

@@ -1,1 +1,0 @@
-alias utop='top -U ${USER}'

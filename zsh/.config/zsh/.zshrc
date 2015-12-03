@@ -34,19 +34,12 @@ colors
 keeper
 promptinit
 
+source "${ZDOTDIR}/aliases" &>|/dev/null
 source "${ZDOTDIR}/.zsh/00-options" &>|/dev/null
 source "${ZDOTDIR}/.zsh/10-completions" &>|/dev/null
 source "${ZDOTDIR}/.zsh/10-hashes" &>|/dev/null
 source "${ZDOTDIR}/.zsh/10-keybindings" &>|/dev/null
 source "${ZDOTDIR}/.zsh/11-hooks" &>|/dev/null
-source "${ZDOTDIR}/.zsh/99-global-aliases" &>|/dev/null
-
-# Set aliases
-for f in ${ZDOTDIR}/.zsh.d/alias.d/*(.N); do
-	if which "$(basename "${f}")" &>|/dev/null; then
-		source "${f}"
-	fi
-done
 
 # Set prompt
 prompt default

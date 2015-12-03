@@ -1,3 +1,0 @@
-if which which cmus &>|/dev/null; then
-	alias cmus='cmus_wrapper'
-fi

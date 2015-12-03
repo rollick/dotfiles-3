@@ -1,1 +1,0 @@
-alias uhtop='htop -u ${USER}'

@@ -15,7 +15,9 @@ source $XDG_CONFIG_HOME/vim/vundle.vim
 """""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme distinguished
+if &t_Co == 256
+	colorscheme distinguished
+endif
 filetype plugin indent on
 syntax on
 set nocompatible  " Disable vi compatibility

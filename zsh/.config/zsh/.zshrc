@@ -51,6 +51,14 @@ done
 # Set prompt
 prompt default
 
+# Set history options
+export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
+export SAVEHIST=10000
+export HISTSIZE=12000
+
+# Set up syntax highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
 # Unset temporary variables
 unset {a-z}
 unset {A-Z}

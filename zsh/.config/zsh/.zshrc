@@ -1,28 +1,35 @@
 #!/bin/zsh
 # Loaded for interactive shells only
 
-# Load zsh (upstream) functions
-autoload -U add-zsh-hook
-autoload -U compinit && compinit
-autoload -U colors && colors
-autoload -U keeper && keeper
-autoload -U promptinit && promptinit
-autoload -U url-quote-magic
-autoload -U zmv
-
 # Load zsh modules
 zmodload -F zsh/complist
 
-# Add prompts to fpath
-if [[ -d ${ZDOTDIR}/.zsh.d/prompt.d ]]; then
-	fpath=(${ZDOTDIR}/.zsh.d/prompt.d ${fpath})
-fi
+# Load zsh (upstream) functions
+autoload -U add-zsh-hook
+autoload -U compinit
+autoload -U colors
+autoload -U keeper
+autoload -U promptinit
+autoload -U url-quote-magic
+autoload -U zmv
+
+# Include external additions
+source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
+source "/etc/zsh_command_not_found" &>|/dev/null
+source "/usr/share/zsh/site-functions/git-flow-completion.zsh" &>|/dev/null
+source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null
 
 # Load own functions
-if [[ -d "${ZDOTDIR}/.zsh.d/functions.d" ]]; then
-	fpath=("${ZDOTDIR}/.zsh.d/functions.d" ${fpath})
-	autoload -U ${fpath[1]}/*(.,@N:t)
-fi
+fpath=("${ZDOTDIR}/.zsh.d/functions.d" "${ZDOTDIR}/.zsh.d/prompt.d" ${fpath})
+autoload -U ${fpath[1]}/*(.,@N:t)
+autoload -U ${fpath[2]}/*(.,@N:t)
+
+# Initialize functions
+compinit
+colors
+keeper
+promptinit
 
 # Setup $LS_COLORS
 if [[ ! -f "${XDG_CONFIG_HOME}/dircolors" ]]; then
@@ -30,10 +37,12 @@ if [[ ! -f "${XDG_CONFIG_HOME}/dircolors" ]]; then
 fi
 eval $(dircolors --sh "${XDG_CONFIG_HOME}/dircolors")
 
-# Include other settings
-for f in ${ZDOTDIR}/.zsh.d/[0-9]*(.N); do
-	source "${f}"
-done
+source "${ZDOTDIR}/.zsh/00-options" &>|/dev/null
+source "${ZDOTDIR}/.zsh/10-completions" &>|/dev/null
+source "${ZDOTDIR}/.zsh/10-hashes" &>|/dev/null
+source "${ZDOTDIR}/.zsh/10-keybindings" &>|/dev/null
+source "${ZDOTDIR}/.zsh/11-hooks" &>|/dev/null
+source "${ZDOTDIR}/.zsh/99-global-aliases" &>|/dev/null
 
 # Set aliases
 for f in ${ZDOTDIR}/.zsh.d/alias.d/*(.N); do
@@ -43,20 +52,8 @@ for f in ${ZDOTDIR}/.zsh.d/alias.d/*(.N); do
 done
 
 # Set prompt
-promptinit && prompt default
-
-# Include external additions
-ext_additions=("/usr/share/doc/pkgfile/command-not-found.zsh"
-               "/etc/zsh_command_not_found"
-               "/usr/share/zsh/site-functions/git-flow-completion.zsh"
-               "/usr/bin/virtualenvwrapper.sh"
-               "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
-for f in ${ext_additions}; do
-	[[ -e "${f}" ]] && source ${f}
-done
+prompt default
 
 # Unset temporary variables
 unset {a-z}
 unset {A-Z}
-unset ext_additions
-unset setting_files

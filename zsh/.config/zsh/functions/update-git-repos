@@ -18,14 +18,14 @@ if [[ -z "${1}" ]]; then
 			else
 				first=0
 			fi
-			printhl "$(basename "${d}")"
+			printhl "${d:t}"
 			(cd "${d}"; git pull)
 		fi
 	done
 else
 	until [[ -z "${1}" ]]; do
 		if [[ -d "${1}/.git" ]]; then
-			printhl "$(basename "${1}")"
+			printhl "${1:t}"
 			(cd "${1}"; git pull)
 			if [[ ${#} -gt 0 ]]; then
 				print ""

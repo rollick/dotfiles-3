@@ -16,13 +16,6 @@ autoload -U promptinit
 autoload -U url-quote-magic
 autoload -U zmv
 
-# Include external additions
-source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
-source "/etc/zsh_command_not_found" &>|/dev/null
-source "/usr/share/zsh/site-functions/git-flow-completion.zsh" &>|/dev/null
-source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
-source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null
-
 # Load own functions
 fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/prompts" ${fpath})
 autoload -U ${fpath[1]}/*(.,@N:t)
@@ -55,6 +48,9 @@ export HISTSIZE=12000
 # Set up syntax highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-# Unset temporary variables
-unset {a-z}
-unset {A-Z}
+# Include external additions
+source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
+source "/etc/zsh_command_not_found" &>|/dev/null
+source "/usr/share/zsh/site-functions/git-flow-completion.zsh" &>|/dev/null
+source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null

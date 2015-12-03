@@ -3,6 +3,8 @@
 # CAUTION: Avoid any output at all, because this script is run for every
 #          instance of ZSH!
 
+export ZDOTDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/zsh"
+
 # Set history options
 export HISTFILE="${HOME}/.zsh_history"
 export SAVEHIST=10000

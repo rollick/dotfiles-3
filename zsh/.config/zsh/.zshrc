@@ -14,13 +14,13 @@ autoload -U zmv
 zmodload -F zsh/complist
 
 # Add prompts to fpath
-if [[ -d ${HOME}/.zsh.d/prompt.d ]]; then
-	fpath=(${HOME}/.zsh.d/prompt.d ${fpath})
+if [[ -d ${ZDOTDIR}/.zsh.d/prompt.d ]]; then
+	fpath=(${ZDOTDIR}/.zsh.d/prompt.d ${fpath})
 fi
 
 # Load own functions
-if [[ -d "${HOME}/.zsh.d/functions.d" ]]; then
-	fpath=("${HOME}/.zsh.d/functions.d" ${fpath})
+if [[ -d "${ZDOTDIR}/.zsh.d/functions.d" ]]; then
+	fpath=("${ZDOTDIR}/.zsh.d/functions.d" ${fpath})
 	autoload -U ${fpath[1]}/*(.,@N:t)
 fi
 
@@ -31,12 +31,12 @@ fi
 eval $(dircolors --sh "${XDG_CONFIG_HOME}/dircolors")
 
 # Include other settings
-for f in ${HOME}/.zsh.d/[0-9]*(.N); do
+for f in ${ZDOTDIR}/.zsh.d/[0-9]*(.N); do
 	source "${f}"
 done
 
 # Set aliases
-for f in ${HOME}/.zsh.d/alias.d/*(.N); do
+for f in ${ZDOTDIR}/.zsh.d/alias.d/*(.N); do
 	if which "$(basename "${f}")" &>|/dev/null; then
 		source "${f}"
 	fi

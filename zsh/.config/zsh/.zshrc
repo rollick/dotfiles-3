@@ -31,12 +31,6 @@ colors
 keeper
 promptinit
 
-# Setup $LS_COLORS
-if [[ ! -f "${XDG_CONFIG_HOME}/dircolors" ]]; then
-	dircolors --print-database >| "${XDG_CONFIG_HOME}/dircolors"
-fi
-eval $(dircolors --sh "${XDG_CONFIG_HOME}/dircolors")
-
 source "${ZDOTDIR}/.zsh/00-options" &>|/dev/null
 source "${ZDOTDIR}/.zsh/10-completions" &>|/dev/null
 source "${ZDOTDIR}/.zsh/10-hashes" &>|/dev/null

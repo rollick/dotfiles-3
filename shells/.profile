@@ -52,6 +52,9 @@ export LESS="-~-J-R-s"
 export LESSHISTFILE="${XDG_CACHE_HOME}/less_history"
 export SYSTEMD_LESS="${LESS}"
 
+# Set LS_COLORS
+eval `dircolors --sh`
+
 # Load lesspipe, which provides advanced functions for less
 which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)
 which lesspipe >/dev/null 2>&1 && eval $(lesspipe)

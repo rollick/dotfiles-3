@@ -4,9 +4,7 @@
 # login shell after .zshrc is loaded use .zlogin.
 
 # Make sure ~/.profile is always loaded.
-if [[ -e "${HOME}/.profile" ]]; then
-	source "${HOME}/.profile"
-fi
+emulate sh -c "source ${HOME}/.profile >/dev/null 2>&1"
 
 # Start X session
 if [[ "${UID}" -ne 0 && -z "${DISPLAY}" && "${XDG_VTNR}" -eq 1 ]]; then

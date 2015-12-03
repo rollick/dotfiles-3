@@ -1,6 +1,9 @@
 #!/bin/zsh
 # Loaded for interactive shells only
 
+# Create needed directories
+mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
+
 # Load zsh modules
 zmodload -F zsh/complist
 
@@ -26,7 +29,7 @@ autoload -U ${fpath[1]}/*(.,@N:t)
 autoload -U ${fpath[2]}/*(.,@N:t)
 
 # Initialize functions
-compinit
+compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
 colors
 keeper
 promptinit

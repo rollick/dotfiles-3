@@ -24,7 +24,7 @@ source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
 source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null
 
 # Load own functions
-fpath=("${ZDOTDIR}/.zsh.d/functions.d" "${ZDOTDIR}/.zsh.d/prompt.d" ${fpath})
+fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/prompts" ${fpath})
 autoload -U ${fpath[1]}/*(.,@N:t)
 autoload -U ${fpath[2]}/*(.,@N:t)
 
@@ -34,12 +34,15 @@ colors
 keeper
 promptinit
 
+# Set zsh options
+source "${ZDOTDIR}/options" &>|/dev/null
+
+# Set misc. settings
 source "${ZDOTDIR}/aliases" &>|/dev/null
-source "${ZDOTDIR}/.zsh/00-options" &>|/dev/null
-source "${ZDOTDIR}/.zsh/10-completions" &>|/dev/null
-source "${ZDOTDIR}/.zsh/10-hashes" &>|/dev/null
-source "${ZDOTDIR}/.zsh/10-keybindings" &>|/dev/null
-source "${ZDOTDIR}/.zsh/11-hooks" &>|/dev/null
+source "${ZDOTDIR}/completions" &>|/dev/null
+source "${ZDOTDIR}/hashes" &>|/dev/null
+source "${ZDOTDIR}/hooks" &>|/dev/null
+source "${ZDOTDIR}/keybindings" &>|/dev/null
 
 # Set prompt
 prompt default

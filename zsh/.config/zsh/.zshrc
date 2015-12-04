@@ -17,9 +17,8 @@ autoload -U url-quote-magic
 autoload -U zmv
 
 # Load own functions
-fpath=("${ZDOTDIR}/functions" "${ZDOTDIR}/prompts" ${fpath})
+fpath=("${ZDOTDIR}/functions" ${fpath})
 autoload -U ${fpath[1]}/*(.,@N:t)
-autoload -U ${fpath[2]}/*(.,@N:t)
 
 # Initialize functions
 compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"

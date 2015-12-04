@@ -28,12 +28,15 @@ zstyle ':completion:*:diff:*' ignore-line yes
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
-#zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,cmd'
 zstyle ':completion:*:kill:*' insert-ids single
 
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
+zstyle ':completion:*:ssh:*' tag-order users hosts
+
+# Don't list aliases if a command with the same name exists
+zstyle ':completion:*:-command-:*' tag-order '! aliases functions'
 
 # Provide more processes in completion of programs like killall:
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
@@ -79,7 +82,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 	pacman-key \
 	pkgclean \
 	powertop \
-	python{2,3}{,.{0..9}} \
+	python{2,3} \
 	rmdir \
 	tail \
 	udisks \

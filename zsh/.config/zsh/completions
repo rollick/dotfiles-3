@@ -82,7 +82,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 	pacman-key \
 	pkgclean \
 	powertop \
-	python{2,3} \
 	rmdir \
 	tail \
 	udisks \

@@ -1,2 +1,0 @@
-#!/bin/zsh
-print "${fg_bold[blue]}::${reset_color} ${bold_color}${1}${reset_color}"

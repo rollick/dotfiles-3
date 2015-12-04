@@ -6,16 +6,24 @@
 [[ -d "/var/cache/pacman/pkg" ]] && hash -d paccache="/var/cache/pacman/pkg"
 
 # Add local ABS mirror
-if [[ -f '/etc/abs.conf' ]]; then
-	d=$(source "/etc/abs.conf"; print "${ABSROOT/%\//}")
-	if [[ -d "${d}" ]]; then
-		hash -d abs="${d}"
-	fi
-fi
+() {
+	local d
 
-## Add all git repositories inside $HOME/Projects
-for d in "${XDG_DOCUMENTS_DIR}"/Code/{Local,Remote}/*(FN); do
-	if [[ -d "${d}/.git" ]]; then
-		hash -d "git-${d:h:t:l}-${d:t}"="${d}"
+	if [[ -f '/etc/abs.conf' ]]; then
+		d=$(source "/etc/abs.conf"; print "${ABSROOT/%\//}")
+		if [[ -d "${d}" ]]; then
+			hash -d abs="${d}"
+		fi
 	fi
-done
+}
+
+# Add all git repositories inside $HOME/Projects
+() {
+	local d
+
+	for d in "${XDG_DOCUMENTS_DIR}"/Code/{Local,Remote}/*(FN); do
+		if [[ -d "${d}/.git" ]]; then
+			hash -d "git-${d:h:t:l}-${d:t}"="${d}"
+		fi
+	done
+}

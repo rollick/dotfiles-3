@@ -10,6 +10,9 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1
 
+# Set default browser
+export BROWSER='chromium'
+
 # Set terminal for i3
 if which urxvtcd >/dev/null 2>&1; then
 	export RXVT_SOCKET="${XDG_CACHE_HOME}/urxvtd"

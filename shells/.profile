@@ -37,6 +37,7 @@ export PATH="${HOME}/.local/bin:${PATH}"
 export DIFFSEARCHPATH="/boot /etc /usr /var"
 
 # Set applications
+export BROWSER='w3m'
 export EDITOR="vim"
 export MANPAGER="less"
 export PAGER="less"

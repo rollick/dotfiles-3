@@ -27,9 +27,9 @@ from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
 
-COLOR_DEFAULT = '#d3dae3'
+COLOR_DEFAULT = '#dcdcdc'
 COLOR_ERROR = '#d64937'
-COLOR_DISABLED = '#7c818c'
+COLOR_DISABLED = '#888888'
 
 
 def first_network_interface(interface_type):

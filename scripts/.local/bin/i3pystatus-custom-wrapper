@@ -1,0 +1,4 @@
+#!/bin/bash
+source /usr/bin/virtualenvwrapper.sh
+workon i3pystatus
+i3pystatus-custom

@@ -46,6 +46,7 @@ function prompt_default_prompt() {
 	local prompt_info_git=""
 	local prompt_info_jobs=""
 	local prompt_info_tmux=""
+	local prompt_info_venv=""
 
 	# Set color information
 	##################
@@ -138,6 +139,14 @@ function prompt_default_prompt() {
 		fi
 	fi
 
+	# virtualenvwrapper information
+	if [[ -n ${VIRTUAL_ENV} ]]; then
+		prompt_info_ven=$'\u03c0'
+		prompt_info_ven+=" ${VIRTUAL_ENV:t}"
+	else
+		prompt_info_ven=''
+	fi
+
 	# Set terminal title
 	####################
 	case "${TERM}" in
@@ -186,7 +195,7 @@ function prompt_default_prompt() {
 		if [[ -n "${RPROMPT}" ]]; then
 			RPROMPT+="${prompt_gfx_rbracket}%{$reset_color%}"
 		fi
-	} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}
+	} ${prompt_info_ven} ${prompt_info_git} ${prompt_info_tmux} ${prompt_info_jobs}
 
 	# Prompt for spelling correction
 	####################

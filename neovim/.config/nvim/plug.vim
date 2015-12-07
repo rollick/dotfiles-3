@@ -23,5 +23,5 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'yegappan/mru'
 Plug 'bling/vim-airline'
-
+Plug 'indentpython.vim'
 call plug#end()

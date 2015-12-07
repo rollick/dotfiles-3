@@ -6,11 +6,10 @@ source $XDG_CONFIG_HOME/nvim/plug.vim
 """""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
 if &t_Co == 256
 	colorscheme distinguished
 endif
-" filetype plugin indent on
-" syntax on
 set nobackup  " Don't use backupfiles
 set noswapfile  " Disable swap files
 set spelllang=en
@@ -82,7 +81,10 @@ nmap <silent><leader>e :e $XDG_CONFIG_HOME/vim/vimrc<CR>
 nnoremap Q gq
 
 " Open terminal
-nmap <F12> :terminal<CR>
+nmap <F12> :below split +te<CR>
+
+" Remap
+tnoremap <ESC> <C-\><C-n>
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -136,6 +138,7 @@ set sidescrolloff=5  " Keep n columns left/right of cursor
 set showcmd
 set showmode
 set title
+set updatetime=250
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Wildmenu settings

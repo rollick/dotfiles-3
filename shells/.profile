@@ -22,7 +22,6 @@ export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
 export PYTHON_EGG_CACHE="${XDG_CACHE_HOME}/python-eggs"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python_startup.py"
-export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/vim/vimrc" | source $MYVIMRC'
 export WORKON_HOME="${XDG_DATA_HOME}/virtualenvs"
 
 # Fix for unknown terminals
@@ -38,12 +37,13 @@ export DIFFSEARCHPATH="/boot /etc /usr /var"
 
 # Set applications
 export BROWSER='w3m'
-export EDITOR="vim"
+export DIFFPROG='nvim -d'
+export EDITOR="nvim"
 export MANPAGER="less"
 export PAGER="less"
 export READNULLCMD="less"
 export SYSTEMD_PAGER="cat"
-export VISUAL="vim"
+export VISUAL="nvim"
 
 # Set width for manpages
 export MANWIDTH="80"

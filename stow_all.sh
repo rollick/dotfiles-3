@@ -6,12 +6,12 @@ mkdir --verbose -p "${HOME}/.ssh"
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} fontconfig
 stow --verbose -R -t ${HOME} git
+stow --verbose -R -t ${HOME} neovim
 stow --verbose -R -t ${HOME} python
 stow --verbose -R -t ${HOME} ranger
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
-stow --verbose -R -t ${HOME} vim
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then

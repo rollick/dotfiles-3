@@ -10,7 +10,7 @@
 [core]
 	pager =
 [merge]
-	tool = vimdiff3
+	tool = nvim -d
 [user]
 	email = rascholer@gmail.com
 	name = Raphael Scholer

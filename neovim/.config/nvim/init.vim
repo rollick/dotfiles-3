@@ -1,16 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Setup
-"""""""""""""""""""""""""""""""""""""""""""""""""
-if !filereadable($XDG_CACHE_HOME . '/vim/viminfo')
-	silent !mkdir -p $XDG_CACHE_HOME/vim
-endif
-
-set runtimepath+=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin management with Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""
-source $XDG_CONFIG_HOME/vim/vundle.vim
+source $XDG_CONFIG_HOME/nvim/plug.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -18,16 +9,13 @@ source $XDG_CONFIG_HOME/vim/vundle.vim
 if &t_Co == 256
 	colorscheme distinguished
 endif
-filetype plugin indent on
-syntax on
-set nocompatible  " Disable vi compatibility
+" filetype plugin indent on
+" syntax on
 set nobackup  " Don't use backupfiles
 set noswapfile  " Disable swap files
 set spelllang=en
 set undolevels=100  " Max number of changes that can be undone
 set undoreload=100  " Max number of lines to save for undo on a buffer reload
-set updatetime=750
-set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Autocmd settings
@@ -93,6 +81,9 @@ nmap <silent><leader>e :e $XDG_CONFIG_HOME/vim/vimrc<CR>
 " Don't use ex-mode
 nnoremap Q gq
 
+" Open terminal
+nmap <F12> :terminal<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,10 +93,10 @@ let g:netrw_home=$XDG_CACHE_HOME . '/vim'
 let g:vim_markdown_folding_disabled=1
 let g:markdown_folding_disabled=1
 let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
-let g:MRU_File=$XDG_CACHE_HOME . '/vim/recently-used'
+let g:MRU_File=$XDG_CACHE_HOME . '/nvim/recently-used'
 let g:MRU_Max_Entries=10
 let g:NERDChristmasTree=1
-let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/vim/NERDTreeBookmarks'
+let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/nvim/NERDTreeBookmarks'
 let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeRespectWildIgnore=1
@@ -137,9 +128,6 @@ set cmdheight=1
 set colorcolumn=+1
 set cursorline
 set foldcolumn=2
-set hlsearch
-set incsearch
-set laststatus=2  " 0=Never, 1=2+ windows, 2=Always
 set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
 set number
 set ruler
@@ -148,7 +136,6 @@ set sidescrolloff=5  " Keep n columns left/right of cursor
 set showcmd
 set showmode
 set title
-set wildmenu
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Wildmenu settings

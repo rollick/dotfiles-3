@@ -1,8 +1,0 @@
-#!/bin/zsh
-if [[ "${0}" == "head" ]] || [[ "${0}" == "tail" ]]; then
-	if [[ ${LINES} == <-> ]]; then
-		=${0} -n $(( ${LINES} - 2 * ${PROMPT_LINES:-1} )) "${@}"
-	else
-		=${0} "${@}"
-	fi
-fi

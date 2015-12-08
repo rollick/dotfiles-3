@@ -6,10 +6,6 @@ function prompt_default_setup() {
 	# Initialize precmd hooks
 	##################
 	add-zsh-hook precmd prompt_default_prompt
-
-	# Information about this prompt
-	##################
-	export PROMPT_LINES=2
 }
 
 function prompt_default_prompt() {

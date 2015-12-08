@@ -7,9 +7,7 @@ source $XDG_CONFIG_HOME/nvim/plug.vim
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-if &t_Co == 256
-	colorscheme distinguished
-endif
+colorscheme distinguished
 set nobackup  " Don't use backupfiles
 set noswapfile  " Disable swap files
 set spelllang=en

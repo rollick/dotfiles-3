@@ -61,6 +61,8 @@ prompt_simple_check_git_arrows() {
 	local arrow_status=''
 	local arrows=''
 
+	prompt_simple_git_arrows=""
+
 	git rev-parse --abbrev-ref @'{u}' &>|/dev/null || return
 
 	arrow_status="$(git rev-list --left-right --count HEAD...@'{u}' 2>|/dev/null)"
@@ -71,11 +73,7 @@ prompt_simple_check_git_arrows() {
 	[[ ${arrow_status[1]} -gt 0 ]] && arrows+=$'\u21E1'
 	[[ ${arrow_status[2]} -gt 0 ]] && arrows+=$'\u21E3'
 
-	if [[ -n $arrows ]]; then
-		prompt_simple_git_arrows=" $arrows"
-	else
-		prompt_simple_git_arrows=""
-	fi
+	[[ -n $arrows ]] && prompt_simple_git_arrows=" $arrows"
 
 }
 

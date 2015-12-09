@@ -20,16 +20,16 @@ prompt_simple_setup() {
 	# Initialize precmd hooks
 	##################
 	add-zsh-hook precmd vcs_info
+	add-zsh-hook precmd prompt_simple_check_git_dirty
+	add-zsh-hook precmd prompt_simple_check_git_arrows
+	add-zsh-hook precmd prompt_simple_check_user_info
+
 	add-zsh-hook precmd prompt_simple_prompt
 	add-zsh-hook precmd prompt_simple_rprompt
 	add-zsh-hook precmd prompt_simple_title
 }
 
 prompt_simple_prompt() {
-	prompt_simple_check_git_dirty
-	prompt_simple_check_git_arrows
-	prompt_simple_check_user_info
-
 	PROMPT="$prompt_newline"
 
 	# Show directory information

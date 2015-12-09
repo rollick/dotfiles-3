@@ -30,7 +30,7 @@ I3_ITEMS="reconfigure
 restart"
 
 # Parse commandline arguments
-if [[ ! -z ${1} ]]; then
+if [[ -n ${1} ]]; then
 	if [[ "$(cut -d= -f1 <<< "${1}")" == "--dmenu" ]]; then
 		DMENU="$(cut -d= -f2 <<< "${1}")"
 	fi

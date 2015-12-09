@@ -9,6 +9,14 @@ if [[ "${1}" == '--help' ]]; then
 	exit
 fi
 
-source "${XDG_DATA_HOME}/virtualenvs/${1}/bin/activate" || exit
+# Determine path to virtualenvs
+workon_home="${WORKONHOME:-${XDG_DATA_HOME}/virtualenvs}"
+
+# Activate virtualenv
+source "${workon_home}/${1}/bin/activate" || exit
+
+# Remove virtualenv from argument list
 shift
+
+# Now run the application
 "${@}"

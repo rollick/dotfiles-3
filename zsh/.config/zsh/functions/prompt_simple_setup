@@ -6,6 +6,7 @@ prompt_simple_setup() {
 	# Options for simple prompt
 	##################
 	prompt_opts=(cr subst percent)
+	PROMPT_EOL_MARK=''
 
 	# Setup vcs_info
 	zstyle ':vcs_info:*' enable git

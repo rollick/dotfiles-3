@@ -37,7 +37,8 @@ source "${ZDOTDIR}/hooks" &>|/dev/null
 source "${ZDOTDIR}/keybindings" &>|/dev/null
 
 # Set prompt
-prompt default
+# prompt default
+prompt simple
 
 # Set history options
 export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"

@@ -1,0 +1,106 @@
+prompt_simple_setup() {
+	# Load needed functions
+	autoload -U colors && colors
+	autoload -U vcs_info
+
+	# Options for simple prompt
+	##################
+	prompt_opts=(cr subst percent)
+
+	# Setup vcs_info
+	zstyle ':vcs_info:*' enable git
+	zstyle ':vcs_info:*' use-simple true
+	zstyle ':vcs_info:*' max-exports 2
+	zstyle ':vcs_info:git*' formats ' %b'
+	zstyle ':vcs_info:git*' actionformats ' %b|%a'
+
+	# Setup misc. prompts
+	SPROMPT="zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) "
+
+	# Initialize precmd hooks
+	##################
+	add-zsh-hook precmd vcs_info
+	add-zsh-hook precmd prompt_simple_prompt
+	add-zsh-hook precmd prompt_simple_rprompt
+	add-zsh-hook precmd prompt_simple_title
+}
+
+prompt_simple_prompt() {
+	prompt_simple_check_git_dirty
+	prompt_simple_check_git_arrows
+	prompt_simple_check_user_info
+
+	PROMPT="$prompt_newline"
+
+	# Show directory information
+	PROMPT+="%{$fg_bold[blue]%}%~%{$reset_color%}"
+	PROMPT+='%{$fg_bold[black]%}'
+	PROMPT+="$vcs_info_msg_0_$prompt_simple_git_dirty"
+	PROMPT+='%{$fg_bold[cyan]%}'
+	PROMPT+="$prompt_simple_git_arrows"
+
+	# Show user information
+	PROMPT+="$prompt_simple_user_info"
+
+	# Show prompt symbol
+	PROMPT+="$prompt_newline"
+	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
+	PROMPT+=$'\u276F '
+	PROMPT+='%{$reset_colors%}'
+}
+
+prompt_simple_check_user_info() {
+	local user=""
+
+	[[ "$SSH_CONNECTION" != "" ]] && user=' %{$fg_bold[black]%}%n@%m'
+	[[ $UID -eq 0 ]] && user=' %{$fg_bold[white]%}%n%{$fg_bold[black]%}@%m'
+
+	prompt_simple_user_info="$user"
+}
+prompt_simple_check_git_arrows() {
+	local arrow_status=''
+	local arrows=''
+
+	git rev-parse --abbrev-ref @'{u}' &>|/dev/null || return
+
+	arrow_status="$(git rev-list --left-right --count HEAD...@'{u}' 2>|/dev/null)"
+	(( ! $? )) || return
+
+	arrow_status=(${(ps:\t:)arrow_status})
+
+	[[ ${arrow_status[1]:-0} -gt 0 ]] && arrows+=$'\u21E1'
+	[[ ${arrow_status[2]:-0} -gt 0 ]] && arrows+=$'\u21E3'
+
+	[[ -n $arrows ]] && prompt_simple_git_arrows=" $arrows"
+
+}
+
+prompt_simple_check_git_dirty() {
+	if [[ -n $(git diff --shortstat 2> /dev/null) ]]; then
+		prompt_simple_git_dirty='*'
+	else
+		prompt_simple_git_dirty=''
+	fi
+}
+
+prompt_simple_rprompt() {
+	# Show information about the current environment.
+	# prompt_opts=(cr subst percent)
+	RPROMPT="$prompt_simple_color_rprompt"
+
+	if [[ -n $VIRTUAL_ENV ]]; then
+		RPROMPT+=$'\u03c0'
+		RPROMPT+=" $VIRTUAL_ENV:t"
+	fi
+	RPROMPT+='%{$reset_color%}'
+}
+
+prompt_simple_title() {
+	case "$TERM" in
+		xterm* ) ;&
+		rxvt* )		print -Pn "\e]0;%n@%m: %~\a";;
+		screen* )	print -Pn "\ek%n@%m: %~\e\\";;
+	esac
+}
+
+prompt_simple_setup

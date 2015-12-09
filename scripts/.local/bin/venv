@@ -9,8 +9,6 @@ if [[ "${1}" == '--help' ]]; then
 	exit
 fi
 
-source /usr/bin/virtualenvwrapper.sh
-
-workon "${1}"
+source "${XDG_DATA_HOME}/virtualenvs/${1}/bin/activate" || exit
 shift
 "${@}"

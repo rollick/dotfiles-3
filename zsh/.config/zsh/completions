@@ -28,7 +28,7 @@ zstyle ':completion:*:diff:*' ignore-line yes
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,cmd'
+zstyle ':completion:*:kill:*' command 'ps -u ${USER} -o pid,cmd'
 zstyle ':completion:*:kill:*' insert-ids single
 
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}

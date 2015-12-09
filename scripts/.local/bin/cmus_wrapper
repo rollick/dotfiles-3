@@ -18,7 +18,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-for arg in "$@"; do
+for arg in "${@}}"; do
 	case "${arg}" in
 		"--help")		cmus --help;
 						exit;;
@@ -30,7 +30,7 @@ for arg in "$@"; do
 done
 
 if ! tmux list-sessions 2>&1 | grep -q "^cmus: "; then
-	tmux new -d -s cmus cmus "$@"
+	tmux new -d -s cmus cmus "${@}"
 	tmux set-option -t cmus status off
 fi
 tmux attach -t cmus >/dev/null

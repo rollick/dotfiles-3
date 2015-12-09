@@ -31,20 +31,20 @@ prompt_simple_setup() {
 }
 
 prompt_simple_prompt() {
-	PROMPT="$prompt_newline"
+	PROMPT="${prompt_newline}"
 
 	# Show directory information
-	PROMPT+="%{$fg_bold[blue]%}%~%{$reset_color%}"
+	PROMPT+="%{$fg_bold[blue]%}%~"
 	PROMPT+='%{$fg_bold[black]%}'
-	PROMPT+="$vcs_info_msg_0_$prompt_simple_git_dirty"
+	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
 	PROMPT+='%{$fg_bold[cyan]%}'
-	PROMPT+="$prompt_simple_git_arrows"
+	PROMPT+="${prompt_simple_git_arrows}"
 
 	# Show user information
-	PROMPT+="$prompt_simple_user_info"
+	PROMPT+="${prompt_simple_user_info}"
 
 	# Show prompt symbol
-	PROMPT+="$prompt_newline"
+	PROMPT+="${prompt_newline}"
 	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
 	PROMPT+=$'\u276F '
 	PROMPT+='%{$reset_colors%}'
@@ -53,10 +53,10 @@ prompt_simple_prompt() {
 prompt_simple_check_user_info() {
 	local user=""
 
-	[[ "$SSH_CONNECTION" != "" ]] && user=' %{$fg_bold[black]%}%n@%m'
-	[[ $UID -eq 0 ]] && user=' %{$fg_bold[white]%}%n%{$fg_bold[black]%}@%m'
+	[[ -n "${SSH_CONNECTION}" ]] && user=' %{$fg_bold[black]%}%n@%m'
+	[[ ${UID} -eq 0 ]] && user=' %{$fg_bold[white]%}%n%{$fg_bold[black]%}@%m'
 
-	prompt_simple_user_info="$user"
+	prompt_simple_user_info="${user}"
 }
 prompt_simple_check_git_arrows() {
 	local arrow_status=''
@@ -67,14 +67,14 @@ prompt_simple_check_git_arrows() {
 	git rev-parse --abbrev-ref @'{u}' &>|/dev/null || return
 
 	arrow_status="$(git rev-list --left-right --count HEAD...@'{u}' 2>|/dev/null)"
-	(( ! $? )) || return
+	(( ! ${?} )) || return
 
 	arrow_status=(${(ps:\t:)arrow_status})
 
 	[[ ${arrow_status[1]} -gt 0 ]] && arrows+=$'\u21E1'
 	[[ ${arrow_status[2]} -gt 0 ]] && arrows+=$'\u21E3'
 
-	[[ -n $arrows ]] && prompt_simple_git_arrows=" $arrows"
+	[[ -n ${arrows} ]] && prompt_simple_git_arrows=" ${arrows}"
 
 }
 
@@ -89,17 +89,17 @@ prompt_simple_check_git_dirty() {
 prompt_simple_rprompt() {
 	# Show information about the current environment.
 	# prompt_opts=(cr subst percent)
-	RPROMPT="$prompt_simple_color_rprompt"
+	RPROMPT="${prompt_simple_color_rprompt}"
 
-	if [[ -n $VIRTUAL_ENV ]]; then
+	if [[ -n ${VIRTUAL_ENV} ]]; then
 		RPROMPT+=$'\u03c0'
-		RPROMPT+=" $VIRTUAL_ENV:t"
+		RPROMPT+=" ${VIRTUAL_ENV:t}"
 	fi
 	RPROMPT+='%{$reset_color%}'
 }
 
 prompt_simple_title() {
-	case "$TERM" in
+	case "${TERM}" in
 		xterm* ) ;&
 		rxvt* )		print -Pn "\e]0;%n@%m: %~\a";;
 		screen* )	print -Pn "\ek%n@%m: %~\e\\";;

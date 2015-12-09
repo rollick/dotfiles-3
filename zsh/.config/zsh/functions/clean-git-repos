@@ -2,5 +2,5 @@
 local d
 
 for d in ${XDG_DOCUMENTS_DIR:-${HOME}/Documents}/Code/**/*(F); do
-	[[ -d "$d/.git" ]] && (cd $d; git clean -Xf; git gc --aggressive --prune)
+	[[ -d "$d/.git" ]] && (cd ${d}; git clean -Xf; git gc --aggressive --prune)
 done

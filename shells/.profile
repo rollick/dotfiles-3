@@ -25,7 +25,7 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python_startup.py"
 export WORKON_HOME="${XDG_DATA_HOME}/virtualenvs"
 
 # Fix for unknown terminals
-if [[ -n "${SSH_CONNECTION}" ]] || [[ ! -z "${SSH_TTY}" ]]; then
+if [[ -n "${SSH_CONNECTION}" ]]; then
 	export TERM=xterm
 fi
 

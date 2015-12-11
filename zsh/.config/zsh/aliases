@@ -34,7 +34,7 @@ alias modprobe='modprobe --verbose'
 alias mount='mount --verbose'
 alias mv='mv --interactive --verbose'
 if which octave &>|/dev/null; then
-	alias octave='octave --silent --nogui'
+	alias octave='octave --silent --no-gui'
 	alias calc='noglob octave --silent --eval'
 fi
 if which pacman &>|/dev/null; then

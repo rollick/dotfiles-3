@@ -6,4 +6,4 @@
 # *~
 appearance/.icons/*.png
 appearance/.icons/default/*.png
-neovim/.config/nvim/autoload/plug.vim
+neovim/.config/nvim/autoload/plug.vim*

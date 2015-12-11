@@ -79,7 +79,7 @@ prompt_simple_check_git_arrows() {
 }
 
 prompt_simple_check_git_dirty() {
-	if [[ -n $(git diff --shortstat 2> /dev/null) ]]; then
+	if [[ -n $(git status -s 2> /dev/null) ]]; then
 		prompt_simple_git_dirty='*'
 	else
 		prompt_simple_git_dirty=''

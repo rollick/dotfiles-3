@@ -1,5 +1,6 @@
 # Add some directories to path
-export PATH="${HOME}/.local/bin:${PATH}"
+export path=(${HOME}/.local/bin ${path})
+typeset -U path
 
 # Settings for less
 export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"

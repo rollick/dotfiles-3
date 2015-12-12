@@ -22,6 +22,7 @@ autoload -U zmv
 
 # Load own functions
 fpath=("${ZDOTDIR}/functions" ${fpath})
+typeset -U path
 autoload -U ${fpath[1]}/*(.,@N:t)
 
 # Initialize functions
@@ -41,7 +42,6 @@ source "${ZDOTDIR}/hooks" &>|/dev/null
 source "${ZDOTDIR}/keybindings" &>|/dev/null
 
 # Set prompt
-# prompt default
 prompt simple
 
 # Set history options

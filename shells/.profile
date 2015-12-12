@@ -5,9 +5,6 @@ if [[ -n "${SSH_CONNECTION}" ]]; then
 	export TERM=xterm
 fi
 
-# Add some directories to path
-export PATH="${HOME}/.local/bin:${PATH}"
-
 # Search these directories with pacdiff
 export DIFFSEARCHPATH="/boot /etc /usr /var"
 

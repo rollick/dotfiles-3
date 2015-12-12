@@ -29,7 +29,7 @@ fi
 
 # Enable/disable numlock
 if which numlockx >/dev/null 2>&1; then
-	if [[ -e "${XDG_DATA_HOME}/numlock_on" ]];then
+	if [[ -e "${XDG_DATA_HOME:-${HOME}/.loacal/share}/numlock_on" ]];then
 		numlockx on &
 	else
 		numlockx off &

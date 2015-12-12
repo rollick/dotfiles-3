@@ -15,7 +15,9 @@ alias gcc="nice -n 19 gcc"
 alias grep='grep --color=auto'
 alias head='head -n $(( ${LINES} - 2 * $(print ${PROMPT} |wc -l) ))'
 which htop &>|/dev/null && alias uhtop='htop -u ${USER}'
-which httpserver &>|/dev/null && alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR}"
+if which httpserver &>|/dev/null; then
+	alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
+fi
 if which i3pystatus-custom &>|/dev/null; then
 	alias i3pystatus='venv i3pystatus i3pystatus-custom'
 else

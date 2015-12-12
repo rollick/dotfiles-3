@@ -4,8 +4,8 @@
 
 
 # Use XDG dirs
-export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp2"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
+export GIMP2_DIRECTORY="${XDG_CONFIG_HOME:-${HOME}/.config}/gimp2"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-2.0/gtkrc-2.0"
 
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1
@@ -15,7 +15,7 @@ export BROWSER='chromium'
 
 # Set terminal for i3
 if which urxvtcd >/dev/null 2>&1; then
-	export RXVT_SOCKET="${XDG_CACHE_HOME}/urxvtd"
+	export RXVT_SOCKET="${XDG_CACHE_HOME:-${HOME}/.cache}/urxvtd"
 	export TERMINAL="urxvtcd"
 else
 	export TERMINAL="urxvt"

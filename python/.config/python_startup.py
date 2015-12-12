@@ -8,7 +8,7 @@ import readline
 import sys
 
 HISTFILE = os.path.join(
-    os.getenv('XDG_CACHE_HOME') or '~/.cache',
+    os.getenv('XDG_CACHE_HOME', '~/.cache'),
     ''.join(
         (
             'python',
@@ -23,7 +23,7 @@ try:
 except IOError:
     pass
 
-atexit.register(readline.write_history_file, HISTFILE)
+atexit.register(readline.write_history_file, os.path.expanduser(HISTFILE))
 
 # Cleanup
 del HISTFILE

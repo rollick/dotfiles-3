@@ -1,5 +1,4 @@
 # Add some directories to the hashtable
-[[ -d "${XDG_CACHE_HOME}/aur-src" ]] && hash -d aurcache="${XDG_CACHE_HOME}/aur-src"
 [[ -d '/var/log' ]] && hash -d log='/var/log'
 [[ -d '/var/log/old' ]] && hash -d alog='/var/log/old'
 [[ -d "/var/spool/cups-pdf/${USER}" ]] && hash -d cups-pdf="/var/spool/cups-pdf/${USER}"
@@ -21,7 +20,7 @@
 () {
 	local d
 
-	for d in "${XDG_DOCUMENTS_DIR}"/Code/{Local,Remote}/*(FN); do
+	for d in "${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"/Code/{Local,Remote}/*(FN); do
 		if [[ -d "${d}/.git" ]]; then
 			hash -d "git-${d:h:t:l}-${d:t}"="${d}"
 		fi

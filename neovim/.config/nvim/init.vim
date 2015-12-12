@@ -1,5 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin management with Vundle
+" Make sure some XDG_*_HOME variables are set
+"""""""""""""""""""""""""""""""""""""""""""""""""
+if empty($XDG_CACHE_HOME)
+	let $XDG_CACHE_HOME = $HOME . '/.cache'
+endif
+if empty($XDG_CONFIG_HOME)
+	let $XDG_CONFIG_HOME = $HOME . '/.config'
+endif
+if empty($XDG_DATA_HOME)
+	let $XDG_DATA_HOME = $HOME . '/.local/share'
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin management with vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""
 source $XDG_CONFIG_HOME/nvim/plug.vim
 

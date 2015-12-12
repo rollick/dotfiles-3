@@ -10,7 +10,7 @@ if [[ "${1}" == '--help' ]]; then
 fi
 
 # Determine path to virtualenvs
-workon_home="${WORKONHOME:-${XDG_DATA_HOME}/virtualenvs}"
+workon_home="${WORKON_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs}"
 
 # Activate virtualenv
 source "${workon_home}/${1}/bin/activate" || exit

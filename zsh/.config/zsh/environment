@@ -1,9 +1,0 @@
-# Add some directories to path
-export path=(${HOME}/.local/bin ${path})
-typeset -U path
-
-# Settings for less
-export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
-
-# Set path for virtualenvwrapper
-export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"

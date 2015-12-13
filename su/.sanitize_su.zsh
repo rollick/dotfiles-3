@@ -16,6 +16,7 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 
 	export path=(${HOME}/.local/bin ${path})
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
+	export MAIL="${MAIL:h}/${HOME:t}"
 	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 	export VIRTUALENVWRAPPER_HOOK_DIR="${WORKON_HOME}"
 

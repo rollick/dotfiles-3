@@ -7,7 +7,7 @@ local workon_home="${WORKONHOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/virtuale
 if [[ -n $1 ]]; then
 	install_cmd=('pip' 'install' '--upgrade')
 	list_cmd=('pip' 'list')
-	print "Switch to $1 virtualenv..."
+	printhl "${1}"
 	source "${workon_home}/$1/bin/activate" || return 1
 fi
 

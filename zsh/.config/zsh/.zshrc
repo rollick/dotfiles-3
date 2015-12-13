@@ -1,9 +1,8 @@
 #!/bin/zsh
 # Loaded for interactive shells only
 
-# Setup environment
-source "${ZDOTDIR}/environment"
-export ZDOTDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/zsh"
+# Sanitize su environment
+[[ ${UID} -eq 0 && ! -o "login" ]] && source "/root/.sanitize_su.zsh"
 
 # Create needed directories
 mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"

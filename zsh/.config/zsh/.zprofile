@@ -5,6 +5,7 @@
 
 # Make sure ~/.profile is always loaded.
 emulate sh -c "source ${HOME}/.profile >/dev/null 2>&1"
+typeset -U path
 
 # Start X session
 if [[ "${UID}" -ne 0 && -z "${DISPLAY}" && "${XDG_VTNR}" -eq 1 ]]; then

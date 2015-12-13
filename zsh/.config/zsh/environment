@@ -6,4 +6,4 @@ typeset -U path
 export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 
 # Set path for virtualenvwrapper
-WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
+export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"

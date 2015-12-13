@@ -102,6 +102,7 @@ tnoremap <ESC> <C-\><C-n>
 """""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:flake8_show_in_gutter=1
 let g:netrw_home=$XDG_CACHE_HOME . '/vim'
 let g:vim_markdown_folding_disabled=1
 let g:markdown_folding_disabled=1

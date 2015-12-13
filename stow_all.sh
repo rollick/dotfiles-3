@@ -12,6 +12,7 @@ stow --verbose -R -t ${HOME} ranger
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
+stow --verbose -R -t ${HOME} x.org
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
@@ -24,7 +25,6 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} profile-cleaner
 	stow --verbose -R -t ${HOME} scripts
 	stow --verbose -R -t ${HOME} unison
-	stow --verbose -R -t ${HOME} x.org
 elif [[ ${UID} -eq 0 ]]; then
 	stow --verbose -R -t ${HOME} su
 fi

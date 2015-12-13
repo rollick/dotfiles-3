@@ -18,5 +18,8 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 
+
+	[[ -n $DISPLAY ]] && emulate sh -c "source ${HOME}/.xprofile >/dev/null 2>&1"
+
 	typeset -U path
 fi

@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Expand global aloases after typing
 local ga="${LBUFFER[(w)-1]}"
 

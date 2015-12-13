@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 prompt_simple_setup() {
 	# Load needed functions
 	autoload -U colors && colors

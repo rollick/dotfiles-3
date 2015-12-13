@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 local url
 local urls
 

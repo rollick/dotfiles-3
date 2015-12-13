@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # Toggle "sudo" at the beginning of the line
 # Also replace $EDITOR with sudoedit and vis a vis.
 # TODO: Handle sudo $EDITOR -> sudoedit

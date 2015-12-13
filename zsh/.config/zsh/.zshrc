@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Loaded for interactive shells only
 
 # Sanitize su environment
@@ -31,14 +30,14 @@ keeper
 promptinit
 
 # Set zsh options
-source "${ZDOTDIR}/options" &>|/dev/null
+source "${ZDOTDIR}/options.zsh" &>|/dev/null
 
 # Set misc. settings
-source "${ZDOTDIR}/aliases" &>|/dev/null
-source "${ZDOTDIR}/completions" &>|/dev/null
-source "${ZDOTDIR}/hashes" &>|/dev/null
-source "${ZDOTDIR}/hooks" &>|/dev/null
-source "${ZDOTDIR}/keybindings" &>|/dev/null
+source "${ZDOTDIR}/aliases.zsh" &>|/dev/null
+source "${ZDOTDIR}/completions.zsh" &>|/dev/null
+source "${ZDOTDIR}/hashes.zsh" &>|/dev/null
+source "${ZDOTDIR}/hooks.zsh" &>|/dev/null
+source "${ZDOTDIR}/keybindings.zsh" &>|/dev/null
 
 # Set prompt
 prompt simple

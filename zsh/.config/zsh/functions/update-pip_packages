@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 local install_cmd=('pip' 'install' '--upgrade' '--user')
 local list_cmd=('pip' 'list' '--user')
 local workon_home="${WORKONHOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs}"

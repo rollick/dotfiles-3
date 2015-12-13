@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # Print warning about no installed cmd and suggest packacges
 if ! which "${1}" &>|/dev/null; then
 	print "${1} is not installed."

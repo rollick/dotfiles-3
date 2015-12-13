@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Show manpage for a (incomplete) command, and then insert said command again
 local cmd="${BUFFER[(w)1]}"
 

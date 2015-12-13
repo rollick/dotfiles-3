@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 # Avoid corruption when LESS_TERMCAP_* is set
 
 LESS_TERMCAP_mb='' \

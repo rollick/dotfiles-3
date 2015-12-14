@@ -3,5 +3,12 @@
 local d
 
 for d in ${XDG_DOCUMENTS_DIR:-${HOME}/Documents}/Code/**/*(F); do
-	[[ -d "$d/.git" ]] && (cd ${d}; git clean -Xf; git gc --aggressive --prune)
+	if [[ -d "$d/.git" ]]; then
+		cd ${d}
+		nice -n 19 ionice -c 3 git clean -Xf
+		nice -n 19 ionice -c 3 git gc --aggressive --prune
+		cd $OLDPWD
+	fi
 done
+
+return 0

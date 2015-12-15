@@ -42,9 +42,6 @@ fi
 if which pacman &>|/dev/null; then
 	alias makepkg='PYTHONDONTWRITEBYTECODE="" nice -n 19 makepkg'
 	alias paccache="paccache --verbose"
-	if which which pacaur &>|/dev/null; then
-		alias pacman='pacaur'
-	fi
 fi
 alias pgrep='pgrep -l'
 alias ping='ping -c4'

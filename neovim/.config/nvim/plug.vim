@@ -10,7 +10,6 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'godlygeek/tabular'
 
 	" Plugins which are not dependencies
-	Plug 'indentpython.vim', {'for': 'python'}
 	Plug 'lastpos.vim'
 	Plug 'python_fold', {'for': 'python'}
 
@@ -19,9 +18,10 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
-	Plug 'plasticboy/vim-markdown', {'for': 'python'}
+	Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
 	Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'

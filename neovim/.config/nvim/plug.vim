@@ -6,27 +6,27 @@ if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
-" Dependencies for other plugins
-Plug 'godlygeek/tabular'
+	" Dependencies for other plugins
+	Plug 'godlygeek/tabular'
 
-" Plugins which are not dependencies
-Plug 'indentpython.vim', {'for': 'python'}
-Plug 'lastpos.vim'
-Plug 'python_fold', {'for': 'python'}
+	" Plugins which are not dependencies
+	Plug 'indentpython.vim', {'for': 'python'}
+	Plug 'lastpos.vim'
+	Plug 'python_fold', {'for': 'python'}
 
-Plug 'Lokaltog/vim-distinguished'
-Plug 'Matt-Deacalion/vim-systemd-syntax'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
-Plug 'nvie/vim-flake8', {'for': 'python'}
-Plug 'plasticboy/vim-markdown', {'for': 'python'}
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+	Plug 'Lokaltog/vim-distinguished'
+	Plug 'Matt-Deacalion/vim-systemd-syntax'
+	Plug 'PotatoesMaster/i3-vim-syntax'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
+	Plug 'nvie/vim-flake8', {'for': 'python'}
+	Plug 'plasticboy/vim-markdown', {'for': 'python'}
+	Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-surround'
 
-" Load always last
-Plug 'bling/vim-airline'
+	" Load always last
+	Plug 'bling/vim-airline'
 call plug#end()

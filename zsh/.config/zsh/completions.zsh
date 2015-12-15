@@ -35,6 +35,9 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
 zstyle ':completion:*:ssh:*' tag-order users hosts
 
+# List repo packages before aur packages in pacaur
+zstyle ':completion:*:pacaur:*' group-order repo_packages packages
+
 # Provide more processes in completion of programs like killall:
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
 

@@ -21,7 +21,7 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'yegappan/mru'
 Plug 'bling/vim-airline'
 Plug 'indentpython.vim', {'for': 'python'}
+Plug 'python_fold', {'for': 'python'}
 call plug#end()

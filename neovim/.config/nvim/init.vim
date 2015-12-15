@@ -54,9 +54,6 @@ noremap <space> za
 " Toggle pastemode
 nmap <silent><leader>p :set paste!<BAR>:silent set paste?<cr>
 
-" Select recently used files
-nmap <silent><leader>f :MRU<cr>
-
 " Toggle NERDTree
 nmap <silent><leader>b :NERDTreeToggle<CR>
 
@@ -106,9 +103,6 @@ let g:flake8_show_in_gutter=1
 let g:netrw_home=$XDG_CACHE_HOME . '/vim'
 let g:vim_markdown_folding_disabled=1
 let g:markdown_folding_disabled=1
-let g:MRU_Exclude_Files='^/tmp/.*\|^/var/tmp/.*|.vimrc§'
-let g:MRU_File=$XDG_CACHE_HOME . '/nvim/recently-used'
-let g:MRU_Max_Entries=10
 let g:NERDChristmasTree=1
 let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/nvim/NERDTreeBookmarks'
 let g:NERDTreeHighlightCursorline=0

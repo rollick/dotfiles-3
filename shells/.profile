@@ -45,6 +45,8 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)
 which lesspipe >/dev/null 2>&1 && eval $(lesspipe)
 
+# Set path for gnupg
+export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 
 # Set path for virtualenvwrapper
 export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"

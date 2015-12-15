@@ -15,6 +15,7 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	unset XDG_VIDEOS_DIR
 
 	export path=(${HOME}/.local/bin ${path})
+	export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 	export MAIL="${MAIL:h}/${HOME:t}"
 	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"

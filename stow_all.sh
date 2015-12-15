@@ -2,10 +2,13 @@
 mkdir --verbose -p "${HOME}/.config/gtk-2.0"
 mkdir --verbose -p "${HOME}/.config/gtk-3.0"
 mkdir --verbose -p "${HOME}/.config/ranger"
+mkdir --verbose -p "${HOME}/.config/gnupg"
 mkdir --verbose -p "${HOME}/.ssh"
+chmod --verbose 700 "${HOME}/.config/gnupg"
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} fontconfig
 stow --verbose -R -t ${HOME} git
+stow --verbose -R -t ${HOME} gnupg
 stow --verbose -R -t ${HOME} neovim
 stow --verbose -R -t ${HOME} python
 stow --verbose -R -t ${HOME} ranger

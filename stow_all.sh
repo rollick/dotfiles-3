@@ -5,6 +5,7 @@ mkdir --verbose -p "${HOME}/.config/ranger"
 mkdir --verbose -p "${HOME}/.config/gnupg"
 mkdir --verbose -p "${HOME}/.ssh"
 chmod --verbose 700 "${HOME}/.config/gnupg"
+chmod --verbose 700 "${HOME}/.ssh"
 stow --verbose -R -t ${HOME} appearance
 stow --verbose -R -t ${HOME} fontconfig
 stow --verbose -R -t ${HOME} git

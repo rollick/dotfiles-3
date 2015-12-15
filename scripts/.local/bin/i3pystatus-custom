@@ -81,11 +81,11 @@ status.register(
         mixer='Headphone',
 )
 
-status.register(
-        'dpms',
-        color=COLOR_DEFAULT,
-        color_disabled=COLOR_DISABLED,
-)
+# status.register(
+#         'dpms',
+#         color=COLOR_DEFAULT,
+#         color_disabled=COLOR_DISABLED,
+# )
 
 status.register(
         'keyboard_locks',

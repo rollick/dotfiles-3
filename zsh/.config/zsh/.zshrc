@@ -54,5 +54,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
 source "/etc/zsh_command_not_found" &>|/dev/null
 source "/usr/share/zsh/site-functions/git-flow-completion.zsh" &>|/dev/null
-source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
+source "/usr/bin/virtualenvwrapper.sh" &>/dev/null
+source "${XDG_CACHE_HOME:-${HOME}/.local/share}/../bin/virtualenvwrapper.sh" &>|/dev/null
 source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null

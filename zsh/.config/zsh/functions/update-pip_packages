@@ -15,4 +15,4 @@ for p in $($list_cmd |awk '{print $1}'); do
 	$install_cmd $p
 done
 
-deactivate >|/dev/null
+deactivate &>|/dev/null

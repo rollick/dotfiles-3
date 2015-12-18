@@ -12,7 +12,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 export DIFFSEARCHPATH="/boot /etc /usr /var"
 
 # Set applications
-export BROWSER='w3m'
 export DIFFPROG='nvim -d'
 export EDITOR="nvim"
 export MANPAGER="less"

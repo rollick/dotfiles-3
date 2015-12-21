@@ -91,7 +91,7 @@ prompt_simple_check_git_dirty() {
 prompt_simple_rprompt() {
 	# Show information about the current environment.
 	# prompt_opts=(cr subst percent)
-	RPROMPT="${prompt_simple_color_rprompt}"
+	RPROMPT='%{$fg_bold[black]%}'
 
 	if [[ -n ${VIRTUAL_ENV} ]]; then
 		RPROMPT+=$'\u03c0'

@@ -103,7 +103,7 @@ if HOSTNAME in LAPTOPS:
 if WIFI_INTERFACE:
     status.register(
         'network',
-        format_down='Wifi: down',
+        format_down='',
         format_up='Wifi: {essid}',
         interface=WIFI_INTERFACE,
     )
@@ -111,8 +111,8 @@ if WIFI_INTERFACE:
 if ETHERNET_INTERFACE:
     status.register(
         'network',
-        format_down='Ethernet: down',
-        format_up='Ethernet: up',
+        format_down='',
+        format_up='Ethernet',
         interface=ETHERNET_INTERFACE,
     )
 

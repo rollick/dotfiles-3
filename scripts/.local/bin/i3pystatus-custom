@@ -56,8 +56,8 @@ def first_network_interface(interface_type):
 
 # Constants
 _XDG_CONFIG_HOME = os.path.expanduser(
-                       os.environ.get('XDG_CONFIG_HOME', '~/.config')
-                   )
+    os.environ.get('XDG_CONFIG_HOME', '~/.config')
+)
 ETHERNET_INTERFACE = first_network_interface('ethernet')
 HOSTNAME = socket.gethostname()
 LAPTOPS = ['asterix']
@@ -67,18 +67,18 @@ WIFI_INTERFACE = first_network_interface('wifi')
 status = Status(standalone=True)
 
 status.register(
-        'clock',
-        color=COLOR_DEFAULT,
-        format='%Y-%m-%d %H:%M',
+    'clock',
+    color=COLOR_DEFAULT,
+    format='%Y-%m-%d %H:%M',
 )
 
 status.register(
-        'alsa',
-        color=COLOR_DEFAULT,
-        color_muted=COLOR_DISABLED,
-        format='Volume: {volume}%',
-        format_muted='Volume: mute',
-        mixer='Headphone',
+    'alsa',
+    color=COLOR_DEFAULT,
+    color_muted=COLOR_DISABLED,
+    format='Volume: {volume}%',
+    format_muted='Volume: mute',
+    mixer='Headphone',
 )
 
 # status.register(
@@ -88,64 +88,66 @@ status.register(
 # )
 
 status.register(
-        'keyboard_locks',
-        caps_on='C',
-        caps_off='_',
-        color=COLOR_DEFAULT,
-        format='{caps}{num}{scroll}',
-        num_on='N',
-        num_off='_',
-        scroll_on='S',
-        scroll_off='_',
+    'keyboard_locks',
+    caps_on='C',
+    caps_off='_',
+    color=COLOR_DEFAULT,
+    format='{caps}{num}{scroll}',
+    num_on='N',
+    num_off='_',
+    scroll_on='S',
+    scroll_off='_',
 )
 
 if HOSTNAME in LAPTOPS:
     status.register(
-            'backlight',
-            format='Backlight: {percentage}',
-            color=COLOR_DEFAULT,
+        'backlight',
+        format='Backlight: {percentage}',
+        color=COLOR_DEFAULT,
     )
 
 if WIFI_INTERFACE:
     status.register(
-            'network',
-            format_down='Wifi: down',
-            format_up='Wifi: {essid}',
-            interface=WIFI_INTERFACE,
+        'network',
+        format_down='Wifi: down',
+        format_up='Wifi: {essid}',
+        interface=WIFI_INTERFACE,
     )
 
 if ETHERNET_INTERFACE:
     status.register(
-            'network',
-            format_down='Ethernet: down',
-            format_up='Ethernet: up',
-            interface=ETHERNET_INTERFACE,
+        'network',
+        format_down='Ethernet: down',
+        format_up='Ethernet: up',
+        interface=ETHERNET_INTERFACE,
     )
 
 if ETHERNET_INTERFACE or WIFI_INTERFACE:
     status.register(
-            'online',
-            color=COLOR_DEFAULT,
-            color_offline=COLOR_ERROR,
-            format_online='',
-            format_offline='No internet connection',
+        'online',
+        color=COLOR_DEFAULT,
+        color_offline=COLOR_ERROR,
+        format_online='',
+        format_offline='No internet connection',
     )
 
 status.register(
-        'updates',
-        backends=[pacman.Pacman(), cower.Cower()],
-        color=COLOR_DEFAULT,
-        format='Updates: {count}',
-        format_no_updates='',
-        interval=10*60,
+    'updates',
+    backends=[pacman.Pacman(), cower.Cower()],
+    color=COLOR_DEFAULT,
+    format='Updates: {count}',
+    format_no_updates='',
+    interval=10*60,
 )
 
 status.register(
-        'cmus',
-        color=COLOR_DEFAULT,
-        format=('[{status} {artist} - {title} ({album}) '
-                '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]]'),
-        format_not_running="",
+    'cmus',
+    color=COLOR_DEFAULT,
+    format=(
+        '[{status} {artist} - {title} ({album}) '
+        '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]]'
+    ),
+    format_not_running="",
 )
 
 status.run()

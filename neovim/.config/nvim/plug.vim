@@ -22,7 +22,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
 	Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
-	Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'

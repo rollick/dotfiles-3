@@ -25,8 +25,11 @@ export MANWIDTH="80"
 
 # Settings for less
 export LESS="-~-J-R-s"
-export LESS_HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
+export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 export SYSTEMD_LESS="${LESS}"
+
+# Settings for startup
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
 
 # Set LS_COLORS
 eval `dircolors --sh`

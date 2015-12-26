@@ -8,6 +8,7 @@ endif
 call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	" Dependencies for other plugins
 	Plug 'godlygeek/tabular'
+	Plug 'scrooloose/nerdtree'
 
 	" Plugins which are not dependencies
 	Plug 'lastpos.vim'
@@ -22,10 +23,10 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
 	Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
-	Plug 'scrooloose/nerdtree'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" Load always last
 	Plug 'bling/vim-airline'

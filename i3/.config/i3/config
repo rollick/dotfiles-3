@@ -198,10 +198,10 @@ bindsym XF86Calculator exec octave
 bindsym XF86HomePage exec chromium
 bindsym XF86Mail exec chromium https://www.gmail.com/
 bindsym $mod+Ctrl+Return exec i3-sensible-terminal
-bindsym $mod+Ctrl+d exec --no-startup-id rofi -show run -p "Run:"
-bindsym Menu exec --no-startup-id rofi -show run -p "Run:"
+bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run -p "Run:"
+bindsym Menu exec --no-startup-id dmenu_run -p "Run:"
 
 # Session control
-bindsym XF86Sleep exec --no-startup-id i3-session --dmenu="rofi -dmenu"
+bindsym XF86Sleep exec --no-startup-id i3-session
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=5294e2
-bindsym $mod+Ctrl+s exec --no-startup-id i3-session --dmenu="rofi -dmenu"
+bindsym $mod+Ctrl+s exec --no-startup-id i3-session

@@ -57,3 +57,6 @@ source "/usr/share/zsh/site-functions/git-flow-completion.zsh" &>|/dev/null
 source "/usr/bin/virtualenvwrapper.sh" &>/dev/null
 source "${XDG_CACHE_HOME:-${HOME}/.local/share}/../bin/virtualenvwrapper.sh" &>|/dev/null
 source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &>|/dev/null
+
+# Fix for prompts, which show a $? status
+true

@@ -1,92 +1,105 @@
-alias chgrp='chgrp --change'
-alias chmod='chmod --change'
-alias chown='chown --change'
-alias cls='clear'
-if which which cmus &>|/dev/null; then
-	alias cmus='cmus_wrapper'
+# Allow sudo to use aliases
+(( ${+commands[sudo]} )) && alias sudo='sudo '
+
+# Drop-in replacements
+(( ${+commands[colordiff]} )) && alias diff="colordiff"
+(( ${+commands[cmus]} )) && (( ${+commands[cmus_wrapper]} )) && alias cmus="cmus_wrapper"
+(( ${+commands[pacaur]} )) && alias pacman="pacaur"
+if (( ${+commands[vim]} )); then
+	alias vi="vim"; unalias vim
+elif (( ${+commands[nvim]} )); then
+	alias vi="nvim"
+	alias vim="nvim"
 fi
-which colordiff &>|/dev/null && alias diff='colordiff'
-alias cp='cp --interactive --verbose'
-alias df='df --human-readable'
-alias dmesg='dmesg --color --decode --human --time-format ctime'
-alias du='du --human-readable'
-alias free='free --mega --total --human'
-alias gcc="nice -n 19 gcc"
-alias grep='grep --color=auto'
-alias head='head -n $(( ${LINES} - 2 * $(print ${PROMPT} |wc -l) ))'
-which htop &>|/dev/null && alias uhtop='htop -u ${USER}'
-if which httpserver &>|/dev/null; then
-	alias httpserver_public="httpserver ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
+
+# Force a specific nice level
+(( ${+commands[gcc]} )) && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"
+(( ${+commands[make]} )) && alias make="nice -n 19 ${aliases[make]:-make}"
+(( ${+commands[makepkg]} )) && alias makepkg="nice -n 19 ${aliases[makepkg]:-makepkg}"
+
+# Secure some commands
+alias chgrp="${aliases[chgrp]:-chgrp} --preserve-root"
+alias chmod="${aliases[chmod]:-chmod} --preserve-root"
+alias chown="${aliases[chown]:-chown} --preserve-root"
+alias cp="${aliases[cp]:-cp} --interactive"
+alias ln="${aliases[ln]:-ln} --interactive"
+alias mv="${aliases[mv]:-mv} --interactive"
+alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
+
+# Use in non-GUI mode
+(( ${+commands[octave]} )) && alias octave="${aliases[octave]:-octave} --no-gui"
+(( ${+commands[unison]} )) && alias unison="${aliases[unison]:-unison} -ui text"
+
+# Make some commands more verbose
+alias chgrp="${aliases[chgrp]:-chgrp} --changes"
+alias chmod="${aliases[chmod]:-chmod} --changes"
+alias chown="${aliases[chown]:-chown} --changes"
+alias cp="${aliases[cp]:-cp} --verbose"
+alias ln="${aliases[ln]:-ln} --verbose"
+alias mkdir="${aliases[mkdir]:-mkdir} --verbose"
+alias modprobe="${aliases[modprobe]:-modprobe} --verbose"
+alias mount="${aliases[mount]:-mount} --verbose"
+alias mv="${aliases[mv]:-mv} --verbose"
+(( ${+commands[paccache]} )) && alias paccache='paccache --verbose'
+alias rm="${aliases[rm]:-rm} --verbose"
+(( ${+commands[rsync]} )) && alias rsync='rsync --verbose'
+alias umount="${aliases[umount]:-umount} --verbose"
+(( ${+commands[zcp]} )) && alias zcp='zcp -o --verbose'
+(( ${+commands[zln]} )) && alias zln='zln -o --verbose'
+(( ${+commands[zmv]} )) && alias zmv='zmv -o --verbose'
+
+# Make output human readable
+alias df="${aliases[df]:-df} --human-readable"
+alias dmesg="${aliases[dmesg]:-dmesg} --decode --human"
+alias du="${aliases[du]:-du} --human-readable"
+alias free="${aliases[free]:-free} --mega --human"
+alias ls="${aliases[ls]:-ls} --human-readable"
+(( ${+commands[rsync]} )) && alias rsync='rsync --human-readable'
+
+# Enable color output
+alias grep="${aliases[grep]:-grep} --color=auto"
+alias ls="${aliases[ls]:-ls} --color=auto"
+
+# Overide default time format
+alias dmesg="${aliases[dmesg]:-dmesg} --time-format ctime"
+alias ls="${aliases[ls]:-ls} --time-style=long-iso"
+
+# Set options
+alias free="${aliases[free]:-free} --total"
+alias head="${aliases[head]:-head} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
+alias info="${aliases[info]:-info} --vi-keys"
+alias ls="${aliases[ls]:-ls} --classify --escape --group-directories-first"
+alias mkdir="${aliases[mkdir]:-mkdir} --parents"
+(( ${+commands[octave]} )) && alias octave="${aliases[octave]:-octave} --silent"
+(( ${+commands[pgrep]} )) && alias pgrep="${aliases[pgrep]:-pgrep} --list-name"
+(( ${+commands[ping]} )) && alias ping="${aliases[ping]:-ping} -c4"
+(( ${+commands[ping6]} )) && alias ping6="${aliases[ping6]:-ping6} -c4"
+(( ${+commands[rsync]} )) && alias rsync="${aliases[rsync]:-rsync} --compress"
+alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
+
+# Define new commands
+(( ${+commands[octave]} )) && alias calc="noglob ${aliases[octave]:-octave} --eval"
+alias la="${aliases[ls]:-ls} --almost-all"
+alias ll="${aliases[ls]:-ls} --format=long"
+alias lla="${aliases[ls]:-ls} --almost-all --format=long"
+(( ${+commands[htop]} )) && alias uhtop="${aliases[htop]:-htop} -u \${USER}"
+if (( ${+commands[httpserver]} )); then
+	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
-if which i3pystatus-custom &>|/dev/null; then
-	alias i3pystatus='venv i3pystatus i3pystatus-custom'
-else
-	alias i3pystatus='venv i3pystatus i3pystatus'
-fi
-alias info='info --vi-keys'
-alias ln='ln --verbose'
-alias ls='ls --human-readable --classify --color=auto --escape --group-directories-first'
-alias la='ls --almost-all'
-alias ll='ls --format=long --time-style=long-iso'
-alias lla='ll --almost-all'
-alias lsblk="lsblk --output=NAME,RM,SIZE,RO,TYPE,FSTYPE,MOUNTPOINT,LABEL"
-alias make="nice -n 19 make"
-alias mkdir='mkdir --verbose --parents'
-alias modprobe='modprobe --verbose'
-alias mount='mount --verbose'
-alias mv='mv --interactive --verbose'
-if which octave &>|/dev/null; then
-	alias octave='octave --silent --no-gui'
-	alias calc='noglob octave --silent --eval'
-fi
-if which pacman &>|/dev/null; then
-	alias makepkg='PYTHONDONTWRITEBYTECODE="" nice -n 19 makepkg'
-	alias paccache="paccache --verbose"
-	if which which pacaur &>|/dev/null; then
-		alias pacman='pacaur'
-	fi
-fi
-alias pgrep='pgrep -l'
-alias ping='ping -c4'
-alias ping6='ping6 -c4'
-alias rm='rm --verbose --one-file-system'
-which rsync &>|/dev/null && alias rsync='rsync --verbose --compress --human-readable'
-which sudo &>|/dev/null && alias sudo='sudo '
-alias tail='tail -n $(( ${LINES} - 2 * $(print ${PROMPT} |wc -l) ))'
-which top &>|/dev/null && alias utop='top -U ${USER}'
-which tree &>|/dev/null && alias tree="tree --dirsfirst -A"
-alias umount='umount --verbose'
-which unison &>|/dev/null && alias unison='unison -ui text'
-if which nvim &>/dev/null; then
-	alias vi='nvim -p'
-	alias vim='nvim -p'
-elif which vim &>|/dev/null; then
-	alias vim="vim -p"
-	alias vi='vim'
-fi
-alias zcp='zcp -o --verbose'
-alias zln='zln -o --verbose'
-alias zmv='zmv -o --verbose'
-alias zmv-all_low="zmv '(*)' '\${1:l}'"
-alias zmv-space2underscore="zmv '(*)' '\${1// /_}'"
+(( ${+commands[top]} )) && alias utop="${aliases[top]:-top} -u \${USER}"
 
 # Global aliases
-alias -g C="|wc -l"
-alias -g ES="2>&1"
-alias -g F="&|"
-alias -g G="|grep"
-alias -g GE="|grep -E"
-alias -g GI="|grep -i"
-alias -g GV="|grep -v"
-alias -g H="|head"
-alias -g K="|keep --"
-alias -g NE="2>|/dev/null"
-alias -g NO="&>|/dev/null"
-alias -g NOF="&>|/dev/null &|"
-alias -g P='|${PAGER}'
-alias -g S="|sort"
-alias -g SU="|sort -u"
-alias -g U="|uniq"
-alias -g T="|tail"
-alias -g X="|xargs"
-alias -g X0="|xargs -0"
+alias -g C='|wc -l'
+alias -g ES='2>&1'
+alias -g F='&|'
+alias -g G='|grep'
+alias -g GI='|grep -i'
+alias -g GV='|grep -v'
+alias -g H='|head'
+alias -g NE='2>|/dev/null'
+alias -g NO='&>|/dev/null'
+alias -g NOF='&>|/dev/null &|'
+alias -g P='|${PAGER:-less}'
+alias -g S='|sort'
+alias -g U='|uniq'
+alias -g T='|tail'

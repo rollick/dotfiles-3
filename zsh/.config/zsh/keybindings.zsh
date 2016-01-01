@@ -44,11 +44,8 @@ bindkey	"^W"					kill-word
 bindkey "^X "					hide-from-history
 bindkey	"^Xd"					insert-iso-date
 bindkey	"^Xe"					expand-word
-bindkey	"^Xh"					get-help
 bindkey	"^Xk"					insert-kept-result
-bindkey	"^Xm"					get-man
 bindkey	"^Xs"					toggle-sudo
-bindkey "^X="					toggle-alias
 bindkey	" "						expand-global-alias
 bindkey -M menuselect	"i"		accept-and-menu-complete
 

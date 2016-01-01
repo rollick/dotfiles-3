@@ -2,6 +2,7 @@
 (( ${+commands[sudo]} )) && alias sudo='sudo '
 
 # Drop-in replacements
+(( ${+functions[cd-git]} )) && alias cd="cd-git"
 (( ${+commands[colordiff]} )) && alias diff="colordiff"
 (( ${+commands[cmus]} )) && (( ${+commands[cmus_wrapper]} )) && alias cmus="cmus_wrapper"
 (( ${+commands[pacaur]} )) && alias pacman="pacaur"

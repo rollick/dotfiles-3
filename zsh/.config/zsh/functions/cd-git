@@ -1,0 +1,15 @@
+#!/bin/zsh
+local toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+if [[ -n ${1} ]]; then
+	cd "${@}"
+elif [[ "${PWD#${toplevel}}" != "${PWD}" ]]; then
+	if [[ -e "${toplevel}" && "${toplevel}" != "${PWD}" ]]; then
+		cd "$toplevel"
+	else
+		cd
+	fi
+else
+	cd
+fi
+

@@ -19,10 +19,15 @@
 # Add all git repositories inside $HOME/Projects
 () {
 	local d
+	local gitroot="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}/Code"
 
-	for d in "${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"/Code/{Local,Remote}/*(FN); do
-		if [[ -d "${d}/.git" ]]; then
-			hash -d "git-${d:h:t:l}-${d:t}"="${d}"
-		fi
-	done
+	if [[ -d "$gitroot" ]]; then
+		hash -d git-root=$gitroot
+
+		for d in "$gitroot"/{Local,Remote}/*(FN); do
+			if [[ -d "${d}/.git" ]]; then
+				hash -d "git-${d:h:t:l}-${d:t}"="${d}"
+			fi
+		done
+	fi
 }

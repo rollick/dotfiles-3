@@ -11,6 +11,7 @@ if (( ${+commands[vim]} )); then
 elif (( ${+commands[nvim]} )); then
 	alias vi="nvim"
 	alias vim="nvim"
+	alias vimdiff="nvim -d"
 fi
 
 # Force a specific nice level

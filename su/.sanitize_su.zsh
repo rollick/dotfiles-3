@@ -18,9 +18,6 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 	export MAIL="${MAIL:h}/${HOME:t}"
-	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
-	export VIRTUALENVWRAPPER_HOOK_DIR="${WORKON_HOME}"
-
 
 	if [[ -n $DISPLAY ]]; then
 		emulate sh -c "source ${HOME}/.xprofile >/dev/null 2>&1"

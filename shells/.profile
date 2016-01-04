@@ -50,9 +50,6 @@ which lesspipe >/dev/null 2>&1 && eval $(lesspipe)
 # Set path for gnupg
 export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 
-# Set path for virtualenvwrapper
-export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
-
 # Set default encrypted session via rsync to ssh
 if which ssh >/dev/null 2>&1; then
 	export RSYNC_RSH="ssh"

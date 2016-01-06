@@ -1,0 +1,12 @@
+#!/bin/zsh
+if ! which -p pip &>|/dev/null; then
+	no_cmd_handler python3 || return 1
+
+	printhl "Bootstrap pip"
+	python3 -m ensurepip --user  --default-pip
+
+	print
+	printhl "Run pip command"
+fi
+
+=pip ${@}

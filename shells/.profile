@@ -6,7 +6,12 @@ if [[ -n "${SSH_CONNECTION}" ]]; then
 fi
 
 # Add some directories to path
-export PATH="${HOME}/.local/bin:${PATH}"
+if [[ -d "/usr/lib/colorgcc/bin" ]]; then
+	export PATH="/usr/lib/colorgcc/bin:${PATH}"
+fi
+if [[ -d "${HOME}/.local/bin" ]]; then
+	export PATH="${HOME}/.local/bin:${PATH}"
+fi
 
 # Search these directories with pacdiff
 export DIFFSEARCHPATH="/boot /etc /usr /var"

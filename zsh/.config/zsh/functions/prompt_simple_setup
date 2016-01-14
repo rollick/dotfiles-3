@@ -2,8 +2,8 @@
 
 prompt_simple_setup() {
 	# Load needed functions
-	autoload -U colors && colors
-	autoload -U vcs_info
+	autoload -Uz colors && colors
+	autoload -Uz vcs_info
 
 	# Options for simple prompt
 	##################

@@ -10,17 +10,17 @@ mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
 zmodload -F zsh/complist
 
 # Load zsh (upstream) functions
-autoload -U add-zsh-hook
-autoload -U compinit
-autoload -U colors
-autoload -U promptinit
-autoload -U url-quote-magic
-autoload -U zmv
+autoload -Uz add-zsh-hook
+autoload -Uz compinit
+autoload -Uz colors
+autoload -Uz promptinit
+autoload -Uz url-quote-magic
+autoload -Uz zmv
 
 # Load own functions
 fpath=("${ZDOTDIR}/functions" ${fpath})
 typeset -U path
-autoload -U ${fpath[1]}/*(.,@N:t)
+autoload -Uz ${fpath[1]}/*(.,@N:t)
 
 # Initialize functions
 compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"

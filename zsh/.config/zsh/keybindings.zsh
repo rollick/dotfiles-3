@@ -1,3 +1,5 @@
+autoload -Uz url-quote-magic && url-quote-magic
+
 # Enable ZLE widgets
 ####################
 zle -N expand-global-alias zle-expand-global-alias

@@ -2,6 +2,7 @@
 
 prompt_simple_setup() {
 	# Load needed functions
+	autoload -Uz add-zsh-hook
 	autoload -Uz colors && colors
 	autoload -Uz vcs_info
 

@@ -6,15 +6,8 @@
 # Create needed directories
 mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
 
-# Load zsh modules
-zmodload -F zsh/complist
-
 # Load zsh (upstream) functions
-autoload -Uz add-zsh-hook
-autoload -Uz compinit
-autoload -Uz colors
 autoload -Uz promptinit
-autoload -Uz url-quote-magic
 autoload -Uz zmv
 
 # Load own functions
@@ -23,8 +16,6 @@ typeset -U path
 autoload -Uz ${fpath[1]}/*(.,@N:t)
 
 # Initialize functions
-compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
-colors
 promptinit
 
 # Set zsh options

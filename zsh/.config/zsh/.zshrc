@@ -30,14 +30,6 @@ source "${ZDOTDIR}/keybindings.zsh" &>|/dev/null
 # Set prompt
 prompt simple
 
-# Set history options
-export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
-export SAVEHIST=10000
-export HISTSIZE=12000
-
-# Set up syntax highlighting
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-
 # Include external additions
 source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
 source "/etc/zsh_command_not_found" &>|/dev/null

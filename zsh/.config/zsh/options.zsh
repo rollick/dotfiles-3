@@ -35,3 +35,11 @@ setopt RM_STAR_WAIT			# Wait 10 secs, when issuing e.g. 'rm *'
 # Prompting
 setopt PROMPT_SUBST			# Substitions in a prompt are performed
 setopt TRANSIENT_RPROMPT	# Hide RPROMPT when the current command is too long
+
+# Set history options
+export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
+export SAVEHIST=10000
+export HISTSIZE=12000
+
+# Set up syntax highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)

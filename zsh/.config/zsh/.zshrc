@@ -13,7 +13,6 @@ zmodload -F zsh/complist
 autoload -U add-zsh-hook
 autoload -U compinit
 autoload -U colors
-autoload -U keeper
 autoload -U promptinit
 autoload -U url-quote-magic
 autoload -U zmv
@@ -26,7 +25,6 @@ autoload -U ${fpath[1]}/*(.,@N:t)
 # Initialize functions
 compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
 colors
-keeper
 promptinit
 
 # Set zsh options

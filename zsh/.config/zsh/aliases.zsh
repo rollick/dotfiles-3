@@ -5,7 +5,7 @@
 (( ${+functions[cd-git]} )) && alias cd="cd-git"
 (( ${+commands[colordiff]} )) && alias diff="colordiff"
 (( ${+commands[cmus]} )) && (( ${+commands[cmus_wrapper]} )) && alias cmus="cmus_wrapper"
-(( ${+commands[pacaur]} )) && alias pacman="pacaur"
+(( ${+commands[pacaur]} )) && [[ ${UID} -ne 0 ]]&& alias pacman="pacaur"
 if (( ${+commands[vim]} )); then
 	alias vi="vim"; unalias vim
 elif (( ${+commands[nvim]} )); then

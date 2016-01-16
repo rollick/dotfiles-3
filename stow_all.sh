@@ -30,6 +30,4 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} scripts
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org
-elif [[ ${UID} -eq 0 ]]; then
-	stow --verbose -R -t ${HOME} su
 fi

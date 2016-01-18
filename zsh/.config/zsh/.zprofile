@@ -8,7 +8,7 @@ typeset -U path
 
 # Start X session
 if [[ "${UID}" -ne 0 && -z "${DISPLAY}" && "${XDG_VTNR}" -eq 1 ]]; then
-	if [[ -o "login" ]]; then
+	if [[ -o "login" && -f "${HOME}/.xinitrc" ]]; then
 		if which startx &>|/dev/null; then
 			# Correct SHLVL value
 			SHLVL=0

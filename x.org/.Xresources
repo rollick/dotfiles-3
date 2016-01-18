@@ -29,7 +29,7 @@ URxvt.cursorBlink: true
 URxvt.cursorUnderline: true
 
 ! Font settings
-URxvt.font: xft:Droid Sans Mono:size=9,xft:Symbola:size=9
+URxvt.font: xft:Droid Sans Mono:size=10,xft:Symbola:size=9
 
 ! Scrollbar settings
 URxvt.scrollBar: false

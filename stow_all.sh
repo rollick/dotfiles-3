@@ -12,7 +12,6 @@ stow --verbose -R -t ${HOME} ranger
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
-stow --verbose -R -t ${HOME} xdg
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then

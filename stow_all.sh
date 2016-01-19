@@ -15,11 +15,13 @@ stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
+	mkdir --verbose -p "${HOME}/.config/cmus"
 	mkdir --verbose -p "${HOME}/.config/gtk-2.0"
 	mkdir --verbose -p "${HOME}/.config/gtk-3.0"
 	mkdir --verbose -p "${HOME}/.local/bin"
 	mkdir --verbose -p "${HOME}/.unison"
 	stow --verbose -R -t ${HOME} appearance
+	stow --verbose -R -t ${HOME} cmus
 	stow --verbose -R -t ${HOME} dunst
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} i3

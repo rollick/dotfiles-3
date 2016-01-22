@@ -11,9 +11,30 @@ autoload -Uz promptinit
 autoload -Uz zmv
 
 # Load own functions
-fpath=("${ZDOTDIR}/functions" ${fpath})
+() {
+	local new_fpaths
+	local p
+
+	new_fpaths=(
+		"${XDG_DATA_HOME:-${HOME}/.local/share}"/../lib/python3.{0..10}/site-packages/pew/shell_config
+		"${ZDOTDIR}/functions"
+	)
+
+	for p in $new_fpaths; do
+		if [[ -d "${p}" ]]; then
+			fpath=(${p} ${fpath})
+			autoload -Uz ${fpath[1]}/*(.,@N:t)
+		fi
+	done
+
+	# Cleanup
+	if (( ${+functions[_pew]} )); then
+		unfunction {complete,init}{_deploy,.{bash,fish,zsh}} &>/dev/null
+	fi
+}
+
+# Make sure all path entries are unique
 typeset -U path
-autoload -Uz ${fpath[1]}/*(.,@N:t)
 
 # Initialize functions
 promptinit

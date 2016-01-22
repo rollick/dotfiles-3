@@ -47,9 +47,7 @@ alias mv="${aliases[mv]:-mv} --verbose"
 alias rm="${aliases[rm]:-rm} --verbose"
 (( ${+commands[rsync]} )) && alias rsync='rsync --verbose'
 alias umount="${aliases[umount]:-umount} --verbose"
-(( ${+commands[zcp]} )) && alias zcp='zcp -o --verbose'
-(( ${+commands[zln]} )) && alias zln='zln -o --verbose'
-(( ${+commands[zmv]} )) && alias zmv='zmv -o --verbose'
+(( ${+functions[zmv]} )) && alias zmv='zmv -o --verbose'
 
 # Make output human readable
 alias df="${aliases[df]:-df} --human-readable"
@@ -90,6 +88,10 @@ if (( ${+commands[httpserver]} )); then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
 (( ${+commands[top]} )) && alias utop="${aliases[top]:-top} -u \${USER}"
+if (( ${+functions[zmv]} )); then
+	alias zcp="${aliases[zmv]:-zmv} -C"
+	alias zln="${aliases[zmv]:-zln} -L"
+fi
 
 # Global aliases
 alias -g C='|wc -l'

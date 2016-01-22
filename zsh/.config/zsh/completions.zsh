@@ -62,33 +62,14 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # Use the generic gnu-style help (command --help) for the following commands
 () {
-	until [[ -z "${1}" ]]; do
-		if ! which "_${1}" &>|/dev/null; then
-			compdef _gnu_generic "${1}"
-		else
-			print "${1} already has a completion."
-		fi
-		shift
+	local cmd
+
+	for cmd in abs dircolors eyeD3 flake8 gpasswd head htop makechrootpkg \
+	           makepkg makearchroot mocp mv namcap pacman-key pkgclean \
+	           powertop rmdir stow tail udisks; do
+		(( $+{_comps[$cmd]} )) || compdef _gnu_generic $cmd
 	done
-}  abs \
-	dircolors \
-	eyeD3 \
-	flake8 \
-	gpasswd \
-	head \
-	htop \
-	makechrootpkg \
-	makepkg \
-	makearchroot \
-	mocp \
-	mv \
-	namcap \
-	pacman-key \
-	pkgclean \
-	powertop \
-	rmdir \
-	tail \
-	udisks \
+}
 
 # Enable completion for some wrappers
 compdef _cd cd-git

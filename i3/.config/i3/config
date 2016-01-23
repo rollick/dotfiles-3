@@ -32,7 +32,7 @@ client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $urgent_bg
 
 # i3bar
 bar {
-	status_command pew in i3pystatus-custom i3pystatus-custom
+	status_command pew in i3pystatus-bin i3pystatus-bin
 	font pango:Droid Sans 10, pango:Symbola 10
 	position top
 	separator_symbol "|"

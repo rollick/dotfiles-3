@@ -79,11 +79,13 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		namcap
 		pacman-key
 		pkgclean
+		pkgstats
 		powertop
 		rmdir
 		stow
 		tail
 		udisks
+		wifi-menu
 	)
 
 	for cmd in $commands; do

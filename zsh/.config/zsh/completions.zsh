@@ -71,25 +71,19 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		gpasswd
 		head
 		htop
-		makechrootpkg
-		makepkg
 		makearchroot
 		mocp
 		mv
 		namcap
-		pacman-key
 		pkgclean
 		pkgstats
 		powertop
-		rmdir
 		stow
-		tail
 		udisks
-		wifi-menu
 	)
 
 	for cmd in $commands; do
-		(( $+{_comps[$cmd]} )) || compdef _gnu_generic $cmd
+		[[ -z ${_comps[$cmd]} ]] && compdef _gnu_generic $cmd
 	done
 }
 

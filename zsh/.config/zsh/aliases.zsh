@@ -1,24 +1,24 @@
 # Allow sudo to use aliases
-(( ${+commands[sudo]} )) && alias sudo='sudo '
+[[ -n ${commands[sudo]} ]] && alias sudo='sudo '
 
 # Drop-in replacements
-(( ${+functions[cd-git]} )) && alias cd="cd-git"
-(( ${+commands[colordiff]} )) && alias diff="colordiff"
-(( ${+commands[cmus]} )) && (( ${+commands[cmus_wrapper]} )) && alias cmus="cmus_wrapper"
-(( ${+commands[pacaur]} )) && [[ ${UID} -ne 0 ]]&& alias pacman="pacaur"
-if (( ${+commands[vim]} )); then
+[[ -n ${functions[cd-git]} ]] && alias cd="cd-git"
+[[ -n ${commands[colordiff]} ]] && alias diff="colordiff"
+[[ -n ${commands[cmus]} && ${+commands[cmus_wrapper]} ]] && alias cmus="cmus_wrapper"
+[[ -n ${commands[pacaur]} ]] && [[ ${UID} -ne 0 ]]&& alias pacman="pacaur"
+if [[ -n ${commands[vim]} ]]; then
 	alias vi="vim"
 	[[ -n ${aliases[vim]} ]] && unalias vim
-elif (( ${+commands[nvim]} )); then
+elif [[ -n ${commands[nvim]} ]]; then
 	alias vi="nvim"
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
 fi
 
 # Force a specific nice level
-(( ${+commands[gcc]} )) && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"
-(( ${+commands[make]} )) && alias make="nice -n 19 ${aliases[make]:-make}"
-(( ${+commands[makepkg]} )) && alias makepkg="nice -n 19 ${aliases[makepkg]:-makepkg}"
+[[ -n ${commands[gcc]} ]] && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"
+[[ -n ${commands[make]} ]] && alias make="nice -n 19 ${aliases[make]:-make}"
+[[ -n ${commands[makepkg]} ]] && alias makepkg="nice -n 19 ${aliases[makepkg]:-makepkg}"
 
 # Secure some commands
 alias chgrp="${aliases[chgrp]:-chgrp} --preserve-root"
@@ -30,8 +30,8 @@ alias mv="${aliases[mv]:-mv} --interactive"
 alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
 
 # Use in non-GUI mode
-(( ${+commands[octave]} )) && alias octave="${aliases[octave]:-octave} --no-gui"
-(( ${+commands[unison]} )) && alias unison="${aliases[unison]:-unison} -ui text"
+[[ -n ${commands[octave]} ]] && alias octave="${aliases[octave]:-octave} --no-gui"
+[[ -n ${commands[unison]} ]] && alias unison="${aliases[unison]:-unison} -ui text"
 
 # Make some commands more verbose
 alias chgrp="${aliases[chgrp]:-chgrp} --changes"
@@ -44,11 +44,11 @@ alias mkdir="${aliases[mkdir]:-mkdir} --verbose"
 alias modprobe="${aliases[modprobe]:-modprobe} --verbose"
 alias mount="${aliases[mount]:-mount} --verbose"
 alias mv="${aliases[mv]:-mv} --verbose"
-(( ${+commands[paccache]} )) && alias paccache='paccache --verbose'
+[[ -n ${commands[paccache]} ]] && alias paccache='paccache --verbose'
 alias rm="${aliases[rm]:-rm} --verbose"
-(( ${+commands[rsync]} )) && alias rsync='rsync --verbose'
+[[ -n ${commands[rsync]} ]] && alias rsync='rsync --verbose'
 alias umount="${aliases[umount]:-umount} --verbose"
-(( ${+functions[zmv]} )) && alias zmv='zmv -o --verbose'
+[[ -n ${functions[zmv]} ]] && alias zmv='zmv -o --verbose'
 
 # Make output human readable
 alias df="${aliases[df]:-df} --human-readable"
@@ -56,7 +56,7 @@ alias dmesg="${aliases[dmesg]:-dmesg} --decode --human"
 alias du="${aliases[du]:-du} --human-readable"
 alias free="${aliases[free]:-free} --mega --human"
 alias ls="${aliases[ls]:-ls} --human-readable"
-(( ${+commands[rsync]} )) && alias rsync='rsync --human-readable'
+[[ -n ${commands[rsync]} ]] && alias rsync='rsync --human-readable'
 
 # Enable color output
 alias grep="${aliases[grep]:-grep} --color=auto"
@@ -72,24 +72,24 @@ alias head="${aliases[head]:-head} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |
 alias info="${aliases[info]:-info} --vi-keys"
 alias ls="${aliases[ls]:-ls} --classify --escape --group-directories-first"
 alias mkdir="${aliases[mkdir]:-mkdir} --parents"
-(( ${+commands[octave]} )) && alias octave="${aliases[octave]:-octave} --silent"
-(( ${+commands[pgrep]} )) && alias pgrep="${aliases[pgrep]:-pgrep} --list-name"
-(( ${+commands[ping]} )) && alias ping="${aliases[ping]:-ping} -c4"
-(( ${+commands[ping6]} )) && alias ping6="${aliases[ping6]:-ping6} -c4"
-(( ${+commands[rsync]} )) && alias rsync="${aliases[rsync]:-rsync} --compress"
+[[ -n ${commands[octave]} ]] && alias octave="${aliases[octave]:-octave} --silent"
+[[ -n ${commands[pgrep]} ]] && alias pgrep="${aliases[pgrep]:-pgrep} --list-name"
+[[ -n ${commands[ping]} ]] && alias ping="${aliases[ping]:-ping} -c4"
+[[ -n ${commands[ping6]} ]] && alias ping6="${aliases[ping6]:-ping6} -c4"
+[[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
 
 # Define new commands
-(( ${+commands[octave]} )) && alias calc="noglob ${aliases[octave]:-octave} --eval"
+[[ -n ${commands[octave]} ]] && alias calc="noglob ${aliases[octave]:-octave} --eval"
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"
-(( ${+commands[htop]} )) && alias uhtop="${aliases[htop]:-htop} -u \${USER}"
-if (( ${+commands[httpserver]} )); then
+[[ -n ${commands[htop]} ]] && alias uhtop="${aliases[htop]:-htop} -u \${USER}"
+if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
-(( ${+commands[top]} )) && alias utop="${aliases[top]:-top} -u \${USER}"
-if (( ${+functions[zmv]} )); then
+[[ -n ${commands[top]} ]] && alias utop="${aliases[top]:-top} -u \${USER}"
+if [[ -n ${functions[zmv]} ]]; then
 	alias zcp="${aliases[zmv]:-zmv} -C"
 	alias zln="${aliases[zmv]:-zln} -L"
 fi

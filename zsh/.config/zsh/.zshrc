@@ -28,7 +28,7 @@ autoload -Uz zmv
 	done
 
 	# Cleanup
-	if (( ${+functions[_pew]} )); then
+	if [[ -n ${functions[_pew]} ]]; then
 		unfunction {complete,init}{_deploy,.{bash,fish,zsh}} &>/dev/null
 	fi
 }

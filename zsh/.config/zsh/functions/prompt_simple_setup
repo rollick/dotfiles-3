@@ -70,7 +70,7 @@ prompt_simple_check_git_arrows() {
 	git rev-parse --abbrev-ref @'{u}' &>|/dev/null || return
 
 	arrow_status="$(git rev-list --left-right --count HEAD...@'{u}' 2>|/dev/null)"
-	(( ! ${?} )) || return
+	[[ ${?} -ne 0 ]] && return
 
 	arrow_status=(${(ps:\t:)arrow_status})
 

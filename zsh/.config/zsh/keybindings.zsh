@@ -53,7 +53,7 @@ bindkey -M menuselect	"i"		accept-and-menu-complete
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+if [[ -n ${terminfo[smkx]} && ${+terminfo[rmkx]} ]]; then
     function zle-line-init () {
         print -n "${terminfo[smkx]}"
     }

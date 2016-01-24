@@ -93,4 +93,4 @@ compdef _diff colordiff
 compdef _ping ping6
 
 # Enable third party completions
-(( ${+functions[_pew]} )) && compdef _pew pew
+[[ -n ${functions[_pew]} ]] && compdef _pew pew

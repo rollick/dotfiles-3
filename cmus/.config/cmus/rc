@@ -6,4 +6,7 @@ bind -f common Q quit -i
 # General settings
 ##################
 colorscheme gems
+set device=/dev/sr0
 set output_plugin=alsa
+set replaygain=album-preferred
+set smart_artist_sort=false

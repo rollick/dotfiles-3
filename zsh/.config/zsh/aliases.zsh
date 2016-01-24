@@ -7,7 +7,8 @@
 (( ${+commands[cmus]} )) && (( ${+commands[cmus_wrapper]} )) && alias cmus="cmus_wrapper"
 (( ${+commands[pacaur]} )) && [[ ${UID} -ne 0 ]]&& alias pacman="pacaur"
 if (( ${+commands[vim]} )); then
-	alias vi="vim"; unalias vim
+	alias vi="vim"
+	[[ -n ${aliases[vim]} ]] && unalias vim
 elif (( ${+commands[nvim]} )); then
 	alias vi="nvim"
 	alias vim="nvim"

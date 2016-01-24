@@ -1,4 +1,4 @@
-autoload -Uz url-quote-magic && url-quote-magic
+autoload -Uz url-quote-magic
 
 # Enable ZLE widgets
 ####################

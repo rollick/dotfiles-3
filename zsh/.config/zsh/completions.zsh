@@ -63,10 +63,30 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # Use the generic gnu-style help (command --help) for the following commands
 () {
 	local cmd
+	local commands=(
+		abs
+		dircolors
+		eyed3
+		flake8
+		gpasswd
+		head
+		htop
+		makechrootpkg
+		makepkg
+		makearchroot
+		mocp
+		mv
+		namcap
+		pacman-key
+		pkgclean
+		powertop
+		rmdir
+		stow
+		tail
+		udisks
+	)
 
-	for cmd in abs dircolors eyeD3 flake8 gpasswd head htop makechrootpkg \
-	           makepkg makearchroot mocp mv namcap pacman-key pkgclean \
-	           powertop rmdir stow tail udisks; do
+	for cmd in $commands; do
 		(( $+{_comps[$cmd]} )) || compdef _gnu_generic $cmd
 	done
 }

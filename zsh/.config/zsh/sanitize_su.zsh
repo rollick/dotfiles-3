@@ -20,10 +20,10 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 
 
 	# Reload profile files
-	source "${ZDOTDIR}/.zprofile" &>/dev/null
+	source "${ZDOTDIR}/.zprofile"
 
 	if [[ -n $DISPLAY ]]; then
-		emulate sh -c "source ${HOME}/.xprofile >/dev/null 2>&1"
+		emulate sh -c "source ${HOME}/.xprofile"
 		export XAUTHORITY="${HOME}/.Xauthority"
 	fi
 

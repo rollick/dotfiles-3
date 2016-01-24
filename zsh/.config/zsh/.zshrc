@@ -40,13 +40,13 @@ typeset -U path
 promptinit
 
 # Set zsh options
-source "${ZDOTDIR}/options.zsh" &>|/dev/null
+source "${ZDOTDIR}/options.zsh"
 
 # Set misc. settings
-source "${ZDOTDIR}/aliases.zsh" &>|/dev/null
-source "${ZDOTDIR}/completions.zsh" &>|/dev/null
-source "${ZDOTDIR}/hashes.zsh" &>|/dev/null
-source "${ZDOTDIR}/keybindings.zsh" &>|/dev/null
+source "${ZDOTDIR}/aliases.zsh"
+source "${ZDOTDIR}/completions.zsh"
+source "${ZDOTDIR}/hashes.zsh"
+source "${ZDOTDIR}/keybindings.zsh"
 
 # Set prompt
 prompt simple

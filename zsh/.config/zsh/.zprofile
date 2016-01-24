@@ -3,7 +3,7 @@
 # login shell after .zshrc is loaded use .zlogin.
 
 # Make sure ~/.profile is always loaded.
-emulate sh -c "source ${HOME}/.profile >/dev/null 2>&1"
+emulate sh -c "source ${HOME}/.profile"
 typeset -U path
 
 # Start X session

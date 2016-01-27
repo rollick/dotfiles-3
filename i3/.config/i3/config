@@ -203,5 +203,5 @@ bindsym Menu exec --no-startup-id dmenu_run -p "Run:"
 
 # Session control
 bindsym XF86Sleep exec --no-startup-id i3-session
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=5294e2
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock --color=10316d
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session

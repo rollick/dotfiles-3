@@ -4,6 +4,7 @@ mkdir --verbose -p "${HOME}/.config/gnupg"
 mkdir --verbose -p "${HOME}/.ssh"
 chmod --verbose 700 "${HOME}/.config/gnupg"
 chmod --verbose 700 "${HOME}/.ssh"
+stow --verbose -R -t ${HOME} flake8
 stow --verbose -R -t ${HOME} git
 stow --verbose -R -t ${HOME} gnupg
 stow --verbose -R -t ${HOME} neovim

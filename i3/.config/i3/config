@@ -54,7 +54,6 @@ bar {
 new_float 1pixel
 new_window 1pixel
 
-
 ##############################
 # Workspaces
 ##############################
@@ -83,7 +82,6 @@ for_window [class="Octave-gui" title="^Figure .*$"] floating enable
 for_window [class="^Snes9x.*"] floating enable
 for_window [class="Xsane"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
-
 
 ##############################
 # Keybindings

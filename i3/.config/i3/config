@@ -11,12 +11,12 @@ exec --no-startup-id xset -dpms
 # Appearance
 ##############################
 set $focused_bg #5294e2
-set $focused_fg #f9f9f9
-set $unfocused_bg #444444
-set $unfocused_fg #dcdcdc
+set $focused_fg #ffffff
+set $unfocused_bg #2e343e
+set $unfocused_fg #d3dae3
 set $urgent_bg #d64937
-set $urgent_fg #dcdcdc
-set $separator_fg #888888
+set $urgent_fg #5294e2
+set $separator_fg #7c818c
 set $indicator_off #5294e2
 set $indicator_on #d3dae3
 

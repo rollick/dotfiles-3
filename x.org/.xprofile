@@ -13,4 +13,7 @@ export NO_AT_BRIDGE=1
 # Set terminal for i3
 export TERMINAL="gnome-terminal"
 export TERMCMD="${TERMINAL}"
+
+# Set correct driver for libva
+export LIBVA_DRIVER_NAME=vdpau
 # vim: ft=sh

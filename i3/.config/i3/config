@@ -11,14 +11,14 @@ exec --no-startup-id xset -dpms
 # Appearance
 ##############################
 set $focused_bg #5294e2
-set $focused_fg #ffffff
+set $focused_fg #f5f6f7
 set $unfocused_bg #2f343f
-set $unfocused_fg #d3dae3
-set $urgent_bg #d64937
+set $unfocused_fg #f5f6f7
+set $urgent_bg #cc575d
 set $urgent_fg #5294e2
-set $separator_fg #7c818c
+set $separator_fg #afb8c5
 set $indicator_off #5294e2
-set $indicator_on #d3dae3
+set $indicator_on #f5f6f7
 
 # Set font
 font pango:Droid Sans Bold 10, pango:Symbola 10

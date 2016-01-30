@@ -2,9 +2,9 @@
 ! Rofi
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 rofi.color-enabled: true
-rofi.color-window: #2e343e,#5294e2
-rofi.color-normal: #2e343e,#d3dae3,#2e343e,#5294e2,#ffffff
-rofi.color-active: #2e343e,#d3dae3,#2e343e,#5294e2,#ffffff
+rofi.color-window: #2f343f,#5294e2
+rofi.color-normal: #2f343f,#d3dae3,#2f343f,#5294e2,#ffffff
+rofi.color-active: #2f343f,#d3dae3,#2f343f,#5294e2,#ffffff
 rofi.color-urgent: #d64937,#d3dae3,#d64937,#5294e2,#ffffff
 rofi.font: Droid Sans 10
 rofi.hide-scrollbar: true

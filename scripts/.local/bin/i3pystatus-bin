@@ -131,6 +131,7 @@ status.register(
     color=COLOR_DEFAULT,
     format='Updates: {count}',
     format_no_updates='',
+    format_working='',
     interval=10*60,
 )
 

@@ -76,43 +76,48 @@ status.register(
     'alsa',
     color=COLOR_DEFAULT,
     color_muted=COLOR_DISABLED,
-    format='Volume: {volume}%',
-    format_muted='Volume: mute',
+    format='\U0001f50a {volume}%',
+    format_muted='\U0001f507 {volume}%',
     mixer='Headphone',
 )
 
 status.register(
     'keyboard_locks',
-    caps_on='C',
-    caps_off='_',
+    caps_on='\U0001f170',
+    caps_off='\U0001f130',
     color=COLOR_DEFAULT,
     format='{caps}{num}{scroll}',
-    num_on='N',
-    num_off='_',
-    scroll_on='S',
-    scroll_off='_',
+    num_on='\U0001f17d',
+    num_off='\U0001f13d',
+    scroll_on='\U0001f182',
+    scroll_off='\U0001f142',
 )
 
 if HOSTNAME in LAPTOPS:
     status.register(
         'backlight',
-        format='Backlight: {percentage}',
+        format='\u2600 {percentage}%',
         color=COLOR_DEFAULT,
     )
 
 if WIFI_INTERFACE:
     status.register(
         'network',
-        format_down='',
-        format_up='Wifi: {essid}',
+        color_down=COLOR_DISABLED,
+        color_up=COLOR_DEFAULT,
+        format_down='\U0001f4f6',
+        format_up='\U0001f4f6',
+        dynamic_color=False,
         interface=WIFI_INTERFACE,
     )
 
 if ETHERNET_INTERFACE:
     status.register(
         'network',
-        format_down='',
-        format_up='Ethernet',
+        color_down=COLOR_DISABLED,
+        color_up=COLOR_DEFAULT,
+        format_down='\U0001f5a7',
+        format_up='\U0001f5a7',
         interface=ETHERNET_INTERFACE,
     )
 
@@ -121,15 +126,15 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
         'online',
         color=COLOR_DEFAULT,
         color_offline=COLOR_ERROR,
-        format_online='',
+        format_online='\U0001f30d',
         format_offline='No internet connection',
     )
 
 status.register(
     'updates',
     backends=[pacman.Pacman(), cower.Cower()],
-    color=COLOR_DEFAULT,
-    format='Updates: {count}',
+    color=COLOR_ERROR,
+    format='\u26a0 {count}',
     format_no_updates='',
     format_working='',
     interval=10*60,

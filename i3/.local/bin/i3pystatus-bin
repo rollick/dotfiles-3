@@ -143,7 +143,7 @@ status.register(
 status.register(
     'cmus',
     color=COLOR_DEFAULT,
-    format='{status} cmus',
+    format='{status}',
     format_not_running="",
 )
 

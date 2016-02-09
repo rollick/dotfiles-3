@@ -28,8 +28,8 @@ from i3pystatus.updates import pacman
 
 
 COLOR_DEFAULT = '#f5f6f7'
-COLOR_ERROR = '#cc575d'
 COLOR_DISABLED = '#afb8c5'
+COLOR_INDICATOR = '#cc575d'
 
 
 def first_network_interface(interface_type):
@@ -125,7 +125,7 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
     status.register(
         'online',
         color=COLOR_DEFAULT,
-        color_offline=COLOR_ERROR,
+        color_offline=COLOR_INDICATOR,
         format_online='\U0001f30d',
         format_offline='No internet connection',
     )
@@ -133,7 +133,7 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
 status.register(
     'updates',
     backends=[pacman.Pacman(), cower.Cower()],
-    color=COLOR_ERROR,
+    color=COLOR_INDICATOR,
     format='\u26a0 {count}',
     format_no_updates='',
     format_working='',

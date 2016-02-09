@@ -12,12 +12,12 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	unset XDG_PICTURES_DIR
 	unset XDG_VIDEOS_DIR
 
-	export ZDOTDIR="${HOME}/.config/zsh"
-
 	export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 	export MAIL="${MAIL:h}/${HOME:t}"
-
+	export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
+	export VIRTUALENVWRAPPER_HOOK_DIR="${WORKON_HOME}"
+	export ZDOTDIR="${HOME}/.config/zsh"
 
 	# Reload profile files
 	source "${ZDOTDIR}/.zprofile"

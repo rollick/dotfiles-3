@@ -49,7 +49,7 @@ class InfoDict(collections.UserDict):
 
 
 def get_image(path):
-    """ Get albumart for current track.
+    """Get albumart for current track.
 
     Keyword arguments:
         path -- Path of currently playing file.

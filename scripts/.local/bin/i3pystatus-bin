@@ -143,10 +143,7 @@ status.register(
 status.register(
     'cmus',
     color=COLOR_DEFAULT,
-    format=(
-        '[{status} {artist} - {title} ({album}) '
-        '\[{song_elapsed:%M:%S}/{song_length:%M:%S}\]]'
-    ),
+    format='{status} cmus',
     format_not_running="",
 )
 

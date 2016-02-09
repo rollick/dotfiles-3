@@ -16,6 +16,7 @@ stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
+	mkdir --verbose -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
 	mkdir --verbose -p "${HOME}/.config/cmus"
 	mkdir --verbose -p "${HOME}/.config/gtk-2.0"
 	mkdir --verbose -p "${HOME}/.config/gtk-3.0"

@@ -58,14 +58,25 @@ def get_image(path):
         Always -- Filename to be used by notify.Notification as an icon.
     """
     default_image = 'audio-x-generic'
-    prefixes = ('albumart', 'folder', 'coverart')
-    suffixes = ('gif', 'jpg', 'jpeg', 'png', 'svg')
+    prefixes = (
+        'albumart',
+        'cover',
+        'folder'
+    )
+    suffixes = (
+        'gif',
+        'jpg',
+        'jpeg',
+        'png',
+        'svg'
+    )
 
     basepath = os.path.dirname(path)
     filenames = ('.'.join((p, s)) for p in prefixes for s in suffixes)
 
     for file in filenames:
         image = os.path.join(basepath, file)
+
         if os.path.isfile(image):
             return image
     else:
@@ -91,7 +102,12 @@ def main(argv=None):
     info['tracknumber'] = info['tracknumber'].zfill(2)
 
     # Create strings
-    summary = ''.join(('cmus - ', info['status']))
+    summary = ''.join(
+        (
+            'cmus - ',
+            info['status'].capitalize()
+        )
+    )
     body = string.Template('$artist\n$title\n$album').substitute(info)
 
     # Escape some characters

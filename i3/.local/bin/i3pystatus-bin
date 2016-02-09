@@ -141,7 +141,7 @@ status.register(
     format='\U0001f199 {count}',
     format_no_updates='',
     format_working='',
-    interval=10*60,
+    interval=10 * 60,
 )
 
 status.register(

@@ -1,0 +1,118 @@
+#!/bin/env python3
+# Copyright (C) 2016 by Raphael Scholer
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+"""Display CMUS status information."""
+import collections
+import html
+import os
+import string
+import sys
+
+
+import gi
+gi.require_version('Notify', '0.7')  # noqa
+import gi.repository.Notify as notify
+
+
+class InfoDict(collections.UserDict):
+    """Dictionary for cmus status information."""
+
+    def __getitem__(self, key):
+        """Return value corresponding to key.
+
+        If key is not known return a placeholder string.
+
+        Keyword arguments:
+            key -- Key which should be looked up.
+
+        Return values:
+            Always -- Value corresponding to key.
+        """
+        return self.data.get(key, ' '.join(('Unknown', key)))
+
+
+def get_image(path):
+    """ Get albumart for current track.
+
+    Keyword arguments:
+        path -- Path of currently playing file.
+
+    Return values:
+        Always -- Filename to be used by notify.Notification as an icon.
+    """
+    default_image = 'audio-x-generic'
+    prefixes = ('albumart', 'folder', 'coverart')
+    suffixes = ('gif', 'jpg', 'jpeg', 'png', 'svg')
+
+    basepath = os.path.dirname(path)
+    filenames = ('.'.join((p, s)) for p in prefixes for s in suffixes)
+
+    for file in filenames:
+        image = os.path.join(basepath, file)
+        if os.path.isfile(image):
+            return image
+    else:
+        return default_image
+
+
+def main(argv=None):
+    """Main application.
+
+    Keyword arguments:
+        argv -- List populated with command line arguments.
+                First element is the name of the calling script.
+                If argv is None, sys.argv will be used as a fallback.
+
+    Return values:
+        On success -- Return integer == 0.
+        On failure -- Return integer <= 0.
+    """
+    argv = argv or sys.argv
+
+    # Aggregate info
+    info = InfoDict(zip(argv[1::2], argv[2::2]))
+    info['tracknumber'] = info['tracknumber'].zfill(2)
+
+    # Create strings
+    summary = ''.join(('cmus - ', info['status']))
+    body = string.Template('$artist\n$title\n$album').substitute(info)
+
+    # Escape some characters
+    body = html.escape(body, quote=True)
+
+    # Create and show notifictaion
+    if not info['status'] == 'stopped':
+        notify.init(argv[0] or 'cmus_status')
+
+        notification = notify.Notification.new(
+            summary,
+            body,
+            get_image(info['file'])
+        )
+
+        notification.set_urgency(notify.Urgency.LOW)
+
+        notification.show()
+
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

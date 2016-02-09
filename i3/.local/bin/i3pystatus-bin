@@ -138,7 +138,7 @@ status.register(
     'updates',
     backends=[pacman.Pacman(), cower.Cower()],
     color=COLOR_INDICATOR,
-    format='\u26a0 {count}',
+    format='\U0001f199 {count}',
     format_no_updates='',
     format_working='',
     interval=10*60,

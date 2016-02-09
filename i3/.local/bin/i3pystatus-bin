@@ -19,10 +19,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
+import configparser
 import os
 import socket
 
 from i3pystatus import Status
+from i3pystatus.mail import imap
 from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
@@ -61,6 +63,8 @@ _XDG_CONFIG_HOME = os.path.expanduser(
 ETHERNET_INTERFACE = first_network_interface('ethernet')
 HOSTNAME = socket.gethostname()
 LAPTOPS = ['asterix']
+MAIL_ACCOUNTS = configparser.ConfigParser()
+MAIL_ACCOUNTS.read(os.path.join(_XDG_CONFIG_HOME, 'mail_accounts'))
 WIFI_INTERFACE = first_network_interface('wifi')
 
 # Configure i3pystatus
@@ -138,6 +142,22 @@ status.register(
     format_no_updates='',
     format_working='',
     interval=10*60,
+)
+
+status.register(
+    'mail',
+    backends=[
+        imap.IMAP(
+            host='imap.gmail.com',
+            username=MAIL_ACCOUNTS['Gmail']['user'],
+            password=MAIL_ACCOUNTS['Gmail']['password'],
+        ),
+    ],
+    color=COLOR_DEFAULT,
+    color_unread=COLOR_INDICATOR,
+    format='\U0001f4e7 {unread}',
+    format_plural='\U0001f4e7 {current_unread}',
+    interval=60,
 )
 
 status.register(

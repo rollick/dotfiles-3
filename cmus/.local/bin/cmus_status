@@ -19,6 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """Display CMUS status information."""
+import argparse
 import html
 import os
 import sys
@@ -29,7 +30,7 @@ gi.require_version('Notify', '0.7')  # noqa
 import gi.repository.Notify as notify
 
 
-def get_image(path):
+def get_icon(path):
     """Get albumart for current track.
 
     Keyword arguments:
@@ -64,6 +65,91 @@ def get_image(path):
         return default_image
 
 
+def parse_arguments(argv):
+    """Parse arguments."""
+    description=(
+        'Show track information inside a notification'
+        'Allowed KEYS are:\n'
+        '\tstatus, file, url, artist, album, discnumber, tracknumber, title\n'
+        '\tand date'
+    )
+    usage='{} [OPTION]... [KEYS]...'.format(os.path.basename(argv[0]))
+    version = (
+        'cmus_status 0.1\n'
+        'Copyright (C) 2016 by Raphael Scholer\n\n'
+        'Permission is hereby granted, free of charge, to any person '
+        'obtaining a copy\n'
+        'of this software and associated documentation files '
+        '(the "Software"), to deal\n'
+        'in the Software without restriction, including without limitation '
+        'the rights\n'
+        'to use, copy, modify, merge, publish, distribute, sublicense, '
+        'and/or sell\n'
+        'copies of the Software, and to permit persons to whom the'
+        'Software is\n'
+        'furnished to do so, subject to the following conditions:\n\n'
+        'The above copyright notice and this permission notice shall be '
+        'included in\n'
+        'all copies or substantial portions of the Software.\n\n'
+        'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, '
+        'EXPRESS OR\n'
+        'IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF '
+        'MERCHANTABILITY,\n'
+        'FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT '
+        'SHALL THE\n'
+        'AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR '
+        'OTHER\n'
+        'LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, '
+        'ARISING FROM,\n'
+        'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER '
+        'DEALINGS IN\n'
+        'THE SOFTWARE.'
+    )
+
+    parser = argparse.ArgumentParser(
+        add_help=False,
+        description=description,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        usage=usage,
+    )
+
+    parser.add_argument(
+        'keys',
+        help='Track information as a key/value pair',
+        metavar='KEYS',
+        nargs='*'
+
+    )
+    parser.add_argument(
+        '--help',
+        help='display this help and exit',
+        action='help',
+    )
+    parser.add_argument(
+        '--version',
+        help='output version information and exit',
+        action='version',
+        version=version,
+    )
+
+    return parser.parse_args()
+
+
+def show_notification(summary, body, icon):
+    """Show a notification."""
+    notify.init('cmus_status')
+
+    notification = notify.Notification.new(
+        summary,
+        body,
+        icon
+    )
+
+    notification.set_urgency(notify.Urgency.LOW)
+
+    notification.show()
+
+
 def main(argv=None):
     """Main application.
 
@@ -77,8 +163,10 @@ def main(argv=None):
     """
     argv = argv or sys.argv
 
+    args = parse_arguments(argv)
+
     # Aggregate info
-    info = dict(zip(argv[1::2], argv[2::2]))
+    info = dict(zip(args.keys[0::1], args.keys[1::1]))
 
     if not info['status'] == 'stopped':
         # Make sure placeholders are used for unknown values
@@ -98,18 +186,9 @@ def main(argv=None):
         # Escape some characters
         body = html.escape(body, quote=True)
 
-        # Create and show notifictaion
-        notify.init('cmus_status')
+        icon = get_icon(info['file'])
 
-        notification = notify.Notification.new(
-            summary,
-            body,
-            get_image(info['file'])
-        )
-
-        notification.set_urgency(notify.Urgency.LOW)
-
-        notification.show()
+        show_notification(summary, body, icon)
 
     return 0
 

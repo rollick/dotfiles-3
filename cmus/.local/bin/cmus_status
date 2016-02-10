@@ -19,33 +19,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """Display CMUS status information."""
-import collections
 import html
 import os
-import string
 import sys
 
 
 import gi
 gi.require_version('Notify', '0.7')  # noqa
 import gi.repository.Notify as notify
-
-
-class InfoDict(collections.UserDict):
-    """Dictionary for cmus status information."""
-
-    def __getitem__(self, key):
-        """Return value corresponding to key.
-
-        If key is not known return a placeholder string.
-
-        Keyword arguments:
-            key -- Key which should be looked up.
-
-        Return values:
-            Always -- Value corresponding to key.
-        """
-        return self.data.get(key, ' '.join(('Unknown', key)))
 
 
 def get_image(path):
@@ -92,30 +73,33 @@ def main(argv=None):
                 If argv is None, sys.argv will be used as a fallback.
 
     Return values:
-        On success -- Return integer == 0.
-        On failure -- Return integer <= 0.
+        Always -- Return integer == 0.
     """
     argv = argv or sys.argv
 
     # Aggregate info
-    info = InfoDict(zip(argv[1::2], argv[2::2]))
-    info['tracknumber'] = info['tracknumber'].zfill(2)
+    info = dict(zip(argv[1::2], argv[2::2]))
 
-    # Create strings
-    summary = ''.join(
-        (
-            'cmus - ',
-            info['status'].capitalize()
-        )
-    )
-    body = string.Template('$artist\n$title\n$album').substitute(info)
-
-    # Escape some characters
-    body = html.escape(body, quote=True)
-
-    # Create and show notifictaion
     if not info['status'] == 'stopped':
-        notify.init(argv[0] or 'cmus_status')
+        # Make sure placeholders are used for unknown values
+        info.setdefault('album', 'Unknown Title')
+        info.setdefault('artist', 'Unknown Artist')
+        info.setdefault('tile', 'Unknown Title')
+
+        # Create strings
+        summary = ''.join(
+            (
+                'cmus - ',
+                info['status'].capitalize()
+            )
+        )
+        body = '{artist}\n{title}\n{album}'.format(**info)
+
+        # Escape some characters
+        body = html.escape(body, quote=True)
+
+        # Create and show notifictaion
+        notify.init('cmus_status')
 
         notification = notify.Notification.new(
             summary,

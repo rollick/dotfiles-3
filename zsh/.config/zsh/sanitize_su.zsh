@@ -23,7 +23,7 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	source "${ZDOTDIR}/.zprofile"
 
 	if [[ -n $DISPLAY ]]; then
-		emulate sh -c "source ${HOME}/.xprofile"
+		emulate sh -c "source ${HOME}/.xprofile >/dev/null 2>&1"
 		export XAUTHORITY="${HOME}/.Xauthority"
 	fi
 

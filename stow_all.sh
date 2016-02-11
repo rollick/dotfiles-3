@@ -7,6 +7,7 @@ chmod --verbose 700 "${HOME}/.ssh"
 stow --verbose -R -t ${HOME} flake8
 stow --verbose -R -t ${HOME} git
 stow --verbose -R -t ${HOME} gnupg
+stow --verbose -R -t ${HOME} htop
 stow --verbose -R -t ${HOME} neovim
 stow --verbose -R -t ${HOME} python
 stow --verbose -R -t ${HOME} ranger

@@ -37,7 +37,8 @@ def get_icon(path):
         path -- Path of currently playing file.
 
     Return values:
-        Always -- Filename to be used by notify.Notification as an icon.
+        string -- Filename/Path to be used by notify.Notification
+                  as an icon.
     """
     default_image = 'audio-x-generic'
     prefixes = (
@@ -66,14 +67,23 @@ def get_icon(path):
 
 
 def parse_arguments(argv):
-    """Parse arguments."""
-    description=(
+    """Parse arguments.
+
+    Keyword arguments:
+        argv -- List populated with command line arguments.
+                First element is the name of the calling script.
+                If argv is None, sys.argv will be used as a fallback.
+
+    Return value:
+        argparse.Namespace
+    """
+    description = (
         'Show track information inside a notification'
         'Allowed KEYS are:\n'
         '\tstatus, file, url, artist, album, discnumber, tracknumber, title\n'
         '\tand date'
     )
-    usage='{} [OPTION]... [KEYS]...'.format(os.path.basename(argv[0]))
+    usage = '{} [OPTION]... [KEYS]...'.format(os.path.basename(argv[0]))
     version = (
         'cmus_status 0.1\n'
         'Copyright (C) 2016 by Raphael Scholer\n\n'
@@ -135,8 +145,38 @@ def parse_arguments(argv):
     return parser.parse_args()
 
 
+def parse_information(keys):
+    """Parse information from a list of keys.
+
+    Key values:
+        keys -- A list with alternating keys values representing
+                track information.
+
+    Return value:
+        dict - Representing track information
+    """
+    info = dict(
+        zip(
+            keys[0::2],
+            keys[1::2]
+        )
+    )
+
+    info.setdefault('album', 'Unknown Title')
+    info.setdefault('artist', 'Unknown Artist')
+    info.setdefault('tile', 'Unknown Title')
+
+    return info
+
+
 def show_notification(summary, body, icon):
-    """Show a notification."""
+    """Show a notification.
+
+    Keyword arguments:
+        summary -- Summary of notification.
+        body -- Body of notification.
+        icon -- Path to be used as an icon.
+    """
     notify.init('cmus_status')
 
     notification = notify.Notification.new(
@@ -158,22 +198,17 @@ def main(argv=None):
                 First element is the name of the calling script.
                 If argv is None, sys.argv will be used as a fallback.
 
-    Return values:
-        Always -- Return integer == 0.
+    Return value:
+        int --  0 - Success
+               <0 - Failure
     """
     argv = argv or sys.argv
 
     args = parse_arguments(argv)
 
-    # Aggregate info
-    info = dict(zip(args.keys[0::1], args.keys[1::1]))
+    info = parse_information(args.keys)
 
     if not info['status'] == 'stopped':
-        # Make sure placeholders are used for unknown values
-        info.setdefault('album', 'Unknown Title')
-        info.setdefault('artist', 'Unknown Artist')
-        info.setdefault('tile', 'Unknown Title')
-
         # Create strings
         summary = ''.join(
             (

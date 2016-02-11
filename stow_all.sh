@@ -24,7 +24,6 @@ if [[ ${UID} -ne 0 ]]; then
 	mkdir --verbose -p "${HOME}/.unison"
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} cmus
-	stow --verbose -R -t ${HOME} dunst
 	stow --verbose -R -t ${HOME} fontconfig
 	stow --verbose -R -t ${HOME} i3
 	stow --verbose -R -t ${HOME} pacman

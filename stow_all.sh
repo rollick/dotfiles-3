@@ -29,6 +29,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} pacman
 	stow --verbose -R -t ${HOME} pacaur
 	stow --verbose -R -t ${HOME} profile-cleaner
+	stow --verbose -R -t ${HOME} termite
 	stow --verbose -R -t ${HOME} unison
 	stow --verbose -R -t ${HOME} x.org
 fi

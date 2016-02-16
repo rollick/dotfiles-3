@@ -141,7 +141,7 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
         color=COLOR_DEFAULT,
         color_offline=COLOR_INDICATOR,
         format_online='\U0001f30d',
-        format_offline='No internet connection',
+        format_offline='\U0001f30d',
     )
 
 status.register(

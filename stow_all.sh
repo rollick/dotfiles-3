@@ -10,7 +10,6 @@ stow --verbose -R -t ${HOME} gnupg
 stow --verbose -R -t ${HOME} htop
 stow --verbose -R -t ${HOME} neovim
 stow --verbose -R -t ${HOME} python
-stow --verbose -R -t ${HOME} ranger
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux

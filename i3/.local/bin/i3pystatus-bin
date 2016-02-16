@@ -79,6 +79,10 @@ status.register(
     format='\U0001f50a {volume}%',
     format_muted='\U0001f507 {volume}%',
     mixer='Headphone',
+    on_downscroll=None,
+    on_leftclick=None,
+    on_rightclick=None,
+    on_upscroll=None,
 )
 
 status.register(
@@ -98,6 +102,8 @@ if HOSTNAME in LAPTOPS:
         'backlight',
         format='\u2600 {percentage}%',
         color=COLOR_DEFAULT,
+        on_downscroll=None,
+        on_upscroll=None,
     )
 
 if WIFI_INTERFACE:
@@ -109,6 +115,10 @@ if WIFI_INTERFACE:
         format_up='\U0001f4f6',
         dynamic_color=False,
         interface=WIFI_INTERFACE,
+        on_downscroll=None,
+        on_leftclick=None,
+        on_rightclick=None,
+        on_upscroll=None,
     )
 
 if ETHERNET_INTERFACE:
@@ -119,6 +129,10 @@ if ETHERNET_INTERFACE:
         format_down='\U0001f5a7',
         format_up='\U0001f5a7',
         interface=ETHERNET_INTERFACE,
+        on_downscroll=None,
+        on_leftclick=None,
+        on_rightclick=None,
+        on_upscroll=None,
     )
 
 if ETHERNET_INTERFACE or WIFI_INTERFACE:
@@ -145,6 +159,10 @@ status.register(
     color=COLOR_DEFAULT,
     format='{status}',
     format_not_running="",
+    on_downscroll=None,
+    on_leftclick=None,
+    on_rightclick=None,
+    on_upscroll=None,
 )
 
 status.run()

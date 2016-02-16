@@ -1,7 +1,5 @@
 #!/bin/bash
-mkdir --verbose -p "${HOME}/.config/ranger"
 mkdir --verbose -p "${HOME}/.config/gnupg"
-mkdir --verbose -p "${HOME}/.local/bin"
 mkdir --verbose -p "${HOME}/.ssh"
 chmod --verbose 700 "${HOME}/.ssh"
 stow --verbose -R -t ${HOME} flake8
@@ -16,10 +14,11 @@ stow --verbose -R -t ${HOME} tmux
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then
-	mkdir --verbose -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
 	mkdir --verbose -p "${HOME}/.config/cmus"
 	mkdir --verbose -p "${HOME}/.config/gtk-2.0"
 	mkdir --verbose -p "${HOME}/.config/gtk-3.0"
+	mkdir --verbose -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
+	mkdir --verbose -p "${HOME}/.local/bin"
 	mkdir --verbose -p "${HOME}/.unison"
 	stow --verbose -R -t ${HOME} appearance
 	stow --verbose -R -t ${HOME} cmus

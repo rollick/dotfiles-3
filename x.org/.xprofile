@@ -1,7 +1,5 @@
 #!/bin/bash
-
 # Setup environment for X sessions
-
 
 # Use XDG dirs
 export GIMP2_DIRECTORY="${XDG_CONFIG_HOME:-${HOME}/.config}/gimp2"

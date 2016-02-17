@@ -16,4 +16,7 @@ export TERMCMD="${TERMINAL}"
 
 # Set correct driver for libva
 export LIBVA_DRIVER_NAME=vdpau
+
+# Use GTK2+ in Libre Office
+export SAL_USE_VCLPLUGIN=gtk
 # vim: ft=sh

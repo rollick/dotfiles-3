@@ -1,3 +1,3 @@
 autoload -Uz add-zsh-hook
 
-add-zsh-hook chpwd chpwd-venv
+[[ -n  ${functions[chpwd-venv]} ]] && add-zsh-hook chpwd chpwd-venv

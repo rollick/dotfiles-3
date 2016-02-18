@@ -29,6 +29,11 @@ shutdown"
 I3_ITEMS="reconfigure
 restart"
 
+sleep_error() {
+	zenity --error \
+		   --text="i3lock is not installed.\nSleep mode will not be activated"
+}
+
 # Parse commandline arguments
 if [[ -n ${1} ]]; then
 	if [[ "$(cut -d= -f1 <<< "${1}")" == "--dmenu" ]]; then
@@ -44,8 +49,8 @@ if [[ -z ${1} ]]; then
 	case ${choice} in
 		"i3 "* )      "${0}" --dmenu="${DMENU}" i3;;
 		"logout" )    i3-msg exit;;
-		"suspend" )   i3lock -c 10316d && systemctl suspend;;
-		"hibernate" ) i3lock -c 10316d && systemctl hibernate;;
+		"suspend" )   i3lock -c 10316d && systemctl suspend || sleep_error;;
+		"hibernate" ) i3lock -c 10316d && systemctl hibernate || sleep_error;;
 		"reboot" )    systemctl reboot;;
 		"shutdown" )  systemctl poweroff;;
 	esac

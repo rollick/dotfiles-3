@@ -46,6 +46,7 @@ source "${ZDOTDIR}/options.zsh"
 source "${ZDOTDIR}/aliases.zsh"
 source "${ZDOTDIR}/completions.zsh"
 source "${ZDOTDIR}/hashes.zsh"
+source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
 
 # Set prompt

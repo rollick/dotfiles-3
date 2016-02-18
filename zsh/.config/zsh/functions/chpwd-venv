@@ -1,0 +1,21 @@
+#!/bin/zsh
+local ENV_NAME
+local TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+if [[ -n "${TOPLEVEL}" ]]; then
+	# Get required virtual environment
+	if [[ -f "${TOPLEVEL}/.venv" ]]; then
+		ENV_NAME=$(cat "${TOPLEVEL}/.venv")
+	else
+		ENV_NAME="$(basename ${TOPLEVEL})"
+	fi
+
+	# Activate virtual environment
+	if [[ "${VIRTUAL_ENV}" != "${WORKON_HOME}/${ENV_NAME}" ]]; then
+		if [[ -e "${WORKON_HOME}/${ENV_NAME}/bin/activate" ]]; then
+			workon "$ENV_NAME" && export CD_VIRTUAL_ENV="${ENV_NAME}"
+		fi
+	fi
+elif [[ -n "${CD_VIRTUAL_ENV}" ]]; then
+	deactivate && unset CD_VIRTUAL_ENV
+fi

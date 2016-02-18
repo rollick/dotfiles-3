@@ -5,9 +5,9 @@ local TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null)"
 if [[ -n "${TOPLEVEL}" ]]; then
 	# Get required virtual environment
 	if [[ -f "${TOPLEVEL}/.venv" ]]; then
-		ENV_NAME=$(cat "${TOPLEVEL}/.venv")
+		ENV_NAME=$(< "${TOPLEVEL}/.venv")
 	else
-		ENV_NAME="$(basename ${TOPLEVEL})"
+		ENV_NAME="${TOPLEVEL:t}"
 	fi
 
 	# Activate virtual environment

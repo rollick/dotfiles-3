@@ -1,4 +1,5 @@
 #!/bin/zsh
+local _OLDPWD="${OLDPWD}"
 local ENV_NAME
 local TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null)"
 
@@ -13,7 +14,13 @@ if [[ -n "${TOPLEVEL}" ]]; then
 	# Activate virtual environment
 	if [[ "${VIRTUAL_ENV}" != "${WORKON_HOME}/${ENV_NAME}" ]]; then
 		if [[ -e "${WORKON_HOME}/${ENV_NAME}/bin/activate" ]]; then
+			# Activate virtual environment
 			workon "$ENV_NAME" && export CD_VIRTUAL_ENV="${ENV_NAME}"
+
+			# Make sure OLDPWD is set to the expected value
+			if [[ -n ${OLDPWD#${toplevel}} ]]; then
+				cd "${OLDPWD}" && OLDPWD="${_OLDPWD}"
+			fi
 		fi
 	fi
 elif [[ -n "${CD_VIRTUAL_ENV}" ]]; then

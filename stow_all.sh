@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir --verbose -p "${HOME}/.config/gnupg"
+mkdir --verbose -p "${HOME}/.local/share/virtualenvs"
 mkdir --verbose -p "${HOME}/.ssh"
 chmod --verbose 700 "${HOME}/.ssh"
 stow --verbose -R -t ${HOME} flake8
@@ -11,6 +12,7 @@ stow --verbose -R -t ${HOME} python
 stow --verbose -R -t ${HOME} shells
 stow --verbose -R -t ${HOME} ssh
 stow --verbose -R -t ${HOME} tmux
+stow --verbose -R -t ${HOME} virtualenvwrapper
 stow --verbose -R -t ${HOME} zsh
 
 if [[ ${UID} -ne 0 ]]; then

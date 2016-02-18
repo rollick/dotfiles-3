@@ -77,6 +77,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[ping]} ]] && alias ping="${aliases[ping]:-ping} -c4"
 [[ -n ${commands[ping6]} ]] && alias ping6="${aliases[ping6]:-ping6} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
+[[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
 alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
 
 # Define new commands

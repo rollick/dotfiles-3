@@ -94,6 +94,3 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 compdef _cd cd-git
 compdef _diff colordiff
 compdef _ping ping6
-
-# Enable third party completions
-[[ -n ${functions[_pew]} ]] && compdef _pew pew

@@ -1,13 +1,14 @@
 #!/bin/zsh
-
 # Dependencies:
 # * coreutils
 # * git
 
+autoload -Uz colors && colors
 local d
 
-# Check for git
-no_cmd_handler git || return 1
+printhl() {
+	print "${fg_bold[blue]}::${reset_color} ${bold_color}${1}${reset_color}"
+}
 
 if [[ -z "${1}" ]]; then
 	local first

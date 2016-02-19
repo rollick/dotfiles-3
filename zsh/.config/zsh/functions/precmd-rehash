@@ -1,0 +1,6 @@
+#!/bin/zsh
+local LASTCMD="${history[$(( HISTCMD -1 ))]}"
+
+if [[ "${LASTCMD}" == *(cower|makepkg|pacaur|pacman)* ]]; then
+	rehash
+fi

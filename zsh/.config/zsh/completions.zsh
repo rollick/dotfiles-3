@@ -69,7 +69,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		eyed3
 		flake8
 		gpasswd
-		head
 		htop
 		makearchroot
 		mocp

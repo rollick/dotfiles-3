@@ -83,7 +83,11 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 	)
 
 	for cmd in $commands; do
-		[[ -z ${_comps[$cmd]} ]] && compdef _gnu_generic $cmd
+		if [[ -z ${_comps[$cmd]} ]]; then
+			compdef _gnu_generic $cmd
+		else
+			print "Completion for \"${cmd}\" is already installed."
+		fi
 	done
 }
 

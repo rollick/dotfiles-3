@@ -85,6 +85,9 @@ alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"
+if [[ -n ${commands[git]} ]];then
+	alias update-git-repos='for d ($(hash -d)) git cdpull ${d#git-remote*=}'
+fi
 [[ -n ${commands[htop]} ]] && alias uhtop="${aliases[htop]:-htop} -u \${USER}"
 if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"

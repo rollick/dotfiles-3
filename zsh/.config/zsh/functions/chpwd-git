@@ -1,0 +1,16 @@
+#!/bin/zsh
+autoload -Uz colors && colors
+
+local heading="${fg_bold[blue]}:: ${fg_bold[white]}Available branches:${reset_color} "
+local toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+if [[ -n ${toplevel} ]]; then
+	if [[ "${GIT_TOPLEVEL}" != "${toplevel}" ]]; then
+		GIT_TOPLEVEL=${toplevel}
+		if [[ $(git branch |wc -l) -gt 1 ]]; then
+			print "${heading} $(git branch --column --color)"
+		fi
+	fi
+else
+	unset GIT_TOPLEVEL
+fi

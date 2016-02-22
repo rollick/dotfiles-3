@@ -29,6 +29,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --verbose -R -t ${HOME} --ignore=.venv pacman
 	stow --verbose -R -t ${HOME} --ignore=.venv pacaur
 	stow --verbose -R -t ${HOME} --ignore=.venv profile-cleaner
+	stow --verbose -R -t ${HOME} --ignore=.venv rofi
 	stow --verbose -R -t ${HOME} --ignore=.venv termite
 	stow --verbose -R -t ${HOME} --ignore=.venv unison
 	stow --verbose -R -t ${HOME} --ignore=.venv x.org

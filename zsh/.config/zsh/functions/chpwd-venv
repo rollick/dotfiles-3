@@ -1,22 +1,29 @@
 #!/bin/zsh
 local GIT_TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null)"
 local _PWD="${PWD}"
+local _WORKON_HOME="${WORKON_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs}"
 
 activate_venv() {
 	if [[ "${VIRTUAL_ENV:t}" != "${1}" ]]; then
-		if workon --no-cd "${1}" 2>/dev/null; then
-			CD_VIRTUAL_ENV="${1}"
+		if [[ -f "${_WORKON_HOME}/${1}/bin/activate" ]]; then
+			source "${_WORKON_HOME}/${1}/bin/activate"
+
+			if [[ "${VIRTUAL_ENV:t}" == "${1}" ]]; then
+				CD_VIRTUAL_ENV="${1}"
+			else
+				return 1
+			fi
 		fi
 	fi
+
+	return 0
 }
 
 until [[ ${_PWD} == '/' ]]; do
 	if [[ -f ${_PWD}/.venv ]]; then
-		activate_venv $(< "${_PWD}/.venv")
-		break
+		activate_venv $(< "${_PWD}/.venv") && break
 	elif [[ "${GIT_TOPLEVEL}" == "${_PWD}" ]]; then
-		activate_venv "${GIT_TOPLEVEL:t}"
-		break
+		activate_venv "${GIT_TOPLEVEL:t}" && break
 	fi
 
 	# Move up one directory

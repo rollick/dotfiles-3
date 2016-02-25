@@ -1,7 +1,7 @@
 ##############################
 # Autostart
 ##############################
-exec --no-startup-id feh --no-fehbg --bg-fill ~/.cache/wallpaper
+exec --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
 exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-file-manager
 exec --no-startup-id xset s off

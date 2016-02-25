@@ -39,3 +39,6 @@ fi
 # Disable DPMS
 xset -dpms
 xset s off
+
+# Disable bell
+xset -b

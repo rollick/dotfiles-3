@@ -29,6 +29,7 @@ if [[ ${UID} -ne 0 ]]; then
 		appearance \
 		cmus \
 		fontconfig \
+		gvbam \
 		i3 \
 		pacman \
 		pacaur \

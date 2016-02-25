@@ -35,3 +35,7 @@ if which numlockx >/dev/null 2>&1; then
 		numlockx off &
 	fi
 fi
+
+# Disable DPMS
+xset -dpms
+xset s off

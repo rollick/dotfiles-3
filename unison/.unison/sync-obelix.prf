@@ -1,7 +1,6 @@
-# Backup $HOME to obelix.local
+label = Synchronize $HOME with obelix.local
+
+include settings.include
 include rules-backup.include
 
-# Set destination
 root = ssh://obelix.local
-
-label = Synchronize $HOME with obelix.local

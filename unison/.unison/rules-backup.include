@@ -4,21 +4,6 @@
 root = /home/raphael/
 
 ####################
-# Options
-####################
-confirmbigdel = false
-log = false
-prefer = newer
-watch = false
-
-####################
-# Always exclude Unison cache files
-####################
-ignore = Path .unison/*
-ignorenot = Path .unison/*.prf
-ignorenot = Path .unison/*.include
-
-####################
 # Always exclude temporary and backup files
 ####################
 ignore = Name *~
@@ -30,54 +15,7 @@ ignore = Name *.tmp
 ignore = Name *.swp
 
 ####################
-# Exclude the following paths
-####################
-ignore = Path Documents/Code/*/pkgbuilds/*/pkg
-ignore = Path Documents/Code/*/pkgbuilds/*/src
-ignore = Path Documents/Code/*/pkgbuilds/*/*.pkg.tar*
-ignore = Path Documents/Code/*/pkgbuilds/*/*.src.tar*
-ignore = Path .config/cmus/*-history
-ignore = Path .config/cmus/*.pl
-ignore = Path .config/cmus/cache
-ignore = Path .config/freshwrapper-data
-ignore = Path .config/gnupg/*.dirmngr
-ignore = Path .config/gnupg/*.gpg-agent
-ignore = Path .config/nitrogen/bg-saved.cfg
-ignore = Path .config/pulse
-ignore = Path .config/ranger/history
-ignore = Path .config/transmission/resume
-ignore = Path .config/transmission/torrents
-ignore = Path .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
-ignore = Path .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
-ignore = Path .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
-ignore = Path .fehbg
-ignore = Path .local/share/moc
-ignore = Path .local/share/Trash
-ignore = Path .local/share/icc/*
-ignore = Path .local/share/gvfs-metadata
-ignore = Path .local/share/numlock_on
-ignore = Path .local/share/nvim/shada
-ignore = Path .local/share/nvim/swap
-ignore = Path .local/share/recently-used.xbel
-ignore = Path .local/share/urxvt
-ignore = Path .local/share/xorg
-ignore = Path .local/share/zathura/history
-ignore = Path .local/share/zathura/input-history
-ignore = Path .moc/equalizer
-ignore = Path .moc/last_directory
-ignore = Path .moc/pid
-ignore = Path .moc/playlist.m3u
-ignore = Path .moc/socket2
-ignore = Path .moc/softmixer
-ignore = Path .ssh/known_hosts
-ignore = Path .quodlibet/accels
-ignore = Path .quodlibet/control
-ignore = Path .quodlibet/current
-ignore = Path .quodlibet/queue
-ignore = Path .quodlibet/songinfo
-
-####################
-# Include folders
+# Non-application rules
 ####################
 path = Desktop
 path = Documents
@@ -86,53 +24,64 @@ path = PDF
 path = Pictures
 path = Public
 path = Software
-path = Temp
 path = Templates
 path = Videos
 path = .config
-path = .cups
-path = .fonts
-path = .gconf
-path = .gnome2
-path = .gnome2_private
 path = .icons
 path = .local
-path = .mozilla
-path = .purple
-path = .pylint.d
-path = .quodlibet
+path = .themes
+
+ignore = Path Documents/Code/*/pkgbuilds/*/pkg
+ignore = Path Documents/Code/*/pkgbuilds/*/src
+ignore = Path Documents/Code/*/pkgbuilds/*/*.tar*
+ignore = Path .local/share/Trash
+
+###############################################################################
 path = .snes9x
 path = .ssh
-path = .themes
+path = .quodlibet
 path = .unison
 path = .xchat2
 
-####################
-# Include files
-####################
-path = .MP3Diags.ini
-path = .MP3Diags.dat
-path = .asunder
 path = .easyMP3Gain
-path = .face
-path = .fehbg
-path = .gitconfig
-path = .gitignore
-path = .gtk-bookmarks
-path = .gtkrc-2.0
-path = .hidden
 path = .hushlogin
-path = .mtpz-data
+path = .MP3Diags.dat
+path = .MP3Diags.ini
 path = .octaverc
 path = .profile
-path = .pylint-gui-history
-path = .makepkg.conf
-path = .moc/config
 path = .tmux.conf
 path = .Xdefaults
-path = .Xmodmap
-path = .Xresources
 path = .xinitrc
+path = .Xmodmap
 path = .xprofile
 path = .Xresources
+path = .xsession
+path = .zlogin
+path = .zlogout
+path = .zprofile
 path = .zshenv
+path = .zshrc
+
+ignore = Path .config/cmus/*
+ignore = Path .config/gnupg/*.dirmngr
+ignore = Path .config/gnupg/*.gpg-agent
+ignore = Path .config/gtk-*/gtkfilechooser.ini
+ignore = Path .config/transmission/*
+ignore = Path .config/QtProject.conf
+ignore = Path .local/share/gvfs-metadata
+ignore = Path .local/share/icc
+ignore = Path .local/share/nvim/*
+ignore = Path .local/share/numlock_on
+ignore = Path .local/share/recently-used.xbel
+ignore = Path .local/share/xorg
+ignore = Path .local/share/zathura/*
+ignore = Path .unison/*
+
+ignorenot = Path .config/cmus/*.theme
+ignorenot = Path .config/cmus/rc
+ignorenot = Path .config/blocklists
+ignorenot = Path .config/transmission/settings.json
+ignorenot = Path .local/share/nvim/plugged
+ignorenot = Path .local/share/zathura/bookmarks
+ignorenot = Path .unison/*.include
+ignorenot = Path .unison/*.prf

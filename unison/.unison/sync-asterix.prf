@@ -1,7 +1,6 @@
-# Backup $HOME to asterix.local
+label = Synchronize $HOME with asterix.local
+
+include settings.include
 include rules-backup.include
 
-# Set Destination
 root = ssh://asterix.local
-
-label = Synchronize $HOME with asterix.local

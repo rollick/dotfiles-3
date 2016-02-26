@@ -1,7 +1,6 @@
-# Backup $HOME to asterix.local
+label = Backup $HOME to an external HDD
+
+include settings.include
 include rules-backup.include
 
-# Set Destination
 root = /run/media/raphael/system-backup
-
-label = Backup $HOME to a local HDD

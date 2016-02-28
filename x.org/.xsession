@@ -17,7 +17,9 @@ fi
 
 # Merge user Xdefaults
 if which xrdb >/dev/null 2>&1; then
-	[[ -f "${HOME}/.Xresources" ]] && xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
+	if [[ -f "${HOME}/.Xresources" ]]; then
+		xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
+	fi
 fi
 
 # Load keyboard tweaks

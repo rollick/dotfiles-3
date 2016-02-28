@@ -30,6 +30,10 @@ until [[ ${_PWD} == '/' ]]; do
 	_PWD=${_PWD:h}
 done
 
+if [[ -n $PROMPT && -n $PS1 ]]; then
+	unset PS1
+fi
+
 if [[ "${_PWD}" == '/' && -n ${CD_VIRTUAL_ENV} ]]; then
 	deactivate && unset CD_VIRTUAL_ENV
 fi

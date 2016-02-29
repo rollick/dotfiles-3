@@ -36,6 +36,7 @@ if [[ ${UID} -ne 0 ]]; then
 		profile-cleaner \
 		rofi \
 		snes9x \
+		sxiv \
 		termite \
 		unison \
 		x.org

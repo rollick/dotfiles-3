@@ -21,6 +21,7 @@ source $XDG_CONFIG_HOME/nvim/plug.vim
 """""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 colorscheme distinguished
+set gdefault " The substitution flag g is always on
 set nobackup  " Don't use backupfiles
 set noswapfile  " Disable swap files
 set spelllang=en
@@ -141,6 +142,7 @@ set number
 set ruler
 set scrolloff=5  " Keep n lines above/under cursor
 set sidescrolloff=5  " Keep n columns left/right of cursor
+set shortmess+=I " Disable version information when starting with an empty file
 set showcmd
 set showmode
 set title

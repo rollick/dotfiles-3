@@ -34,6 +34,7 @@ bar {
 	font pango:Droid Sans 10, pango:Symbola 10
 	position top
 	separator_symbol "|"
+	tray_output HDMI-1
 	colors {
 		background $unfocused_bg
 		statusline $unfocused_fg

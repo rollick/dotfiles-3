@@ -49,7 +49,7 @@ prompt_simple_prompt() {
 	# Show prompt symbol
 	PROMPT+="${prompt_newline}"
 	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
-	[[ "${TERM}" != "linux" ]] && PROMPT+=$'\u276F' || PROMPT+="> "
+	[[ "${TERM}" != "linux" ]] && PROMPT+=$'\u276F' || PROMPT+=">"
 	PROMPT+=' %{$reset_colors%}'
 }
 
@@ -61,6 +61,7 @@ prompt_simple_check_user_info() {
 
 	prompt_simple_user_info="${user}"
 }
+
 prompt_simple_check_git_arrows() {
 	local arrow_status=''
 	local arrows=''

@@ -19,6 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 DMENU="dmenu -i"
+LOCK_CMD="xautolock -locknow"
 MAIN_ITEMS="$(echo -e "i3 \u2192")
 logout
 suspend
@@ -49,8 +50,8 @@ if [[ -z ${1} ]]; then
 	case ${choice} in
 		"i3 "* )      "${0}" --dmenu="${DMENU}" i3;;
 		"logout" )    i3-msg exit;;
-		"suspend" )   i3lock -c 10316d && systemctl suspend || sleep_error;;
-		"hibernate" ) i3lock -c 10316d && systemctl hibernate || sleep_error;;
+		"suspend" )   ${LOCK_CMD} && systemctl suspend || sleep_error;;
+		"hibernate" ) ${LOCK_CMD} && systemctl hibernate || sleep_error;;
 		"reboot" )    systemctl reboot;;
 		"shutdown" )  systemctl poweroff;;
 	esac

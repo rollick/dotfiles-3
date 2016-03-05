@@ -38,9 +38,5 @@ if which numlockx >/dev/null 2>&1; then
 	fi
 fi
 
-# Disable DPMS
-xset -dpms
-xset s off
-
 # Disable bell
 xset -b

@@ -12,6 +12,12 @@ rofi.kb-cancel: Escape,Menu
 rofi.terminal: i3-sensible-terminal
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Xautolock
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Xautolock.locker: i3lock --color=10316d --ignore-empty-password
+Xautolock.time: 10
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Xft
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Xft.antialias: true

@@ -1,0 +1,134 @@
+#!/bin/bash
+# Copyright (C) 2016 by Raphael Scholer
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+state_file="/tmp/xautolock_${USER}_status.txt"
+
+
+disable_screen_blanking() {
+	xset -dpms
+	xset s off
+}
+
+disable_screensaver() {
+	xautolock -disable
+}
+
+do_disable() {
+	disable_screensaver
+	disable_screen_blanking
+	show_notification "Disabled screensaver"
+	echo "disabled"
+}
+
+do_enable() {
+	enable_screensaver
+	enable_screen_blanking
+	show_notification "Enabled screensaver"
+	echo "enabled"
+}
+
+do_toggle_state() {
+	case "$(read_state)" in
+		"enabled"  ) echo $(do_disable);;
+		"disabled" ) echo $(do_enable);;
+	esac
+}
+
+enable_screen_blanking() {
+	xset +dpms
+	xset s on
+}
+
+enable_screensaver() {
+	xautolock -enable
+}
+
+read_state() {
+	if [[ -f "${state_file}" ]]; then
+		cat "${state_file}"
+	else
+		echo "enabled"
+	fi
+}
+
+save_state() {
+	echo "${1}" > "${state_file}"
+}
+
+show_notification() {
+	local icons=(
+		"/usr/share/icons/elementary-xfce/apps/48/screensaver.svg"
+		"/usr/share/icons/elementary-xfce/apps/48/screensaver.png"
+		"/usr/share/icons/gnome/48x48/apps/screensaver.png"
+		"/usr/share/icons/gnome/48x48/apps/screensaver.svg"
+	)
+	local title="Xautolock"
+	local urgency="low"
+
+	for icon in "${icons[@]}"; do
+		[[ -f "${icon}" ]] && break
+	done
+
+	notify-send --urgency="${urgency}" --icon="${icon}" "${title}" "${1}"
+}
+
+
+if [[ "${1}" == "--help" ]]; then
+	echo -e 'usage: xautolockctl [OPTION] [COMMAND]\n'
+	echo -e 'Enable or disable xautolock. Also handle screen blanking.\n'
+	echo    'positional arguments:'
+	echo -e '    COMMAND    Possible commands: enable, disable and toggle'
+	echo -e '\noptional arguments:'
+	echo -e '    --help       display this help and exit'
+	echo -e '    --version    output version information and exit'
+elif [[ "${1}" == "--version" ]]; then
+	echo 'Copyright (C) 2016 by Raphael Scholer'
+	echo
+	echo 'Permission is hereby granted, free of charge, to any person obtaining a copy'
+	echo 'of this software and associated documentation files (the "Software"), to deal'
+	echo 'in the Software without restriction, including without limitation the rights'
+	echo 'to use, copy, modify, merge, publish, distribute, sublicense, and/or sell'
+	echo 'copies of the Software, and to permit persons to whom the Software is'
+	echo 'furnished to do so, subject to the following conditions:'
+	echo
+	echo 'The above copyright notice and this permission notice shall be included in'
+	echo 'all copies or substantial portions of the Software.'
+	echo
+	echo 'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR'
+	echo 'IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,'
+	echo 'FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE'
+	echo 'AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER'
+	echo 'LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,'
+	echo 'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN'
+	echo 'THE SOFTWARE.'
+else
+	command="${1}"
+	shift
+
+	case "${command}" in
+		"enable"  ) state=$(do_enable);;
+		"disable" ) state=$(do_disable);;
+		"toggle"  ) state=$(do_toggle_state);;
+		*         ) state=$(do_toggle_state);;
+	esac
+
+	save_state "${state}"
+fi

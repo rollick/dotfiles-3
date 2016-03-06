@@ -106,6 +106,15 @@ if HOSTNAME in LAPTOPS:
         on_upscroll=None,
     )
 
+
+status.register(
+    'dpms',
+    format='\U0001f512',
+    color=COLOR_DEFAULT,
+    color_disabled=COLOR_DISABLED,
+    on_leftclick=None,
+)
+
 if WIFI_INTERFACE:
     status.register(
         'network',

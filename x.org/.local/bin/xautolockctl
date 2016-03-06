@@ -19,8 +19,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-state_file="/tmp/xautolock_${USER}_status.txt"
-
+XPID=$(ps ax |grep Xorg |grep " ${DISPLAY} " |awk '{print $1}')
+state_file="/tmp/xautolock_${USER}_${XPID}"
 
 disable_screen_blanking() {
 	xset -dpms

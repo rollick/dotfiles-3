@@ -32,6 +32,13 @@ disable_screensaver() {
 }
 
 do_disable() {
+	case "${1}" in
+		"--help" ) print_help disable
+				   exit;;
+		""       ) true;;
+		*        ) print_help disable
+				   exit;;
+	esac
 	disable_screensaver
 	disable_screen_blanking
 	show_notification "Screensaver is now disabled."
@@ -39,6 +46,14 @@ do_disable() {
 }
 
 do_enable() {
+	case "${1}" in
+		"--help" ) print_help enable
+				   exit;;
+	   "--now"   ) true;;
+		""       ) true;;
+		*        ) print_help enable
+				   exit;;
+	esac
 	enable_screensaver
 	enable_screen_blanking
 
@@ -52,9 +67,18 @@ do_enable() {
 }
 
 do_toggle_state() {
+	case "${1}" in
+		"--help" ) print_help toggle
+				   exit;;
+	   "--now"   ) true;;
+		""       ) true;;
+		*        ) print_help toggle
+				   exit;;
+	esac
+
 	case "$(read_state)" in
 		"enabled"  ) do_disable;;
-		"disabled" ) do_enable;;
+		"disabled" ) do_enable "${1}";;
 	esac
 }
 
@@ -68,13 +92,31 @@ enable_screensaver() {
 }
 
 print_help() {
-	echo -e 'usage: xautolockctl [OPTION] [COMMAND]\n'
-	echo -e 'Enable or disable xautolock. Also handle screen blanking.\n'
-	echo    'positional arguments:'
-	echo -e '    COMMAND    Possible commands: enable, disable and toggle'
-	echo -e '\noptional arguments:'
-	echo -e '    --help       display this help and exit'
-	echo -e '    --version    output version information and exit'
+	if [[ "${1}" == "enable" ]]; then
+		echo -e 'xautolockctl enable [OPTIONS]\n'
+		echo -e 'Enable xautolock.\n'
+		echo    '    --help     display this help and exit'
+		echo    '    --now      enable and run screensaver now'
+	elif [[ "${1}" == "disable" ]]; then
+		echo -e 'xautolockctl disable [OPTIONS]\n'
+		echo -e 'Disable xautolock.\n'
+		echo    '    --help     display this help and exit'
+	elif [[ "${1}" == "toggle" ]]; then
+		echo -e 'xautolockctl toggle [OPTIONS]\n'
+		echo -e 'Toggle xautolock on/off.\n'
+		echo    '    --help     display this help and exit'
+		echo    '    --now      when enabling xautolock run screensaver now'
+	else
+		echo -e 'xautolockctl [COMMAND] [OPTIONS]\n'
+		echo -e 'Enable or disable  xautolock.\n'
+		echo    '    --help     display this help and exit'
+		echo    '    --version  output version information and exit'
+		echo
+		echo    'Commands:'
+		echo    '    enable   enable xautolock'
+		echo    '    disable  disable xautolock'
+		echo    '    toggle   toggle xautolock on/off'
+	fi
 }
 
 print_version() {
@@ -139,7 +181,7 @@ case "${command}" in
 	'--help'    ) print_help;;
 	'--version' ) print_version;;
 	'enable'    ) do_enable "${1}";;
-	'disable'   ) do_disable;;
-	'toggle'    ) do_toggle_state;;
+	'disable'   ) do_disable "${1}";;
+	'toggle'    ) do_toggle_state "${1}";;
 	*           ) print_help;;
 esac

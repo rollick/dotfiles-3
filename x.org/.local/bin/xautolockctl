@@ -34,10 +34,10 @@ disable_screensaver() {
 do_disable() {
 	case "${1}" in
 		"--help" ) print_help disable
-				   exit;;
+		           exit;;
 		""       ) true;;
 		*        ) print_help disable
-				   exit;;
+		           exit;;
 	esac
 	disable_screensaver
 	disable_screen_blanking
@@ -48,11 +48,11 @@ do_disable() {
 do_enable() {
 	case "${1}" in
 		"--help" ) print_help enable
-				   exit;;
-	   "--now"   ) true;;
+		           exit;;
+		"--now"  ) true;;
 		""       ) true;;
 		*        ) print_help enable
-				   exit;;
+	               exit;;
 	esac
 	enable_screensaver
 	enable_screen_blanking
@@ -69,28 +69,28 @@ do_enable() {
 do_print_status() {
 	case "${1}" in
 		"--help" ) print_help status
-				   exit;;
+		           exit;;
 		""       ) true;;
 		*        ) print_help status
-				   exit;;
+		           exit;;
 	esac
 
 	case "$(read_state)" in
 		'disabled' ) echo "Xautolock is disabled.";;
 		'enabled'  ) echo "Xautolock is enabled.";;
 		*          ) do_enable
-					 echo "Xautolock is enabled";;
+		             echo "Xautolock is enabled";;
 	esac
 }
 
 do_toggle_state() {
 	case "${1}" in
 		"--help" ) print_help status
-				   exit;;
+		           exit;;
 	   "--now"   ) true;;
 		""       ) true;;
 		*        ) print_help status
-				   exit;;
+		           exit;;
 	esac
 
 	case "$(read_state)" in
@@ -134,10 +134,10 @@ print_help() {
 		echo    '    --version  output version information and exit'
 		echo
 		echo    'Commands:'
-		echo    '    enable   enable xautolock'
-		echo    '    disable  disable xautolock'
-		echo    '    status   print status of xautolock'
-		echo    '    toggle   toggle xautolock on/off'
+		echo    '    enable     enable xautolock'
+		echo    '    disable    disable xautolock'
+		echo    '    status     print status of xautolock'
+		echo    '    toggle     toggle xautolock on/off'
 	fi
 }
 

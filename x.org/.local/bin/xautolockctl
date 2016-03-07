@@ -66,13 +66,30 @@ do_enable() {
 	save_state "enabled"
 }
 
+do_print_status() {
+	case "${1}" in
+		"--help" ) print_help status
+				   exit;;
+		""       ) true;;
+		*        ) print_help status
+				   exit;;
+	esac
+
+	case "$(read_state)" in
+		'disabled' ) echo "Xautolock is disabled.";;
+		'enabled'  ) echo "Xautolock is enabled.";;
+		*          ) do_enable
+					 echo "Xautolock is enabled";;
+	esac
+}
+
 do_toggle_state() {
 	case "${1}" in
-		"--help" ) print_help toggle
+		"--help" ) print_help status
 				   exit;;
 	   "--now"   ) true;;
 		""       ) true;;
-		*        ) print_help toggle
+		*        ) print_help status
 				   exit;;
 	esac
 
@@ -101,6 +118,10 @@ print_help() {
 		echo -e 'xautolockctl disable [OPTIONS]\n'
 		echo -e 'Disable xautolock.\n'
 		echo    '    --help     display this help and exit'
+	elif [[ "${1}" == "status" ]]; then
+		echo -e 'xautolockctl status [OPTIONS]\n'
+		echo -e 'Print status of xautolock.\n'
+		echo    '    --help     display this help and exit'
 	elif [[ "${1}" == "toggle" ]]; then
 		echo -e 'xautolockctl toggle [OPTIONS]\n'
 		echo -e 'Toggle xautolock on/off.\n'
@@ -115,6 +136,7 @@ print_help() {
 		echo    'Commands:'
 		echo    '    enable   enable xautolock'
 		echo    '    disable  disable xautolock'
+		echo    '    status   print status of xautolock'
 		echo    '    toggle   toggle xautolock on/off'
 	fi
 }
@@ -182,6 +204,7 @@ case "${command}" in
 	'--version' ) print_version;;
 	'enable'    ) do_enable "${1}";;
 	'disable'   ) do_disable "${1}";;
+	'status'	) do_print_status "${1}";;
 	'toggle'    ) do_toggle_state "${1}";;
 	*           ) print_help;;
 esac

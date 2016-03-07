@@ -35,7 +35,7 @@ do_disable() {
 	case "${1}" in
 		"--help" ) print_help disable
 		           exit;;
-		""       ) true;;
+		""       ) ;;
 		*        ) print_help disable
 		           exit;;
 	esac
@@ -49,8 +49,8 @@ do_enable() {
 	case "${1}" in
 		"--help" ) print_help enable
 		           exit;;
-		"--now"  ) true;;
-		""       ) true;;
+		"--now"  ) ;;
+		""       ) ;;
 		*        ) print_help enable
 	               exit;;
 	esac
@@ -70,7 +70,7 @@ do_print_status() {
 	case "${1}" in
 		"--help" ) print_help status
 		           exit;;
-		""       ) true;;
+		""       ) ;;
 		*        ) print_help status
 		           exit;;
 	esac
@@ -87,8 +87,8 @@ do_toggle_state() {
 	case "${1}" in
 		"--help" ) print_help toggle
 		           exit;;
-	   "--now"   ) true;;
-		""       ) true;;
+		"--now"  ) ;;
+		""       ) ;;
 		*        ) print_help toggle
 		           exit;;
 	esac

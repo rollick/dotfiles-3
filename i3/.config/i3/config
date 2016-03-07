@@ -202,6 +202,6 @@ bindsym Menu exec --no-startup-id dmenu_run
 
 # Session control
 bindsym XF86Sleep exec --no-startup-id i3-session
-bindsym $mod+Ctrl+l exec --no-startup-id xautolock -locknow
+bindsym $mod+Ctrl+l exec --no-startup-id xautolockctl enable --now
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session
 bindsym $mod+Ctrl+x exec --no-startup-id xautolockctl toggle

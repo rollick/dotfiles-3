@@ -41,7 +41,13 @@ do_disable() {
 do_enable() {
 	enable_screensaver
 	enable_screen_blanking
-	show_notification "Enabled screensaver"
+
+	if [[ "${1}" == "--now" ]]; then
+		sleep 1
+		xautolock -locknow
+	else
+		show_notification "Enabled screensaver"
+	fi
 	save_state "enabled"
 }
 
@@ -126,10 +132,13 @@ show_notification() {
 # Main function
 ###############
 
-case "${1}" in
+command="${1}"
+shift
+
+case "${command}" in
 	'--help'    ) print_help;;
 	'--version' ) print_version;;
-	'enable'    ) do_enable;;
+	'enable'    ) do_enable "${1}";;
 	'disable'   ) do_disable;;
 	'toggle'    ) do_toggle_state;;
 	*           ) print_help;;

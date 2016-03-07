@@ -206,7 +206,7 @@ case "${command}" in
 	'enable'        ) do_enable "${1}";;
 	'disable'       ) do_disable "${1}";;
 	'status'        ) do_print_status "${1}";;
-	'toggle'        ) do_toggle_state "${1}";
+	'toggle'        ) do_toggle_state "${1}";;
 	*               ) print_help
 	                  exit 1;;
 esac

@@ -34,7 +34,7 @@ disable_screensaver() {
 do_disable() {
 	disable_screensaver
 	disable_screen_blanking
-	show_notification "Disabled screensaver"
+	show_notification "Screensaver is now disabled."
 	save_state "disabled"
 }
 
@@ -45,9 +45,9 @@ do_enable() {
 	if [[ "${1}" == "--now" ]]; then
 		sleep 1
 		xautolock -locknow
-	else
-		show_notification "Enabled screensaver"
 	fi
+
+	show_notification "Screensaver is now enabled."
 	save_state "enabled"
 }
 

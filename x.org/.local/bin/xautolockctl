@@ -33,69 +33,69 @@ disable_screensaver() {
 
 do_disable() {
 	case "${1}" in
-		"--help" ) print_help disable
+		'--help' ) print_help disable
 		           exit;;
-		""       ) ;;
+		''       ) ;;
 		*        ) print_help disable
 		           exit;;
 	esac
 	disable_screensaver
 	disable_screen_blanking
-	show_notification "Screensaver is now disabled."
-	save_state "disabled"
+	show_notification 'Screensaver is now disabled.'
+	save_state 'disabled'
 }
 
 do_enable() {
 	case "${1}" in
-		"--help" ) print_help enable
+		'--help' ) print_help enable
 		           exit;;
-		"--now"  ) ;;
-		""       ) ;;
+		'--now'  ) ;;
+		''       ) ;;
 		*        ) print_help enable
 	               exit;;
 	esac
 	enable_screensaver
 	enable_screen_blanking
 
-	if [[ "${1}" == "--now" ]]; then
+	if [[ "${1}" == '--now' ]]; then
 		sleep 1
 		xautolock -locknow
 	fi
 
-	show_notification "Screensaver is now enabled."
-	save_state "enabled"
+	show_notification 'Screensaver is now enabled.'
+	save_state 'enabled'
 }
 
 do_print_status() {
 	case "${1}" in
-		"--help" ) print_help status
+		'--help' ) print_help status
 		           exit;;
-		""       ) ;;
+		''       ) ;;
 		*        ) print_help status
 		           exit;;
 	esac
 
 	case "$(read_state)" in
-		'disabled' ) echo "Xautolock is disabled.";;
-		'enabled'  ) echo "Xautolock is enabled.";;
+		'disabled' ) echo 'Xautolock is disabled.';;
+		'enabled'  ) echo 'Xautolock is enabled.';;
 		*          ) do_enable
-		             echo "Xautolock is enabled";;
+		             echo 'Xautolock is enabled';;
 	esac
 }
 
 do_toggle_state() {
 	case "${1}" in
-		"--help" ) print_help toggle
+		'--help' ) print_help toggle
 		           exit;;
-		"--now"  ) ;;
-		""       ) ;;
+		'--now'  ) ;;
+		''       ) ;;
 		*        ) print_help toggle
 		           exit;;
 	esac
 
 	case "$(read_state)" in
-		"enabled"  ) do_disable;;
-		"disabled" ) do_enable "${1}";;
+		'enabled'  ) do_disable;;
+		'disabled' ) do_enable "${1}";;
 	esac
 }
 
@@ -109,35 +109,35 @@ enable_screensaver() {
 }
 
 print_help() {
-	if [[ "${1}" == "enable" ]]; then
+	if [[ "${1}" == 'enable' ]]; then
 		echo -e 'xautolockctl enable [OPTIONS]\n'
 		echo -e 'Enable xautolock.\n'
-		echo    '    --help     display this help and exit'
-		echo    '    --now      enable and run screensaver now'
-	elif [[ "${1}" == "disable" ]]; then
+		echo    '  -h --help     display this help and exit'
+		echo    '     --now      enable and run screensaver now'
+	elif [[ "${1}" == 'disable' ]]; then
 		echo -e 'xautolockctl disable [OPTIONS]\n'
 		echo -e 'Disable xautolock.\n'
 		echo    '    --help     display this help and exit'
-	elif [[ "${1}" == "status" ]]; then
+	elif [[ "${1}" == 'status' ]]; then
 		echo -e 'xautolockctl status [OPTIONS]\n'
 		echo -e 'Print status of xautolock.\n'
-		echo    '    --help     display this help and exit'
-	elif [[ "${1}" == "toggle" ]]; then
+		echo    '  -h --help     display this help and exit'
+	elif [[ "${1}" == 'toggle' ]]; then
 		echo -e 'xautolockctl toggle [OPTIONS]\n'
 		echo -e 'Toggle xautolock on/off.\n'
-		echo    '    --help     display this help and exit'
+		echo    '  -h --help     display this help and exit'
 		echo    '    --now      when enabling xautolock run screensaver now'
 	else
 		echo -e 'xautolockctl [COMMAND] [OPTIONS]\n'
 		echo -e 'Enable or disable  xautolock.\n'
-		echo    '    --help     display this help and exit'
-		echo    '    --version  output version information and exit'
+		echo    '  -h --help     display this help and exit'
+		echo    '     --version  output version information and exit'
 		echo
 		echo    'Commands:'
-		echo    '    enable     enable xautolock'
-		echo    '    disable    disable xautolock'
-		echo    '    status     print status of xautolock'
-		echo    '    toggle     toggle xautolock on/off'
+		echo    '     enable     enable xautolock'
+		echo    '     disable    disable xautolock'
+		echo    '     status     print status of xautolock'
+		echo    '     toggle     toggle xautolock on/off'
 	fi
 }
 
@@ -167,7 +167,7 @@ read_state() {
 	if [[ -f "${state_file}" ]]; then
 		cat "${state_file}"
 	else
-		echo "enabled"
+		echo 'enabled'
 	fi
 }
 
@@ -177,14 +177,14 @@ save_state() {
 
 show_notification() {
 	local icons=(
-		"/usr/share/icons/elementary-xfce/apps/48/screensaver.svg"
-		"/usr/share/icons/elementary-xfce/apps/48/screensaver.png"
-		"/usr/share/icons/gnome/48x48/apps/screensaver.png"
-		"/usr/share/icons/gnome/48x48/apps/screensaver.svg"
+		'/usr/share/icons/elementary-xfce/apps/48/screensaver.svg'
+		'/usr/share/icons/elementary-xfce/apps/48/screensaver.png'
+		'/usr/share/icons/gnome/48x48/apps/screensaver.png'
+		'/usr/share/icons/gnome/48x48/apps/screensaver.svg'
 	)
 	local timeout=3000
-	local title="Xautolock"
-	local urgency="low"
+	local title='Xautolock'
+	local urgency='low'
 
 	for icon in "${icons[@]}"; do
 		[[ -f "${icon}" ]] && break
@@ -201,11 +201,12 @@ command="${1}"
 shift
 
 case "${command}" in
-	'--help'    ) print_help;;
-	'--version' ) print_version;;
-	'enable'    ) do_enable "${1}";;
-	'disable'   ) do_disable "${1}";;
-	'status'	) do_print_status "${1}";;
-	'toggle'    ) do_toggle_state "${1}";;
-	*           ) print_help;;
+	'--help' ) print_help;;
+	'--version'     ) print_version;;
+	'enable'        ) do_enable "${1}";;
+	'disable'       ) do_disable "${1}";;
+	'status'        ) do_print_status "${1}";;
+	'toggle'        ) do_toggle_state "${1}";
+	*               ) print_help
+	                  exit 1;;
 esac

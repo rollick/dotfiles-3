@@ -182,6 +182,7 @@ show_notification() {
 		"/usr/share/icons/gnome/48x48/apps/screensaver.png"
 		"/usr/share/icons/gnome/48x48/apps/screensaver.svg"
 	)
+	local timeout=3000
 	local title="Xautolock"
 	local urgency="low"
 
@@ -189,7 +190,7 @@ show_notification() {
 		[[ -f "${icon}" ]] && break
 	done
 
-	notify-send --urgency="${urgency}" --icon="${icon}" "${title}" "${1}"
+	notify-send --expire-time="${timeout}" --urgency="${urgency}" --icon="${icon}" "${title}" "${1}"
 }
 
 ###############

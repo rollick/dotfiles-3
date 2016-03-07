@@ -85,11 +85,11 @@ do_print_status() {
 
 do_toggle_state() {
 	case "${1}" in
-		"--help" ) print_help status
+		"--help" ) print_help toggle
 		           exit;;
 	   "--now"   ) true;;
 		""       ) true;;
-		*        ) print_help status
+		*        ) print_help toggle
 		           exit;;
 	esac
 

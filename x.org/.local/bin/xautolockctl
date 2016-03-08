@@ -19,8 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-XPID=$(ps ax |grep Xorg |grep " ${DISPLAY} " |awk '{print $1}')
-state_file="/tmp/xautolock_${USER}_${XPID}"
+state_file="/tmp/xautolock_${USER}_$(pidof --single-shot xautolock)"
 
 disable_screen_blanking() {
 	xset -dpms
@@ -75,12 +74,16 @@ do_print_status() {
 		           exit;;
 	esac
 
-	case "$(read_state)" in
-		'disabled' ) echo 'Xautolock is disabled.';;
-		'enabled'  ) echo 'Xautolock is enabled.';;
-		*          ) do_enable
-		             echo 'Xautolock is enabled';;
-	esac
+	if pidof xautolock >/dev/null; then
+		case "$(read_state)" in
+			'disabled' ) echo 'Xautolock is running and disabled.';;
+			'enabled'  ) echo 'Xautolock is running and enabled.';;
+			*          ) do_enable
+						 echo 'Xautolock is running and enabled.';;
+		esac
+	else
+		echo 'Xautolock is not running.'
+	fi
 }
 
 do_toggle_state() {

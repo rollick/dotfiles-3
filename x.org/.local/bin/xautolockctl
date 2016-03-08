@@ -115,8 +115,8 @@ print_help() {
 	if [[ "${1}" == 'enable' ]]; then
 		echo -e 'xautolockctl enable [OPTIONS]\n'
 		echo -e 'Enable xautolock.\n'
-		echo    '  -h --help     display this help and exit'
-		echo    '     --now      enable and run screensaver now'
+		echo    '    --help     display this help and exit'
+		echo    '    --now      enable and run screensaver now'
 	elif [[ "${1}" == 'disable' ]]; then
 		echo -e 'xautolockctl disable [OPTIONS]\n'
 		echo -e 'Disable xautolock.\n'
@@ -124,23 +124,23 @@ print_help() {
 	elif [[ "${1}" == 'status' ]]; then
 		echo -e 'xautolockctl status [OPTIONS]\n'
 		echo -e 'Print status of xautolock.\n'
-		echo    '  -h --help     display this help and exit'
+		echo    '    --help     display this help and exit'
 	elif [[ "${1}" == 'toggle' ]]; then
 		echo -e 'xautolockctl toggle [OPTIONS]\n'
 		echo -e 'Toggle xautolock on/off.\n'
-		echo    '  -h --help     display this help and exit'
+		echo    '    --help     display this help and exit'
 		echo    '    --now      when enabling xautolock run screensaver now'
 	else
 		echo -e 'xautolockctl [COMMAND] [OPTIONS]\n'
 		echo -e 'Enable or disable  xautolock.\n'
-		echo    '  -h --help     display this help and exit'
-		echo    '     --version  output version information and exit'
+		echo    '    --help     display this help and exit'
+		echo    '    --version  output version information and exit'
 		echo
 		echo    'Commands:'
-		echo    '     enable     enable xautolock'
-		echo    '     disable    disable xautolock'
-		echo    '     status     print status of xautolock'
-		echo    '     toggle     toggle xautolock on/off'
+		echo    '    enable     enable xautolock'
+		echo    '    disable    disable xautolock'
+		echo    '    status     print status of xautolock'
+		echo    '    toggle     toggle xautolock on/off'
 	fi
 }
 

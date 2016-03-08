@@ -44,7 +44,8 @@ def get_icon(path):
     prefixes = (
         'albumart',
         'cover',
-        'folder'
+        'folder',
+        'front'
     )
     suffixes = (
         'gif',

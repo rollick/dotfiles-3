@@ -34,7 +34,11 @@ until [[ ${_PWD} == '/' ]]; do
 done
 
 if [[ "${_PWD}" == '/' && -n ${CD_VIRTUAL_ENV} ]]; then
-	deactivate && unset CD_VIRTUAL_ENV
+	if [[ -n ${functions[deactivate]} ]]; then
+		deactivate
+	fi
+
+	unset CD_VIRTUAL_ENV
 fi
 
 # Don't set PS1 if PROMPT or PS1 is already set

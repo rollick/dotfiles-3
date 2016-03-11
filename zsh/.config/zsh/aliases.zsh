@@ -68,6 +68,7 @@ alias dmesg="${aliases[dmesg]:-dmesg} --time-format ctime"
 alias ls="${aliases[ls]:-ls} --time-style=long-iso"
 
 # Set options
+alias diff="${aliases[diff]:-diff} --unified"
 alias free="${aliases[free]:-free} --total"
 alias head="${aliases[head]:-head} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
 alias info="${aliases[info]:-info} --vi-keys"

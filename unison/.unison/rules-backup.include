@@ -13,6 +13,7 @@ ignore = Name *.o
 ignore = Name *.pyc
 ignore = Name *.tmp
 ignore = Name *.swp
+ignore = Name __pycache__
 
 ####################
 # Non-application rules

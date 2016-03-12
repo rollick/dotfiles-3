@@ -119,6 +119,7 @@ def parse_arguments(argv):
 
     parser = argparse.ArgumentParser(
         add_help=False,
+        allow_abbrev=False,
         description=description,
         formatter_class=argparse.RawDescriptionHelpFormatter,
         usage=usage,
@@ -143,7 +144,7 @@ def parse_arguments(argv):
         version=version,
     )
 
-    return parser.parse_args()
+    return parser.parse_args(argv[1:])
 
 
 def parse_information(keys):

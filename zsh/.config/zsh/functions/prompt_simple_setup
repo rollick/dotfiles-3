@@ -34,7 +34,12 @@ prompt_simple_setup() {
 }
 
 prompt_simple_prompt() {
-	PROMPT="${prompt_newline}"
+	if [[ -n $PROMPT_SHOWN ]]; then
+		PROMPT="${prompt_newline}"
+	else
+		export PROMPT_SHOWN=1
+		PROMPT=''
+	fi
 
 	# Show directory information
 	PROMPT+="%{$fg_bold[blue]%}%~"

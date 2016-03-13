@@ -14,7 +14,6 @@ elif [[ -n ${commands[nvim]} ]]; then
 	alias vim="nvim"
 	alias vimdiff="nvim -d"
 fi
-alias clear='clear; print "==> Use \"^l\"!"'
 
 # Force a specific nice level
 [[ -n ${commands[gcc]} ]] && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"

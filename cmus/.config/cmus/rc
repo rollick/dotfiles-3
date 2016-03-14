@@ -1,8 +1,3 @@
-# Keybindings
-##################
-bind -f common q shell tmux detach -s cmus
-bind -f common Q quit -i
-
 # General settings
 ##################
 colorscheme gems

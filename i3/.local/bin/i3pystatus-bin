@@ -115,6 +115,8 @@ status.register(
     on_leftclick=None,
 )
 
+
+
 if WIFI_INTERFACE:
     status.register(
         'network',
@@ -154,16 +156,6 @@ if ETHERNET_INTERFACE or WIFI_INTERFACE:
     )
 
 status.register(
-    'updates',
-    backends=[pacman.Pacman(), cower.Cower()],
-    color=COLOR_INDICATOR,
-    format='\U0001f199 {count}',
-    format_no_updates='',
-    format_working='',
-    interval=10 * 60,
-)
-
-status.register(
     'cmus',
     color=COLOR_DEFAULT,
     format='{status}',
@@ -172,6 +164,16 @@ status.register(
     on_leftclick=None,
     on_rightclick=None,
     on_upscroll=None,
+)
+
+status.register(
+    'updates',
+    backends=[pacman.Pacman(), cower.Cower()],
+    color=COLOR_INDICATOR,
+    format='\U0001f199 {count}',
+    format_no_updates='',
+    format_working='',
+    interval=10 * 60,
 )
 
 status.run()

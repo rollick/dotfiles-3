@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# Automatically change the directory in bash after closing ranger
+TEMPFILE="$(mktemp)"
+
+=ranger --choosedir="${TEMPFILE}" "${@:-${PWD}}"
+
+if [[ -f "${TEMPFILE}" ]]; then
+	cd -- "$(<"${TEMPFILE}")"
+fi
+
+# Cleanup
+rm -f -- "${TEMPFILE}"
+unset TEMPFILE

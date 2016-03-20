@@ -84,7 +84,7 @@ alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |
 alias zcalc="${aliases[zcalc]:-zcalc} -f"
 
 # Define new commands
-[[ -n ${functions[zcalc]} ]] && alias calc="noglob ${aliases[zcalc]:-zcalc} -e"
+[[ -n ${functions[zcalc]} ]] && alias calc=" noglob ${aliases[zcalc]:-zcalc} -e"
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"

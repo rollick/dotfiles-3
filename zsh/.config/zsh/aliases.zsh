@@ -81,6 +81,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
 alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
+alias zcalc="${aliases[zcalc]:-zcalc} -f"
 
 # Define new commands
 [[ -n ${functions[zcalc]} ]] && alias calc="noglob ${aliases[zcalc]:-zcalc} -e"

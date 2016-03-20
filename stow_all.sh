@@ -37,7 +37,7 @@ if [[ ${UID} -ne 0 ]]; then
 		rofi \
 		snes9x \
 		sxiv \
-		termite \
 		unison \
+		urxvt \
 		x.org
 fi

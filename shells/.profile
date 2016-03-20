@@ -62,3 +62,6 @@ export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 if which ssh >/dev/null 2>&1; then
 	export RSYNC_RSH="ssh"
 fi
+
+# Settings for libdvdcss
+export DVDCSS_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/dvdcss"

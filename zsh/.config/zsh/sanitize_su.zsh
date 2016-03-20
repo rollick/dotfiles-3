@@ -12,6 +12,7 @@ if [[ ! -o "login" && $UID -eq 0 ]]; then
 	unset XDG_PICTURES_DIR
 	unset XDG_VIDEOS_DIR
 
+	export DVDCSS_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/dvdcss"
 	export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"
 	export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 	export MAIL="${MAIL:h}/${HOME:t}"

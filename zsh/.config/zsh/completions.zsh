@@ -10,10 +10,10 @@ zstyle ':completion:*' special-dirs '..'
 # Setup completion menu
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%d%{$reset_color%}"
-zstyle ':completion:*:corrections' format "%{$fg_bold[green]%}%d%{$reset_color%}"
-zstyle ':completion:*:messages' format "%{$fg_bold[yellow]%}%d%{$reset_color%}"
-zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%d%{$reset_color%}"
+zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%U%d%u%{$reset_color%}"
+zstyle ':completion:*:corrections' format "%{$fg_bold[green]%}%U%d (errors: %e)%u%{$reset_color%}"
+zstyle ':completion:*:messages' format "%{$fg_bold[yellow]%}%U%d%u%{$reset_color%}"
+zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%UNo matches for: %d%u%{$reset_color%}"
 zstyle ':completion:*:default' select-prompt "%{$fg_bold[black]%}Match %M%P%{$reset_color%}"
 
 # Hide some files in completion, except when using (rm|cp|mv|zmv)

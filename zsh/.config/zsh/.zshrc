@@ -8,6 +8,7 @@ mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
 
 # Load zsh (upstream) functions
 autoload -Uz promptinit
+autoload -Uz zcalc
 autoload -Uz zmv
 
 # Load own functions

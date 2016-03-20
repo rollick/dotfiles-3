@@ -82,7 +82,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 alias tail="${aliases[tail]:-tail} -n \$(( \${LINES} - 2 * \$(print \${PROMPT} |wc -l) ))"
 
 # Define new commands
-[[ -n ${commands[octave]} ]] && alias calc="noglob ${aliases[octave]:-octave} --eval"
+[[ -n ${functions[zcalc]} ]] && alias calc="noglob zcalc -e"
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"

@@ -80,19 +80,23 @@
   <option name="upanddown" value="0"/>
  </preferences>
  <controls>
+  <calibration joystick="0">
+   <axis number="0" min="-32767" max="32767" center="0"/>
+   <axis number="1" min="-32767" max="32767" center="0"/>
+  </calibration>
   <joypad number="0">
-   <binding name="Up" binding="0"/>
-   <binding name="Down" binding="0"/>
-   <binding name="Left" binding="0"/>
-   <binding name="Right" binding="0"/>
-   <binding name="Start" binding="0"/>
-   <binding name="Select" binding="0"/>
-   <binding name="A" binding="0"/>
-   <binding name="B" binding="0"/>
-   <binding name="X" binding="0"/>
-   <binding name="Y" binding="0"/>
-   <binding name="L" binding="0"/>
-   <binding name="R" binding="0"/>
+   <binding name="Up" binding="556270082"/>
+   <binding name="Down" binding="556270083"/>
+   <binding name="Left" binding="556270080"/>
+   <binding name="Right" binding="556270081"/>
+   <binding name="Start" binding="553648133"/>
+   <binding name="Select" binding="553648135"/>
+   <binding name="A" binding="553648130"/>
+   <binding name="B" binding="553648128"/>
+   <binding name="X" binding="553648131"/>
+   <binding name="Y" binding="553648129"/>
+   <binding name="L" binding="553648132"/>
+   <binding name="R" binding="553648134"/>
    <binding name="Turbo A" binding="0"/>
    <binding name="Turbo B" binding="0"/>
    <binding name="Turbo X" binding="0"/>

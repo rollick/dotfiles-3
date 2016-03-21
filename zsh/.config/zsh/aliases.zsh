@@ -47,6 +47,7 @@ alias mount="${aliases[mount]:-mount} --verbose"
 alias mv="${aliases[mv]:-mv} --verbose"
 [[ -n ${commands[paccache]} ]] && alias paccache='paccache --verbose'
 alias rm="${aliases[rm]:-rm} --verbose"
+alias rmdir="${aliases[rmdir]:-rmdir} --verbose"
 [[ -n ${commands[rsync]} ]] && alias rsync='rsync --verbose'
 alias umount="${aliases[umount]:-umount} --verbose"
 [[ -n ${functions[zmv]} ]] && alias zmv='zmv -o --verbose'

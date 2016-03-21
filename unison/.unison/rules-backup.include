@@ -9,6 +9,7 @@ root = /home/raphael/
 ignore = Name *~
 ignore = Name .*~
 ignore = Name *.bak
+ignore = Name *.crdownload
 ignore = Name *.o
 ignore = Name *.pyc
 ignore = Name *.tmp

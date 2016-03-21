@@ -4,7 +4,7 @@
 exec --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
 exec --no-startup-id xautolock
 exec --no-startup-id xcompmgr
-exec --no-startup-id udiskie --quiet --no-file-manager
+exec --no-startup-id udiskie --quiet --no-file-manager --no-tray
 exec --no-startup-id i3-sensible-terminal -name cmus -e cmus
 
 ##############################

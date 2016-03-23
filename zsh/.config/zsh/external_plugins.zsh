@@ -1,28 +1,31 @@
-LIB="${XDG_DATA_HOME:-${HOME}/.local/share}/../lib"
-LIB="$(realpath ${LIB})"
-export ADOTDIR="${XDG_DATA_HOME:-${HOME}/.local/share}/antigen"
+export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
 
-if [[ ! -d "${LIB}/antigen" ]]; then
-	mkdir -p "${LIB}/antigen"
+if [[ ! -d "${ZPLUG_HOME}" ]]; then
+	ZPLUG_FIRST_RUN=1
 
-	git clone https://github.com/zsh-users/antigen.git "${LIB}/antigen"
+	curl -fLo "${ZPLUG_HOME}/zplug" --create-dirs "https://git.io/zplug"
 fi
 
-if [[ -f "${LIB}/antigen/antigen.zsh" ]]; then
-	source "${LIB}/antigen/antigen.zsh"
+if [[ -d "${ZPLUG_HOME}" ]]; then
+	source "${ZPLUG_HOME}/zplug"
 
-	[[ -n ${commands[git-flow]} ]] && antigen bundle petervanderdoes/git-flow-completion
-	antigen bundle hlissner/zsh-autopair
-	antigen bundle zsh-users/zsh-completions src
-	antigen bundle zsh-users/zsh-syntax-highlighting
+	if [[ -n "${ZPLUG_FIRST_RUN}" ]]; then
+		unset ZPLUG_FIRST_RUN
+		zplug update --self
+	fi
 
-	antigen apply
+	zplug "hlissner/zsh-autopair"
+	zplug "zsh-users/zsh-completions"
+	zplug "zsh-users/zsh-syntax-highlighting"
 
-	=rm "${ZDOTDIR}/.zcompdump"
-	compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
+	if ! zplug check; then
+		zplug install
+	fi
+
+	zplug load
 fi
 
-unset LIB
+unset TMPDIR
 
 # Include external additions provided by packages
 source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null

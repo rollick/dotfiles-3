@@ -31,7 +31,7 @@ source "${ZDOTDIR}/completions.zsh"
 source "${ZDOTDIR}/hashes.zsh"
 source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
-[[ ${UID} -eq 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
+[[ ${UID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
 
 # Set prompt
 prompt simple

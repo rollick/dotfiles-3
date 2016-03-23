@@ -27,11 +27,11 @@ source "${ZDOTDIR}/options.zsh"
 
 # Set misc. settings
 source "${ZDOTDIR}/completions.zsh"
-source "${ZDOTDIR}/aliases.zsh"
-source "${ZDOTDIR}/hashes.zsh"
-source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
 [[ ${UID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
+source "${ZDOTDIR}/hashes.zsh"
+source "${ZDOTDIR}/hooks.zsh"
+source "${ZDOTDIR}/aliases.zsh"
 
 # Set prompt
 prompt simple

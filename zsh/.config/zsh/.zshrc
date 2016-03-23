@@ -12,29 +12,11 @@ autoload -Uz zcalc
 autoload -Uz zmv
 
 # Load own functions
-() {
-	local new_fpaths
-	local p
+fpath=("${ZDOTDIR}/functions" ${fpath})
+autoload -Uz ${fpath[1]}/*(.,@N:t)
 
-	new_fpaths=(
-		"${XDG_DATA_HOME:-${HOME}/.local/share}"/../lib/python3.{0..10}/site-packages/pew/shell_config
-		"${ZDOTDIR}/functions"
-	)
-
-	for p in $new_fpaths; do
-		if [[ -d "${p}" ]]; then
-			fpath=(${p} ${fpath})
-			autoload -Uz ${fpath[1]}/*(.,@N:t)
-		fi
-	done
-
-	# Cleanup
-	if [[ -n ${functions[_pew]} ]]; then
-		unfunction {complete,init}{_deploy,.{bash,fish,zsh}} &>/dev/null
-	fi
-}
-
-# Make sure all path entries are unique
+# Make sure all fpath and path entries are unique
+typeset -U fpath
 typeset -U path
 
 # Initialize functions

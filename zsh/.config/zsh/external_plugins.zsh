@@ -1,4 +1,5 @@
-LIB="${XDG_DATA_HOME:-${HOME}/.local/share}/../lib/"
+LIB="${XDG_DATA_HOME:-${HOME}/.local/share}/../lib"
+LIB="$(realpath ${LIB})"
 export ADOTDIR="${XDG_DATA_HOME:-${HOME}/.local/share}/antigen"
 
 if [[ ! -d "${LIB}/antigen" ]]; then

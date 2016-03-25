@@ -94,8 +94,8 @@ if __name__ == '__main__':
         'alsa',
         color=COLOR_DEFAULT,
         color_muted=COLOR_DISABLED,
-        format='\U0001f50a {volume}%',
-        format_muted='\U0001f507 {volume}%',
+        format='\uf028 {volume}%',
+        format_muted='\uf026   {volume}%',
         mixer='Headphone',
         on_downscroll=None,
         on_leftclick=None,
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     if IS_LAPTOP:
         status.register(
             'backlight',
-            format='\u2600 {percentage}%',
+            format='\uf185 {percentage}%',
             color=COLOR_DEFAULT,
             on_downscroll=None,
             on_upscroll=None,
@@ -126,7 +126,8 @@ if __name__ == '__main__':
 
     status.register(
         'dpms',
-        format='\U0001f512',
+        format='\uf023',
+        format_disabled='\uf13e',
         color=COLOR_DEFAULT,
         color_disabled=COLOR_DISABLED,
         on_leftclick=None,
@@ -137,8 +138,8 @@ if __name__ == '__main__':
             'network',
             color_down=COLOR_DISABLED,
             color_up=COLOR_DEFAULT,
-            format_down='\U0001f4f6',
-            format_up='\U0001f4f6',
+            format_down='\uf1eb',
+            format_up='\uf1eb',
             dynamic_color=False,
             interface=WIFI_INTERFACE,
             on_downscroll=None,
@@ -152,8 +153,8 @@ if __name__ == '__main__':
             'network',
             color_down=COLOR_DISABLED,
             color_up=COLOR_DEFAULT,
-            format_down='\U0001f5a7',
-            format_up='\U0001f5a7',
+            format_down='\uf0e8',
+            format_up='\uf0e8',
             interface=ETHERNET_INTERFACE,
             on_downscroll=None,
             on_leftclick=None,
@@ -166,8 +167,8 @@ if __name__ == '__main__':
             'online',
             color=COLOR_DEFAULT,
             color_offline=COLOR_INDICATOR,
-            format_online='\U0001f30d',
-            format_offline='\U0001f30d',
+            format_online='\uf0c1',
+            format_offline='\uf127',
         )
 
     status.register(
@@ -179,13 +180,18 @@ if __name__ == '__main__':
         on_leftclick=None,
         on_rightclick=None,
         on_upscroll=None,
+        status={
+            'paused': '\uf04c',
+            'playing': '\uf04b',
+            'stopped': '\uf04d',
+        }
     )
 
     status.register(
         'updates',
         backends=[pacman.Pacman(), cower.Cower()],
         color=COLOR_INDICATOR,
-        format='\U0001f199 {count}',
+        format='\uf06a {count}',
         format_no_updates='',
         format_working='',
         interval=10 * 60,

@@ -20,7 +20,6 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import os
-import socket
 
 from i3pystatus import Status
 from i3pystatus.updates import cower
@@ -54,13 +53,28 @@ def first_network_interface(interface_type):
         return ''
 
 
+def is_laptop():
+    """Detect whether or not the current machine is a laptop.
+
+    Return value:
+        bool -- True -- Machine is a Laptop (or related type).
+                False -- Machine is a Desktop.
+    """
+    sys_path = '/sys/class/module/battery/'
+    proc_path = '/proc/acpi/battery/'
+
+    if os.path.exists(sys_path) or os.path.exists(proc_path):
+        return True
+    else:
+        return False
+
+
 # Constants
 _XDG_CONFIG_HOME = os.path.expanduser(
     os.environ.get('XDG_CONFIG_HOME', '~/.config')
 )
 ETHERNET_INTERFACE = first_network_interface('ethernet')
-HOSTNAME = socket.gethostname()
-LAPTOPS = ['asterix']
+IS_LAPTOP = is_laptop()
 WIFI_INTERFACE = first_network_interface('wifi')
 
 # Configure i3pystatus
@@ -97,7 +111,7 @@ status.register(
     scroll_off='\U0001f142',
 )
 
-if HOSTNAME in LAPTOPS:
+if IS_LAPTOP:
     status.register(
         'backlight',
         format='\u2600 {percentage}%',

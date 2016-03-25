@@ -34,10 +34,16 @@ COLOR_INDICATOR = '#cc575d'
 def first_network_interface(interface_type):
     """Get first network interface of specific type.
 
-    Possible types:
-        - ethernet
-        - loopback
-        - wifi
+    Positional arguments:
+        interface_type -- Interface type to test for.
+                          Possible types:
+                              - ethernet
+                              - loopback
+                              - wifi
+
+    Return value:
+        string -- String containing interface name (eg. 'eth0').
+                  An empty string will be returned if no interface was found.
     """
     prefixes = {
         'ethernet': 'e',

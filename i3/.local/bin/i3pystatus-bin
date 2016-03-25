@@ -78,113 +78,114 @@ IS_LAPTOP = is_laptop()
 WIFI_INTERFACE = first_network_interface('wifi')
 
 # Configure i3pystatus
-status = Status(standalone=True)
+if __name__ == '__main__':
+    status = Status(standalone=True)
 
-status.register(
-    'clock',
-    color=COLOR_DEFAULT,
-    format='%Y-%m-%d %H:%M',
-)
-
-status.register(
-    'alsa',
-    color=COLOR_DEFAULT,
-    color_muted=COLOR_DISABLED,
-    format='\U0001f50a {volume}%',
-    format_muted='\U0001f507 {volume}%',
-    mixer='Headphone',
-    on_downscroll=None,
-    on_leftclick=None,
-    on_rightclick=None,
-    on_upscroll=None,
-)
-
-status.register(
-    'keyboard_locks',
-    caps_on='\U0001f170',
-    caps_off='\U0001f130',
-    color=COLOR_DEFAULT,
-    format='{caps}{num}{scroll}',
-    num_on='\U0001f17d',
-    num_off='\U0001f13d',
-    scroll_on='\U0001f182',
-    scroll_off='\U0001f142',
-)
-
-if IS_LAPTOP:
     status.register(
-        'backlight',
-        format='\u2600 {percentage}%',
+        'clock',
         color=COLOR_DEFAULT,
-        on_downscroll=None,
-        on_upscroll=None,
+        format='%Y-%m-%d %H:%M',
     )
 
-status.register(
-    'dpms',
-    format='\U0001f512',
-    color=COLOR_DEFAULT,
-    color_disabled=COLOR_DISABLED,
-    on_leftclick=None,
-)
-
-if WIFI_INTERFACE:
     status.register(
-        'network',
-        color_down=COLOR_DISABLED,
-        color_up=COLOR_DEFAULT,
-        format_down='\U0001f4f6',
-        format_up='\U0001f4f6',
-        dynamic_color=False,
-        interface=WIFI_INTERFACE,
+        'alsa',
+        color=COLOR_DEFAULT,
+        color_muted=COLOR_DISABLED,
+        format='\U0001f50a {volume}%',
+        format_muted='\U0001f507 {volume}%',
+        mixer='Headphone',
         on_downscroll=None,
         on_leftclick=None,
         on_rightclick=None,
         on_upscroll=None,
     )
 
-if ETHERNET_INTERFACE:
     status.register(
-        'network',
-        color_down=COLOR_DISABLED,
-        color_up=COLOR_DEFAULT,
-        format_down='\U0001f5a7',
-        format_up='\U0001f5a7',
-        interface=ETHERNET_INTERFACE,
+        'keyboard_locks',
+        caps_on='\U0001f170',
+        caps_off='\U0001f130',
+        color=COLOR_DEFAULT,
+        format='{caps}{num}{scroll}',
+        num_on='\U0001f17d',
+        num_off='\U0001f13d',
+        scroll_on='\U0001f182',
+        scroll_off='\U0001f142',
+    )
+
+    if IS_LAPTOP:
+        status.register(
+            'backlight',
+            format='\u2600 {percentage}%',
+            color=COLOR_DEFAULT,
+            on_downscroll=None,
+            on_upscroll=None,
+        )
+
+    status.register(
+        'dpms',
+        format='\U0001f512',
+        color=COLOR_DEFAULT,
+        color_disabled=COLOR_DISABLED,
+        on_leftclick=None,
+    )
+
+    if WIFI_INTERFACE:
+        status.register(
+            'network',
+            color_down=COLOR_DISABLED,
+            color_up=COLOR_DEFAULT,
+            format_down='\U0001f4f6',
+            format_up='\U0001f4f6',
+            dynamic_color=False,
+            interface=WIFI_INTERFACE,
+            on_downscroll=None,
+            on_leftclick=None,
+            on_rightclick=None,
+            on_upscroll=None,
+        )
+
+    if ETHERNET_INTERFACE:
+        status.register(
+            'network',
+            color_down=COLOR_DISABLED,
+            color_up=COLOR_DEFAULT,
+            format_down='\U0001f5a7',
+            format_up='\U0001f5a7',
+            interface=ETHERNET_INTERFACE,
+            on_downscroll=None,
+            on_leftclick=None,
+            on_rightclick=None,
+            on_upscroll=None,
+        )
+
+    if ETHERNET_INTERFACE or WIFI_INTERFACE:
+        status.register(
+            'online',
+            color=COLOR_DEFAULT,
+            color_offline=COLOR_INDICATOR,
+            format_online='\U0001f30d',
+            format_offline='\U0001f30d',
+        )
+
+    status.register(
+        'cmus',
+        color=COLOR_DEFAULT,
+        format='{status}',
+        format_not_running="",
         on_downscroll=None,
         on_leftclick=None,
         on_rightclick=None,
         on_upscroll=None,
     )
 
-if ETHERNET_INTERFACE or WIFI_INTERFACE:
     status.register(
-        'online',
-        color=COLOR_DEFAULT,
-        color_offline=COLOR_INDICATOR,
-        format_online='\U0001f30d',
-        format_offline='\U0001f30d',
+        'updates',
+        backends=[pacman.Pacman(), cower.Cower()],
+        color=COLOR_INDICATOR,
+        format='\U0001f199 {count}',
+        format_no_updates='',
+        format_working='',
+        interval=10 * 60,
     )
 
-status.register(
-    'cmus',
-    color=COLOR_DEFAULT,
-    format='{status}',
-    format_not_running="",
-    on_downscroll=None,
-    on_leftclick=None,
-    on_rightclick=None,
-    on_upscroll=None,
-)
-
-status.register(
-    'updates',
-    backends=[pacman.Pacman(), cower.Cower()],
-    color=COLOR_INDICATOR,
-    format='\U0001f199 {count}',
-    format_no_updates='',
-    format_working='',
-    interval=10 * 60,
-)
-
-status.run()
+    status.run()

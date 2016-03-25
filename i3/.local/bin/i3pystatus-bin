@@ -120,7 +120,6 @@ if IS_LAPTOP:
         on_upscroll=None,
     )
 
-
 status.register(
     'dpms',
     format='\U0001f512',
@@ -128,8 +127,6 @@ status.register(
     color_disabled=COLOR_DISABLED,
     on_leftclick=None,
 )
-
-
 
 if WIFI_INTERFACE:
     status.register(

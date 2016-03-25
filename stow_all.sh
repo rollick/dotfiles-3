@@ -36,6 +36,7 @@ if [[ ${UID} -ne 0 ]]; then
 		pacman \
 		pacaur \
 		profile-cleaner \
+		nestopia \
 		rofi \
 		snes9x \
 		sxiv \

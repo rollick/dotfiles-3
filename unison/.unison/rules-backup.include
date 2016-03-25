@@ -38,7 +38,10 @@ ignore = Path Documents/Code/*/pkgbuilds/*/src
 ignore = Path Documents/Code/*/pkgbuilds/*/*.tar*
 ignore = Path .local/share/Trash
 
-###############################################################################
+####################
+# Application rules
+####################
+path = .nestopia
 path = .snes9x
 path = .ssh
 path = .quodlibet

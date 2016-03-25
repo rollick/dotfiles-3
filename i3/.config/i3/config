@@ -79,6 +79,7 @@ for_window [class="Glade-previewer"] floating enable
 for_window [class="Gnome-terminal" window_role="gnome-terminal-preferences"] floating enable
 for_window [class="Gvbam"] floating enable
 for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
+for_window [class="Nestopia"] floating enable
 for_window [class="Octave-gui" title="^Figure .*$"] floating enable
 for_window [class="^Snes9x.*"] floating enable
 for_window [class="Xsane"] floating enable

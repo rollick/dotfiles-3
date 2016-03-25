@@ -14,7 +14,7 @@
   <option name="hires_effect" value="1"/>
   <option name="force_inverted_byte_order" value="0"/>
   <option name="multithreading" value="1"/>
-  <option name="last_directory" value="/home/raphael/Software/ROMs/SNES"/>
+  <option name="last_directory" value="/home/raphael/Downloads"/>
   <option name="sram_directory" value="/home/raphael/Software/ROMs/SNES/sram"/>
   <option name="savestate_directory" value="/home/raphael/Software/ROMs/SNES/save_states"/>
   <option name="cheat_directory" value=""/>

@@ -96,6 +96,13 @@ fi
 if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
+if [[ -n ${commands[python]} ]]; then
+	alias prettyjson='python -m json.tool'
+elif [[ -n ${commands[python3]} ]]; then
+	alias prettyjson='python3 -m json.tool'
+elif [[ -n ${commands[python2]} ]]; then
+	alias prettyjson='python2 -m json.tool'
+fi
 [[ -n ${commands[top]} ]] && alias utop="${aliases[top]:-top} -u \${USER}"
 if [[ -n ${functions[zmv]} ]]; then
 	alias zcp="${aliases[zmv]:-zmv} -C"

@@ -70,6 +70,7 @@ path = .zshrc
 ignore = Path .config/cmus/*
 ignore = Path .config/gnupg/*.dirmngr
 ignore = Path .config/gnupg/*.gpg-agent
+ignore = Path .config/mpv/watch_later
 ignore = Path .config/gtk-*/gtkfilechooser.ini
 ignore = Path .config/transmission/*
 ignore = Path .config/QtProject.conf

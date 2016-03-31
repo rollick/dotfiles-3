@@ -6,6 +6,7 @@ exec --no-startup-id xautolock
 exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-file-manager --no-tray
 exec --no-startup-id i3-sensible-terminal -name cmus -e cmus
+exec --no-startup-id i3-sensible-terminal -name drop-term
 
 ##############################
 # Appearance
@@ -85,6 +86,7 @@ for_window [class="^Snes9x.*"] floating enable
 for_window [class="Xsane"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
 for_window [instance="cmus"] move window to scratchpad
+for_window [instance="drop-term"] move window to scratchpad
 
 ##############################
 # Keybindings
@@ -168,6 +170,7 @@ bindsym $mod+KP_9 workspace 9
 
 # Show specific scratchpad windows
 bindsym $mod+m [instance="cmus"] scratchpad show
+bindsym $mod+t [instance="drop-term"] scratchpad show
 
 # Move container to workspace
 bindsym $mod+Shift+Tab move container to workspace back_and_forth

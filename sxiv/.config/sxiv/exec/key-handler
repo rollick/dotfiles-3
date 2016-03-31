@@ -1,0 +1,13 @@
+#!/bin/sh
+
+readonly KEY="$1"
+
+delete_file() {
+	while read file; do
+		rm -- "$file"
+	done
+}
+
+case "$KEY" in
+	"d" )	delete_file ;;
+esac

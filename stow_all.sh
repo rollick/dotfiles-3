@@ -1,7 +1,6 @@
 #!/bin/bash
 mkdir --verbose --parents \
 	"${HOME}/.config/gnupg" \
-	"${HOME}/.config/ranger" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
@@ -12,7 +11,6 @@ stow --restow --target "${HOME}" --ignore=.venv \
 	htop \
 	neovim \
 	python \
-	ranger \
 	shells \
 	ssh \
 	tmux \

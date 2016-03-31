@@ -22,6 +22,7 @@ if [[ ${UID} -ne 0 ]]; then
 		"${HOME}/.config/cmus" \
 		"${HOME}/.config/gtk-2.0" \
 		"${HOME}/.config/gtk-3.0" \
+		"${HOME}/.config/mpv" \
 		"${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" \
 		"${HOME}/.local/bin" \
 		"${HOME}/.unison"
@@ -35,6 +36,7 @@ if [[ ${UID} -ne 0 ]]; then
 		pacaur \
 		profile-cleaner \
 		nestopia \
+		mpv \
 		rofi \
 		snes9x \
 		sxiv \

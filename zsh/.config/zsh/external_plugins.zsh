@@ -38,4 +38,4 @@ fi
 # Include external additions provided by packages
 source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
 source "/etc/zsh_command_not_found" &>|/dev/null
-source "/usr/bin/virtualenvwrapper.sh" &>|/dev/null
+source "/usr/bin/virtualenvwrapper_lazy.sh" &>|/dev/null

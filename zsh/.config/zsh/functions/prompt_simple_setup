@@ -27,9 +27,9 @@ prompt_simple_setup() {
 	add-zsh-hook precmd prompt_simple_check_git_dirty
 	add-zsh-hook precmd prompt_simple_check_git_arrows
 	add-zsh-hook precmd prompt_simple_check_user_info
+	add-zsh-hook precmd prompt_simple_check_venv
 
 	add-zsh-hook precmd prompt_simple_prompt
-	add-zsh-hook precmd prompt_simple_rprompt
 	add-zsh-hook precmd prompt_simple_title
 }
 
@@ -47,6 +47,8 @@ prompt_simple_prompt() {
 	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
 	PROMPT+='%{$fg_bold[cyan]%}'
 	PROMPT+="${prompt_simple_git_arrows}"
+	PROMPT+='%{$fg_bold[yellow]%}'
+	PROMPT+="${prompt_simple_venv}"
 
 	# Show user information
 	PROMPT+="${prompt_simple_user_info}"
@@ -84,7 +86,6 @@ prompt_simple_check_git_arrows() {
 	[[ ${arrow_status[2]} -gt 0 ]] && arrows+=$'\u21E3'
 
 	[[ -n ${arrows} ]] && prompt_simple_git_arrows=" ${arrows}"
-
 }
 
 prompt_simple_check_git_dirty() {
@@ -95,16 +96,10 @@ prompt_simple_check_git_dirty() {
 	fi
 }
 
-prompt_simple_rprompt() {
-	# Show information about the current environment.
-	# prompt_opts=(cr subst percent)
-	RPROMPT='%{$fg_bold[black]%}'
-
+prompt_simple_check_venv() {
 	if [[ -n ${VIRTUAL_ENV} ]]; then
-		RPROMPT+=$'\u03c0'
-		RPROMPT+=" ${VIRTUAL_ENV:t}"
+		prompt_simple_venv=" ${VIRTUAL_ENV:t}"
 	fi
-	RPROMPT+='%{$reset_color%}'
 }
 
 prompt_simple_title() {

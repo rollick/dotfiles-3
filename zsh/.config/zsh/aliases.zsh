@@ -93,7 +93,7 @@ alias lla="${aliases[ls]:-ls} --almost-all --format=long"
 if [[ -n ${commands[git]} ]];then
 	alias update-git-repos='for d ($(hash -d)) git cdpull ${d#git-remote*=}; true'
 fi
-[[ -n ${commands[htop]} ]] && alias uhtop="${aliases[htop]:-htop} -u \${USER}"
+[[ -n ${commands[htop]} ]] && alias uhtop="${aliases[htop]:-htop} -u ${USER}"
 if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
@@ -104,7 +104,7 @@ elif [[ -n ${commands[python3]} ]]; then
 elif [[ -n ${commands[python2]} ]]; then
 	alias prettyjson='python2 -m json.tool'
 fi
-[[ -n ${commands[top]} ]] && alias utop="${aliases[top]:-top} -u \${USER}"
+[[ -n ${commands[top]} ]] && alias utop="${aliases[top]:-top} -u ${USER}"
 if [[ -n ${functions[zmv]} ]]; then
 	alias zcp="${aliases[zmv]:-zmv} -C"
 	alias zln="${aliases[zmv]:-zln} -L"

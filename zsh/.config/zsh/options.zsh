@@ -40,6 +40,3 @@ setopt TRANSIENT_RPROMPT	# Hide RPROMPT when the current command is too long
 export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
 export SAVEHIST=10000
 export HISTSIZE=12000
-
-# Set up syntax highlighting
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)

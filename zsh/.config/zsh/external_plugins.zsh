@@ -15,13 +15,24 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 
 	zplug "hlissner/zsh-autopair"
 	zplug "zsh-users/zsh-completions"
-	zplug "zsh-users/zsh-syntax-highlighting"
+	zplug "zsh-users/zsh-syntax-highlighting", nice:18
+	zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:19
 
 	if ! zplug check; then
 		zplug install
 	fi
 
 	zplug load
+
+
+	# Run plugin specific code
+	if zplug check knu/zsh-manydots-magic; then
+		manydots-magic
+	fi
+
+	if zplug check zsh-users/zsh-syntax-highlighting; then
+		export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+	fi
 fi
 
 # Include external additions provided by packages

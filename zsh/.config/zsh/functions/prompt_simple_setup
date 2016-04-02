@@ -47,7 +47,7 @@ prompt_simple_prompt() {
 	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
 	PROMPT+='%{$fg_bold[cyan]%}'
 	PROMPT+="${prompt_simple_git_arrows}"
-	PROMPT+='%{$fg_bold[yellow]%}'
+	PROMPT+='%{$fg_bold[magenta]%}'
 	PROMPT+="${prompt_simple_venv}"
 
 	# Show user information

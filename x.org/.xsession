@@ -15,20 +15,6 @@ if [[ -z ${DESKTOP_SESSION} ]]; then
 	fi
 fi
 
-# Merge user Xdefaults
-if which xrdb >/dev/null 2>&1; then
-	if [[ -f "${HOME}/.Xresources" ]]; then
-		xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
-	fi
-fi
-
-# Load keyboard tweaks
-if which xmodmap >/dev/null 2>&1; then
-	if [[ -e ${HOME}/.Xmodmap ]]; then
-		xmodmap "${HOME}/.Xmodmap" &
-	fi
-fi
-
 # Enable/disable numlock
 if which numlockx >/dev/null 2>&1; then
 	if  [[ -f "${XDG_DATA_HOME:-${HOME}/.local/share}/numlock_on" ]]; then

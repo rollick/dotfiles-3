@@ -16,6 +16,20 @@ if [[ -f  "${HOME}/.xprofile" ]]; then
 	source "${HOME}/.xprofile"
 fi
 
+# Merge user Xdefaults
+if which xrdb >/dev/null 2>&1; then
+	if [[ -f "${HOME}/.Xresources" ]]; then
+		xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
+	fi
+fi
+
+# Load keyboard tweaks
+if which xmodmap >/dev/null 2>&1; then
+	if [[ -e ${HOME}/.Xmodmap ]]; then
+		xmodmap "${HOME}/.Xmodmap" &
+	fi
+fi
+
 # Load session specific commands
 if [[ -f "${HOME}/.xsession" ]]; then
 	source "${HOME}/.xsession"

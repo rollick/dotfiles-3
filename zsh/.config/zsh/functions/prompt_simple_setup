@@ -57,7 +57,7 @@ prompt_simple_prompt() {
 	PROMPT+="${prompt_newline}"
 	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
 	[[ "${TERM}" != "linux" ]] && PROMPT+=$'\u276F' || PROMPT+=">"
-	PROMPT+=' %{$reset_colors%}'
+	PROMPT+=' %{$reset_color%}'
 }
 
 prompt_simple_check_user_info() {

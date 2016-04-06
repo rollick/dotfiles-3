@@ -106,6 +106,8 @@ prompt_simple_check_git_dirty() {
 prompt_simple_check_venv() {
 	if [[ -n ${VIRTUAL_ENV} ]]; then
 		prompt_simple_venv=" ${VIRTUAL_ENV:t}"
+	else
+		prompt_simple_venv=''
 	fi
 }
 

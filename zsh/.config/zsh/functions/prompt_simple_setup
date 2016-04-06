@@ -24,57 +24,15 @@ prompt_simple_setup() {
 	# Initialize precmd hooks
 	##################
 	add-zsh-hook precmd vcs_info
-	add-zsh-hook precmd prompt_simple_check_git_dirty
 	add-zsh-hook precmd prompt_simple_check_git_arrows
+	add-zsh-hook precmd prompt_simple_check_git_dirty
 	add-zsh-hook precmd prompt_simple_check_user_info
 	add-zsh-hook precmd prompt_simple_check_venv
 
-	add-zsh-hook precmd prompt_simple_prompt
-	add-zsh-hook precmd prompt_simple_title
+	add-zsh-hook precmd prompt_simple_set_prompt
+	add-zsh-hook precmd prompt_simple_set_title
 }
 
-prompt_simple_prompt() {
-	if [[ -n $PROMPT_SHOWN ]]; then
-		PROMPT="${prompt_newline}"
-	else
-		export PROMPT_SHOWN=1
-		PROMPT=''
-	fi
-
-	# Show directory information
-	PROMPT+="%{$fg_bold[blue]%}%~"
-	PROMPT+='%{$fg_bold[black]%}'
-	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
-	PROMPT+='%{$fg_bold[cyan]%}'
-	PROMPT+="${prompt_simple_git_arrows}"
-	PROMPT+='%{$fg_bold[magenta]%}'
-	PROMPT+="${prompt_simple_venv}"
-
-	# Show user information
-	PROMPT+="${prompt_simple_user_info}"
-
-	# Show prompt symbol
-	PROMPT+="${prompt_newline}"
-	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
-	[[ "${TERM}" != "linux" ]] && PROMPT+=$'\u276F' || PROMPT+=">"
-	PROMPT+=' %{$reset_color%}'
-}
-
-prompt_simple_check_user_info() {
-	local host='%{$fg_bold[black]%}%m'
-	local separator='%{$fg_bold[black]%}@'
-	local user='%{$fg_bold[black]%}%n'
-
-	if [[ $UID -eq 0 || -n $SSH_CONNECTION ]]; then
-		[[ $UID -eq 0 ]] && user='%{$fg_bold[white]%}%n'
-
-		[[ -n "${SSH_CONNECTION}" ]] && host='%{$fg_bold[white]%}%m'
-
-		prompt_simple_user_info=" ${user}${separator}${host}"
-	else
-		prompt_simple_user_info=''
-	fi
-}
 
 prompt_simple_check_git_arrows() {
 	local arrow_status=''
@@ -103,6 +61,22 @@ prompt_simple_check_git_dirty() {
 	fi
 }
 
+prompt_simple_check_user_info() {
+	local host='%{$fg_bold[black]%}%m'
+	local separator='%{$fg_bold[black]%}@'
+	local user='%{$fg_bold[black]%}%n'
+
+	if [[ $UID -eq 0 || -n $SSH_CONNECTION ]]; then
+		[[ $UID -eq 0 ]] && user='%{$fg_bold[white]%}%n'
+
+		[[ -n "${SSH_CONNECTION}" ]] && host='%{$fg_bold[white]%}%m'
+
+		prompt_simple_user_info=" ${user}${separator}${host}"
+	else
+		prompt_simple_user_info=''
+	fi
+}
+
 prompt_simple_check_venv() {
 	if [[ -n ${VIRTUAL_ENV} ]]; then
 		prompt_simple_venv=" ${VIRTUAL_ENV:t}"
@@ -111,12 +85,40 @@ prompt_simple_check_venv() {
 	fi
 }
 
-prompt_simple_title() {
+prompt_simple_set_prompt() {
+	if [[ -n $PROMPT_SHOWN ]]; then
+		PROMPT="${prompt_newline}"
+	else
+		export PROMPT_SHOWN=1
+		PROMPT=''
+	fi
+
+	# Show directory information
+	PROMPT+="%{$fg_bold[blue]%}%~"
+	PROMPT+='%{$fg_bold[black]%}'
+	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
+	PROMPT+='%{$fg_bold[cyan]%}'
+	PROMPT+="${prompt_simple_git_arrows}"
+	PROMPT+='%{$fg_bold[magenta]%}'
+	PROMPT+="${prompt_simple_venv}"
+
+	# Show user information
+	PROMPT+="${prompt_simple_user_info}"
+
+	# Show prompt symbol
+	PROMPT+="${prompt_newline}"
+	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
+	[[ "${TERM}" != "linux" ]] && PROMPT+=$'\u276F' || PROMPT+=">"
+	PROMPT+=' %{$reset_color%}'
+}
+
+prompt_simple_set_title() {
 	case "${TERM}" in
 		xterm* ) ;&
 		rxvt* )		print -Pn "\e]0;%n@%m: %~\a";;
 		screen* )	print -Pn "\ek%n@%m: %~\e\\";;
 	esac
 }
+
 
 prompt_simple_setup

@@ -1,39 +1,5 @@
 #!/bin/zsh
 
-prompt_simple_setup() {
-	# Load needed functions
-	autoload -Uz add-zsh-hook
-	autoload -Uz colors && colors
-	autoload -Uz vcs_info
-
-	# Options for simple prompt
-	##################
-	prompt_opts=(cr subst percent)
-	PROMPT_EOL_MARK=''
-
-	# Setup vcs_info
-	zstyle ':vcs_info:*' enable git
-	zstyle ':vcs_info:*' use-simple true
-	zstyle ':vcs_info:*' max-exports 2
-	zstyle ':vcs_info:git*' formats ' %b'
-	zstyle ':vcs_info:git*' actionformats ' %b|%a'
-
-	# Setup misc. prompts
-	SPROMPT="zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) "
-
-	# Initialize precmd hooks
-	##################
-	add-zsh-hook precmd vcs_info
-	add-zsh-hook precmd prompt_simple_check_git_arrows
-	add-zsh-hook precmd prompt_simple_check_git_dirty
-	add-zsh-hook precmd prompt_simple_check_user_info
-	add-zsh-hook precmd prompt_simple_check_venv
-
-	add-zsh-hook precmd prompt_simple_set_prompt
-	add-zsh-hook precmd prompt_simple_set_title
-}
-
-
 prompt_simple_check_git_arrows() {
 	local arrow_status=''
 	local arrows=''
@@ -120,5 +86,36 @@ prompt_simple_set_title() {
 	esac
 }
 
+##############
+# Setup prompt
+##############
+# Load needed functions
+autoload -Uz add-zsh-hook
+autoload -Uz colors && colors
+autoload -Uz vcs_info
 
-prompt_simple_setup
+# Options for simple prompt
+##################
+prompt_opts=(cr subst percent)
+PROMPT_EOL_MARK=''
+
+# Setup vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' use-simple true
+zstyle ':vcs_info:*' max-exports 2
+zstyle ':vcs_info:git*' formats ' %b'
+zstyle ':vcs_info:git*' actionformats ' %b|%a'
+
+# Setup misc. prompts
+SPROMPT="zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) "
+
+# Initialize precmd hooks
+##################
+add-zsh-hook precmd vcs_info
+add-zsh-hook precmd prompt_simple_check_git_arrows
+add-zsh-hook precmd prompt_simple_check_git_dirty
+add-zsh-hook precmd prompt_simple_check_user_info
+add-zsh-hook precmd prompt_simple_check_venv
+
+add-zsh-hook precmd prompt_simple_set_prompt
+add-zsh-hook precmd prompt_simple_set_title

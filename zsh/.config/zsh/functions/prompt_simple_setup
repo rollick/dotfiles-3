@@ -80,9 +80,9 @@ prompt_simple_set_prompt() {
 
 prompt_simple_set_title() {
 	case "${TERM}" in
-		xterm* ) ;&
-		rxvt* )		print -Pn "\e]0;%n@%m: %~\a";;
-		screen* )	print -Pn "\ek%n@%m: %~\e\\";;
+		xterm*  )  ;&
+		rxvt*   )  print -Pn "\e]0;%n@%m: %~\a";;
+		screen* )  print -Pn "\ek%n@%m: %~\e\\";;
 	esac
 }
 

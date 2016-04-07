@@ -4,7 +4,7 @@ local SHOW_LINES=$(( LINES - 2 * PROMPT_LINES ))
 
 if [[ "${0}" == "head" || "${0}" == "tail" ]]; then
 	if [[ ${LINES} == <-> ]]; then
-		=${0} -n ${SHOW_LINES}
+		=${0} -n ${SHOW_LINES} "${@}"
 	else
 		=${0} "${@}"
 	fi

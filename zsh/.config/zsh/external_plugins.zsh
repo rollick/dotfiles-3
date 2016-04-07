@@ -15,7 +15,7 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 
 	zplug "hlissner/zsh-autopair"
 	zplug "zsh-users/zsh-completions"
-	zplug "petervanderdoes/git-flow-completion", if:"which git-flow"
+	zplug "petervanderdoes/git-flow-completion"
 	zplug "zsh-users/zsh-syntax-highlighting", nice:18
 	zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:19
 

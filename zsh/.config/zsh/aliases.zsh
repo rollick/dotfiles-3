@@ -85,6 +85,7 @@ alias zcalc="${aliases[zcalc]:-zcalc} -f"
 
 # Define new commands
 [[ -n ${functions[zcalc]} ]] && alias calc=" noglob ${aliases[zcalc]:-zcalc} -e"
+alias filename2md5sum='(){for f ((^([a-f0-9])(#c32).([[:alnum:]](#c3)))(.N)) mv --force "$f" "$(md5sum $f |cut -d" " -f 1).${f:e:l}";}'
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"

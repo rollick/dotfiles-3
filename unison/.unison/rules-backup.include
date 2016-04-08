@@ -33,9 +33,8 @@ path = .icons
 path = .local
 path = .themes
 
-ignore = Path Documents/Code/*/pkgbuilds/*/pkg
-ignore = Path Documents/Code/*/pkgbuilds/*/src
-ignore = Path Documents/Code/*/pkgbuilds/*/*.tar*
+ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
+ignore = Path Documents/Code/Local/*/{.tox,MANIFEST}
 ignore = Path .local/share/Trash
 
 ####################
@@ -50,8 +49,7 @@ path = .xchat2
 
 path = .easyMP3Gain
 path = .hushlogin
-path = .MP3Diags.dat
-path = .MP3Diags.ini
+path = .MP3Diags.{dat,ini}
 path = .octaverc
 path = .profile
 path = .tmux.conf
@@ -61,15 +59,10 @@ path = .Xmodmap
 path = .xprofile
 path = .Xresources
 path = .xsession
-path = .zlogin
-path = .zlogout
-path = .zprofile
-path = .zshenv
-path = .zshrc
+path = .z{login,logout,profile,shenv,shrc}
 
 ignore = Path .config/cmus/*
-ignore = Path .config/gnupg/*.dirmngr
-ignore = Path .config/gnupg/*.gpg-agent
+ignore = Path .config/gnupg/*.{dirmngr,gpg-agent}
 ignore = Path .config/mpv/watch_later
 ignore = Path .config/gtk-*/gtkfilechooser.ini
 ignore = Path .config/transmission/*
@@ -77,17 +70,14 @@ ignore = Path .config/QtProject.conf
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/icc
 ignore = Path .local/share/nvim/*
-ignore = Path .local/share/numlock_*
+ignore = Path .local/share/numlock_{on,off}
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*
 ignore = Path .unison/*
 
-ignorenot = Path .config/cmus/*.theme
-ignorenot = Path .config/cmus/rc
-ignorenot = Path .config/blocklists
-ignorenot = Path .config/transmission/settings.json
+ignorenot = Path .config/cmus/{*.theme,rc}
+ignorenot = Path .config/transmission/{blocklists,settings.json}
 ignorenot = Path .local/share/nvim/plugged
 ignorenot = Path .local/share/zathura/bookmarks
-ignorenot = Path .unison/*.include
-ignorenot = Path .unison/*.prf
+ignorenot = Path .unison/*.{include,prf}

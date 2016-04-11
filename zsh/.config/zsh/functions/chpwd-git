@@ -1,7 +1,7 @@
 #!/bin/zsh
 autoload -Uz colors && colors
 
-local heading="${fg_bold[blue]}:: ${fg_bold[white]}Available branches:${reset_color} "
+local heading="${fg_bold[blue]}:: ${fg_bold[white]}Available tracked branches:${reset_color} "
 local toplevel="$(git rev-parse --show-toplevel 2>/dev/null)"
 
 if [[ -n ${toplevel} ]]; then

@@ -33,7 +33,6 @@ if [[ ${UID} -ne 0 ]]; then
 		gvbam \
 		i3 \
 		pacman \
-		pacaur \
 		profile-cleaner \
 		nestopia \
 		mpv \

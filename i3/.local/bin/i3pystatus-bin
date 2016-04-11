@@ -191,7 +191,7 @@ if __name__ == '__main__':
         'updates',
         backends=[pacman.Pacman(), cower.Cower()],
         color=COLOR_IMPORTANT,
-        format='\uf06a {count}',
+        format='\uf06a {Pacman}/{Cower}',
         format_no_updates='',
         format_working='',
         interval=10 * 60,

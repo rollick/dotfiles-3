@@ -29,6 +29,7 @@ if [[ ${UID} -ne 0 ]]; then
 	stow --restow --target "${HOME}" --ignore=.venv \
 		appearance \
 		cmus \
+		cower \
 		fontconfig \
 		gvbam \
 		i3 \

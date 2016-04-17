@@ -20,6 +20,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 	Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}

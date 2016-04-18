@@ -14,13 +14,12 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'lastpos.vim'
 	Plug 'python_fold', {'for': 'python'}
 
-	Plug 'vim-airline/vim-airline-themes'
 	Plug 'Lokaltog/vim-distinguished'
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+	Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 	Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
@@ -31,5 +30,6 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" Load always last
+	Plug 'vim-airline/vim-airline-themes'
 	Plug 'vim-airline/vim-airline'
 call plug#end()

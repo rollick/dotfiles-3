@@ -61,6 +61,7 @@ path = .Xresources
 path = .xsession
 path = .z{login,logout,profile,shenv,shrc}
 
+ignore = Path .config/chromium/Profile*/File System
 ignore = Path .config/cmus/*
 ignore = Path .config/gnupg/*.{dirmngr,gpg-agent}
 ignore = Path .config/mpv/watch_later

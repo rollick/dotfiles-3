@@ -1,4 +1,4 @@
-if [[ ! -o "login" && $UID -eq 0 ]]; then
+if [[ ! -o "login" && $EUID -eq 0 ]]; then
 	unset XDG_CACHE_HOME
 	unset XDG_CONFIG_HOME
 	unset XDG_DATA_HOME

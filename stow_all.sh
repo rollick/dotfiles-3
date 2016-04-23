@@ -17,7 +17,7 @@ stow --restow --target "${HOME}" --ignore=.venv \
 	virtualenvwrapper \
 	zsh
 
-if [[ ${UID} -ne 0 ]]; then
+if [[ ${EUID} -ne 0 ]]; then
 	mkdir --verbose --parents \
 		"${HOME}/.config/cmus" \
 		"${HOME}/.config/gtk-2.0" \

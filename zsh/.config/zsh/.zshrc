@@ -1,7 +1,7 @@
 # Loaded for interactive shells only
 
 # Sanitize su environment
-[[ ${UID} -eq 0 && ! -o "login" ]] && source "/root/.config/zsh/sanitize_su.zsh"
+[[ ${EUID} -eq 0 && ! -o "login" ]] && source "/root/.config/zsh/sanitize_su.zsh"
 
 # Create needed directories
 mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
@@ -28,7 +28,7 @@ source "${ZDOTDIR}/options.zsh"
 # Set misc. settings
 source "${ZDOTDIR}/completions.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
-[[ ${UID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
+[[ ${EUID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
 source "${ZDOTDIR}/hashes.zsh"
 source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/aliases.zsh"

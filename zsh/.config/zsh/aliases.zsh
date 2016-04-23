@@ -15,6 +15,10 @@ elif [[ -n ${commands[nvim]} ]]; then
 fi
 [[ -n ${functions[zcalc_wrapper]} ]] && alias zcalc='zcalc_wrapper'
 
+# Use in non-GUI mode
+[[ -n ${commands[octave]} ]] && alias octave="octave-cli"
+[[ -n ${commands[unison]} ]] && alias unison="unison -ui text"
+
 # Force a specific nice level
 [[ -n ${commands[gcc]} ]] && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"
 [[ -n ${commands[make]} ]] && alias make="nice -n 19 ${aliases[make]:-make}"
@@ -29,9 +33,8 @@ alias ln="${aliases[ln]:-ln} --interactive"
 alias mv="${aliases[mv]:-mv} --interactive"
 alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
 
-# Use in non-GUI mode
-[[ -n ${commands[octave]} ]] && alias octave="${aliases[octave]:-octave} --no-gui"
-[[ -n ${commands[unison]} ]] && alias unison="${aliases[unison]:-unison} -ui text"
+# Make some commands less verbose
+alias chgrp="${aliases[octave]:-octave-cli} --silent"
 
 # Make some commands more verbose
 alias chgrp="${aliases[chgrp]:-chgrp} --changes"

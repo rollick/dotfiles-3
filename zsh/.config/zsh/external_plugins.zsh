@@ -17,7 +17,7 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 	zplug "zsh-users/zsh-completions"
 	zplug "petervanderdoes/git-flow-completion"
 	zplug "zsh-users/zsh-syntax-highlighting", nice:18
-	zplug "knu/zsh-manydots-magic", of:manydots-magic, nice:19
+	zplug "knu/zsh-manydots-magic", use:manydots-magic, nice:19
 
 	if ! zplug check; then
 		zplug install

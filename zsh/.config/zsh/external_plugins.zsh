@@ -1,15 +1,22 @@
 export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
 
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
-	curl -fLo "${ZPLUG_HOME}/zplug" --create-dirs "https://git.io/zplug"
+	tmpdir="$(mktemp --directory)"
 
-	source "${ZPLUG_HOME}/zplug"
+	git clone --depth 1 "http://github.com/b4b4r07/zplug.git" "${tmpdir}"
 
-	zplug update --self
+	if [[ -f "${tmpdir}/zplug" ]]; then
+		mkdir -p "${ZPLUG_HOME}"
+		source "${tmpdir}/zplug"
+
+		zplug update --self
+	fi
+
+	unset tmpdir
 fi
 
 if [[ -d "${ZPLUG_HOME}" ]]; then
-	source "${ZPLUG_HOME}/zplug"
+	source "${ZPLUG_HOME}/init.zsh"
 
 	zplug "b4b4r07/zplug" # Let zplug handle itself correctly
 

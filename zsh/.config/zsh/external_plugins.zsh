@@ -10,11 +10,9 @@ function zplug_install_cleanup() {
 export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
 
 if [[ ! -d "${ZPLUG_HOME}" ]]; then
-	if [[ -d "${XDG_RUNTIME_DIR}" ]]; then
-		tmpdir="${XDG_RUNTIME_DIR}"
-	elif [[ -d "/run/user/${EUID}" ]]; then
-		tmpdir="/run/user/${EUID}"
-	else
+	tmpdir="${XDG_RUNTIME_DIR:-/run/user/${EUID}}"
+
+	if [[ ! -d "${tmpdir}" ]]; then
 		tmpdir="/tmp"
 	fi
 

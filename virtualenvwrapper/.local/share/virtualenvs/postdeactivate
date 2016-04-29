@@ -1,6 +1,0 @@
-#!/usr/bin/zsh
-# This hook is sourced after every virtualenv is deactivated.
-[[ -n CD_VIRTUAL_ENV ]] && unset CD_VIRTUAL_ENV
-
-unset PS1
-

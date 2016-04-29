@@ -109,6 +109,9 @@ zstyle ':vcs_info:git*' actionformats ' %b|%a'
 # Setup misc. prompts
 SPROMPT="zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) "
 
+# Disable virtualenv from setting PS1
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Initialize precmd hooks
 ##################
 add-zsh-hook precmd vcs_info

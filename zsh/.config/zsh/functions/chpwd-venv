@@ -1,6 +1,5 @@
 #!/bin/zsh
 local GIT_TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null)"
-local OLD_PS1="§{PS1}"
 local _PWD="${PWD}"
 local _WORKON_HOME="${WORKON_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs}"
 
@@ -39,11 +38,4 @@ if [[ "${_PWD}" == '/' && -n ${CD_VIRTUAL_ENV} ]]; then
 	fi
 
 	unset CD_VIRTUAL_ENV
-fi
-
-# Don't set PS1 if PROMPT or PS1 is already set
-if [[ -n $PROMPT && -n $PS1 ]]; then
-	unset PS1
-elif [[ -z ${PROMPT} && -n ${PS1} ]]; then
-	PS1="${OLD_PS1}"
 fi

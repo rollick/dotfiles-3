@@ -82,7 +82,10 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[ping6]} ]] && alias ping6="${aliases[ping6]:-ping6} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
-alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
+if [[ -n ${commands[udiskie]} ]]; then
+	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
+	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock --eject --detach"
+fi
 alias zcalc="${aliases[zcalc]:-zcalc} -f"
 
 # Define new commands

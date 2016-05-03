@@ -19,7 +19,7 @@ if [[ ! -d "${ZPLUG_HOME}" ]]; then
 	export ZPLUG_INSTALL_TMPDIR="$(mktemp --directory --tmpdir=${tmpdir} zplug.XXXXXXXXXX)"
 	unset tmpdir
 
-	git clone --depth 1 "http://github.com/b4b4r07/zplug.git" "${ZPLUG_INSTALL_TMPDIR}"
+	git clone --depth 1 "http://github.com/zplug/zplug.git" "${ZPLUG_INSTALL_TMPDIR}"
 
 	if [[ -f "${ZPLUG_INSTALL_TMPDIR}/zplug" ]]; then
 		mkdir -p "${ZPLUG_HOME}"
@@ -34,7 +34,7 @@ fi
 if [[ -d "${ZPLUG_HOME}" ]]; then
 	source "${ZPLUG_HOME}/init.zsh"
 
-	zplug "b4b4r07/zplug" # Let zplug handle itself correctly
+	zplug "zplug/zplug" # Let zplug handle itself correctly
 
 	zplug "hlissner/zsh-autopair"
 	zplug "zsh-users/zsh-completions"

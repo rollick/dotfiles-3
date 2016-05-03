@@ -32,3 +32,25 @@ hash -d media="/run/media/${USER}"
 		done
 	fi
 }
+
+# Add all zsh plugins managed by zplug
+() {
+	local d
+
+	for d in "${ZPLUG_HOME}/repos/"*/*(FN); do
+		if [[ -d "${d}/.git" ]]; then
+			hash -d "git-zplug-${d:h:t}-${d:t}"="${d}"
+		fi
+	done
+}
+
+# Add all neovim plugins managed by vim-plug
+() {
+	local d
+
+	for d in "${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/plugged"/*(FN); do
+		if [[ -d "${d}/.git" ]]; then
+			hash -d "git-neovim-${${d:t}#vim-}"="${d}"
+		fi
+	done
+}

@@ -1,3 +1,6 @@
+" Configure vim-plug
+let g:plug_shallow=0
+
 " Bootstrap vim-plug
 if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
 	silent !curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs

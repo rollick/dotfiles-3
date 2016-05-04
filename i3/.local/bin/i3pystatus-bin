@@ -124,15 +124,6 @@ if __name__ == '__main__':
             on_upscroll=None,
         )
 
-    status.register(
-        'dpms',
-        format='\uf023',
-        format_disabled='\uf13e',
-        color=COLOR_DEFAULT,
-        color_disabled=COLOR_DISABLED,
-        on_leftclick=None,
-    )
-
     if WIFI_INTERFACE:
         status.register(
             'network',

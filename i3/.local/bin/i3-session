@@ -18,8 +18,9 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
+I3_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/i3/config"
 DMENU="dmenu -i"
-LOCK_CMD="xautolockctl enable --now"
+LOCK_CMD="i3lock --color=$(grep 'set $focused_bg' ${I3_CONFIG} |cut -f2 -d'#')"
 MAIN_ITEMS="$(echo -e "i3 \u2192")
 logout
 suspend

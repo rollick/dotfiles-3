@@ -2,7 +2,6 @@
 # Autostart
 ##############################
 exec_always --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
-exec --no-startup-id xautolock
 exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-automount --no-file-manager --no-notify --no-tray
 exec --no-startup-id i3-sensible-terminal -name cmus -e cmus
@@ -207,6 +206,5 @@ bindsym Menu exec --no-startup-id dmenu_run
 
 # Session control
 bindsym XF86Sleep exec --no-startup-id i3-session
-bindsym $mod+Ctrl+l exec --no-startup-id xautolockctl enable --now
+bindsym $mod+Ctrl+l exec --no-startup-id sh -c i3lock -c 5294e2"
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session
-bindsym $mod+Ctrl+x exec --no-startup-id xautolockctl toggle

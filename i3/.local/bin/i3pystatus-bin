@@ -21,6 +21,7 @@
 """Configuration for i3pystatus."""
 import configparser
 import os
+import sys
 
 from i3pystatus import Status
 from i3pystatus.mail import imap
@@ -28,9 +29,13 @@ from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
 
+_XDG_CONFIG_HOME = os.path.expanduser(
+    os.environ.get('XDG_CONFIG_HOME', '~/.config')
+)
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
+CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts')
 
 
 def first_network_interface(interface_type):
@@ -77,18 +82,13 @@ def is_laptop():
         return False
 
 
-# Constants
-_XDG_CONFIG_HOME = os.path.expanduser(
-    os.environ.get('XDG_CONFIG_HOME', '~/.config')
-)
-ETHERNET_INTERFACE = first_network_interface('ethernet')
-IS_LAPTOP = is_laptop()
-MAIL_ACCOUNTS = configparser.ConfigParser()
-MAIL_ACCOUNTS.read(os.path.join(_XDG_CONFIG_HOME, 'mail_accounts'))
-WIFI_INTERFACE = first_network_interface('wifi')
+def main():
+    """Configure i3pystatus and run i3pystatus."""
+    ethernet_interface = first_network_interface('ethernet')
+    mail_accounts = configparser.ConfigParser()
+    mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
+    wifi_interface = first_network_interface('wifi')
 
-# Configure i3pystatus
-if __name__ == '__main__':
     status = Status(standalone=True)
 
     status.register(
@@ -122,7 +122,7 @@ if __name__ == '__main__':
         scroll_off='\U0001f142',
     )
 
-    if IS_LAPTOP:
+    if is_laptop():
         status.register(
             'backlight',
             format='\uf185 {percentage}%',
@@ -131,7 +131,7 @@ if __name__ == '__main__':
             on_upscroll=None,
         )
 
-    if WIFI_INTERFACE:
+    if wifi_interface:
         status.register(
             'network',
             color_down=COLOR_DISABLED,
@@ -139,28 +139,28 @@ if __name__ == '__main__':
             format_down='\uf1eb',
             format_up='\uf1eb',
             dynamic_color=False,
-            interface=WIFI_INTERFACE,
+            interface=wifi_interface,
             on_downscroll=None,
             on_leftclick=None,
             on_rightclick=None,
             on_upscroll=None,
         )
 
-    if ETHERNET_INTERFACE:
+    if ethernet_interface:
         status.register(
             'network',
             color_down=COLOR_DISABLED,
             color_up=COLOR_DEFAULT,
             format_down='\uf0e8',
             format_up='\uf0e8',
-            interface=ETHERNET_INTERFACE,
+            interface=ethernet_interface,
             on_downscroll=None,
             on_leftclick=None,
             on_rightclick=None,
             on_upscroll=None,
         )
 
-    if ETHERNET_INTERFACE or WIFI_INTERFACE:
+    if ethernet_interface or wifi_interface:
         status.register(
             'online',
             color=COLOR_DEFAULT,
@@ -190,8 +190,8 @@ if __name__ == '__main__':
         backends=[
             imap.IMAP(
                 host='imap.gmail.com',
-                username=MAIL_ACCOUNTS['Gmail']['user'],
-                password=MAIL_ACCOUNTS['Gmail']['password'],
+                username=mail_accounts['Gmail']['user'],
+                password=mail_accounts['Gmail']['password'],
             ),
         ],
         color=COLOR_DEFAULT,
@@ -212,3 +212,7 @@ if __name__ == '__main__':
     )
 
     status.run()
+
+
+if __name__ == '__main__':
+    sys.exit(main())

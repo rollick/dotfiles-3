@@ -89,7 +89,7 @@ def main():
     mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
     wifi_interface = first_network_interface('wifi')
 
-    status = Status(standalone=True)
+    status = Status(standalone=True, click_events=False)
 
     status.register(
         'clock',
@@ -104,10 +104,6 @@ def main():
         format='\uf028 {volume}%',
         format_muted='\uf026   {volume}%',
         mixer='Headphone',
-        on_downscroll=None,
-        on_leftclick=None,
-        on_rightclick=None,
-        on_upscroll=None,
     )
 
     status.register(
@@ -127,8 +123,6 @@ def main():
             'backlight',
             format='\uf185 {percentage}%',
             color=COLOR_DEFAULT,
-            on_downscroll=None,
-            on_upscroll=None,
         )
 
     if wifi_interface:
@@ -140,10 +134,6 @@ def main():
             format_up='\uf1eb',
             dynamic_color=False,
             interface=wifi_interface,
-            on_downscroll=None,
-            on_leftclick=None,
-            on_rightclick=None,
-            on_upscroll=None,
         )
 
     if ethernet_interface:
@@ -154,10 +144,6 @@ def main():
             format_down='\uf0e8',
             format_up='\uf0e8',
             interface=ethernet_interface,
-            on_downscroll=None,
-            on_leftclick=None,
-            on_rightclick=None,
-            on_upscroll=None,
         )
 
     if ethernet_interface or wifi_interface:
@@ -174,10 +160,6 @@ def main():
         color=COLOR_DEFAULT,
         format='{status}',
         format_not_running="",
-        on_downscroll=None,
-        on_leftclick=None,
-        on_rightclick=None,
-        on_upscroll=None,
         status={
             'paused': '\uf04c',
             'playing': '\uf04b',

@@ -2,22 +2,22 @@
 [[ -n ${commands[sudo]} ]] && alias sudo='sudo '
 
 # Drop-in replacements
-[[ -n ${functions[cd-git]} ]] && alias cd="cd-git"
-[[ -n ${commands[colordiff]} ]] && alias diff="colordiff"
-[[ -n ${commands[cmus]} && -n ${commands[cmus_wrapper]} ]] && alias cmus="cmus_wrapper"
+[[ -n ${functions[cd-git]} ]] && alias cd='cd-git'
+[[ -n ${commands[colordiff]} ]] && alias diff='colordiff'
+[[ -n ${commands[cmus]} && -n ${commands[cmus_wrapper]} ]] && alias cmus='cmus_wrapper'
 if [[ -n ${commands[vim]} ]]; then
-	alias vi="vim"
+	alias vi='vim'
 	[[ -n ${aliases[vim]} ]] && unalias vim
 elif [[ -n ${commands[nvim]} ]]; then
-	alias vi="nvim"
-	alias vim="nvim"
-	alias vimdiff="nvim -d"
+	alias vi='nvim'
+	alias vim='nvim'
+	alias vimdiff='nvim -d'
 fi
 [[ -n ${functions[zcalc_wrapper]} ]] && alias zcalc='zcalc_wrapper'
 
 # Use in non-GUI mode
-[[ -n ${commands[octave]} ]] && alias octave="octave-cli"
-[[ -n ${commands[unison]} ]] && alias unison="unison -ui text"
+[[ -n ${commands[octave]} ]] && alias octave='octave-cli'
+[[ -n ${commands[unison]} ]] && alias unison='unison -ui text'
 
 # Force a specific nice level
 [[ -n ${commands[gcc]} ]] && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"

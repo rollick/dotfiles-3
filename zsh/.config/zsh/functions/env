@@ -9,4 +9,4 @@ LESS_TERMCAP_se='' \
 LESS_TERMCAP_so='' \
 LESS_TERMCAP_ue='' \
 LESS_TERMCAP_us='' \
-=env $@
+=env "${@}"

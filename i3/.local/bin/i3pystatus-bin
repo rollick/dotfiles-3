@@ -159,7 +159,7 @@ def main():
         'cmus',
         color=COLOR_DEFAULT,
         format='{status}',
-        format_not_running="",
+        format_not_running='',
         status={
             'paused': '\uf04c',
             'playing': '\uf04b',

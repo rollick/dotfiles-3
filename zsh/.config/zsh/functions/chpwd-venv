@@ -21,15 +21,15 @@ activate_venv() {
 	return 0
 }
 
-until [[ ${_PWD} == '/' ]]; do
-	if [[ -f ${_PWD}/.venv ]]; then
+until [[ "${_PWD}" == '/' ]]; do
+	if [[ -f "${_PWD}/.venv" ]]; then
 		activate_venv $(< "${_PWD}/.venv") && break
 	elif [[ "${GIT_TOPLEVEL}" == "${_PWD}" ]]; then
 		activate_venv "${GIT_TOPLEVEL:t}" && break
 	fi
 
 	# Move up one directory
-	_PWD=${_PWD:h}
+	_PWD="${_PWD:h}"
 done
 
 if [[ "${_PWD}" == '/' && -n ${CD_VIRTUAL_ENV} ]]; then

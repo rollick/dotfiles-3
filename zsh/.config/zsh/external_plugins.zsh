@@ -13,13 +13,13 @@ if [[ ! -d "${ZPLUG_HOME}" ]]; then
 	tmpdir="${XDG_RUNTIME_DIR:-/run/user/${EUID}}"
 
 	if [[ ! -d "${tmpdir}" ]]; then
-		tmpdir="/tmp"
+		tmpdir='/tmp'
 	fi
 
 	export ZPLUG_INSTALL_TMPDIR="$(mktemp --directory --tmpdir=${tmpdir} zplug.XXXXXXXXXX)"
 	unset tmpdir
 
-	git clone --depth 1 "http://github.com/zplug/zplug.git" "${ZPLUG_INSTALL_TMPDIR}"
+	git clone --depth 1 'http://github.com/zplug/zplug.git' "${ZPLUG_INSTALL_TMPDIR}"
 
 	if [[ -f "${ZPLUG_INSTALL_TMPDIR}/zplug" ]]; then
 		mkdir -p "${ZPLUG_HOME}"

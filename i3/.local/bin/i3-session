@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 I3_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/i3/config"
-DMENU="dmenu -i"
+DMENU='dmenu -i'
 LOCK_CMD="i3lock --color=$(grep 'set $focused_bg' ${I3_CONFIG} |cut -f2 -d'#')"
 MAIN_ITEMS="$(echo -e "i3 \u2192")
 logout
@@ -28,8 +28,8 @@ hibernate
 reboot
 shutdown"
 
-I3_ITEMS="reconfigure
-restart"
+I3_ITEMS='reconfigure
+restart'
 
 sleep_error() {
 	zenity --error \
@@ -49,18 +49,18 @@ fi
 if [[ -z ${1} ]]; then
 	choice=$(${DMENU} -p "session:" <<< "${MAIN_ITEMS}")
 	case ${choice} in
-		"i3 "* )      "${0}" --dmenu="${DMENU}" i3;;
-		"logout" )    i3-msg exit;;
-		"suspend" )   ${LOCK_CMD} && systemctl suspend || sleep_error;;
-		"hibernate" ) ${LOCK_CMD} && systemctl hibernate || sleep_error;;
-		"reboot" )    systemctl reboot;;
-		"shutdown" )  systemctl poweroff;;
+		'i3 '* )      "${0}" --dmenu="${DMENU}" i3;;
+		'logout' )    i3-msg exit;;
+		'suspend' )   ${LOCK_CMD} && systemctl suspend || sleep_error;;
+		'hibernate' ) ${LOCK_CMD} && systemctl hibernate || sleep_error;;
+		'reboot' )    systemctl reboot;;
+		'shutdown' )  systemctl poweroff;;
 	esac
 elif [[ "${1}" == "i3" ]]; then
 	choice=$(${DMENU} -p "session - i3:" <<< "${I3_ITEMS}")
 	case ${choice} in
-		"reconfigure")  i3-msg reload;;
-		"restart") i3-msg restart;;
-		* ) ${0} --dmenu="${DMENU}";;
+		'reconfigure')  i3-msg reload;;
+		'restart') i3-msg restart;;
+		* ) "${0}" --dmenu="${DMENU}";;
 	esac
 fi

@@ -1,11 +1,11 @@
 #!/bin/bash
 # Do some stuff if no Display Manager is used
 if [[ -z ${DESKTOP_SESSION} ]]; then
-	export DESKTOP_SESSION="gnome"
+	export DESKTOP_SESSION='gnome'
 	export GNOME_DESKTOP_SESSION=1
 
 	# Start policykit agent
-	if [[ -x //usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
+	if [[ -x /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
 		/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 	fi
 

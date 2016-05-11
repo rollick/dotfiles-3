@@ -9,5 +9,5 @@ delete_file() {
 }
 
 case "$KEY" in
-	"d" )	delete_file ;;
+	'd' )	delete_file ;;
 esac

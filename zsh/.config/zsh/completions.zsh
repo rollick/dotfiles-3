@@ -17,7 +17,7 @@ zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}No matches for: %d%{$re
 zstyle ':completion:*:default' select-prompt "%{$fg_bold[black]%}Match %M%P%{$reset_color%}"
 
 # Hide some files in completion, except when using (rm|cp|mv|zmv)
-zstyle ':completion:*:(all-|)files' ignored-patterns "(*.BAK|*.bak|*.o|*.aux|*.toc|*.swp|*~)"
+zstyle ':completion:*:(all-|)files' ignored-patterns '(*.BAK|*.bak|*.o|*.aux|*.toc|*.swp|*~)'
 zstyle ':completion:*:(rm|mv|cp|zmv):*:(all-|)files' ignored-patterns
 
 # Use $LS_COLORS for file listings

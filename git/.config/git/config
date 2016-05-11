@@ -14,7 +14,7 @@
 	tool = nvim -d
 [user]
 	email = rascholer@gmail.com
-	name = Raphael Scholer
+	name = 'Raphael Scholer'
 [push]
 	default = simple
 [github]

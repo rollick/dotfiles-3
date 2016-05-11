@@ -11,14 +11,14 @@ export NO_AT_BRIDGE=1
 # Set terminal for i3
 if which urxvtcd >/dev/null 2>&1; then
 	export RXVT_SOCKET="${XDG_CACHE_HOME:-${HOME}/.cache}/urxvtd"
-	export TERMINAL="urxvtcd"
+	export TERMINAL='urxvtcd'
 else
-	export TERMINAL="urxvt"
+	export TERMINAL='urxvt'
 fi
 export TERMCMD="${TERMINAL}"
 
 # Set correct driver for libva
-export LIBVA_DRIVER_NAME=vdpau
+export LIBVA_DRIVER_NAME='vdpau'
 
 # Use GTK2+ in Libre Office
-export SAL_USE_VCLPLUGIN=gtk
+export SAL_USE_VCLPLUGIN='gtk'

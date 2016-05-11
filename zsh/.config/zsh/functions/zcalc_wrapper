@@ -1,5 +1,5 @@
 #!/bin/zsh
 autoload -Uz zcalc
 
-zcalc $@
+zcalc "${@}"
 rm "${ZDOTDIR:-${HOME}}/.zcalc_history"

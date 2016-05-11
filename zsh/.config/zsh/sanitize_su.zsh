@@ -1,4 +1,4 @@
-if [[ ! -o "login" && $EUID -eq 0 ]]; then
+if [[ ! -o 'login' && ${EUID} -eq 0 ]]; then
 	unset XDG_CACHE_HOME
 	unset XDG_CONFIG_HOME
 	unset XDG_DATA_HOME
@@ -29,6 +29,6 @@ if [[ ! -o "login" && $EUID -eq 0 ]]; then
 	fi
 
 	# Set path
-	export path=(${HOME}/.local/bin ${path})
+	export path=("${HOME}/.local/bin" ${path})
 	typeset -U path
 fi

@@ -41,16 +41,16 @@ key[ShiftRight]=${terminfo[kRIT]}
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" history-beginning-search-backward
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
 
-bindkey	"^ "					magic-space
-bindkey	"^B"					backward-kill-word
-bindkey	"^W"					kill-word
-bindkey	"^X "					hide-from-history
-bindkey	"^Xd"					insert-iso-date
-bindkey	"^Xe"					expand-word
-bindkey	"^Xk"					insert-kept-result
-bindkey	"^Xs"					toggle-sudo
-bindkey	" "						expand-global-alias
-bindkey -M menuselect	"i"		accept-and-menu-complete
+bindkey	'^ '					magic-space
+bindkey	'^B'					backward-kill-word
+bindkey	'^W'					kill-word
+bindkey	'^X '					hide-from-history
+bindkey	'^Xd'					insert-iso-date
+bindkey	'^Xe'					expand-word
+bindkey	'^Xk'					insert-kept-result
+bindkey	'^Xs'					toggle-sudo
+bindkey	' '						expand-global-alias
+bindkey -M menuselect	'i'		accept-and-menu-complete
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.

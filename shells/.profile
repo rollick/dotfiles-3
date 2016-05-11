@@ -2,7 +2,7 @@
 
 # Fix for unknown terminals
 if [[ -n "${SSH_CONNECTION}" ]]; then
-	export TERM=xterm
+	export TERM='xterm'
 fi
 
 # Add some directories to path
@@ -14,22 +14,22 @@ if [[ -d "${HOME}/.local/bin" ]]; then
 fi
 
 # Search these directories with pacdiff
-export DIFFSEARCHPATH="/boot /etc /usr /var"
+export DIFFSEARCHPATH='/boot /etc /usr /var'
 
 # Set applications
 export DIFFPROG='nvim -d'
-export EDITOR="nvim"
-export MANPAGER="less"
-export PAGER="less"
-export READNULLCMD="less"
-export SYSTEMD_PAGER="cat"
-export VISUAL="nvim"
+export EDITOR='nvim'
+export MANPAGER='less'
+export PAGER='less'
+export READNULLCMD='less'
+export SYSTEMD_PAGER='cat'
+export VISUAL='nvim'
 
 # Set width for manpages
-export MANWIDTH="80"
+export MANWIDTH='80'
 
 # Settings for less
-export LESS="-~-J-R-s"
+export LESS='-~-J-R-s'
 export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 export SYSTEMD_LESS="${LESS}"
 
@@ -60,7 +60,7 @@ export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"
 
 # Set default encrypted session via rsync to ssh
 if which ssh >/dev/null 2>&1; then
-	export RSYNC_RSH="ssh"
+	export RSYNC_RSH='ssh'
 fi
 
 # Settings for libdvdcss

@@ -5,7 +5,6 @@ exec_always --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
 exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-automount --no-file-manager --no-notify --no-tray
 exec --no-startup-id i3-sensible-terminal -name cmus -e cmus
-exec --no-startup-id i3-sensible-terminal -name drop-term
 
 ##############################
 # Appearance

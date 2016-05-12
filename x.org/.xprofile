@@ -22,3 +22,6 @@ export LIBVA_DRIVER_NAME='vdpau'
 
 # Use GTK2+ in Libre Office
 export SAL_USE_VCLPLUGIN='gtk'
+
+# Disable GTK3+ overlay scrollbars
+export GTK_OVERLAY_SCROLLING=0

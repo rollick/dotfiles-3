@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup environment for X sessions
+_XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
 # Use XDG dirs
 export GIMP2_DIRECTORY="${XDG_CONFIG_HOME:-${HOME}/.config}/gimp2"
@@ -25,3 +26,9 @@ export SAL_USE_VCLPLUGIN='gtk'
 
 # Disable GTK3+ overlay scrollbars
 export GTK_OVERLAY_SCROLLING=0
+
+# Always use the light GTK3+ theme
+if [[ -f "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini" ]]; then
+	GTK_THEME="$(grep gtk-theme-name ${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini)"
+	export GTK_THEME="$(print ${GTK_THEME##*=} |tr -d '[[:space:]]'):light"
+fi

@@ -70,10 +70,10 @@ for_window [class="MP3Diags" title="^MP3 Diags$"] floating disable
 for_window [class="Nestopia"] floating enable
 for_window [class="Octave-gui" title="^Figure .*$"] floating enable
 for_window [class="^Snes9x.*"] floating enable
-for_window [title="^Task Manager - Chromium$"] floating enable
-for_window [title="^Page Unresponsive$"] floating enable
 for_window [instance="calc"] floating enable
 for_window [instance="cmus"] move window to scratchpad
+for_window [title="^Task Manager - Chromium$"] floating enable
+for_window [title="^Page Unresponsive$"] floating enable
 
 ##############################
 # Keybindings

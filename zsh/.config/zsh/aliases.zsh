@@ -113,6 +113,9 @@ if [[ -n ${functions[zmv]} ]]; then
 	alias zln="${aliases[zmv]:-zln} -L"
 fi
 
+# Hide some commands from history
+[[ -n ${commands[xprop]} ]] && alias xprop=" ${aliases[xprop]:-xprop}"
+
 # Global aliases
 alias -g C='|wc -l'
 alias -g ES='2>&1'

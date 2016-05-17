@@ -47,6 +47,7 @@ bar {
 		urgent_workspace   $urgent_bg    $urgent_bg    $unfocused_fg $focused_bg
 	}
 
+	# Disable mouse events
 	bindsym button4 nop
 	bindsym button5 nop
 }
@@ -65,6 +66,8 @@ workspace_auto_back_and_forth yes
 ##############################
 # Window rules
 ##############################
+# The following rule is a hack for MP3Diags and to preempt the same problem
+# with other programs.
 for_window [window_type="normal"] floating disable
 for_window [window_type="splash"] border none
 

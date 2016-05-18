@@ -21,6 +21,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'airblade/vim-gitgutter'
+	Plug 'christoomey/vim-sort-motion'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 	Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}

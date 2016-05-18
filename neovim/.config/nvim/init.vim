@@ -98,21 +98,21 @@ tnoremap <ESC> <C-\><C-n>
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:flake8_show_in_gutter=1
-let g:gist_detect_filetype=1
-let g:gist_show_privates=1
-let g:gist_post_private=1
-let g:netrw_home=$XDG_CACHE_HOME . '/nvim'
-let g:vim_markdown_folding_disabled=1
-let g:markdown_folding_disabled=1
 let g:NERDChristmasTree=1
 let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/nvim/NERDTreeBookmarks'
 let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeHijackNetrw=1
-let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeRespectWildIgnore=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:flake8_show_in_gutter=1
+let g:gist_detect_filetype=1
+let g:gist_post_private=1
+let g:gist_show_privates=1
+let g:markdown_folding_disabled=1
+let g:netrw_home=$XDG_CACHE_HOME . '/nvim'
+let g:vim_markdown_folding_disabled=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Printer settings
@@ -145,29 +145,29 @@ set number
 set relativenumber
 set ruler
 set scrolloff=5  " Keep n lines above/under cursor
-set sidescrolloff=5  " Keep n columns left/right of cursor
 set shortmess+=I " Disable version information when starting with an empty file
 set showcmd
 set showmode
+set sidescrolloff=5  " Keep n columns left/right of cursor
 set title
 set updatetime=250
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Wildmenu settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-set wildignore+=*.flac,*.ogg,*.mp3,*.wav,*.wma
-set wildignore+=*~,*.backup,*.bak,*.swp
-set wildignore+=~/.bash_history
-set wildignore+=*.db,*.sqlite
-set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
-set wildignore+=matlab_crash_dump*
-set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
-set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
-set wildignore+=*.o,*.obj,*.pyc,*.pyo
-set wildignore+=octave-core,~/octave_hist
 set wildignore+=*.avi,*.flv,*.mkv,*.mp4,*.mpeg,*.mpg,*.ogv,*.wmv
-set wildignore+=~/.zcompdump,~/.zsh_history
+set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
+set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
+set wildignore+=*.db,*.sqlite
+set wildignore+=*.flac,*.ogg,*.mp3,*.wav,*.wma
+set wildignore+=*.o,*.obj,*.pyc,*.pyo
+set wildignore+=*~,*.backup,*.bak,*.swp
+set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
+set wildignore+=matlab_crash_dump*
+set wildignore+=octave-core,~/octave_hist
 set wildignore+=~/.ICEauthority,~/.Xauthority
+set wildignore+=~/.bash_history
+set wildignore+=~/.zcompdump,~/.zsh_history
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Functions

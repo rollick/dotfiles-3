@@ -9,8 +9,8 @@ setopt GLOB_COMPLETE		# Don't insert all matches of pattern, show a menu
 setopt HASH_LIST_ALL		# Always hash entire command paths
 
 # Expansion and Globbing
-setopt EXTENDED_GLOB		# '#', '~' and '^' are part of globbing patterns
 setopt BRACE_CCL			# Advanced expansion in brackets
+setopt EXTENDED_GLOB		# '#', '~' and '^' are part of globbing patterns
 
 # History
 setopt EXTENDED_HISTORY		# Use timestamps in $HISTFILE
@@ -38,5 +38,5 @@ setopt TRANSIENT_RPROMPT	# Hide RPROMPT when the current command is too long
 
 # Set history options
 export HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/history"
-export SAVEHIST=10000
 export HISTSIZE=12000
+export SAVEHIST=10000

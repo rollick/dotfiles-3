@@ -6,19 +6,23 @@ root = /home/raphael/
 ####################
 # Always exclude temporary and backup files
 ####################
-ignore = Name *~
-ignore = Name .*~
 ignore = Name *.bak
 ignore = Name *.crdownload
 ignore = Name *.o
 ignore = Name *.pyc
-ignore = Name *.tmp
 ignore = Name *.swp
+ignore = Name *.tmp
+ignore = Name *~
+ignore = Name .*~
 ignore = Name __pycache__
 
 ####################
 # Non-application rules
 ####################
+path = .config
+path = .icons
+path = .local
+path = .themes
 path = Desktop
 path = Documents
 path = Music
@@ -28,51 +32,47 @@ path = Public
 path = Software
 path = Templates
 path = Videos
-path = .config
-path = .icons
-path = .local
-path = .themes
 
-ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
-ignore = Path Documents/Code/Local/*/{.tox,MANIFEST}
 ignore = Path .local/share/Trash
+ignore = Path Documents/Code/Local/*/{.tox,MANIFEST}
+ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
 
 ####################
 # Application rules
 ####################
 path = .nestopia
+path = .quodlibet
 path = .snes9x
 path = .ssh
-path = .quodlibet
 path = .unison
 path = .xchat2
 
+path = .MP3Diags.{dat,ini}
+path = .Xdefaults
+path = .Xmodmap
+path = .Xresources
 path = .easyMP3Gain
 path = .hushlogin
-path = .MP3Diags.{dat,ini}
 path = .octaverc
 path = .profile
 path = .tmux.conf
-path = .Xdefaults
 path = .xinitrc
-path = .Xmodmap
 path = .xprofile
-path = .Xresources
 path = .xsession
 path = .z{login,logout,profile,shenv,shrc}
 
-ignore = Path .config/chromium/Singleton*
+ignore = Path .config/QtProject.conf
 ignore = Path .config/chromium/Profile*/File System
+ignore = Path .config/chromium/Singleton*
 ignore = Path .config/cmus/*
 ignore = Path .config/gnupg/*.{dirmngr,gpg-agent}
-ignore = Path .config/mpv/watch_later
 ignore = Path .config/gtk-*/gtkfilechooser.ini
+ignore = Path .config/mpv/watch_later
 ignore = Path .config/transmission/*
-ignore = Path .config/QtProject.conf
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/icc
-ignore = Path .local/share/nvim/*
 ignore = Path .local/share/numlock_{on,off}
+ignore = Path .local/share/nvim/*
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*

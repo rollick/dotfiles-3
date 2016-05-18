@@ -34,10 +34,10 @@ if [[ ${EUID} -ne 0 ]]; then
 		fontconfig \
 		gvbam \
 		i3 \
+		mpv \
+		nestopia \
 		pacman \
 		profile-cleaner \
-		nestopia \
-		mpv \
 		rofi \
 		snes9x \
 		sxiv \

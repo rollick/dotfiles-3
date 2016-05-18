@@ -18,29 +18,30 @@ bindkey -e
 # Set keybindings
 # To add keys to $key, see man 5 terminfo
 typeset -A key
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
 key[Down]=${terminfo[kcud1]}
+key[End]=${terminfo[kend]}
+key[Home]=${terminfo[khome]}
+key[Insert]=${terminfo[kich1]}
 key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
+key[PageUp]=${terminfo[kpp]}
+key[Right]=${terminfo[kcuf1]}
 key[ShiftLeft]=${terminfo[kLFT]}
 key[ShiftRight]=${terminfo[kRIT]}
+key[Up]=${terminfo[kcuu1]}
 
-[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
 [[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
+[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
 [[ -n ${key[ShiftLeft]} ]] && bindkey "${key[ShiftLeft]}" backward-word
 [[ -n ${key[ShiftRight]} ]] && bindkey "${key[ShiftRight]}" forward-word
-[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
-[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
-[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" history-beginning-search-backward
-[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
 
+bindkey	' '						expand-global-alias
 bindkey	'^ '					magic-space
 bindkey	'^B'					backward-kill-word
 bindkey	'^W'					kill-word
@@ -49,7 +50,6 @@ bindkey	'^Xd'					insert-iso-date
 bindkey	'^Xe'					expand-word
 bindkey	'^Xk'					insert-kept-result
 bindkey	'^Xs'					toggle-sudo
-bindkey	' '						expand-global-alias
 bindkey -M menuselect	'i'		accept-and-menu-complete
 
 # Finally, make sure the terminal is in application mode, when zle is

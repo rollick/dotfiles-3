@@ -11,13 +11,13 @@ exec --no-startup-id i3-sensible-terminal -name cmus -e cmus
 ##############################
 set $focused_bg #5294e2
 set $focused_fg #f5f6f7
+set $indicator_off #5294e2
+set $indicator_on #f5f6f7
+set $separator_fg #afb8c5
 set $unfocused_bg #2f343f
 set $unfocused_fg #f5f6f7
 set $urgent_bg #cc575d
 set $urgent_fg #5294e2
-set $separator_fg #afb8c5
-set $indicator_off #5294e2
-set $indicator_on #f5f6f7
 
 # Set font
 font pango:FontAwesome, Droid Sans Bold 10
@@ -41,8 +41,8 @@ bar {
 		statusline $unfocused_fg
 		separator $separator_fg
 		# class            border        background    foreground    indicator
-		focused_workspace  $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
 		active_workspace   $separator_fg $separator_fg $unfocused_fg $focused_bg
+		focused_workspace  $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
 		inactive_workspace $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
 		urgent_workspace   $urgent_bg    $urgent_bg    $unfocused_fg $focused_bg
 	}
@@ -96,26 +96,26 @@ floating_modifier $mod+Shift
 
 # Modes
 mode "resize" {
+	bindsym Down resize shrink height 10 px or 10 ppt
 	bindsym Left resize shrink width 10 px or 10 ppt
 	bindsym Right resize grow width 10 px or 10 ppt
 	bindsym Up resize grow height 10 px or 10 ppt
-	bindsym Down resize shrink height 10 px or 10 ppt
 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
 
 # Change focus
+bindsym $mod+Down focus down
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
 bindsym $mod+Up focus up
-bindsym $mod+Down focus down
 
 # Move container
+bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Down move down
 
 # Focus container
 bindsym $mod+c focus child
@@ -135,11 +135,10 @@ bindsym $mod+Shift+f fullscreen toggle
 bindsym $mod+Shift+r mode resize
 
 # Floating container
-bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
 
 # Switch to workspace
-bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+0 scratchpad show
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -150,8 +149,8 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
+bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+KP_Add workspace back_and_forth
 bindsym $mod+KP_0 scratchpad show
 bindsym $mod+KP_1 workspace 1
 bindsym $mod+KP_2 workspace 2
@@ -162,13 +161,12 @@ bindsym $mod+KP_6 workspace 6
 bindsym $mod+KP_7 workspace 7
 bindsym $mod+KP_8 workspace 8
 bindsym $mod+KP_9 workspace 9
+bindsym $mod+KP_Add workspace back_and_forth
 
 # Show specific scratchpad windows
 bindsym $mod+m [instance="cmus"] scratchpad show
-bindsym $mod+t [instance="drop-term"] scratchpad show
 
 # Move container to workspace
-bindsym $mod+Shift+Tab move container to workspace back_and_forth
 bindsym $mod+Shift+0 move scratchpad
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -179,8 +177,8 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
-bindsym $mod+Shift+KP_Add move container to workspace back_and_forth
 bindsym $mod+Shift+KP_0 move scratchpad
 bindsym $mod+Shift+KP_1 move container to workspace 1
 bindsym $mod+Shift+KP_2 move container to workspace 2
@@ -191,8 +189,12 @@ bindsym $mod+Shift+KP_6 move container to workspace 6
 bindsym $mod+Shift+KP_7 move container to workspace 7
 bindsym $mod+Shift+KP_8 move container to workspace 8
 bindsym $mod+Shift+KP_9 move container to workspace 9
+bindsym $mod+Shift+KP_Add move container to workspace back_and_forth
 
 # Start applications
+bindsym $mod+Ctrl+Return exec i3-sensible-terminal
+bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run
+bindsym Menu exec --no-startup-id dmenu_run
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
@@ -200,11 +202,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 
 bindsym XF86Calculator exec --no-startup-id i3-sensible-terminal -name calc -e octave-cli --silent
 bindsym XF86HomePage exec chromium
 bindsym XF86Mail exec chromium https://www.gmail.com/
-bindsym $mod+Ctrl+Return exec i3-sensible-terminal
-bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run
-bindsym Menu exec --no-startup-id dmenu_run
 
 # Session control
-bindsym XF86Sleep exec --no-startup-id i3-session
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock_wrapper --dpms
 bindsym $mod+Ctrl+s exec --no-startup-id i3-session
+bindsym XF86Sleep exec --no-startup-id i3-session

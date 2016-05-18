@@ -34,13 +34,12 @@ fi
 if [[ -d "${ZPLUG_HOME}" ]]; then
 	source "${ZPLUG_HOME}/init.zsh"
 
-	zplug "zplug/zplug" # Let zplug handle itself correctly
-
 	zplug "hlissner/zsh-autopair"
-	zplug "zsh-users/zsh-completions"
-	zplug "petervanderdoes/git-flow-completion"
-	zplug "zsh-users/zsh-syntax-highlighting", nice:18
 	zplug "knu/zsh-manydots-magic", use:manydots-magic, nice:19
+	zplug "petervanderdoes/git-flow-completion"
+	zplug "zplug/zplug" # Let zplug handle itself correctly
+	zplug "zsh-users/zsh-completions"
+	zplug "zsh-users/zsh-syntax-highlighting", nice:18
 
 	if ! zplug check; then
 		zplug install
@@ -60,6 +59,6 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 fi
 
 # Include external additions provided by packages
-source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null
 source "/etc/zsh_command_not_found" &>|/dev/null
 source "/usr/bin/virtualenvwrapper_lazy.sh" &>|/dev/null
+source "/usr/share/doc/pkgfile/command-not-found.zsh" &>|/dev/null

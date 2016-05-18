@@ -20,6 +20,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'Lokaltog/vim-distinguished'
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
 	Plug 'PotatoesMaster/i3-vim-syntax'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'christoomey/vim-sort-motion'
 	Plug 'jiangmiao/auto-pairs'
@@ -32,9 +33,8 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	" Load always last
-	Plug 'vim-airline/vim-airline-themes'
 	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
 call plug#end()

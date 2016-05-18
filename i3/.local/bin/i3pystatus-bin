@@ -73,8 +73,8 @@ def is_laptop():
         bool -- True -- Machine is a Laptop (or related type).
                 False -- Machine is a Desktop.
     """
-    sys_path = '/sys/class/module/battery/'
     proc_path = '/proc/acpi/battery/'
+    sys_path = '/sys/class/module/battery/'
 
     if os.path.exists(sys_path) or os.path.exists(proc_path):
         return True

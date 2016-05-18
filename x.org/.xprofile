@@ -20,6 +20,7 @@ export TERMCMD="${TERMINAL}"
 
 # Set correct driver for libva
 export LIBVA_DRIVER_NAME='vdpau'
+export VDPAU_DRIVER="nouveau"
 
 # Use GTK2+ in Libre Office
 export SAL_USE_VCLPLUGIN='gtk'

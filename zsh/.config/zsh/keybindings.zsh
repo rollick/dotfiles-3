@@ -52,18 +52,5 @@ bindkey	'^Xk'					insert-kept-result
 bindkey	'^Xs'					toggle-sudo
 bindkey -M menuselect	'i'		accept-and-menu-complete
 
-# Finally, make sure the terminal is in application mode, when zle is
-# active. Only then are the values from $terminfo valid.
-if [[ -n ${terminfo[smkx]} && ${+terminfo[rmkx]} ]]; then
-    function zle-line-init () {
-        print -n "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        print -n "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
-
 # Clean up
 unset key

@@ -142,7 +142,6 @@ set cursorline
 set foldcolumn=2
 set listchars=tab:\│\ ,trail:·,extends:»,precedes:«,eol:¶,nbsp:█
 set number
-set relativenumber
 set ruler
 set scrolloff=5  " Keep n lines above/under cursor
 set shortmess+=I " Disable version information when starting with an empty file

@@ -24,10 +24,12 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/gtk-2.0" \
 		"${HOME}/.config/gtk-3.0" \
 		"${HOME}/.config/mpv" \
+		"${HOME}/.config/systemd/user" \
 		"${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" \
 		"${HOME}/.local/bin" \
 		"${HOME}/.unison"
 	stow --restow --target "${HOME}" --ignore=.venv \
+		a11y \
 		appearance \
 		cmus \
 		cower \

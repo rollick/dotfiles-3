@@ -171,21 +171,28 @@ def main():
         }
     )
 
-    status.register(
-        'mail',
-        backends=[
-            imap.IMAP(
-                host='imap.gmail.com',
-                username=mail_accounts['Gmail']['user'],
-                password=mail_accounts['Gmail']['password'],
-            ),
-        ],
-        color=COLOR_DEFAULT,
-        color_unread=COLOR_IMPORTANT,
-        format='\uf0e0 {unread}',
-        format_plural='\uf0e0 {current_unread}',
-        interval=60,
-    )
+    if 'Gmail' in mail_accounts:
+        status.register(
+            'mail',
+            backends=[
+                imap.IMAP(
+                    host='imap.gmail.com',
+                    username=mail_accounts['Gmail']['user'],
+                    password=mail_accounts['Gmail']['password'],
+                ),
+            ],
+            color=COLOR_DEFAULT,
+            color_unread=COLOR_IMPORTANT,
+            format='\uf0e0 {unread}',
+            format_plural='\uf0e0 {current_unread}',
+            interval=60,
+        )
+    else:
+        status.register(
+            'text',
+            color=COLOR_IMPORTANT,
+            text='Mail configuration for "Gmail" not found.',
+        )
 
     status.register(
         'updates',

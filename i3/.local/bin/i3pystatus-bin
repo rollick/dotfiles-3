@@ -35,7 +35,7 @@ _XDG_CONFIG_HOME = os.path.expanduser(
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
-CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts')
+CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts.ini')
 
 
 def first_network_interface(interface_type):

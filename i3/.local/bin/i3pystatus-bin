@@ -19,10 +19,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
+import configparser
 import os
 import sys
 
 from i3pystatus import Status
+from i3pystatus.mail import imap
 from i3pystatus.updates import cower
 from i3pystatus.updates import pacman
 
@@ -33,6 +35,7 @@ _XDG_CONFIG_HOME = os.path.expanduser(
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
+CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts')
 
 
 def first_network_interface(interface_type):
@@ -82,6 +85,8 @@ def is_laptop():
 def main():
     """Configure i3pystatus and run i3pystatus."""
     ethernet_interface = first_network_interface('ethernet')
+    mail_accounts = configparser.ConfigParser()
+    mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
     wifi_interface = first_network_interface('wifi')
 
     status = Status(standalone=True, click_events=False)
@@ -164,6 +169,22 @@ def main():
             'playing': '\uf04b ',
             'stopped': '\uf04d',
         }
+    )
+
+    status.register(
+        'mail',
+        backends=[
+            imap.IMAP(
+                host='imap.gmail.com',
+                username=mail_accounts['Gmail']['user'],
+                password=mail_accounts['Gmail']['password'],
+            ),
+        ],
+        color=COLOR_DEFAULT,
+        color_unread=COLOR_IMPORTANT,
+        format='\uf0e0 {unread}',
+        format_plural='\uf0e0 {current_unread}',
+        interval=60,
     )
 
     status.register(

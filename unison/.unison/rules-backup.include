@@ -49,16 +49,13 @@ path = .xchat2
 
 path = .MP3Diags.{dat,ini}
 path = .Xdefaults
-path = .Xmodmap
-path = .Xresources
+path = .X{modmap,resources}
 path = .easyMP3Gain
 path = .hushlogin
 path = .octaverc
 path = .profile
 path = .tmux.conf
-path = .xinitrc
-path = .xprofile
-path = .xsession
+path = .x{initrc,profile,session}
 path = .z{login,logout,profile,shenv,shrc}
 
 ignore = Path .config/QtProject.conf

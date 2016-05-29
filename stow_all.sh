@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir --verbose --parents \
 	"${HOME}/.config/gnupg" \
+	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
@@ -26,7 +27,6 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/mpv" \
 		"${HOME}/.config/systemd/user" \
 		"${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" \
-		"${HOME}/.local/bin" \
 		"${HOME}/.unison"
 	stow --restow --target "${HOME}" --ignore=.venv \
 		a11y \

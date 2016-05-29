@@ -33,3 +33,9 @@ if [[ -f "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini" ]]; then
 	GTK_THEME="$(grep gtk-theme-name ${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini)"
 	export GTK_THEME="$(echo ${GTK_THEME##*=} |tr -d '[[:space:]]'):light"
 fi
+
+# Fix some issues if no DE is used
+if [[ -z ${DESKTOP_SESSION} ]]; then
+	export DESKTOP_SESSION='gnome'
+	export GNOME_DESKTOP_SESSION=1
+fi

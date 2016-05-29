@@ -8,11 +8,6 @@ if [[ -z ${DESKTOP_SESSION} ]]; then
 	if [[ -x /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 ]]; then
 		/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 	fi
-
-	# Start GNOME Keyring daemon
-	if which gnome-keyring-daemon >/dev/null 2>&1; then
-		export $(gnome-keyring-daemon --start)
-	fi
 fi
 
 # Enable/disable numlock

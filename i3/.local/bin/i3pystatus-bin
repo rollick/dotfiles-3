@@ -70,8 +70,8 @@ def is_laptop():
     """Detect whether or not the current machine is a laptop.
 
     Return value:
-        bool -- True -- Machine is a Laptop (or related type).
-                False -- Machine is a Desktop.
+        bool -- True -- Machine is a laptop (or related type).
+                False -- Machine is a desktop PC.
     """
     proc_path = '/proc/acpi/battery/'
     sys_path = '/sys/class/module/battery/'
@@ -83,7 +83,7 @@ def is_laptop():
 
 
 def main():
-    """Configure i3pystatus and run i3pystatus."""
+    """Configure and run i3pystatus."""
     ethernet_interface = first_network_interface('ethernet')
     mail_accounts = configparser.ConfigParser()
     mail_accounts.read(CONFIG_MAIL_ACCOUNTS)

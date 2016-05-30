@@ -1,0 +1,600 @@
+#!/bin/env python
+# Copyright (C) 2016 by Raphael Scholer
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+"""Show a menu using dmenu based upon menu definiton files.
+
+Definition file syntax:
+    The definition file needs to be a JSON file, with the only
+    allowed elements being dictionaries and strings.
+
+    To create a separator add a key consisting of at least one space and a
+    string containing at least on space as it's value. Each separator on the
+    same level need a different amount of spaces as it's name.
+
+Example definition file:
+    {
+        "menu": {
+            "command1": "executable",
+            "command2": "executable"
+        },
+        " ": " ",
+        "command3": "executable"
+    }
+"""
+import argparse
+import collections
+import json
+import os
+import posixpath
+import re
+import shlex
+import subprocess
+import sys
+
+
+DmenuConfig = collections.namedtuple(
+    'DmenuConfig',
+    (
+        'cmnd',
+        'prompt_prefix',
+        'menu_suffix',
+        'case_sensitive'
+    )
+)
+
+
+class MenuBasePathError(BaseException):
+    """Base path does not exist in menu."""
+
+    pass
+
+
+class MenuDict(collections.UserDict):
+    """Dictionary representing the menu structure."""
+
+    def __init__(self, dct=None):
+        """Initialize object.
+
+        Keyword arguments:
+            dct -- Dictionary representing the menu layout.
+        """
+        self.data = collections.OrderedDict()
+
+        if dct:
+            self.replace(dct)
+
+    def flatten(self, dct, _path=None):
+        """Flatten a menu structure and add to self.data.
+
+        Positional arguments:
+             dct -- Dictionary to inspect.
+
+        Keyword arguments:
+            _path -- Path of the dictionary in the menu tree.
+                     Providing this keyword is only needed when this method is
+                     called recurseivly.
+        """
+        path = _path or posixpath.sep
+
+        if not self.data:
+            self.data.update({path: None})
+
+        for key, item in dct.items():
+            if isinstance(item, dict):
+                self.data.update(
+                    {posixpath.join(path, key): None}
+                )
+                self.flatten(
+                    item,
+                    posixpath.join(path, key)
+                )
+            else:
+                self.data.update(
+                    {posixpath.join(path, key): item}
+                )
+
+    def paths_by_category(self, category='all', base=None):
+        """Get a list of all paths selected by a category.
+
+        Keyword arguments:
+            category -- Available categories: all, commands, submenus
+
+                        All paths are returned if category is unknown.
+            base -- Base path.
+
+        Return value:
+            list -- List of matching paths.
+        """
+        base = base or posixpath.sep
+        base = menu_abspath(base)
+
+        check_base_in_menu(base, self.data)
+
+        if category == 'commands':
+            paths = [
+                k
+                for k, v in self.data.items()
+                if v and k.startswith(base)
+            ]
+        elif category == 'submenus':
+            paths = [
+                k
+                for k, v in self.data.items()
+                if not v and k.startswith(base) and k != base
+            ]
+        else:
+            paths = [
+                k
+                for k in self.data
+                if k.startswith(base) and k.strip(base)
+            ]
+
+        return paths
+
+    def replace(self, dct):
+        """Replace menu definition with a new one.
+
+        Positional arguments:
+            dct -- Dictionary representing the menu structure.
+        """
+        self.data = collections.OrderedDict()
+
+        self.flatten(dct)
+
+
+def menu_abspath(path):
+    """Return an absolute path, without using os.getcwd().
+
+    Positional arguments:
+        path -- Path to process.
+
+    Return value:
+        str -- Absolute path.
+    """
+    if not posixpath.isabs(path):
+        path = posixpath.join(posixpath.sep, path)
+
+    return posixpath.normpath(path)
+
+
+def check_base_in_menu(base, menu):
+    """Check whether or not base exists in the menu definition.
+
+    If base does not exists raise an MenuBasePathError.
+
+    Positional arguments:
+        base -- Base path to check.
+        menu -- MenuDict - menu definition.
+    """
+    for entry in menu:
+        path = posixpath.dirname(entry)
+        if base == path:
+            break
+    else:
+        raise MenuBasePathError(base)
+
+
+def dmenu_run(entries, dmenu_cfg, prompt_menu='', prompt_error=''):
+    """Run dmenu.
+
+    Positional arguments:
+        entries -- List of menu entries to display.
+        dmenu_cfg -- DmenuConfig object - dmenu configuration.
+
+    Keyword arguments:
+        prompt_menu -- Current submenu.
+        prompt_error -- Error message.
+
+    Return value:
+        tuple -- [0] - Selected entry
+                 [1] - Returncode
+    """
+    cmndopts = []
+
+    if not dmenu_cfg.case_sensitive:
+        cmndopts.append('-i')
+
+    # Create prompt
+    if dmenu_cfg.prompt_prefix and prompt_menu:
+        prompt_menu = '{}{}'.format(' - ', prompt_menu)
+
+    prompt = '{}{}{}:'.format(
+        dmenu_cfg.prompt_prefix,
+        prompt_menu,
+        prompt_error
+    )
+
+    # Create dmenu commandline
+    command = 'echo -e {} |{}'.format(
+        shlex.quote(os.linesep.join(entries)),
+        '{} {} -p {}'.format(
+            shlex.split(dmenu_cfg.cmnd)[0],
+            ' '.join(cmndopts),
+            shlex.quote(prompt)
+        ),
+    )
+
+    # Run command
+    proc = subprocess.run(
+        command,
+        stderr=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        shell=True,
+    )
+
+    try:
+        proc.check_returncode()
+    except subprocess.CalledProcessError as e:
+        # Ignore deliberate quitting of an dmenu instance
+        if e.stderr and not e.returncode == 1:
+            raise
+
+    return (
+        proc.stdout.decode().strip(),
+        proc.returncode
+    )
+
+
+def main(argv=None):
+    """Main function.
+
+    Keyword arguments:
+        argv -- List populated with command line arguments.
+                First element is the name of the calling script.
+                If argv is None, sys.argv will be used as fallback.
+
+                See `argv[0] --help` for all possible values.
+
+    Return value:
+        int -- 0 - Success
+              >0 - Failure
+    """
+    argv = argv or sys.argv
+
+    args = parse_arguments(argv)
+
+    # Fix common mistakes when specifing a base path
+    args.base = menu_abspath(args.base)
+
+    try:
+        menu = menu_from_json(args.file)
+    except OSError as e:
+        print(
+            '{}: {}'.format(e.strerror, e.filename),
+            file=sys.stderr
+        )
+        return 1
+    except json.decoder.JSONDecodeError as e:
+        print(
+            '{} [{}]'.format(e, args.file),
+            file=sys.stderr
+        )
+        return 1
+
+    # Run subcommands
+    if args.list_menu:
+        return subcommand_list_menus(menu, args.base, args.list_menu)
+    else:
+        dmenu_cfg = DmenuConfig(
+            args.dmenu,
+            args.prompt,
+            args.menu_suffix,
+            args.case_sensitive,
+        )
+
+        return subcommand_show(menu, args.base, dmenu_cfg)
+
+    return 0
+
+
+def menu_from_json(fp):
+    """Read menu definition from a file and return a MenuDict.
+
+    Keyword arguments:
+        fp -- Path to menu definition file.
+
+    Return value:
+        MenuDict
+    """
+    fp = os.path.expanduser(fp)
+
+    with open(fp, 'r') as fobj:
+        dct = json.load(fobj, object_pairs_hook=collections.OrderedDict)
+
+    menu = MenuDict(dct)
+
+    return menu
+
+
+def parse_arguments(argv):
+    """Parse arguments.
+
+    Keyword arguments:
+        argv -- List populated with command line arguments.
+                First element is the name of the calling script.
+
+    Return value:
+        argparse.Namespace
+    """
+    description = 'Show a menu using dmenu based upon menu definiton files.'
+    usage = '{} [OPTION]... FILE'.format(os.path.basename(argv[0]))
+    version = (
+        'dmenu-select 0.1\n'
+        'Copyright (C) 2016 by Raphael Scholer\n\n'
+
+        'Permission is hereby granted, free of charge, to any person '
+        'obtaining a copy \n'
+        'of this software and associated documentation files '
+        '(the "Software"), to deal\n'
+        'in the Software without restriction, including without limitation '
+        'the rights\n'
+        'to use, copy, modify, merge, publish, distribute, sublicense, '
+        'and/or sell\n'
+        'copies of the Software, and to permit persons to whom '
+        'the Software is\n'
+        'furnished to do so, subject to the following conditions:\n\n'
+
+        'The above copyright notice and this permission notice shall '
+        'be included in\n'
+        'all copies or substantial portions of the Software.\n\n'
+
+        'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, '
+        'EXPRESS OR\n'
+        'IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF '
+        'MERCHANTABILITY,\n'
+        'FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT '
+        'SHALL THE\n'
+        'AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR '
+        'OTHER\n'
+        'LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, '
+        'ARISING FROM,\n'
+        'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER '
+        'DEALINGS IN\n'
+        'THE SOFTWARE.'
+    )
+
+    # Add parser
+    parser = argparse.ArgumentParser(
+        add_help=False,
+        allow_abbrev=False,
+        description=description,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        usage=usage,
+    )
+
+    # Positional arguments
+    parser.add_argument(
+        'file',
+        metavar='FILE',
+        help='menu definition file',
+        action='store',
+    )
+
+    # Optional arguments
+    parser.add_argument(
+        '--help',
+        help='display this help and exit',
+        action='help',
+    )
+
+    parser.add_argument(
+        '--version',
+        help='output version information and exit',
+        action='version',
+        version=version,
+    )
+
+    parser.add_argument(
+        '--base',
+        metavar='MENU',
+        help='base menu',
+        action='store',
+        default=posixpath.sep,
+    )
+
+    parser.add_argument(
+        '--case-sensitive',
+        help='case sensitive selection',
+        action='store_true'
+    )
+
+    parser.add_argument(
+        '--dmenu',
+        help='path to dmenu binary',
+        metavar='CMD',
+        action='store',
+        default='dmenu',
+    )
+
+    parser.add_argument(
+        '--list-menu',
+        metavar='CATEGORY',
+        help='list all menu entries (all, commands or submenus)',
+        action='store',
+        choices=('all', 'commands', 'submenus'),
+    )
+
+    parser.add_argument(
+        '--prompt',
+        metavar='PROMPT',
+        help='prefix for prompt',
+        action='store',
+        default='select',
+    )
+
+    parser.add_argument(
+        '--menu-suffix',
+        metavar='SUFFIX',
+        help='string which will be displayed after a menu entry',
+        action='store',
+        default=' \u2192',
+    )
+
+    return parser.parse_args(argv[1:])
+
+
+def select_from_menu(menu, base, dmenu_cfg):
+    """Show prompt and select entry from menu.
+
+    Positional arguments:
+        menu -- A MenuDict representing all paths.
+        base -- Base path.
+        dmenu_cfg -- DmenuConfig object - dmenu configuration.
+
+    Return value:
+        str -- Selected command.
+    """
+    def append_suffix(k, v, suffix):
+        if v:
+            return k
+        else:
+            return '{}{}'.format(k, suffix)
+
+    def path_in_base(k, base):
+        path, name = posixpath.split(k)
+
+        return (name and path.startswith(base) and not path.strip(base))
+
+    command = None
+    path_initial = menu_abspath(base)
+    path_current = path_initial
+    prompt_error = ''
+
+    check_base_in_menu(path_initial, menu)
+
+    while True:
+        path_current = menu_abspath(path_current)
+
+        entries = [
+            append_suffix(k.strip(path_current), v, dmenu_cfg.menu_suffix)
+            for k, v in menu.items()
+            if path_in_base(k, path_current)
+        ]
+
+        selection, returncode = dmenu_run(
+            entries,
+            dmenu_cfg,
+            prompt_menu=path_current.strip(path_initial),
+            prompt_error=prompt_error
+        )
+
+        path_selected = menu_abspath(
+            posixpath.join(
+                path_current,
+                selection.rstrip(dmenu_cfg.menu_suffix)
+            )
+        )
+
+        prompt_error = ''
+
+        if not selection and returncode == 0:
+            # Reopen same path, because a separator was selected
+            pass
+        elif selection and not menu.get(path_selected) and selection in entries:
+            # One menu level down
+            path_current = path_selected
+        elif selection and not menu.get(path_selected) and selection not in entries:
+            # Reopen same path, and display an error message
+            prompt_error = ' ["{}" is not a valid selection]'.format(selection)
+        elif not selection and not path_current == path_initial:
+            # One menu level up
+            path_current = posixpath.join(path_selected, posixpath.pardir)
+        elif not selection and path_current == path_initial:
+            # User wants to quit dmenu-select
+            break
+        else:
+            # This seems to be a command
+            command = menu.get(path_selected)
+            break
+
+    return command
+
+
+def subcommand_list_menus(menu, base, category):
+    """Print a list of all menu entries selected by category.
+
+    Positional arguments:
+        menu -- MenuDict - menu definition.
+        base -- Base path.
+        category -- Category of menu entries.
+                    For a list of allowed categories see either
+                    parse_arguments() or MenuDict.paths_by_category().
+
+    Return value:
+        int -- 0 - Success
+               >0 - Failure
+    """
+    try:
+        print(
+            *[
+                path.strip(base)
+                for path in menu.paths_by_category(category, base)
+            ],
+            sep=os.linesep
+        )
+    except MenuBasePathError as e:
+        print(
+            '"{}" does not exist in the menu definition.'.format(e),
+            file=sys.stderr
+        )
+        return 1
+
+    return 0
+
+
+def subcommand_show(menu, base, dmenu_cfg):
+    """Show a menu with dmenu and run selected command.
+
+    Positional arguments:
+        menu -- MenuDict - menu definition.
+        base -- Base path.
+        dmenu_cfg -- DmenuConfig -- dmenu configuration.
+
+    Return value:
+        int -- 0 - Success
+               >0 - Failure
+    """
+    try:
+        selection = select_from_menu(menu, base, dmenu_cfg)
+    except MenuBasePathError as e:
+        print(
+            '"{}" does not exist in the menu definition.'.format(e),
+            file=sys.stderr
+        )
+        return 1
+    except subprocess.CalledProcessError as e:
+        print(
+            re.sub(
+                '^.* [0-9]*: ',
+                '',
+                e.stderr.decode().strip
+            ),
+            file=sys.stderr
+        )
+        return e.returncode
+    else:
+        if selection:
+            subprocess.run('{} &'.format(selection), shell=True)
+
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

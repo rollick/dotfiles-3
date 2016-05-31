@@ -5,7 +5,7 @@ mkdir --verbose --parents \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
-stow --restow --target "${HOME}" --ignore=.venv \
+stow --restow --target "${HOME}" --ignore='\.venv' \
 	flake8 \
 	git \
 	gnupg \

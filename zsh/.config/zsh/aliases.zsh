@@ -100,11 +100,11 @@ fi
 if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
-if [[ -n ${commands[python]} ]]; then
-	alias prettyjson='python -m json.tool'
-elif [[ -n ${commands[python3]} ]]; then
+if [[ -n ${commands[python3]} ]]; then
+	alias httpserver='python3 -m http.server'
 	alias prettyjson='python3 -m json.tool'
 elif [[ -n ${commands[python2]} ]]; then
+	alias httpserver='python2 -m SimpleHTTPServer'
 	alias prettyjson='python2 -m json.tool'
 fi
 [[ -n ${commands[top]} ]] && alias utop="${aliases[top]:-top} -u ${USER}"

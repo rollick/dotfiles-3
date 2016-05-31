@@ -28,7 +28,7 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/systemd/user" \
 		"${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" \
 		"${HOME}/.unison"
-	stow --restow --target "${HOME}" --ignore=.venv \
+	stow --restow --target "${HOME}" --ignore='\.venv' \
 		a11y \
 		appearance \
 		cmus \

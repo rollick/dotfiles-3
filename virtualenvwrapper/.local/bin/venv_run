@@ -21,7 +21,7 @@
 venv_path="${WORKON_HOME:-${XDG_DATA_HOME:-${HOME}/.local}/virtualenvs}"
 
 if [[ "${1}" == "--help" ]]; then
-	echo -e 'usage: venv_run [OPTION]... [VIRTUAL_ENVIRONMENT] [SCRIPT]\n'
+	echo -e "usage: $(basename ${0}) [OPTION]... [VIRTUAL_ENVIRONMENT] [SCRIPT]\n"
 	echo -e 'Run a python script inside a virtual environment\n'
 	echo    'positional arguments:'
 	echo -e '    SCRIPT              script to run inside the virtual environment'

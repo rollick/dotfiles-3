@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 print_help () {
-	echo -e 'usage: venv_run [OPTION]... [VIRTUAL_ENVIRONMENT...]\n'
+	echo -e "usage: $(basename ${0}) [OPTION]... [VIRTUAL_ENVIRONMENT...]\n"
 	echo -e 'Update all python modules inside a virtual environment\n'
 	echo    'positional arguments:'
 	echo -e '    VIRTUAL_ENVIRONMENT virtual environment which is to be updated'

@@ -52,7 +52,9 @@ elif [[ "${1}" == "--version" ]]; then
 else
 	if [[ -f "${venv_path}/${1}/bin/activate" ]]; then
 		source "${venv_path}/${1}/bin/activate"
+
 		shift
-		"${@}"
+
+		exec "${@}"
 	fi
 fi

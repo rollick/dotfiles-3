@@ -84,7 +84,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
 if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
-	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock --eject --detach"
+	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock"
 fi
 alias zcalc="${aliases[zcalc]:-zcalc} -f"
 

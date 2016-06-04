@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Use rofi as a drop-in replacement for dmenu_run.
 if which rofi >/dev/null 2>&1; then
 	rofi -show run

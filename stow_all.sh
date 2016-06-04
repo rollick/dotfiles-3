@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 mkdir --verbose --parents \
 	"${HOME}/.config/gnupg" \
 	"${HOME}/.local/bin" \

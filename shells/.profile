@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Fix for unknown terminals
 if [[ -n "${SSH_CONNECTION}" ]]; then

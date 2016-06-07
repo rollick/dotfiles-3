@@ -113,6 +113,10 @@ fi
 # Hide some commands from history
 [[ -n ${commands[xprop]} ]] && alias xprop=" ${aliases[xprop]:-xprop}"
 
+# Add prompt compatibility
+[[ -n ${commands[clear]} ]] && alias clear="unset PROMPT_SHOWN; ${aliases[clear]:-clear}"
+[[ -n ${commands[reset]} ]] && alias reset="unset PROMPT_SHOWN; ${aliases[reset]:-reset}"
+
 # Global aliases
 alias -g C='|wc -l'
 alias -g ES='2>&1'

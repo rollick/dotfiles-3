@@ -1,3 +1,0 @@
-#!/bin/zsh
-unset PROMPT_SHOWN
-=${0} "${@}"

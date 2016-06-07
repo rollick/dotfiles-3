@@ -35,7 +35,6 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 	source "${ZPLUG_HOME}/init.zsh"
 
 	zplug "hlissner/zsh-autopair", nice:10
-	zplug "knu/zsh-manydots-magic", use:manydots-magic, nice:19
 	zplug "petervanderdoes/git-flow-completion"
 	zplug "zplug/zplug" # Let zplug handle itself correctly
 	zplug "zsh-users/zsh-completions"

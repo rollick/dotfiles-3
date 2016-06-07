@@ -72,6 +72,7 @@ alias ls="${aliases[ls]:-ls} --time-style=long-iso"
 # Set options
 alias diff="${aliases[diff]:-diff} --unified"
 alias free="${aliases[free]:-free} --total"
+[[ -n ${commands[head]} ]] && alias head='head -n $(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
 alias info="${aliases[info]:-info} --vi-keys"
 alias ls="${aliases[ls]:-ls} --classify --group-directories-first --literal"
 alias mkdir="${aliases[mkdir]:-mkdir} --parents"
@@ -81,6 +82,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[ping6]} ]] && alias ping6="${aliases[ping6]:-ping6} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
+[[ -n ${commands[tail]} ]] && alias tail='tail -n $(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
 if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
 	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock"

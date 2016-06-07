@@ -33,7 +33,7 @@ alias mv="${aliases[mv]:-mv} --interactive"
 alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
 
 # Make some commands less verbose
-alias chgrp="${aliases[octave]:-octave-cli} --silent"
+alias octave="${aliases[octave]:-octave-cli} --silent"
 
 # Make some commands more verbose
 alias chgrp="${aliases[chgrp]:-chgrp} --changes"

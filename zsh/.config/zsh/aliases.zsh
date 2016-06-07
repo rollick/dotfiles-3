@@ -13,7 +13,6 @@ elif [[ -n ${commands[nvim]} ]]; then
 	alias vim='nvim'
 	alias vimdiff='nvim -d'
 fi
-[[ -n ${functions[zcalc_wrapper]} ]] && alias zcalc='zcalc_wrapper'
 
 # Use in non-GUI mode
 [[ -n ${commands[octave]} ]] && alias octave='octave-cli'
@@ -86,10 +85,8 @@ if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
 	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock"
 fi
-alias zcalc="${aliases[zcalc]:-zcalc} -f"
 
 # Define new commands
-[[ -n ${functions[zcalc]} ]] && alias calc=" noglob ${aliases[zcalc]:-zcalc} -e"
 alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"

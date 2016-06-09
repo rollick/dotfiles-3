@@ -16,7 +16,6 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	shells \
 	ssh \
 	tmux \
-	virtualenvwrapper \
 	zsh
 
 if [[ ${EUID} -ne 0 ]]; then

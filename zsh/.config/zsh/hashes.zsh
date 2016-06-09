@@ -4,6 +4,7 @@
 [[ -d '/var/log' ]] && hash -d log='/var/log'
 [[ -d '/var/log/old' ]] && hash -d alog='/var/log/old'
 hash -d media="/run/media/${USER}"
+[[ -d "${WORKON_HOME}" ]] && hash -d virtualenvs="${WORKON_HOME}"
 
 # Add local ABS mirror
 () {

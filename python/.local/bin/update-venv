@@ -53,8 +53,13 @@ print_version() {
 update() {
 	activate_script="${WORKON_HOME}/$(basename ${1})/bin/activate"
 
+	if [[ -d "${WORKON_HOME}/$(basename ${1})" ]]; then
+		pyvenv --upgrade "${WORKON_HOME}/$(basename ${1})"
+	fi
+
 	if [[ -f "${activate_script}" ]]; then
 		source "${activate_script}"
+		pip install --upgrade pip
 		pip install --upgrade $(pip list |awk '{print $1}')
 		deactivate
 	fi

@@ -1,6 +1,6 @@
 [alias]
 	br = branch
-	cdpull = "!cdpull() { cd $1 2>/dev/null && (echo ${1##*/}; shift; git pull $@; echo);}; cdpull"
+	cdpull = "!cdpull() { cd $1 2>/dev/null && (echo :: ${1##*/}; shift; git pull $@; echo);}; cdpull"
 	ci = commit
 	cia = commit --all
 	co = checkout

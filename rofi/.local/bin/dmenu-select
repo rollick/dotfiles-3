@@ -51,16 +51,11 @@ import sys
 
 DmenuConfig = collections.namedtuple(
     'DmenuConfig',
-    (
-        'cmnd',
-        'prompt_prefix',
-        'menu_suffix',
-        'case_sensitive'
-    )
+    ('cmnd', 'prompt_prefix', 'menu_suffix', 'case_sensitive')
 )
 
 
-class MenuBasePathError(BaseException):
+class MenuBasePathError(Exception):
     """Base path does not exist in menu."""
 
     pass
@@ -580,12 +575,9 @@ def subcommand_show(menu, base, dmenu_cfg):
         )
         return 1
     except subprocess.CalledProcessError as e:
+        message = re.sub(r'^.*: \w+ \d+:', '', e.stderr.decode())
         print(
-            re.sub(
-                '^.* [0-9]*: ',
-                '',
-                e.stderr.decode().strip
-            ),
+            message.strip(),
             file=sys.stderr
         )
         return e.returncode

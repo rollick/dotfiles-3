@@ -40,6 +40,7 @@ ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
 ####################
 # Application rules
 ####################
+path = .mozilla
 path = .nestopia
 path = .quodlibet
 path = .snes9x

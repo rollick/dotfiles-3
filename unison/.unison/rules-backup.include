@@ -75,6 +75,7 @@ ignore = Path .local/share/nvim/*
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*
+ignore = Path .mozilla/firefox/*/lock
 ignore = Path .unison/*
 
 ignorenot = Path .config/cmus/{*.theme,rc}

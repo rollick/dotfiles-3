@@ -44,6 +44,5 @@ if [[ ${EUID} -ne 0 ]]; then
 		sxiv \
 		unison \
 		urxvt \
-		x.org \
-		xdg
+		x.org
 fi

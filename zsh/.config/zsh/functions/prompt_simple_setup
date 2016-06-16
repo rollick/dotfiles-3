@@ -37,7 +37,7 @@ prompt_simple_check_user_info() {
 
 		[[ -n "${SSH_CONNECTION}" ]] && host="%{$fg_bold[white]%}%m"
 
-		prompt_simple_user_info=" ${user}${separator}${host}"
+		prompt_simple_user_info="${user}${separator}${host}"
 	else
 		prompt_simple_user_info=''
 	fi
@@ -45,7 +45,7 @@ prompt_simple_check_user_info() {
 
 prompt_simple_check_venv() {
 	if [[ -n ${VIRTUAL_ENV} ]]; then
-		prompt_simple_venv=" ${VIRTUAL_ENV:t}"
+		prompt_simple_venv="${VIRTUAL_ENV:t}"
 	else
 		prompt_simple_venv=''
 	fi
@@ -61,21 +61,31 @@ prompt_simple_set_prompt() {
 
 	# Show directory information
 	PROMPT+="%{$fg_bold[blue]%}%~"
-	PROMPT+="%{$fg_bold[black]%}"
-	PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
-	PROMPT+="%{$fg_bold[cyan]%}"
-	PROMPT+="${prompt_simple_git_arrows}"
-	PROMPT+="%{$fg_bold[magenta]%}"
-	PROMPT+="${prompt_simple_venv}"
+	if [[ -n ${vcs_info_msg_0_} ]]; then
+		PROMPT+="%{$reset_color%}"
+		PROMPT+=" %{$fg_bold[black]%}"
+		PROMPT+="${vcs_info_msg_0_}${prompt_simple_git_dirty}"
+		PROMPT+="%{$fg_bold[cyan]%}"
+		PROMPT+="${prompt_simple_git_arrows}"
+	fi
+	if [[ -n ${prompt_simple_venv} ]]; then
+		PROMPT+="%{$reset_color%}"
+		PROMPT+=" %{$fg_bold[magenta]%}"
+		PROMPT+="${prompt_simple_venv}"
+	fi
 
 	# Show user information
-	PROMPT+="${prompt_simple_user_info}"
+	if [[ -n ${prompt_simple_user_info} ]]; then
+		PROMPT+="%{$reset_color%}"
+		PROMPT+=" ${prompt_simple_user_info}"
+	fi
 
 	# Show prompt symbol
+	PROMPT+="%{$reset_color%}"
 	PROMPT+="${prompt_newline}"
 	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
 	[[ "${TERM}" != 'linux' ]] && PROMPT+=$'\u276F' || PROMPT+='>'
-	PROMPT+=" %{$reset_color%}"
+	PROMPT+="%{$reset_color%} "
 }
 
 prompt_simple_set_title() {
@@ -103,8 +113,8 @@ PROMPT_EOL_MARK=''
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' use-simple true
 zstyle ':vcs_info:*' max-exports 2
-zstyle ':vcs_info:git*' formats ' %b'
-zstyle ':vcs_info:git*' actionformats ' %b|%a'
+zstyle ':vcs_info:git*' formats '%b'
+zstyle ':vcs_info:git*' actionformats '%b|%a'
 
 # Setup misc. prompts
 SPROMPT='zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) '

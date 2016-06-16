@@ -61,7 +61,7 @@ class MenuBasePathError(Exception):
     pass
 
 
-class MenuDict(collections.UserDict):
+class Menu(collections.UserDict):
     """Dictionary representing the menu structure."""
 
     def __init__(self, dct=None):
@@ -104,6 +104,19 @@ class MenuDict(collections.UserDict):
                 self.data.update(
                     {posixpath.join(path, key): item}
                 )
+
+    def from_file(self, fp):
+        """Read menu definition from a file.
+
+        Keyword arguments:
+            fp -- Path to menu definition file.
+        """
+        fp = os.path.expanduser(fp)
+
+        with open(fp, 'r') as fobj:
+            dct = json.load(fobj, object_pairs_hook=collections.OrderedDict)
+
+        self.replace(dct)
 
     def paths_by_category(self, category='all', base=None):
         """Get a list of all paths selected by a category.
@@ -268,8 +281,10 @@ def main(argv=None):
     # Fix common mistakes when specifing a base path
     args.base = menu_abspath(args.base)
 
+    menu = Menu()
+
     try:
-        menu = menu_from_json(args.file)
+        menu.from_file(args.file)
     except OSError as e:
         print(
             '{}: {}'.format(e.strerror, e.filename),
@@ -297,25 +312,6 @@ def main(argv=None):
         return subcommand_show(menu, args.base, dmenu_cfg)
 
     return 0
-
-
-def menu_from_json(fp):
-    """Read menu definition from a file and return a MenuDict.
-
-    Keyword arguments:
-        fp -- Path to menu definition file.
-
-    Return value:
-        MenuDict
-    """
-    fp = os.path.expanduser(fp)
-
-    with open(fp, 'r') as fobj:
-        dct = json.load(fobj, object_pairs_hook=collections.OrderedDict)
-
-    menu = MenuDict(dct)
-
-    return menu
 
 
 def parse_arguments(argv):

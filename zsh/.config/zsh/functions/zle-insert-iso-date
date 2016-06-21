@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Insert ISO date after cursor
+LBUFFER+="$(date +%Y-%m-%d)"

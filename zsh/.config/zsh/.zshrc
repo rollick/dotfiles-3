@@ -7,6 +7,7 @@
 mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
 
 # Load zsh (upstream) functions
+autoload -Uz keeper && keeper
 autoload -Uz promptinit
 autoload -Uz zmv
 

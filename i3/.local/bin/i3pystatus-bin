@@ -57,11 +57,10 @@ def first_network_interface(interface_type):
         'loopback': 'l',
         'wifi': 'w',
     }
-    interfaces = os.listdir('/sys/class/net')
 
-    for interface in interfaces:
-        if interface.startswith(prefixes[interface_type]):
-            return interface
+    for entry in os.scandir('/sys/class/net'):
+        if entry.is_dir() and entry.name.startswith(prefixes[interface_type]):
+            return entry.name
     else:
         return ''
 

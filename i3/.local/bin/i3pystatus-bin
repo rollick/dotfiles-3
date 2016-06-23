@@ -23,6 +23,7 @@ import configparser
 import os
 import sys
 
+from i3pystatus import IntervalModule
 from i3pystatus import Status
 from i3pystatus.mail import imap
 from i3pystatus.updates import cower
@@ -36,6 +37,39 @@ COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
 CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts.ini')
+DISTRIBUTION = os.uname().release.rpartition('-')[2].lower()
+
+
+class RestartReminder(IntervalModule):
+    """Remind the user to reboot if a new kernel was installed.
+
+    This code only works if **all** previous kernels were removed.
+
+    Settings:
+        color - The color of the text.
+        text - Text to display.
+    """
+
+    settings = (
+        ('color', 'The color of the text'),
+        ('text', 'Text to display')
+    )
+
+    color = '#ff0000'
+    interval = 10
+    text = 'Reboot required'
+
+    def run(self):
+        """Run module."""
+        path = os.path.join('/lib/modules/', os.uname().release)
+
+        if os.path.exists(path):
+            self.output = None
+        else:
+            self.output = {
+                'full_text': self.text,
+                'color': self.color
+            }
 
 
 def first_network_interface(interface_type):
@@ -219,6 +253,13 @@ def main():
         format_working='',
         interval=10 * 60,
     )
+
+    if DISTRIBUTION == 'arch':
+        status.register(
+            RestartReminder,
+            color='#00ff00',
+            text='\uf011 Reboot required'
+        )
 
     status.run()
 

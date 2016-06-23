@@ -64,7 +64,20 @@ new_window 1pixel
 ##############################
 # Workspaces
 ##############################
+set $monitor1 HDMI-1
+set $monitor2 VGA-1
+
 workspace_auto_back_and_forth yes
+
+workspace 1 output $monitor1
+workspace 2 output $monitor2
+workspace 3 output $monitor1
+workspace 4 output $monitor2
+workspace 5 output $monitor1
+workspace 6 output $monitor2
+workspace 7 output $monitor1
+workspace 8 output $monitor2
+workspace 9 output $monitor1
 
 ##############################
 # Window rules

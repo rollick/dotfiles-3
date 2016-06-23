@@ -128,7 +128,6 @@ def main():
         'clock',
         color=COLOR_DEFAULT,
         format='%Y-%m-%d %H:%M',
-        interval=1,
     )
 
     if is_laptop():
@@ -146,7 +145,6 @@ def main():
         color_muted=COLOR_DISABLED,
         format='\uf028 {volume}%',
         format_muted='\uf026   {volume}%',
-        interval=1,
         mixer='Headphone',
     )
 
@@ -156,7 +154,6 @@ def main():
         caps_on='\U0001f170',
         color=COLOR_DEFAULT,
         format='{caps}{num}{scroll}',
-        interval=1,
         num_off='\U0001f13d',
         num_on='\U0001f17d',
         scroll_off='\U0001f142',
@@ -168,7 +165,6 @@ def main():
             'backlight',
             color=COLOR_DEFAULT,
             format='\uf185 {percentage}%',
-            interval=1,
         )
 
     if wifi_interface:
@@ -180,7 +176,6 @@ def main():
             format_down='\uf1eb',
             format_up='\uf1eb',
             interface=wifi_interface,
-            interval=10,
         )
 
     if ethernet_interface:
@@ -191,7 +186,6 @@ def main():
             format_down='\uf0e8',
             format_up='\uf0e8',
             interface=ethernet_interface,
-            interval=10,
         )
 
     if ethernet_interface or wifi_interface:
@@ -201,7 +195,6 @@ def main():
             color_offline=COLOR_DISABLED,
             format_offline='\uf127',
             format_online='\uf0c1',
-            interval=10,
         )
 
     status.register(
@@ -213,7 +206,6 @@ def main():
             '[ ({song_elapsed:%M:%S}/{song_length:%M:%S})]'
         ),
         format_not_running='',
-        interval=1,
         status={
             'paused': '\uf04c ',
             'playing': '\uf04b ',

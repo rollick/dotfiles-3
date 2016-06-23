@@ -96,15 +96,15 @@ nmap <F12> :below split +te<CR>
 tnoremap <ESC> <C-\><C-n>
 
 " Copy to clipboard
-nnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
 vnoremap  <leader>y  "+y
 
 " Paste from clipboard
-nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-vnoremap <leader>p "+p
+nnoremap <leader>p "+p
 vnoremap <leader>P "+P
+vnoremap <leader>p "+p
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings

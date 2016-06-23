@@ -8,13 +8,13 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' special-dirs '..'
 
 # Setup completion menu
-zstyle ':completion:*' menu select=1
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%U%d%u%{$reset_color%}"
+zstyle ':completion:*' menu select=1
 zstyle ':completion:*:corrections' format "%{$fg_bold[green]%}%U%d (errors: %e)%u%{$reset_color%}"
+zstyle ':completion:*:default' select-prompt "%{$fg_bold[black]%}Match %M%P%{$reset_color%}"
+zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%U%d%u%{$reset_color%}"
 zstyle ':completion:*:messages' format "%{$fg_bold[yellow]%}%U%d%u%{$reset_color%}"
 zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}No matches for: %d%{$reset_color%}"
-zstyle ':completion:*:default' select-prompt "%{$fg_bold[black]%}Match %M%P%{$reset_color%}"
 
 # Hide some files in completion, except when using (rm|cp|mv|zmv)
 zstyle ':completion:*:(all-|)files' ignored-patterns '(*.BAK|*.bak|*.o|*.aux|*.toc|*.swp|*~)'
@@ -32,15 +32,15 @@ zstyle ':completion:*:colordiff:*' ignore-line yes
 zstyle ':completion:*:diff:*' ignore-line yes
 
 # Completion for kill
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u ${USER} -o pid,cmd'
+zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:kill:*' insert-ids single
 
-zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
 zstyle ':completion:*:ssh:*' tag-order users hosts
+zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
 # List repo packages before aur packages in pacaur
 zstyle ':completion:*:pacaur:*' group-order repo_packages packages
@@ -52,8 +52,8 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 
 # Completion for man-pages
-zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:man:*' menu yes select
+zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals*' insert-sections true
 
 # Completions for lp

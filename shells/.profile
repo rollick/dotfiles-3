@@ -49,8 +49,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
 # Load lesspipe, which provides advanced functions for less
-which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)
 which lesspipe >/dev/null 2>&1 && eval $(lesspipe)
+which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)
 
 # Set path for gnupg
 export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"

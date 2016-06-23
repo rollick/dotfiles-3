@@ -118,22 +118,22 @@ def main():
 
     status.register(
         'keyboard_locks',
-        caps_on='\U0001f170',
         caps_off='\U0001f130',
+        caps_on='\U0001f170',
         color=COLOR_DEFAULT,
         format='{caps}{num}{scroll}',
         interval=1,
-        num_on='\U0001f17d',
         num_off='\U0001f13d',
-        scroll_on='\U0001f182',
+        num_on='\U0001f17d',
         scroll_off='\U0001f142',
+        scroll_on='\U0001f182',
     )
 
     if is_laptop():
         status.register(
             'backlight',
-            format='\uf185 {percentage}%',
             color=COLOR_DEFAULT,
+            format='\uf185 {percentage}%',
             interval=1,
         )
 
@@ -142,9 +142,9 @@ def main():
             'network',
             color_down=COLOR_DISABLED,
             color_up=COLOR_DEFAULT,
+            dynamic_color=False,
             format_down='\uf1eb',
             format_up='\uf1eb',
-            dynamic_color=False,
             interface=wifi_interface,
             interval=10,
         )
@@ -165,8 +165,8 @@ def main():
             'online',
             color=COLOR_DEFAULT,
             color_offline=COLOR_DISABLED,
-            format_online='\uf0c1',
             format_offline='\uf127',
+            format_online='\uf0c1',
             interval=10,
         )
 

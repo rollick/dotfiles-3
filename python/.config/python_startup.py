@@ -5,6 +5,7 @@ IMPORTANT: This file needs to be interpretable in python 2.7 and >3.0.
 """
 import atexit
 import json  # noqa
+import math  # noqa
 import os
 import re  # noqa
 import readline

@@ -118,6 +118,7 @@ def is_laptop():
 def main():
     """Configure and run i3pystatus."""
     ethernet_interface = first_network_interface('ethernet')
+    laptop = is_laptop()
     mail_accounts = configparser.ConfigParser()
     mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
     wifi_interface = first_network_interface('wifi')
@@ -130,7 +131,7 @@ def main():
         format='%Y-%m-%d %H:%M',
     )
 
-    if is_laptop():
+    if laptop:
         status.register(
             'battery',
             alert=True,
@@ -160,7 +161,7 @@ def main():
         scroll_on='\U0001f182',
     )
 
-    if is_laptop():
+    if laptop:
         status.register(
             'backlight',
             color=COLOR_DEFAULT,

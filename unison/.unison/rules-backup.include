@@ -49,8 +49,7 @@ path = .unison
 path = .xchat2
 
 path = .MP3Diags.{dat,ini}
-path = .Xdefaults
-path = .X{modmap,resources}
+path = .X{defaults,modmap,resources}
 path = .easyMP3Gain
 path = .gist-vim
 path = .hushlogin

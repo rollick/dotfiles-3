@@ -15,6 +15,7 @@ fi
 
 export GIMP2_DIRECTORY="${XDG_CONFIG_HOME:-${HOME}/.config}/gimp2"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-2.0/gtkrc-2.0"
+export QUODLIBET_USERDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/quodlibet"
 
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1

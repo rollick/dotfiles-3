@@ -4,4 +4,5 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 # *~
+TODO.txt
 neovim/.config/nvim/autoload/plug.vim*

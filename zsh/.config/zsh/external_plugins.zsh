@@ -48,10 +48,6 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 
 
 	# Run plugin specific code
-	if zplug check knu/zsh-manydots-magic; then
-		manydots-magic
-	fi
-
 	if zplug check zsh-users/zsh-syntax-highlighting; then
 		export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 	fi

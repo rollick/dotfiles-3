@@ -1,10 +1,10 @@
 # Add some directories to the hashtable
+[[ -d "${WORKON_HOME}" ]] && hash -d virtualenvs="${WORKON_HOME}"
+[[ -d "/run/media/${USER}" ]] && hash -d media="/run/media/${USER}"
 [[ -d "/var/spool/cups-pdf/${USER}" ]] && hash -d cups-pdf="/var/spool/cups-pdf/${USER}"
 [[ -d '/var/cache/pacman/pkg' ]] && hash -d paccache='/var/cache/pacman/pkg'
 [[ -d '/var/log' ]] && hash -d log='/var/log'
 [[ -d '/var/log/old' ]] && hash -d alog='/var/log/old'
-hash -d media="/run/media/${USER}"
-[[ -d "${WORKON_HOME}" ]] && hash -d virtualenvs="${WORKON_HOME}"
 
 # Add local ABS mirror
 () {

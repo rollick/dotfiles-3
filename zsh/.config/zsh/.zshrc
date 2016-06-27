@@ -12,8 +12,10 @@ autoload -Uz promptinit
 autoload -Uz zmv
 
 # Load own functions
-fpath=("${ZDOTDIR}/functions" ${fpath})
-autoload -Uz ${fpath[1]}/*(.,@N:t)
+if [[ -d "${ZDOTDIR}/functions" ]]; then
+	fpath=("${ZDOTDIR}/functions" ${fpath})
+	autoload -Uz ${fpath[1]}/*(.,@N:t)
+fi
 
 # Make sure all fpath and path entries are unique
 typeset -U fpath
@@ -34,4 +36,6 @@ source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/aliases.zsh"
 
 # Set prompt
-prompt simple
+if [[ -n ${functions[prompt_simple_setup]} ]]; then
+	prompt simple
+fi

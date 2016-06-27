@@ -46,8 +46,16 @@
 	# Hash "regular" git repositories
 	if [[ -d "${_XDG_DOCUMENTS_DIR}/Code" ]]; then
 		hash -d git-root="${_XDG_DOCUMENTS_DIR}/Code"
-		hash_git_repos "local" "${_XDG_DOCUMENTS_DIR}/Code/Local"
-		hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
+
+		if [[ -d "${_XDG_DOCUMENTS_DIR}/Code/Local" ]]; then
+			hash -d git-local="${_XDG_DOCUMENTS_DIR}/Code/Local"
+			hash_git_repos "local" "${_XDG_DOCUMENTS_DIR}/Code/Local"
+		fi
+
+		if [[ -d "${_XDG_DOCUMENTS_DIR}/Code/Remote" ]]; then
+			hash -d git-remote="${_XDG_DOCUMENTS_DIR}/Code/Remote"
+			hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
+		fi
 	fi
 
 	# Hash neovim plugins

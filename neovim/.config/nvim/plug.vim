@@ -30,6 +30,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'nvie/vim-flake8', {'for': 'python'}
 	Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
 	Plug 'tmux-plugins/vim-tmux'
+	Plug 'tpope/vim-characterize'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'

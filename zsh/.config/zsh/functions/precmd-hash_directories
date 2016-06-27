@@ -18,6 +18,9 @@
 	hash_directory "media" "/run/media/${USER}"
 	hash_directory "paccache" "/var/cache/pacman/pkg"
 	hash_directory "virtualenvs" "${WORKON_HOME}"
+
+	# Cleanup
+	unfunction hash_directory
 }
 
 # Add local ABS mirror
@@ -78,4 +81,7 @@
 			hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
 		fi
 	fi
+
+	# Cleanup
+	unfunction hash_git_repos
 }

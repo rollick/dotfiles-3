@@ -4,11 +4,3 @@ local LASTCMD="${history[$(( HISTCMD -1 ))]}"
 if [[ "${LASTCMD}" == *(cower|makepkg|pacaur|pacman)* ]]; then
 	rehash
 fi
-
-if [[ -n ${PROMPT_SHOWN} ]]; then
-	# Clear directory hash table
-	hash -dr
-
-	# Rehash
-	source "${ZDOTDIR}/hashes.zsh"
-fi

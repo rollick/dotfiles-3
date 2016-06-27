@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Add some directories to the hashtable
 [[ -d "${WORKON_HOME}" ]] && hash -d virtualenvs="${WORKON_HOME}"
 [[ -d "/run/media/${USER}" ]] && hash -d media="/run/media/${USER}"
@@ -57,13 +58,4 @@
 			hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
 		fi
 	fi
-
-	# Hash neovim plugins
-	hash_git_repos "neovim" "${_XDG_DATA_HOME}/nvim/plugged"
-
-	# Hash zsh plugins
-	for subdir in "${ZPLUG_HOME}"/repos/*(FN); do
-		name="${subdir:t}"
-		hash_git_repos "${name}" "${subdir}"
-	done
 }

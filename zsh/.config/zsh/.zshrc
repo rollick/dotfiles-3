@@ -31,7 +31,6 @@ source "${ZDOTDIR}/options.zsh"
 source "${ZDOTDIR}/completions.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
 [[ ${EUID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
-source "${ZDOTDIR}/hashes.zsh"
 source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/aliases.zsh"
 

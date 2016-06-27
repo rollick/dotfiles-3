@@ -18,40 +18,44 @@ hash -d media="/run/media/${USER}"
 	fi
 }
 
-# Add all git repositories inside $HOME/Projects
+# Hash git repositories
 () {
-	local d
-	local gitroot="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}/Code"
+	local _XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+	local _XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
+	local name
+	local subdir
 
-	if [[ -d "${gitroot}" ]]; then
-		hash -d git-root="${gitroot}"
+	hash_git_repos() {
+		local BASENAME="${1}"
+		local ROOT="${2}"
+		local name
+		local subdir
 
-		for d in "$gitroot"/{Local,Remote}/*(FN); do
-			if [[ -d "${d}/.git" ]]; then
-				hash -d "git-${d:h:t:l}-${d:t}"="${d}"
+		for subdir in "${ROOT}"/*(FN); do
+			if [[ -d "${subdir}/.git" ]]; then
+				name="${subdir:t}"
+				hash -d "git-${BASENAME}-${name}"="${subdir}"
 			fi
 		done
+	}
+
+	# Normalize paths
+	_XDG_DATA_HOME="$(readlink -m ${_XDG_DATA_HOME})"
+	_XDG_DOCUMENTS_DIR="$(readlink -m ${_XDG_DOCUMENTS_DIR})"
+
+	# Hash "regular" git repositories
+	if [[ -d "${_XDG_DOCUMENTS_DIR}/Code" ]]; then
+		hash -d git-root="${_XDG_DOCUMENTS_DIR}/Code"
+		hash_git_repos "local" "${_XDG_DOCUMENTS_DIR}/Code/Local"
+		hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
 	fi
-}
 
-# Add all zsh plugins managed by zplug
-() {
-	local d
+	# Hash neovim plugins
+	hash_git_repos "neovim" "${_XDG_DATA_HOME}/nvim/plugged"
 
-	for d in "${ZPLUG_HOME}/repos/"*/*(FN); do
-		if [[ -d "${d}/.git" ]]; then
-			hash -d "git-zplug-${d:h:t}-${d:t}"="${d}"
-		fi
-	done
-}
-
-# Add all neovim plugins managed by vim-plug
-() {
-	local d
-
-	for d in "${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/plugged"/*(FN); do
-		if [[ -d "${d}/.git" ]]; then
-			hash -d "git-neovim-${${d:t}#vim-}"="${d}"
-		fi
+	# Hash zsh plugins
+	for subdir in "${ZPLUG_HOME}"/repos/*(FN); do
+		name="${subdir:t}"
+		hash_git_repos "${name}" "${subdir}"
 	done
 }

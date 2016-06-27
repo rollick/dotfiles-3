@@ -53,7 +53,7 @@ nmap <leader>tp :tabprevious<cr>
 noremap <space> za
 
 " Toggle pastemode
-nmap <silent><leader>p :set paste!<BAR>:silent set paste?<cr>
+nmap <silent><leader>pm :set paste!<BAR>:silent set paste?<cr>
 
 " Toggle NERDTree
 nmap <silent><leader>b :NERDTreeToggle<CR>

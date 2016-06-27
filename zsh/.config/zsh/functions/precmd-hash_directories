@@ -1,21 +1,36 @@
 #!/bin/zsh
-# Add some directories to the hashtable
-[[ -d "${WORKON_HOME}" ]] && hash -d virtualenvs="${WORKON_HOME}"
-[[ -d "/run/media/${USER}" ]] && hash -d media="/run/media/${USER}"
-[[ -d "/var/spool/cups-pdf/${USER}" ]] && hash -d cups-pdf="/var/spool/cups-pdf/${USER}"
-[[ -d '/var/cache/pacman/pkg' ]] && hash -d paccache='/var/cache/pacman/pkg'
-[[ -d '/var/log' ]] && hash -d log='/var/log'
-[[ -d '/var/log/old' ]] && hash -d alog='/var/log/old'
+# Hash normal directories
+() {
+	hash_directory() {
+		local DIR="${2}"
+		local NAME="${1}"
+
+		if [[ -d "${DIR}" ]]; then
+			hash -d "${NAME}"="${DIR}"
+		else
+			unhash -d "${NAME}" &>|/dev/null
+		fi
+	}
+
+	hash_directory "alog" "/var/log/old"
+	hash_directory "cups-pdf" "/var/spool/cups-pdf/${USER}"
+	hash_directory "log" "/var/log"
+	hash_directory "media" "/run/media/${USER}"
+	hash_directory "paccache" "/var/cache/pacman/pkg"
+	hash_directory "virtualenvs" "${WORKON_HOME}"
+}
 
 # Add local ABS mirror
 () {
-	local d
+	local DIR
 
 	if [[ -f '/etc/abs.conf' ]]; then
-		d=$(source "/etc/abs.conf"; print "${ABSROOT/%\//}")
-		if [[ -d "${d}" ]]; then
-			hash -d abs="${d}"
+		DIR=$(source "/etc/abs.conf"; print "${ABSROOT/%\//}")
+		if [[ -d "${DIR}" ]]; then
+			hash -d abs="${DIR}"
 		fi
+	else
+		unhash -d "abs" &>|/dev/null
 	fi
 }
 
@@ -43,6 +58,11 @@
 	# Normalize paths
 	_XDG_DATA_HOME="$(readlink -m ${_XDG_DATA_HOME})"
 	_XDG_DOCUMENTS_DIR="$(readlink -m ${_XDG_DOCUMENTS_DIR})"
+
+	# Remove all hashed "regular" git directories
+	unhash -dm "git-root*" &>|/dev/null
+	unhash -dm "git-local*" &>|/dev/null
+	unhash -dm "git-remote*" &>|/dev/null
 
 	# Hash "regular" git repositories
 	if [[ -d "${_XDG_DOCUMENTS_DIR}/Code" ]]; then

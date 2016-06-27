@@ -23,11 +23,10 @@ import configparser
 import os
 import sys
 
-from i3pystatus import IntervalModule
-from i3pystatus import Status
-from i3pystatus.mail import imap
-from i3pystatus.updates import cower
-from i3pystatus.updates import pacman
+import i3pystatus
+import i3pystatus.mail.imap
+import i3pystatus.updates.cower
+import i3pystatus.updates.pacman
 
 
 _XDG_CONFIG_HOME = os.path.expanduser(
@@ -40,7 +39,7 @@ CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts.ini')
 DISTRIBUTION = os.uname().release.rpartition('-')[2].lower()
 
 
-class RestartReminder(IntervalModule):
+class RestartReminder(i3pystatus.IntervalModule):
     """Remind the user to reboot if a new kernel was installed.
 
     This code only works if **all** previous kernels were removed.
@@ -123,7 +122,7 @@ def main():
     mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
     wifi_interface = first_network_interface('wifi')
 
-    status = Status(standalone=True, click_events=False)
+    status = i3pystatus.Status(standalone=True, click_events=False)
 
     status.register(
         'clock',
@@ -218,7 +217,7 @@ def main():
         status.register(
             'mail',
             backends=[
-                imap.IMAP(
+                i3pystatus.mail.imap.IMAP(
                     host='imap.gmail.com',
                     username=mail_accounts['Gmail']['user'],
                     password=mail_accounts['Gmail']['password'],
@@ -239,7 +238,10 @@ def main():
 
     status.register(
         'updates',
-        backends=[pacman.Pacman(), cower.Cower()],
+        backends=[
+            i3pystatus.updates.pacman.Pacman(),
+            i3pystatus.updates.cower.Cower()
+        ],
         color=COLOR_IMPORTANT,
         format='\uf06a {Pacman}/{Cower}',
         format_no_updates='',

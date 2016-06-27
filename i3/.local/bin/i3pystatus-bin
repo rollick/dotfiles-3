@@ -250,7 +250,7 @@ def main():
     if DISTRIBUTION == 'arch':
         status.register(
             RestartReminder,
-            color='#00ff00',
+            color=COLOR_IMPORTANT,
             text='\uf011 Reboot required'
         )
 

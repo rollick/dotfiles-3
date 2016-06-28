@@ -17,30 +17,34 @@ zle -N toggle-sudo zle-toggle-sudo
 bindkey -e
 
 # Set keybindings
-# To add keys to $key, see man 5 terminfo
-typeset -A key
-key[Delete]=${terminfo[kdch1]}
-key[Down]=${terminfo[kcud1]}
-key[End]=${terminfo[kend]}
-key[Home]=${terminfo[khome]}
-key[Insert]=${terminfo[kich1]}
-key[Left]=${terminfo[kcub1]}
-key[PageDown]=${terminfo[knp]}
-key[PageUp]=${terminfo[kpp]}
-key[Right]=${terminfo[kcuf1]}
-key[ShiftLeft]=${terminfo[kLFT]}
-key[ShiftRight]=${terminfo[kRIT]}
-key[Up]=${terminfo[kcuu1]}
+() {
+	local key
 
-[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
-[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
-[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
-[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
-[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
-[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
-[[ -n ${key[ShiftLeft]} ]] && bindkey "${key[ShiftLeft]}" backward-word
-[[ -n ${key[ShiftRight]} ]] && bindkey "${key[ShiftRight]}" forward-word
-[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" history-beginning-search-backward
+	# To add keys to $key, see man 5 terminfo
+	typeset -A key
+	key[Delete]=${terminfo[kdch1]}
+	key[Down]=${terminfo[kcud1]}
+	key[End]=${terminfo[kend]}
+	key[Home]=${terminfo[khome]}
+	key[Insert]=${terminfo[kich1]}
+	key[Left]=${terminfo[kcub1]}
+	key[PageDown]=${terminfo[knp]}
+	key[PageUp]=${terminfo[kpp]}
+	key[Right]=${terminfo[kcuf1]}
+	key[ShiftLeft]=${terminfo[kLFT]}
+	key[ShiftRight]=${terminfo[kRIT]}
+	key[Up]=${terminfo[kcuu1]}
+
+	[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+	[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
+	[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+	[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+	[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
+	[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
+	[[ -n ${key[ShiftLeft]} ]] && bindkey "${key[ShiftLeft]}" backward-word
+	[[ -n ${key[ShiftRight]} ]] && bindkey "${key[ShiftRight]}" forward-word
+	[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" history-beginning-search-backward
+}
 
 bindkey	' '						expand-global-alias
 bindkey	'^ '					magic-space
@@ -52,6 +56,3 @@ bindkey	'^Xe'					expand-word
 bindkey	'^Xk'					insert-kept-result
 bindkey	'^Xs'					toggle-sudo
 bindkey -M menuselect	'i'		accept-and-menu-complete
-
-# Clean up
-unset key

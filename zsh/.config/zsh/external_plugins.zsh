@@ -1,35 +1,40 @@
-autoload -Uz add-zsh-hook
-
-function zplug_install_cleanup() {
-	if [[ -d "${ZPLUG_INSTALL_TMPDIR}" ]]; then
-		rm -rf "/${ZPLUG_INSTALL_TMPDIR}"
-	fi
-}
-
-
 export ZPLUG_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zplug"
 
-if [[ ! -d "${ZPLUG_HOME}" ]]; then
-	tmpdir="${XDG_RUNTIME_DIR:-/run/user/${EUID}}"
+# Bootstrap zplug
+() {
+	autoload -Uz add-zsh-hook
 
-	if [[ ! -d "${tmpdir}" ]]; then
-		tmpdir='/tmp'
+	local tmpdir
+
+	function zplug_install_cleanup() {
+		if [[ -d "${ZPLUG_INSTALL_TMPDIR}" ]]; then
+			rm -rf "/${ZPLUG_INSTALL_TMPDIR}"
+		fi
+	}
+
+	if [[ ! -d "${ZPLUG_HOME}" ]]; then
+		tmpdir="${XDG_RUNTIME_DIR:-/run/user/${EUID}}"
+
+		if [[ ! -d "${tmpdir}" ]]; then
+			tmpdir='/tmp'
+		fi
+
+		export ZPLUG_INSTALL_TMPDIR="$(mktemp --directory --tmpdir=${tmpdir} zplug.XXXXXXXXXX)"
+
+		git clone --depth 1 'http://github.com/zplug/zplug.git' "${ZPLUG_INSTALL_TMPDIR}"
+
+		if [[ -f "${ZPLUG_INSTALL_TMPDIR}/zplug" ]]; then
+			mkdir -p "${ZPLUG_HOME}"
+			source "${ZPLUG_INSTALL_TMPDIR}/zplug"
+
+			zplug update --self
+		fi
+
+		add-zsh-hook zshexit zplug_install_cleanup
+	else
+		unfunction zplug_install_cleanup
 	fi
-
-	export ZPLUG_INSTALL_TMPDIR="$(mktemp --directory --tmpdir=${tmpdir} zplug.XXXXXXXXXX)"
-	unset tmpdir
-
-	git clone --depth 1 'http://github.com/zplug/zplug.git' "${ZPLUG_INSTALL_TMPDIR}"
-
-	if [[ -f "${ZPLUG_INSTALL_TMPDIR}/zplug" ]]; then
-		mkdir -p "${ZPLUG_HOME}"
-		source "${ZPLUG_INSTALL_TMPDIR}/zplug"
-
-		zplug update --self
-	fi
-
-	add-zsh-hook zshexit zplug_install_cleanup
-fi
+}
 
 if [[ -d "${ZPLUG_HOME}" ]]; then
 	source "${ZPLUG_HOME}/init.zsh"
@@ -45,7 +50,6 @@ if [[ -d "${ZPLUG_HOME}" ]]; then
 	fi
 
 	zplug load
-
 
 	# Run plugin specific code
 	if zplug check zsh-users/zsh-syntax-highlighting; then

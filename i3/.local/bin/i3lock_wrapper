@@ -20,17 +20,15 @@
 # THE SOFTWARE.
 I3_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/i3/config"
 
-# Get DPMS status
-if xset q |grep -q "DPMS is Enabled"; then
-	DPMS_STATE=1
-else
-	DPMS_STATE=0
-fi
-
 # Get i3 focused bg color
 BG_COLOR=$(grep 'set $focused_bg' "${I3_CONFIG}" |cut -f 2 -d '#')
 COLOR_CMD="--color=${BG_COLOR}"
 
+revert_dpms() {
+	xset dpms 0 0 0
+}
+
+# Parse commandline arguments
 for e in "${@}"; do
 	if [[ "${e}" == '-c' || "${e}" = '--color=*' ]]; then
 		COLOR_CMD=""
@@ -38,16 +36,10 @@ for e in "${@}"; do
 	fi
 done
 
-# Run i3lock
+trap revert_dpms SIGHUP SIGINT SIGTERM
+
+xset +dpms dpms 5 5 5
+
 i3lock --nofork "${COLOR_CMD}" "$@"
 
-# Restore DPMS setting
-for e in "${@}"; do
-	if [[ "${e}" == '-d' || "${e}" == '--dpms' ]]; then
-		if [[ "${DPMS_STATE}" -eq 1 ]]; then
-			xset +dpms
-		else
-			xset -dpms
-		fi
-	fi
-done
+revert_dpms

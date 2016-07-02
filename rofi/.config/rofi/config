@@ -7,4 +7,4 @@ rofi.cycle: false
 rofi.font: Droid Sans 10
 rofi.hide-scrollbar: true
 rofi.kb-cancel: Escape,Menu
-rofi.terminal: i3-sensible-terminal
+rofi.terminal: urxvtcd

@@ -96,7 +96,7 @@ def load_history(fp):
 def main():
     """Main function."""
     # Enable tab completion
-    readline.parse_and_bind("tab: complete")
+    readline.parse_and_bind('tab: complete')
 
     # Set prompt
     sys.ps1 = colorize_prompt('>>> ', 'blue', 'bold')

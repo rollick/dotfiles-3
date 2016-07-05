@@ -30,14 +30,13 @@ import i3pystatus.updates.cower
 import i3pystatus.updates.pacman
 
 
-_XDG_CONFIG_HOME = os.path.expanduser(
-    os.environ.get('XDG_CONFIG_HOME', '~/.config')
-)
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
-CONFIG_MAIL_ACCOUNTS = os.path.join(_XDG_CONFIG_HOME, 'mail_accounts.ini')
 DISTRIBUTION = os.uname().release.rpartition('-')[2].lower()
+XDG_CONFIG_HOME = os.path.expanduser(
+    os.environ.get('XDG_CONFIG_HOME', '~/.config')
+)
 
 
 class RestartReminder(i3pystatus.IntervalModule):
@@ -119,8 +118,6 @@ def main():
     """Configure and run i3pystatus."""
     ethernet_interface = first_network_interface('ethernet')
     laptop = is_laptop()
-    mail_accounts = configparser.ConfigParser()
-    mail_accounts.read(CONFIG_MAIL_ACCOUNTS)
     wifi_interface = first_network_interface('wifi')
 
     status = i3pystatus.Status(standalone=True, click_events=False)
@@ -215,6 +212,11 @@ def main():
     )
 
     if ethernet_interface or wifi_interface:
+        mail_accounts = configparser.ConfigParser()
+        mail_accounts.read(
+            os.path.join(XDG_CONFIG_HOME, 'mail_accounts.ini')
+        )
+
         if 'Gmail' in mail_accounts:
             status.register(
                 'mail',

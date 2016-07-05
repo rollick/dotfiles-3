@@ -59,11 +59,11 @@ class RestartReminder(i3pystatus.IntervalModule):
     interval = 10
     text = 'Reboot required'
 
+    status_file = os.path.join(tempfile.gettempdir(), 'restart_needed')
+
     def run(self):
         """Run module."""
-        status_file = os.path.join(tempfile.gettempdir(), 'restart_needed')
-
-        if not os.path.isfile(status_file):
+        if not os.path.isfile(self.status_file):
             self.output = None
         else:
             self.output = {

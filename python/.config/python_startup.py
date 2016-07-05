@@ -18,7 +18,7 @@ from pprint import pprint  # noqa
 CUSTOM_HISTFILE = os.path.expanduser(
     os.path.join(
         os.getenv('XDG_CACHE_HOME', '~/.cache'),
-        'python{}_history'.format(str(sys.version_info.major))
+        'python{}_history'.format(sys.version_info.major)
     )
 )
 

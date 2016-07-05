@@ -252,12 +252,11 @@ def main():
             interval=10 * 60,
         )
 
-    if DISTRIBUTION == 'arch':
-        status.register(
-            RestartReminder,
-            color=COLOR_IMPORTANT,
-            text='\uf011 Reboot required'
-        )
+    status.register(
+        RestartReminder,
+        color=COLOR_IMPORTANT,
+        text='\uf011 Reboot required'
+    )
 
     status.run()
 

@@ -30,9 +30,9 @@ source "${ZDOTDIR}/options.zsh"
 # Set misc. settings
 source "${ZDOTDIR}/completions.zsh"
 source "${ZDOTDIR}/keybindings.zsh"
-[[ ${EUID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
 source "${ZDOTDIR}/hooks.zsh"
 source "${ZDOTDIR}/aliases.zsh"
+[[ ${EUID} -ne 0 ]] && source "${ZDOTDIR}/external_plugins.zsh"
 
 # Set prompt
 if [[ -n ${functions[prompt_simple_setup]} ]]; then

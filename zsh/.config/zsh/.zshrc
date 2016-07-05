@@ -37,4 +37,6 @@ source "${ZDOTDIR}/aliases.zsh"
 # Set prompt
 if [[ -n ${functions[prompt_simple_setup]} ]]; then
 	prompt simple
+else
+	prompt adam2
 fi

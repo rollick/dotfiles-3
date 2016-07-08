@@ -25,16 +25,39 @@
 
 # Add local ABS mirror
 () {
-	local DIR
+	local absroot
 
-	if [[ -f '/etc/abs.conf' ]]; then
-		DIR=$(source "/etc/abs.conf"; print "${ABSROOT/%\//}")
-		if [[ -d "${DIR}" ]]; then
-			hash -d abs="${DIR}"
+	get_absroot() {
+		local absroot
+
+		for f in "${@}"; do
+			if [[ -f "${f}" ]]; then
+				absroot=$(source "${f}"; print "${ABSROOT/%\//}")
+				break
+			fi
+		done
+
+		print "${absroot}"
+	}
+
+	# Retrieve ABSROOT
+	if [[ -n $ABSROOT ]]; then
+		absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
+	else
+		absroot="${ABSROOT}"
+	fi
+
+	# Hash directory
+	if [[ -n $absroot ]]; then
+		if [[ -d "${absroot}" ]]; then
+			hash -d abs="${absroot}"
 		fi
 	else
 		unhash -d "abs" &>|/dev/null
 	fi
+
+	# Cleanup
+	unfunction get_absroot
 }
 
 # Hash git repositories

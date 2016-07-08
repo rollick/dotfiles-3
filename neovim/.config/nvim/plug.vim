@@ -17,7 +17,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'lastpos.vim'
 	Plug 'python_fold', {'for': 'python'}
 
-	Plug 'Lokaltog/vim-distinguished'
+	" Plug 'Lokaltog/vim-distinguished'
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -34,6 +34,7 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-surround'
+	Plug 'zandrmartin/vim-distinguished'
 
 	" Load always last
 	Plug 'vim-airline/vim-airline'

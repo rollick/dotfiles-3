@@ -97,3 +97,4 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 compdef _cd cd-git
 compdef _diff colordiff
 compdef _ping ping6
+compdef _urxvt urxvtcd

@@ -20,7 +20,9 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import configparser
+import contextlib
 import os
+import re
 import sys
 import tempfile
 
@@ -33,7 +35,6 @@ import i3pystatus.updates.pacman
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
-DISTRIBUTION = os.uname().release.rpartition('-')[2].lower()
 XDG_CONFIG_HOME = os.path.expanduser(
     os.environ.get('XDG_CONFIG_HOME', '~/.config')
 )
@@ -98,6 +99,27 @@ def first_network_interface(interface_type):
         return ''
 
 
+def get_distribution():
+    """Get name of the  current GNU/Linux distribution.
+
+    This function requires that a os-release file is present.
+    For more information on this file see os-release(5).
+    """
+    distribution = 'Linux'
+    release_info = '/etc/os-release'
+
+    with contextlib.suppress((FileNotFoundError, PermissionError)):
+        with open(release_info) as fobj:
+            for line in fobj:
+                match = re.search(r'^NAME=[\'"](.*)[\'"]', line)
+
+                if match:
+                    distribution = match.group(1)
+                    break
+
+    return distribution
+
+
 def is_laptop():
     """Detect whether or not the current machine is a laptop.
 
@@ -116,6 +138,7 @@ def is_laptop():
 
 def main():
     """Configure and run i3pystatus."""
+    distribution = get_distribution()
     ethernet_interface = first_network_interface('ethernet')
     laptop = is_laptop()
     wifi_interface = first_network_interface('wifi')
@@ -240,7 +263,7 @@ def main():
                 text='Mail configuration for "Gmail" not found.',
             )
 
-    if DISTRIBUTION == 'arch':
+    if distribution == 'Arch Linux':
         status.register(
             'updates',
             backends=[

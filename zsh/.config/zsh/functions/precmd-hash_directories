@@ -42,9 +42,9 @@
 
 	# Retrieve ABSROOT
 	if [[ -n $ABSROOT ]]; then
-		absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
-	else
 		absroot="${ABSROOT}"
+	else
+		absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
 	fi
 
 	# Hash directory

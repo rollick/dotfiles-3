@@ -106,16 +106,18 @@ def get_distribution():
     For more information on this file see os-release(5).
     """
     distribution = 'Linux'
-    release_info = '/etc/os-release'
+    os_release_file = '/etc/os-release'
 
     with contextlib.suppress((FileNotFoundError, PermissionError)):
-        with open(release_info) as fobj:
-            for line in fobj:
-                match = re.search(r'^NAME=[\'"](.*)[\'"]', line)
+        with open(os_release_file) as fobj:
+            match = re.search(
+                '^NAME=[\'"](.*)[\'"]$',
+                fobj.read(),
+                flags=re.MULTILINE
+            )
 
-                if match:
-                    distribution = match.group(1)
-                    break
+            if match:
+                distribution = match.group(1)
 
     return distribution
 

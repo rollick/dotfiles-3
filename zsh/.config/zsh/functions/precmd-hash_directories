@@ -62,7 +62,6 @@
 
 # Hash git repositories
 () {
-	local _XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 	local _XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
 	local name
 	local subdir
@@ -82,7 +81,6 @@
 	}
 
 	# Normalize paths
-	_XDG_DATA_HOME="$(readlink -m ${_XDG_DATA_HOME})"
 	_XDG_DOCUMENTS_DIR="$(readlink -m ${_XDG_DOCUMENTS_DIR})"
 
 	# Remove all hashed "regular" git directories

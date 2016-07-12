@@ -4,6 +4,6 @@
 local ga="${LBUFFER[(w)-1]}"
 
 if [[ -n ${ga} ]]; then
-  LBUFFER[(w)-1]="${${galiases[${ga}]}:-${ga}}"
+	LBUFFER[(w)-1]="${${galiases[${ga}]}:-${ga}}"
 fi
 zle self-insert

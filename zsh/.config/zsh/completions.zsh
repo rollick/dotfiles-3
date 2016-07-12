@@ -96,4 +96,3 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # Enable completion for some wrappers
 compdef _cd cd-git
 compdef _diff colordiff
-compdef _urxvt urxvtcd

@@ -9,13 +9,7 @@ export QUODLIBET_USERDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/quodlibet"
 export NO_AT_BRIDGE=1
 
 # Set terminal for i3
-export RXVT_SOCKET="${XDG_RUNTIME_DIR:-/run/user/${UID}}/urxvtd"
-
-if which urxvtcd >/dev/null 2>&1; then
-	export TERMINAL='urxvtcd'
-else
-	export TERMINAL='urxvt'
-fi
+export TERMINAL='st'
 export TERMCMD="${TERMINAL}"
 
 # Set correct driver for libva

@@ -86,16 +86,16 @@ workspace 9 output $monitor1
 # with other programs.
 for_window [window_type="splash"] border none
 
-for_window [class="Avahi-*"] floating enable
-for_window [class="Firefox" title="^ProfileSwitcher$"] floating enable
-for_window [class="Firefox" window_role="^(?!browser$)"] floating enable
-for_window [class="Gvbam"] floating enable
-for_window [class="MP3Diags" window_type="normal"] floating disable
-for_window [class="Nestopia"] floating enable
-for_window [class="Octave.*" title="^Figure .*"] floating enable
-for_window [class="Snes9x.*"] floating enable
-for_window [instance="calc"] floating enable
-for_window [instance="cmus"] move window to scratchpad
+for_window [class="^Avahi-*"] floating enable
+for_window [class="^Firefox$" title="^ProfileSwitcher$"] floating enable
+for_window [class="^Firefox$" window_role="^(?!browser$)"] floating enable
+for_window [class="^Gvbam$"] floating enable
+for_window [class="^MP3Diags$" window_type="normal"] floating disable
+for_window [class="^Nestopia$"] floating enable
+for_window [class="^Octave.*" title="^Figure .*"] floating enable
+for_window [class="^Snes9x.*"] floating enable
+for_window [instance="^calc$"] floating enable
+for_window [instance="^cmus$"] move window to scratchpad
 for_window [title="^Page Unresponsive$"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
 

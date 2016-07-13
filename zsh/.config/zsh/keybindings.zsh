@@ -39,6 +39,7 @@ bindkey -e
 	[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" history-beginning-search-forward
 	[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 	[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+	[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
 	[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
 	[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
 	[[ -n ${key[ShiftLeft]} ]] && bindkey "${key[ShiftLeft]}" backward-word
@@ -59,13 +60,13 @@ bindkey -M menuselect	'i'		accept-and-menu-complete
 
 # Make sure the terminal is in application mode, when zle is active.
 # Only then are the values from $terminfo valid.
-if [[ -n ${terminfo[smkx]} && ${+terminfo[rmkx]} ]]; then
+if [[ -n ${terminfo[smkx]} && ${terminfo[rmkx]} ]]; then
 	function zle-line-init() {
-		print -n "${terminfo[smkx]}"
+		echoti smkx
 	}
 
 	function zle-line-finish() {
-		print -n "${terminfo[rmkx]}"
+		echoti rmkx
 	}
 
 	zle -N zle-line-init

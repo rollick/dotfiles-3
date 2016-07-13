@@ -3,5 +3,5 @@
 if which rofi >/dev/null 2>&1; then
 	exec rofi -show run
 else
-	exec dmenu_run "$@"
+	exec /usr/bin/dmenu_run "$@"
 fi

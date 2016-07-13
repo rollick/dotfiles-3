@@ -1,5 +1,5 @@
 [global]
-    font = Droid Sans Mono 10
+    font = Droid Sans 10
 
     # Allow a small subset of html markup:
     #   <b>bold</b>

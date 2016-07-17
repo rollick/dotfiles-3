@@ -71,3 +71,6 @@ export OCTAVE_HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/octave_hist"
 
 # Set path to Xauthority file
 export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/${UID}}/Xauthority"
+
+# Set path for tmux' tempory files
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR}/tmux"

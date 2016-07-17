@@ -19,3 +19,6 @@
 	default = simple
 [github]
 	user = rscholer
+[tig]
+	line-graphics = utf-8
+	vertical-split = 0

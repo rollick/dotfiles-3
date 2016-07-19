@@ -96,7 +96,7 @@ for_window [class="^Octave.*" title="^Figure .*"] floating enable
 for_window [class="^Snes9x.*"] floating enable
 for_window [instance="^calc$"] floating enable
 for_window [instance="^cmus$"] move window to scratchpad
-for_window [title="^Page Unresponsive$"] floating enable
+for_window [title="^Page(|s) Unresponsive$"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
 
 ##############################

@@ -66,9 +66,6 @@ fi
 # Settings for libdvdcss
 export DVDCSS_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/dvdcss"
 
-# Set history file location for octave
-export OCTAVE_HISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/octave_hist"
-
 # Set path to Xauthority file
 export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/${UID}}/Xauthority"
 

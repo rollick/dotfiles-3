@@ -53,7 +53,6 @@ path = .X{defaults,modmap,resources}
 path = .easyMP3Gain
 path = .gist-vim
 path = .hushlogin
-path = .octaverc
 path = .profile
 path = .tmux.conf
 path = .x{initrc,profile,session}

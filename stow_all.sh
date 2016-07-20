@@ -6,12 +6,12 @@ mkdir --verbose --parents \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
+	calc \
 	flake8 \
 	git \
 	gnupg \
 	htop \
 	neovim \
-	octave \
 	python \
 	shells \
 	ssh \

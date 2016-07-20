@@ -1,0 +1,8 @@
+#!/bin/sh
+CALC_HISTORY="${HOME}/.calc_history"
+
+/usr/bin/calc "${@}"
+
+if [[ -f "${CALC_HISTORY}" ]]; then
+	rm "${CALC_HISTORY}"
+fi

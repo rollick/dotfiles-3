@@ -15,7 +15,6 @@ elif [[ -n ${commands[nvim]} ]]; then
 fi
 
 # Use in non-GUI mode
-[[ -n ${commands[octave]} ]] && alias octave='octave-cli'
 [[ -n ${commands[unison]} ]] && alias unison='unison -ui text'
 
 # Force a specific nice level
@@ -33,7 +32,6 @@ alias mv="${aliases[mv]:-mv} --interactive"
 alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
 
 # Make some commands less verbose
-alias octave="${aliases[octave]:-octave-cli} --silent"
 
 # Make some commands more verbose
 alias chgrp="${aliases[chgrp]:-chgrp} --changes"
@@ -76,7 +74,6 @@ alias free="${aliases[free]:-free} --total"
 alias info="${aliases[info]:-info} --vi-keys"
 alias ls="${aliases[ls]:-ls} --classify --group-directories-first --literal"
 alias mkdir="${aliases[mkdir]:-mkdir} --parents"
-[[ -n ${commands[octave]} ]] && alias octave="${aliases[octave]:-octave} --silent"
 [[ -n ${commands[pgrep]} ]] && alias pgrep="${aliases[pgrep]:-pgrep} --list-name"
 [[ -n ${commands[ping]} ]] && alias ping="${aliases[ping]:-ping} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"

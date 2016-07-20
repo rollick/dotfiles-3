@@ -175,7 +175,6 @@ set wildignore+=*.o,*.obj,*.pyc,*.pyo
 set wildignore+=*~,*.backup,*.bak,*.swp
 set wildignore+=_MACOSX,~/.MP3Diags.dat,~/.esd_auth,~/.face
 set wildignore+=matlab_crash_dump*
-set wildignore+=octave-core,~/octave_hist
 set wildignore+=~/.ICEauthority,~/.Xauthority
 set wildignore+=~/.bash_history
 set wildignore+=~/.zcompdump,~/.zsh_history

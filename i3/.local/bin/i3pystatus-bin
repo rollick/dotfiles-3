@@ -19,10 +19,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
+import collections
 import configparser
-import contextlib
 import os
-import re
+import shutil
 import sys
 import tempfile
 
@@ -37,6 +37,15 @@ COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
 XDG_CONFIG_HOME = os.path.expanduser(
     os.environ.get('XDG_CONFIG_HOME', '~/.config')
+)
+
+
+PackageManagerBackends = collections.namedtuple(
+    'PackageManagerBackends',
+    [
+        'classes',
+        'names'
+    ]
 )
 
 
@@ -99,27 +108,35 @@ def first_network_interface(interface_type):
         return ''
 
 
-def get_distribution():
-    """Get name of the  current GNU/Linux distribution.
+def get_package_managers():
+    """Identify all possible package managers.
 
-    This function requires that a os-release file is present.
-    For more information on this file see os-release(5).
+    Return value:
+        tuple -- First element is a list containing all backend classes
+                 Second element is a list containing all names of the backend
+                    classes intended to be used in a format string.
     """
-    distribution = 'Linux'
-    os_release_file = '/etc/os-release'
+    classes = []
+    names = []
 
-    with contextlib.suppress((FileNotFoundError, PermissionError)):
-        with open(os_release_file) as fobj:
-            match = re.search(
-                '^NAME=[\'"](.*)[\'"]$',
-                fobj.read(),
-                flags=re.MULTILINE
-            )
+    if shutil.which('pacman') and shutil.which('makepkg'):
+        classes.append(i3pystatus.updates.pacman.Pacman())
+        names.append('{Pacman}')
 
-            if match:
-                distribution = match.group(1)
+        if shutil.which('cower'):
+            classes.append(i3pystatus.updates.cower.Cower())
+            names.append('{Cower}')
+        elif shutil.which('yaourt'):
+            classes.append(i3pystatus.updates.yaourt.Yaourt())
+            names.append('{Cower}')
+    elif shutil.which('apt-get'):
+        classes.append(i3pystatus.updates.aptget.AptGet())
+        names.append('{AptGet}')
+    elif shutil.which('dnf'):
+        classes.append(i3pystatus.updates.dnf.Dnf())
+        names.append('{Dnf}')
 
-    return distribution
+    return PackageManagerBackends(classes, names)
 
 
 def is_laptop():
@@ -140,9 +157,9 @@ def is_laptop():
 
 def main():
     """Configure and run i3pystatus."""
-    distribution = get_distribution()
     ethernet_interface = first_network_interface('ethernet')
     laptop = is_laptop()
+    package_managers = get_package_managers()
     wifi_interface = first_network_interface('wifi')
 
     status = i3pystatus.Status(standalone=True, click_events=False)
@@ -265,15 +282,17 @@ def main():
                 text='Mail configuration for "Gmail" not found.',
             )
 
-    if distribution == 'Arch Linux':
+    if package_managers:
         status.register(
             'updates',
-            backends=[
-                i3pystatus.updates.pacman.Pacman(),
-                i3pystatus.updates.cower.Cower()
-            ],
+            backends=package_managers.classes,
             color=COLOR_IMPORTANT,
-            format='\uf06a {Pacman}/{Cower}',
+            format=' '.join(
+                (
+                    '\uf06a',
+                    '/'.join(package_managers.names)
+                )
+            ),
             format_no_updates='',
             format_working='',
             interval=10 * 60,

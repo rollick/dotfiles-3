@@ -40,7 +40,7 @@ XDG_CONFIG_HOME = os.path.expanduser(
 )
 
 
-class RestartReminder(i3pystatus.IntervalModule):
+class RebootReminder(i3pystatus.IntervalModule):
     """Remind the user to reboot if a new kernel was installed.
 
     This code only works if **all** previous kernels were removed.
@@ -59,7 +59,7 @@ class RestartReminder(i3pystatus.IntervalModule):
     interval = 10
     text = 'Reboot required'
 
-    status_file = os.path.join(tempfile.gettempdir(), 'restart_needed')
+    status_file = os.path.join(tempfile.gettempdir(), 'reboot_needed')
 
     def run(self):
         """Run module."""
@@ -280,7 +280,7 @@ def main():
         )
 
     status.register(
-        RestartReminder,
+        RebootReminder,
         color=COLOR_IMPORTANT,
         text='\uf011 Reboot required'
     )

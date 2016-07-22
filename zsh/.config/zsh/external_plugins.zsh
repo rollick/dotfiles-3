@@ -7,8 +7,8 @@
 	source "${GIT_ROOT}/zsh-completions/zsh-completions.plugin.zsh"
 	source "${GIT_ROOT}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-	source "/etc/zsh_command_not_found"
 	source "/usr/bin/virtualenvwrapper_lazy.sh"
+	source "/etc/zsh_command_not_found"
 	source "/usr/share/doc/pkgfile/command-not-found.zsh"
 } &>|/dev/null
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Copyright (C) 2016 by Raphael Scholer
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 print_help () {
-	echo -e "usage: $(basename ${0}) [OPTION]... [VIRTUAL_ENVIRONMENT...]\n"
+	echo -e "usage: $(basename "${0}") [OPTION]... [VIRTUAL_ENVIRONMENT...]\n"
 	echo -e 'Update all python modules inside a virtual environment\n'
 	echo    'positional arguments:'
 	echo -e '    VIRTUAL_ENVIRONMENT virtual environment which is to be updated'
@@ -51,10 +51,10 @@ print_version() {
 }
 
 update() {
-	activate_script="${WORKON_HOME}/$(basename ${1})/bin/activate"
+	activate_script="${WORKON_HOME}/$(basename "${1}")/bin/activate"
 
-	if [[ -d "${WORKON_HOME}/$(basename ${1})" ]]; then
-		pyvenv --upgrade "${WORKON_HOME}/$(basename ${1})"
+	if [[ -d "${WORKON_HOME}/$(basename "${1}")" ]]; then
+		pyvenv --upgrade "${WORKON_HOME}/$(basename "${1}")"
 	fi
 
 	if [[ -f "${activate_script}" ]]; then
@@ -82,7 +82,7 @@ else
 
 		until [[ -z ${1} ]]; do
 			[[ -z ${first} && "${args}" -gt 1 ]] && echo || unset first
-			[[ "${args}" -gt 1 ]] && echo -e ":: $(basename ${1})"
+			[[ "${args}" -gt 1 ]] && echo -e ":: $(basename "${1}")"
 
 			update "${1}"
 

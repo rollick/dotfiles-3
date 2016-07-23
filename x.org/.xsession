@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Enable/disable numlock
 if which numlockx >/dev/null 2>&1; then
 	if  [[ -f "${XDG_DATA_HOME:-${HOME}/.local/share}/numlock_on" ]]; then

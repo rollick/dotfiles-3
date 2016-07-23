@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Fix for unknown terminals
 if [[ -n "${SSH_CONNECTION}" ]]; then
@@ -37,7 +37,7 @@ export SYSTEMD_LESS="${LESS}"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
 
 # Set LS_COLORS
-eval `dircolors --sh`
+eval "$(dircolors --sh)"
 
 # Colorize man when using less as pager
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -49,8 +49,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
 # Load lesspipe, which provides advanced functions for less
-which lesspipe >/dev/null 2>&1 && eval $(lesspipe)
-which lesspipe.sh >/dev/null 2>&1 && eval $(lesspipe.sh)
+which lesspipe >/dev/null 2>&1 && eval "$(lesspipe)"
+which lesspipe.sh >/dev/null 2>&1 && eval "$(lesspipe.sh)"
 
 # Set path for gnupg
 export GNUPGHOME="${XDG_CONFIG_HOME:-${HOME}/.config}/gnupg"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 CALC_HISTORY="${HOME}/.calc_history"
 
 /usr/bin/calc "${@}"

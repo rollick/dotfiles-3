@@ -6,6 +6,10 @@
 emulate sh -c "source ${HOME}/.profile"
 typeset -U path
 
+if [[ "${SHLVL}" -eq 1 && -f "${HOME}/.hushlogin" ]]; then
+	clear
+fi
+
 # Start X session
 if [[ "${EUID}" -ne 0 && -z "${DISPLAY}" && "${XDG_VTNR}" -eq 1 ]]; then
 	if [[ -o 'login' && -f "${HOME}/.xinitrc" ]]; then

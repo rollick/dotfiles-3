@@ -287,12 +287,7 @@ def main():
             'updates',
             backends=package_managers.classes,
             color=COLOR_IMPORTANT,
-            format=' '.join(
-                (
-                    '\uf06a',
-                    '/'.join(package_managers.names)
-                )
-            ),
+            format='{} {}'.format('\uf06a', '/'.join(package_managers.names)),
             format_no_updates='',
             format_working='',
             interval=10 * 60,

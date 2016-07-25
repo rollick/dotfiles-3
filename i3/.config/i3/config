@@ -208,7 +208,7 @@ bindsym $mod+Shift+KP_9 move container to workspace 9
 bindsym $mod+Shift+KP_Add move container to workspace back_and_forth
 
 # Start applications
-bindsym $mod+Ctrl+Return exec st
+bindsym $mod+Ctrl+Return exec --no-startup-id st
 bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run
 bindsym Menu exec --no-startup-id dmenu_run
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute

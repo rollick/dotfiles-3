@@ -14,8 +14,8 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'scrooloose/nerdtree'
 
 	" Plugins which are not dependencies
+	Plug 'indentpython.vim', {'for': 'python'}
 	Plug 'lastpos.vim'
-	Plug 'python_fold', {'for': 'python'}
 
 	" Plug 'Lokaltog/vim-distinguished'
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
@@ -25,10 +25,10 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'christoomey/vim-sort-motion'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
-	Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
 	Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
+	Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tpope/vim-characterize'
 	Plug 'tpope/vim-commentary'

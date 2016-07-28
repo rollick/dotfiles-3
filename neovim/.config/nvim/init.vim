@@ -115,6 +115,9 @@ let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeHijackNetrw=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeRespectWildIgnore=1
+let g:SimpylFold_docstring_preview=1
+let g:SimpylFold_fold_docstring=0
+let g:SimpylFold_fold_import=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:flake8_show_in_gutter=1
@@ -123,6 +126,7 @@ let g:gist_post_private=1
 let g:gist_show_privates=1
 let g:markdown_folding_disabled=1
 let g:netrw_home=$XDG_CACHE_HOME . '/nvim'
+let g:python_highlight_all=1
 let g:vim_markdown_folding_disabled=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""

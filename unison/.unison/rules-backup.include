@@ -34,7 +34,7 @@ path = Templates
 path = Videos
 
 ignore = Path .local/share/Trash
-ignore = Path Documents/Code/Local/*/{.tox,MANIFEST}
+ignore = Path Documents/Code/Local/*/{.tox,build,dist,MANIFEST}
 ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
 
 ####################

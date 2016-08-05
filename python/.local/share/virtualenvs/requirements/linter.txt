@@ -1,0 +1,10 @@
+flake8==3.0.3
+flake8-docstrings==1.0.2
+flake8-import-order==0.9.1
+flake8-quotes==0.8.1
+flake8-tidy-imports==1.0.2
+pep8-naming==0.4.1
+pycodestyle==2.0.0
+pydocstyle==1.0.0
+rstcheck==2.0
+pylint==1.6.4

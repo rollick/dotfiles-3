@@ -1,0 +1,6 @@
+-r ipython.txt
+-r linter.txt
+-r testing.txt
+-r tox.txt
+-r virtualenvs.txt
+docutils==0.12

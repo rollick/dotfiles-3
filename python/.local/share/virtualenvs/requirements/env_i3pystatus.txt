@@ -1,2 +1,0 @@
--r i3pystatus-dev.txt
--r ipython.txt

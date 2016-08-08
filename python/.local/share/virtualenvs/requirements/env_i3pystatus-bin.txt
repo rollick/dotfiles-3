@@ -1,6 +1,5 @@
 basiciw==0.2.2
 colour==0.1.2
 git+https://github.com/enkore/i3pystatus.git
-i3pystatus==3.34
 netifaces==0.10.4
 pyalsaaudio==0.8.2

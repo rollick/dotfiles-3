@@ -89,9 +89,18 @@ prompt_simple_set_prompt() {
 }
 
 prompt_simple_set_title() {
+	local title=''
+	local user=''
+
+	if [[ "${LOGNAME}" != "${USER}" || -n $SSH_CONNECTION ]]; then
+		user='%n@%m: '
+	fi
+
+	title="${user}%~"
+
 	case "${TERM}" in
-		screen* )  print -Pn '\ek%n@%m: %~\e\\';;
-		*       )  print -Pn '\e]0;%n@%m: %~\a';;
+		screen* )  print -Pn "\ek${title}\e\\";;
+		*       )  print -Pn "\e]0;${title}\a";;
 	esac
 }
 

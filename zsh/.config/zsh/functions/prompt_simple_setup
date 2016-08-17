@@ -32,7 +32,7 @@ prompt_simple_check_user_info() {
 	local separator="%{$fg_bold[black]%}@"
 	local user="%{$fg_bold[black]%}%n"
 
-	if [[ $EUID -eq 0 || -n $SSH_CONNECTION ]]; then
+	if [[ "${LOGNAME}" != "${USER}" || -n $SSH_CONNECTION ]]; then
 		[[ $EUID -eq 0 ]] && user="%{$fg_bold[white]%}%n"
 
 		[[ -n "${SSH_CONNECTION}" ]] && host="%{$fg_bold[white]%}%m"

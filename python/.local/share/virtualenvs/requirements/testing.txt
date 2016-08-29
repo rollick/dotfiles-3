@@ -1,2 +1,2 @@
-check-manifest==0.32
+check-manifest==0.33
 pytest==3.0.1

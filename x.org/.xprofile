@@ -34,5 +34,3 @@ if [[ -z ${DESKTOP_SESSION} ]]; then
 	export DESKTOP_SESSION='gnome'
 	export GNOME_DESKTOP_SESSION=1
 fi
-
-export FT2_SUBPIXEL_HINTING=2

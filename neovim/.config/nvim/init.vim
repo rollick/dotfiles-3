@@ -132,7 +132,6 @@ let g:vim_markdown_folding_disabled=1
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Printer settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-set printdevice=PDF-Printer
 set printoptions=number:n,syntax:n
 
 """""""""""""""""""""""""""""""""""""""""""""""""

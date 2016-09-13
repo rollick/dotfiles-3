@@ -50,7 +50,7 @@ PackageManagerBackends = collections.namedtuple(
 
 
 class RebootReminder(i3pystatus.IntervalModule):
-    """Remind the user to reboot if a new kernel was installed.
+    """Remind the user to reboot if e.g. a new kernel was installed.
 
     This code only works if **all** previous kernels were removed.
 
@@ -149,10 +149,7 @@ def is_laptop():
     proc_path = '/proc/acpi/battery/'
     sys_path = '/sys/class/module/battery/'
 
-    if os.path.exists(sys_path) or os.path.exists(proc_path):
-        return True
-    else:
-        return False
+    return os.path.exists(sys_path) or os.path.exists(proc_path)
 
 
 def main():

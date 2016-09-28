@@ -235,18 +235,18 @@ def main():
         )
 
     status.register(
-        'cmus',
+        'now_playing',
         color=COLOR_DEFAULT,
         format=(
             '{status}'
             '[ {artist} - {title} - {album}]'
             '[ ({song_elapsed:%M:%S}/{song_length:%M:%S})]'
         ),
-        format_not_running='',
+        hide_no_player=True,
         status={
-            'paused': '\uf04c ',
-            'playing': '\uf04b ',
-            'stopped': '\uf04d',
+            'pause': '\uf04c ',
+            'play': '\uf04b ',
+            'stop': '\uf04d',
         }
     )
 

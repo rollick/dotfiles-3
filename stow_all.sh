@@ -20,7 +20,6 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 
 if [[ ${EUID} -ne 0 ]]; then
 	mkdir --verbose --parents \
-		"${HOME}/.config/cmus" \
 		"${HOME}/.config/gtk-2.0" \
 		"${HOME}/.config/gtk-3.0" \
 		"${HOME}/.config/mpv" \
@@ -29,7 +28,6 @@ if [[ ${EUID} -ne 0 ]]; then
 	stow --restow --target "${HOME}" --ignore='\.venv' \
 		a11y \
 		appearance \
-		cmus \
 		cower \
 		dunst \
 		fontconfig \

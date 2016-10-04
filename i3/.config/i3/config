@@ -4,6 +4,7 @@
 exec_always --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
 exec --no-startup-id xcompmgr
 exec --no-startup-id udiskie --quiet --no-automount --no-file-manager --no-notify --no-tray
+exec --no-startup-id st -n cmus -e cmus
 
 ##############################
 # Appearance
@@ -94,6 +95,7 @@ for_window [class="^Nestopia$"] floating enable
 for_window [class="^Octave.*" title="^Figure .*"] floating enable
 for_window [class="^Snes9x.*"] floating enable
 for_window [instance="^calc$"] floating enable
+for_window [instance="^cmus$"] move window to scratchpad
 for_window [title="^Page(|s) Unresponsive$"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable
 
@@ -178,6 +180,7 @@ bindsym $mod+KP_9 workspace 9
 bindsym $mod+KP_Add workspace back_and_forth
 
 # Show specific scratchpad windows
+bindsym $mod+m [instance="cmus"] scratchpad show
 
 # Move container to workspace
 bindsym $mod+Shift+0 move scratchpad
@@ -210,6 +213,7 @@ bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run
 bindsym Menu exec --no-startup-id dmenu_run
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle
+bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 5%+ unmute
 bindsym XF86Calculator exec --no-startup-id st -n calc -e calc
 bindsym XF86HomePage exec chromium

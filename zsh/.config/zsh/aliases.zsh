@@ -96,6 +96,9 @@ fi
 if [[ -n ${commands[httpserver]} ]]; then
 	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
 fi
+if [[ -n ${commands[ionice]} ]] && [[ -n ${commands[nice]} ]]; then
+	alias reallynice='nice -n 19 ionice -c 3 '
+fi
 if [[ -n ${commands[python3]} ]]; then
 	alias httpserver='python3 -m http.server'
 	alias prettyjson='python3 -m json.tool'

@@ -208,7 +208,10 @@ bindsym $mod+Ctrl+d exec --no-startup-id dmenu_run
 bindsym Menu exec --no-startup-id dmenu_run
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer --quiet sset Headphone 5%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer --quiet sset Headphone toggle
+bindsym XF86AudioNext exec --no-startup-id cmus-remote --next
+bindsym XF86AudioPause exec --no-startup-id cmus-remote --pause
 bindsym XF86AudioPlay exec --no-startup-id cmus-remote --pause
+bindsym XF86AudioPrev exec --no-startup-id cmus-remote --prev
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 5%+ unmute
 bindsym XF86Calculator exec --no-startup-id st -n calc -e calc
 bindsym XF86HomePage exec chromium

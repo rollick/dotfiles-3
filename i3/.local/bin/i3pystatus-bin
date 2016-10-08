@@ -20,14 +20,12 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import collections
-import configparser
 import os
 import shutil
 import sys
 import tempfile
 
 import i3pystatus
-import i3pystatus.mail.imap
 import i3pystatus.updates.cower
 import i3pystatus.updates.pacman
 
@@ -35,9 +33,6 @@ import i3pystatus.updates.pacman
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
-XDG_CONFIG_HOME = os.path.expanduser(
-    os.environ.get('XDG_CONFIG_HOME', '~/.config')
-)
 
 
 PackageManagerBackends = collections.namedtuple(
@@ -249,35 +244,6 @@ def main():
             'stopped': '\uf04d',
         }
     )
-
-    if ethernet_interface or wifi_interface:
-        mail_accounts = configparser.ConfigParser()
-        mail_accounts.read(
-            os.path.join(XDG_CONFIG_HOME, 'mail_accounts.ini')
-        )
-
-        if 'Gmail' in mail_accounts:
-            status.register(
-                'mail',
-                backends=[
-                    i3pystatus.mail.imap.IMAP(
-                        host='imap.gmail.com',
-                        username=mail_accounts['Gmail']['user'],
-                        password=mail_accounts['Gmail']['password'],
-                    ),
-                ],
-                color=COLOR_DEFAULT,
-                color_unread=COLOR_IMPORTANT,
-                format='\uf0e0 {unread}',
-                format_plural='\uf0e0 {current_unread}',
-                interval=60,
-            )
-        else:
-            status.register(
-                'text',
-                color=COLOR_IMPORTANT,
-                text='Mail configuration for "Gmail" not found.',
-            )
 
     if package_managers:
         status.register(

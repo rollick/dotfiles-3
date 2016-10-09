@@ -141,11 +141,11 @@ def is_laptop():
         bool -- True -- Machine is a laptop (or related type).
                 False -- Machine is a desktop PC.
     """
-    proc_path = '/proc/acpi/battery/'
-    sys_path = '/sys/class/module/battery/'
-
-    return os.path.exists(sys_path) or os.path.exists(proc_path)
-
+    for entry in os.scandir('/sys/class/power_supply'):
+        if entry.name.startswith('BAT'):
+            return True
+    else:
+        return False
 
 def main():
     """Configure and run i3pystatus."""

@@ -162,15 +162,6 @@ def main():
         format='%Y-%m-%d %H:%M',
     )
 
-    if laptop:
-        status.register(
-            'battery',
-            alert=True,
-            alert_percentage=5,
-            color=COLOR_DEFAULT,
-            interval=5,
-        )
-
     status.register(
         'alsa',
         color=COLOR_DEFAULT,

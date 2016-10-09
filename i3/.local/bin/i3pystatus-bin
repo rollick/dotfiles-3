@@ -147,6 +147,7 @@ def is_laptop():
     else:
         return False
 
+
 def main():
     """Configure and run i3pystatus."""
     ethernet_interface = first_network_interface('ethernet')
@@ -171,6 +172,13 @@ def main():
         mixer='Headphone',
     )
 
+    if laptop:
+        status.register(
+            'backlight',
+            color=COLOR_DEFAULT,
+            format='\uf185 {percentage}%',
+        )
+
     status.register(
         'keyboard_locks',
         caps_off='\U0001f130',
@@ -182,13 +190,6 @@ def main():
         scroll_off='\U0001f142',
         scroll_on='\U0001f182',
     )
-
-    if laptop:
-        status.register(
-            'backlight',
-            color=COLOR_DEFAULT,
-            format='\uf185 {percentage}%',
-        )
 
     if wifi_interface:
         status.register(

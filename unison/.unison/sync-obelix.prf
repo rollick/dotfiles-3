@@ -1,6 +1,6 @@
 label = Synchronize $HOME with obelix.local
 
 include settings.include
-include rules-backup.include
+include rules-syncing.include
 
 root = ssh://obelix.local

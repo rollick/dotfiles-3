@@ -1,6 +1,6 @@
-label = Synchronize $HOME with asterix.local
+label = Synchronize $HOME with methusalix.local
 
 include settings.include
-include rules-backup.include
+include rules-syncing.include
 
-root = ssh://asterix.local
+root = ssh://methusalix.local

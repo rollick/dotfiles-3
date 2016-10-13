@@ -75,6 +75,7 @@ ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/virtualenvs
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*
+ignore = Path .moc/*
 ignore = Path .mozilla/firefox/*/lock
 ignore = Path .unison/*
 
@@ -83,4 +84,5 @@ ignorenot = Path .config/transmission/{blocklists,settings.json}
 ignorenot = Path .local/share/nvim/plugged
 ignorenot = Path .local/share/virtualenvs/requirements
 ignorenot = Path .local/share/zathura/bookmarks
+ignorenot = Path .moc/{config,themes}
 ignorenot = Path .unison/*.{include,prf}

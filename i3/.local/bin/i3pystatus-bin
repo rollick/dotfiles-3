@@ -222,7 +222,7 @@ def main():
         )
 
     status.register(
-        'cmus',
+        'moc',
         color=COLOR_DEFAULT,
         format=(
             '{status}'
@@ -231,9 +231,9 @@ def main():
         ),
         format_not_running='',
         status={
-            'paused': '\uf04c ',
-            'playing': '\uf04b ',
-            'stopped': '\uf04d',
+            'pause': '\uf04c ',
+            'play': '\uf04b ',
+            'stop': '\uf04d',
         }
     )
 

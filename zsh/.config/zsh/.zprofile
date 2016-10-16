@@ -6,7 +6,7 @@
 emulate sh -c "source ${HOME}/.profile"
 typeset -U path
 
-if [[ "${SHLVL}" -eq 1 && -f "${HOME}/.hushlogin" ]]; then
+if [[ -z "${SSH_TTY}" && "${SHLVL}" -eq 1 && -f "${HOME}/.hushlogin" ]]; then
 	clear
 fi
 

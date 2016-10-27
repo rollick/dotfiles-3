@@ -3,16 +3,16 @@
 		"reconfigure": "i3-msg reload",
 		"restart": "i3-msg restart"
 	},
-	"lock": "i3lock_wrapper --dpms",
+	"lock": "i3lock_wrapper",
 	"logout": "i3-msg exit",
 
 	"hibernate": {
-		"with lock": "i3lock_wrapper --dpms && systemctl hibernate",
+		"with lock": "i3lock_wrapper && systemctl hibernate",
 		"without lock": "systemctl hibernate"
 	},
 
 	"suspend": {
-		"with lock": "i3lock_wrapper --dpms && systemctl suspend",
+		"with lock": "i3lock_wrapper && systemctl suspend",
 		"without lock": "systemctl suspend"
 	},
 

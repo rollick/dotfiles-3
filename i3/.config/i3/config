@@ -220,6 +220,6 @@ bindsym XF86MonBrightnessDown exec light -s acpi_video0 -U 10
 bindsym XF86MonBrightnessUp exec light -s acpi_video0 -A 10
 
 # Session control
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock_wrapper --dpms
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock_wrapper
 bindsym $mod+Ctrl+s exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json
 bindsym XF86Sleep exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json

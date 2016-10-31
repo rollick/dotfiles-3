@@ -116,7 +116,11 @@ fi
 [[ -n ${commands[reset]} ]] && alias reset="unset PROMPT_SHOWN; ${aliases[reset]:-reset}"
 
 # Hide some commands from history
-alias cd=' cd'
+if [[ -n "${aliases[cd]}" ]]; then
+	alias cd=" ${aliases[cd]}"
+else
+	alias cd=' cd'
+fi
 alias deactivate=' deactivate'
 alias exec=' exec'
 if [[ -n "${aliases[ls]}" ]]; then

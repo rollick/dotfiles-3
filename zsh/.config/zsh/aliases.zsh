@@ -111,12 +111,24 @@ if [[ -n ${functions[zmv]} ]]; then
 	alias zln="${aliases[zmv]:-zln} -L"
 fi
 
-# Hide some commands from history
-[[ -n ${commands[xprop]} ]] && alias xprop=" ${aliases[xprop]:-xprop}"
-
 # Add prompt compatibility
 [[ -n ${commands[clear]} ]] && alias clear="unset PROMPT_SHOWN; ${aliases[clear]:-clear}"
 [[ -n ${commands[reset]} ]] && alias reset="unset PROMPT_SHOWN; ${aliases[reset]:-reset}"
+
+# Hide some commands from history
+alias cd=' cd'
+alias deactivate=' deactivate'
+alias exec=' exec'
+if [[ -n "${aliases[ls]}" ]]; then
+	alias ls=" ${aliases[ls]}"
+else
+	alias ls=' ls'
+fi
+[[ -n ${aliases[la]} ]] && alias la=" ${aliases[la]}"
+[[ -n ${aliases[ll]} ]] && alias ll=" ${aliases[ll]}"
+[[ -n ${aliases[lla]} ]] && alias lla=" ${aliases[lla]}"
+alias prompt=' prompt'
+[[ -n ${commands[xprop]} ]] && alias xprop=" ${aliases[xprop]:-xprop}"
 
 # Global aliases
 alias -g C='|wc -l'

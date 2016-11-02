@@ -37,7 +37,11 @@ export SYSTEMD_LESS="${LESS}"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
 
 # Set LS_COLORS
-eval "$(dircolors --sh)"
+if [[ -f "${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors" ]]; then
+	source "${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors"
+else
+	eval "$(dircolors --sh)"
+fi
 
 # Colorize man when using less as pager
 export LESS_TERMCAP_mb=$'\E[01;31m'

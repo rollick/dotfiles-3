@@ -60,7 +60,7 @@ prompt_simple_set_prompt() {
 	fi
 
 	# Show directory information
-	PROMPT+="%{$fg_bold[blue]%}%~"
+	PROMPT+="%{$fg[magenta]%}%~"
 	if [[ -n ${vcs_info_msg_0_} ]]; then
 		PROMPT+="%{$reset_color%}"
 		PROMPT+=" %{$fg_bold[black]%}"
@@ -83,7 +83,7 @@ prompt_simple_set_prompt() {
 	# Show prompt symbol
 	PROMPT+="%{$reset_color%}"
 	PROMPT+="${prompt_newline}"
-	PROMPT+="%(?.%{$fg_bold[magenta]%}.%{$fg_bold[red]%})"
+	PROMPT+="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})"
 	[[ "${TERM}" != 'linux' ]] && PROMPT+=$'\u276F' || PROMPT+='>'
 	PROMPT+="%{$reset_color%} "
 }

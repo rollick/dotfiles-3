@@ -5,6 +5,7 @@ mkdir --verbose --parents \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
+chmod --changes 700 "${HOME}/.config/gnupg"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
 	flake8 \

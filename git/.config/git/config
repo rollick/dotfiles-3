@@ -23,3 +23,5 @@
 [tig]
 	line-graphics = utf-8
 	vertical-split = 0
+[commit]
+	gpgsign = true

@@ -15,6 +15,7 @@
 [user]
 	email = rascholer@gmail.com
 	name = 'Raphael Scholer'
+	signingkey = 66E457574DD245A0
 [push]
 	default = simple
 [github]

@@ -12,6 +12,7 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	gnupg \
 	htop \
 	neovim \
+	pip \
 	python \
 	shells \
 	ssh \

@@ -36,4 +36,4 @@ if [[ -f "${HOME}/.xsession" ]]; then
 fi
 
 # Start WM/DE
-exec i3
+exec startxfce4

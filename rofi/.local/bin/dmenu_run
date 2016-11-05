@@ -1,0 +1,7 @@
+#!/bin/sh
+# Use rofi as a drop-in replacement for dmenu_run.
+if which rofi >/dev/null 2>&1; then
+	exec rofi -show run
+else
+	exec /usr/bin/dmenu_run "$@"
+fi

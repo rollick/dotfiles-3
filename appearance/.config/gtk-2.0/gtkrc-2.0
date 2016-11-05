@@ -1,0 +1,12 @@
+gtk-button-images=0
+gtk-cursor-theme-size=0
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0
+gtk-font-name='sans-serif 10'
+gtk-icon-theme-name='elementary-xfce-dark'
+gtk-menu-images=0
+gtk-theme-name='Arc-Darker'
+gtk-xft-antialias=1
+gtk-xft-hinting=1
+gtk-xft-hintstyle='hintfull'
+gtk-xft-rgba='rgb'

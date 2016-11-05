@@ -7,6 +7,7 @@ mkdir --verbose --parents \
 chmod --changes 700 "${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.config/gnupg"
 stow --restow --target "${HOME}" --ignore='\.venv' \
+	calc \
 	flake8 \
 	git \
 	gnupg \
@@ -31,14 +32,18 @@ if [[ ${EUID} -ne 0 ]]; then
 		a11y \
 		appearance \
 		cower \
+		dunst \
 		fontconfig \
 		gvbam \
+		i3 \
 		moc \
 		mpv \
 		nestopia \
 		pacman \
 		profile-cleaner \
+		rofi \
 		snes9x \
+		sxiv \
 		unison \
 		x.org
 fi

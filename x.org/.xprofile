@@ -8,6 +8,10 @@ export QUODLIBET_USERDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/quodlibet"
 # Remove missing accessibility bus messages
 export NO_AT_BRIDGE=1
 
+# Set terminal for i3
+export TERMINAL='st'
+export TERMCMD="${TERMINAL}"
+
 # Set correct driver for libva
 export LIBVA_DRIVER_NAME='vdpau'
 export VDPAU_DRIVER="nouveau"
@@ -17,6 +21,13 @@ export SAL_USE_VCLPLUGIN='gtk'
 
 # Disable GTK3+ overlay scrollbars
 export GTK_OVERLAY_SCROLLING=0
+
+# Always use the light GTK3+ theme
+if [[ -f "${XDG_CONFIG_HOME:-${HOME}/.config}/gtk-3.0/settings.ini" ]]; then
+	GTK_THEME="$(grep gtk-theme-name "${XDG_CONFIG_HOME:-${HOME}/.config}"/gtk-3.0/settings.ini)"
+	GTK_THEME="$(echo "${GTK_THEME##*=}" |tr -d '[:space:]'):light"
+	export GTK_THEME
+fi
 
 # Fix some issues if no DE is used
 if [[ -z ${DESKTOP_SESSION} ]]; then

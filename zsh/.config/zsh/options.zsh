@@ -26,10 +26,11 @@ setopt SHARE_HISTORY		# Share history between two sessions
 setopt BG_NICE				# Run background jobs at lower priority
 
 # Input/Output
-setopt CORRECT				# Correct spelling of commands
 setopt HASH_CMDS			# Hash location of each command
 setopt INTERACTIVE_COMMENTS	# Honor comments in interactive mode
 setopt NO_CLOBBER			# Secure pipe handling
+setopt NO_CORRECT			# Correct spelling of commands
+setopt NO_CORRECT_ALL		# Correct spelling of arguments
 setopt RM_STAR_WAIT			# Wait 10 secs, when issuing e.g. 'rm *'
 
 # Prompting

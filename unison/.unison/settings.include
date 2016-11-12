@@ -1,5 +1,4 @@
 confirmbigdel = false
-copythreshold = 6144
 log = false
 prefer = newer
 watch = false

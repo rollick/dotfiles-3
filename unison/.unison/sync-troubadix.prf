@@ -1,0 +1,9 @@
+label = Synchronize Music files between obelix and troubadix
+
+include settings.include
+
+root = /home/raphael/
+root = ssh://troubadix.local
+
+path = Music
+ignore = Name folder.jpg

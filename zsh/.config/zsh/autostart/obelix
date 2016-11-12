@@ -1,0 +1,8 @@
+#!/bin/zsh
+if [[ -z "$DISPLAY" && -n ${commands[startx]} && -f "${HOME}/.xinitrc" ]]; then
+	# Correct SHLVL value
+	export SHLVL=0
+
+	# Start X session
+	exec startx
+fi

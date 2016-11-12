@@ -1,0 +1,6 @@
+#!/bin/zsh
+if [[ "$USER" == 'lyre' ]]; then
+	if [[ -n ${commands[mocp]} ]]; then
+		exec mocp
+	fi
+fi

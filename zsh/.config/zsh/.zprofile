@@ -10,12 +10,16 @@ if [[ -z "${SSH_TTY}" && "${SHLVL}" -eq 1 && -f "${HOME}/.hushlogin" ]]; then
 	clear
 fi
 
-# Start X session
-if [[ "${EUID}" -ne 0 && -z "${DISPLAY}" && "${XDG_VTNR}" -eq 1 ]]; then
-	if [[ -o 'login' && -f "${HOME}/.xinitrc" ]]; then
-		if which startx &>|/dev/null; then
+# Autostart upon login
+if [[ -o 'login' && "${EUID}" -ne 0 && -z "${DISPLAY}" && "$XDG_VTNR" -eq 1 ]]; then
+	if [[ "${HOST}" == 'troubadix' && "${USER}"  == 'lyre' ]]; then
+		if [[ -n ${commands[mocp]} ]]; then
+			exec mocp
+		fi
+	else
+		if [[ -n ${commands[startx]} && -f "${HOME}/.xinitrc" ]]; then
 			# Correct SHLVL value
-			SHLVL=0
+			export SHLVL=0
 
 			# Start X session
 			exec startx

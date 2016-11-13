@@ -57,6 +57,7 @@ bar {
 ##############################
 # General settings
 ##############################
+hide_edge_borders smart
 new_float 1pixel
 new_window 1pixel
 

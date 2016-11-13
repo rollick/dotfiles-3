@@ -52,7 +52,7 @@ prompt_simple_check_venv() {
 }
 
 prompt_simple_set_prompt() {
-	if [[ -n $PROMPT_SHOWN ]]; then
+	if [[ -n $PROMPT_SHOWN || -n $SSH_CONNECTION ]]; then
 		PROMPT="${prompt_newline}"
 	else
 		export PROMPT_SHOWN=1

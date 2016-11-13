@@ -75,3 +75,6 @@ export XAUTHORITY="${XDG_RUNTIME_DIR:-/run/user/${UID}}/Xauthority"
 
 # Set path for tmux' tempory files
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}/tmux"
+
+# SSH agent settings
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

@@ -78,3 +78,6 @@ export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 
 # SSH agent settings
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+# checkupdate settings
+export CHECKUPDATES_DB="${XDG_RUNTIME_DIR:-/run/user/${UID}}/checkupdates-db"

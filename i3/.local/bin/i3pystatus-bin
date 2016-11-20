@@ -123,7 +123,7 @@ def get_package_managers():
             names.append('{Cower}')
         elif shutil.which('yaourt'):
             classes.append(i3pystatus.updates.yaourt.Yaourt())
-            names.append('{Cower}')
+            names.append('{Yaourt}')
     elif shutil.which('apt-get'):
         classes.append(i3pystatus.updates.aptget.AptGet())
         names.append('{AptGet}')

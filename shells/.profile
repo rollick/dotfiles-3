@@ -38,7 +38,7 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
 
 # Set LS_COLORS
 if [[ -f "${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors" ]]; then
-	eval "$(dircolors --sh ${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors)"
+	source "${XDG_CONFIG_HOME:-${HOME}/.config}/dircolors"
 else
 	eval "$(dircolors --sh)"
 fi

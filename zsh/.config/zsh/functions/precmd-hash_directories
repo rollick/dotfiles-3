@@ -1,6 +1,8 @@
 #!/bin/zsh
 # Hash normal directories
 () {
+	local XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
+
 	hash_directory() {
 		local DIR="${2}"
 		local NAME="${1}"
@@ -14,6 +16,9 @@
 
 	hash_directory "alog" "/var/log/old"
 	hash_directory "cups-pdf" "/var/spool/cups-pdf/${USER}"
+	hash_directory "git-local" "${XDG_DOCUMENTS_DIR}/Code/Local"
+	hash_directory "git-remote" "${XDG_DOCUMENTS_DIR}/Code/Remote"
+	hash_directory "git-root" "${XDG_DOCUMENTS_DIR}/Code"
 	hash_directory "log" "/var/log"
 	hash_directory "media" "/run/media/${USER}"
 	hash_directory "paccache" "/var/cache/pacman/pkg"
@@ -30,22 +35,21 @@
 	get_absroot() {
 		local absroot
 
-		for f in "${@}"; do
-			if [[ -f "${f}" ]]; then
-				absroot=$(source "${f}"; print "${ABSROOT/%\//}")
-				break
-			fi
-		done
+		if [[ -n ${ABSROOT} ]]; then
+			print "${ABSROOT}"
+		else
+			for f in "${@}"; do
+				if [[ -f "${f}" ]]; then
+					absroot=$(source "${f}"; print "${ABSROOT/%\//}")
+					break
+				fi
+			done
 
-		print "${absroot}"
+			print "${absroot}"
+		fi
 	}
 
-	# Retrieve ABSROOT
-	if [[ -n $ABSROOT ]]; then
-		absroot="${ABSROOT}"
-	else
-		absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
-	fi
+	absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
 
 	# Hash directory
 	if [[ -n $absroot ]]; then
@@ -58,51 +62,4 @@
 
 	# Cleanup
 	unfunction get_absroot
-}
-
-# Hash git repositories
-() {
-	local _XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
-	local name
-	local subdir
-
-	hash_git_repos() {
-		local BASENAME="${1}"
-		local ROOT="${2}"
-		local name
-		local subdir
-
-		for subdir in "${ROOT}"/*(FN); do
-			if [[ -d "${subdir}/.git" ]]; then
-				name="${subdir:t}"
-				hash -d "git-${BASENAME}-${name}"="${subdir}"
-			fi
-		done
-	}
-
-	# Normalize paths
-	_XDG_DOCUMENTS_DIR="$(readlink -m ${_XDG_DOCUMENTS_DIR})"
-
-	# Remove all hashed "regular" git directories
-	unhash -dm "git-root*" &>|/dev/null
-	unhash -dm "git-local*" &>|/dev/null
-	unhash -dm "git-remote*" &>|/dev/null
-
-	# Hash "regular" git repositories
-	if [[ -d "${_XDG_DOCUMENTS_DIR}/Code" ]]; then
-		hash -d git-root="${_XDG_DOCUMENTS_DIR}/Code"
-
-		if [[ -d "${_XDG_DOCUMENTS_DIR}/Code/Local" ]]; then
-			hash -d git-local="${_XDG_DOCUMENTS_DIR}/Code/Local"
-			hash_git_repos "local" "${_XDG_DOCUMENTS_DIR}/Code/Local"
-		fi
-
-		if [[ -d "${_XDG_DOCUMENTS_DIR}/Code/Remote" ]]; then
-			hash -d git-remote="${_XDG_DOCUMENTS_DIR}/Code/Remote"
-			hash_git_repos "remote" "${_XDG_DOCUMENTS_DIR}/Code/Remote"
-		fi
-	fi
-
-	# Cleanup
-	unfunction hash_git_repos
 }

@@ -142,6 +142,7 @@ let g:python_hightlight_all=1
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Text editing settings
 """""""""""""""""""""""""""""""""""""""""""""""""
+set inccommand=split
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4

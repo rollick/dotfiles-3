@@ -32,24 +32,20 @@
 () {
 	local absroot
 
-	get_absroot() {
-		local absroot
+	# Get ABSROOT
+	if [[ -n ${ABSROOT} ]]; then
+		absroot = "${ABSROOT}"
+	else
+		for f in "${HOME}/.abs.conf" '/etc/abs.conf'; do
+			if [[ -f "${f}" ]]; then
+				# Replace this with a line-by-line parser; sourcing is not
+				# secure
+				absroot=$(source "${f}"; print "${ABSROOT/%\//}")
+				break
+			fi
+		done
 
-		if [[ -n ${ABSROOT} ]]; then
-			print "${ABSROOT}"
-		else
-			for f in "${@}"; do
-				if [[ -f "${f}" ]]; then
-					absroot=$(source "${f}"; print "${ABSROOT/%\//}")
-					break
-				fi
-			done
-
-			print "${absroot}"
-		fi
-	}
-
-	absroot=$(get_absroot "${HOME}/.abs.conf" '/etc/abs.conf')
+	fi
 
 	# Hash directory
 	if [[ -n $absroot ]]; then
@@ -59,7 +55,4 @@
 	else
 		unhash -d "abs" &>|/dev/null
 	fi
-
-	# Cleanup
-	unfunction get_absroot
 }

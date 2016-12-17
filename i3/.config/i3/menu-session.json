@@ -7,12 +7,12 @@
 	"logout": "i3-msg exit",
 
 	"hibernate": {
-		"with lock": "i3lock_wrapper && systemctl hibernate",
+		"with lock": "sh -c 'systemctl hibernate; i3lock_wrapper'",
 		"without lock": "systemctl hibernate"
 	},
 
 	"suspend": {
-		"with lock": "i3lock_wrapper && systemctl suspend",
+		"with lock": "sh -c 'systemctl suspend; i3lock_wrapper'",
 		"without lock": "systemctl suspend"
 	},
 

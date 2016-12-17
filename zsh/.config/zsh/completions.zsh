@@ -71,8 +71,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		dircolors
 		eyed3
 		flake8
-		gpasswd
-		htop
 		makearchroot
 		mocp
 		mv

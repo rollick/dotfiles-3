@@ -8,20 +8,20 @@
 	rba = rebase --abort
 	rbc = rebase --continue
 	stat = status
+[commit]
+	gpgsign = true
 [core]
 	pager =
+[github]
+	user = rscholer
 [merge]
 	tool = nvim -d
+[push]
+	default = simple
+[tig]
+	line-graphics = utf-8
+	vertical-split = 0
 [user]
 	email = rascholer@gmail.com
 	name = 'Raphael Scholer'
 	signingkey = 81538BF8318D5B7B
-[push]
-	default = simple
-[github]
-	user = rscholer
-[tig]
-	line-graphics = utf-8
-	vertical-split = 0
-[commit]
-	gpgsign = true

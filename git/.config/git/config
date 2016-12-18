@@ -4,10 +4,22 @@
 	ci = commit
 	cia = commit --all
 	co = checkout
+	current = "!git rev-parse --abbrev-ref HEAD"
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	incoming = "!git log ..origin/$(git current)"
+	origin = config --get remote.origin.url
+	outgoing = "!git log origin/$(git current).."
+	publish = "!git push origin $(git current)"
 	rba = rebase --abort
 	rbc = rebase --continue
+	rbi = rebase --interactive
 	stat = status
+
+	# Use fzf to select a commit
+	frbi = "!git rebase --interactive $(git fselect)^"
+	frevert = "!git revert $(git fselect)"
+	fselect = "!git log --pretty=oneline |fzf |cut -d' ' -f 1"
+	fshow = "!git show --show-signature $(git fselect)"
 [commit]
 	gpgsign = true
 [core]

@@ -16,10 +16,12 @@
 	stat = status
 
 	# Use fzf to select a commit
-	frbi = "!git rebase --interactive $(git fselect)^"
-	frevert = "!git revert $(git fselect)"
-	fselect = "!git log --pretty=oneline |fzf |cut -d' ' -f 1"
-	fshow = "!git show --show-signature $(git fselect)"
+	fpd = "!BRANCH=$(git fselect-branch) && git push-delete origin ${BRANCH/remotes\\/origin\\//}"
+	frbi = "!HASH=$(git fselect-commit) && git rebase --interactive $(echo ${HASH}| awk '{print $1}')^"
+	frevert = "!HASH=$(git fselect-commit) && git revert $(echo ${HASH}| awk '{print $1}')^"
+	fselect-branch = "!git branch -a |grep -v HEAD |cut -d'*' -f2| awk '{print $1}' |fzf"
+	fselect-commit = "!git log --oneline |fzf"
+	fshow = "!HASH=$(git fselect-commit) && git show --show-signature $(echo ${HASH}| awk '{print $1}')^"
 [commit]
 	gpgsign = true
 [core]

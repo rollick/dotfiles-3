@@ -36,18 +36,15 @@ COLOR_IMPORTANT = '#cc575d'
 
 
 PackageManagerBackends = collections.namedtuple(
-    'PackageManagerBackends',
-    [
-        'classes',
-        'names'
-    ]
+    'PackageManagerBackends', ['classes', 'names']
 )
+PackageManagerBackends.__doc__ = 'Available package manager backends.'
+PackageManagerBackends.classes.__doc__ = 'Class object of available backends.'
+PackageManagerBackends.names.__doc__ = 'Names of available backends.'
 
 
 class RebootReminder(i3pystatus.IntervalModule):
     """Remind the user to reboot if e.g. a new kernel was installed.
-
-    This code only works if **all** previous kernels were removed.
 
     Settings:
         color - The color of the text.

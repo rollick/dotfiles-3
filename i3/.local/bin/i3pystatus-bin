@@ -93,8 +93,10 @@ def first_network_interface(interface_type):
         'wifi': 'w',
     }
 
+    prefix = prefixes[interface_type]
+
     for entry in os.scandir('/sys/class/net'):
-        if entry.is_dir() and entry.name.startswith(prefixes[interface_type]):
+        if entry.is_dir() and entry.name.startswith(prefix):
             return entry.name
     else:
         return ''

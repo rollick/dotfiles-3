@@ -236,7 +236,7 @@ def main():
         }
     )
 
-    if package_managers:
+    if package_managers and (ethernet_interface or wifi_interface):
         status.register(
             'updates',
             backends=package_managers.classes,

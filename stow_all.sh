@@ -34,7 +34,6 @@ if [[ ${EUID} -ne 0 ]]; then
 		cower \
 		dunst \
 		fontconfig \
-		gvbam \
 		i3 \
 		moc \
 		mpv \

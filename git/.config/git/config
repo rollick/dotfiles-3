@@ -13,7 +13,7 @@
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbi = rebase --interactive
-	stat = status
+	stat = status --short
 
 	# Use fzf to select a commit
 	fpd = "!BRANCH=$(git fselect-branch --header push-delete) && git push-delete origin ${BRANCH/remotes\\/origin\\//}"

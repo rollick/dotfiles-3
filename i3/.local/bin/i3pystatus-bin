@@ -141,7 +141,7 @@ def is_laptop():
                 False -- Machine is a desktop PC.
     """
     for entry in os.scandir('/sys/class/power_supply'):
-        if entry.name.startswith('BAT'):
+        if entry.isdir() and entry.name.startswith('BAT'):
             return True
     else:
         return False
@@ -190,28 +190,28 @@ def main():
         scroll_on='\U0001f182',
     )
 
-    if wifi_interface:
-        status.register(
-            'network',
-            color_down=COLOR_DISABLED,
-            color_up=COLOR_DEFAULT,
-            dynamic_color=False,
-            format_down='\uf1eb',
-            format_up='\uf1eb',
-            interface=wifi_interface,
-        )
-
-    if ethernet_interface:
-        status.register(
-            'network',
-            color_down=COLOR_DISABLED,
-            color_up=COLOR_DEFAULT,
-            format_down='\uf0e8',
-            format_up='\uf0e8',
-            interface=ethernet_interface,
-        )
-
     if ethernet_interface or wifi_interface:
+        if wifi_interface:
+            status.register(
+                'network',
+                color_down=COLOR_DISABLED,
+                color_up=COLOR_DEFAULT,
+                dynamic_color=False,
+                format_down='\uf1eb',
+                format_up='\uf1eb',
+                interface=wifi_interface,
+            )
+
+        if ethernet_interface:
+            status.register(
+                'network',
+                color_down=COLOR_DISABLED,
+                color_up=COLOR_DEFAULT,
+                format_down='\uf0e8',
+                format_up='\uf0e8',
+                interface=ethernet_interface,
+            )
+
         status.register(
             'online',
             color=COLOR_DEFAULT,
@@ -236,12 +236,12 @@ def main():
         }
     )
 
-    if package_managers and (ethernet_interface or wifi_interface):
+    if (ethernet_interface or wifi_interface) and package_managers:
         status.register(
             'updates',
             backends=package_managers.classes,
             color=COLOR_IMPORTANT,
-            format='{} {}'.format('\uf06a', '/'.join(package_managers.names)),
+            format='\uf06a {}'.format('/'.join(package_managers.names)),
             format_no_updates='',
             format_working='',
             interval=10 * 60,

@@ -1,0 +1,12 @@
+[Unit]
+Description=MOC server
+ConditionPathExists=/usr/bin/mocp
+After=network.target sound.target
+
+[Service]
+RemainAfterExit=yes
+ExecStart=/usr/bin/mocp --server
+ExecStop=/usr/bin/mocp --exit
+
+[Install]
+WantedBy=default.target

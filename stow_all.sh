@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir --verbose --parents \
 	"${HOME}/.config/gnupg" \
+	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"

@@ -14,6 +14,8 @@
 	rbc = rebase --continue
 	rbi = rebase --interactive
 	stat = status --short
+	upstream = config --get remote.upstream.url
+	upstream-pull = "!git pull upstream $(git current)"
 	wip = commit --all --no-gpg-sign --message "WIP"
 
 	# Use fzf to select a commit

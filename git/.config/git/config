@@ -17,7 +17,7 @@
 	wip = commit --all --no-gpg-sign --message "WIP"
 
 	# Use fzf to select a commit
-	fpd = "!BRANCH=$(git fselect-branch --header push-delete) && git push-delete origin ${BRANCH/remotes\\/origin\\//}"
+	fpd = "!BRANCH=$(git fselect-branch --header push-delete) && git push --delete origin ${BRANCH/remotes\\/origin\\//}"
 	frbi = "!HASH=$(git fselect-commit --header rebase) && git rebase --interactive $(echo ${HASH}| awk '{print $1}')^"
 	frevert = "!HASH=$(git fselect-commit --header revert) && git revert $(echo ${HASH}| awk '{print $1}')^"
 	fselect-branch = "!git branch -a |grep -v HEAD |cut -d'*' -f2| awk '{print $1}' |fzf"

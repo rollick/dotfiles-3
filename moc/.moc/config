@@ -265,7 +265,7 @@ MOCDir = ${XDG_RUNTIME_DIR}/moc/
 #
 # Example:    Keymap = my_keymap
 #
-#Keymap =
+Keymap = ${HOME}/.moc/keymap
 
 # Use ASCII rather than graphic characters for drawing lines.  This
 # helps on some terminals.

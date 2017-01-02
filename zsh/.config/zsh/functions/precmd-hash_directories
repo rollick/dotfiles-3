@@ -22,6 +22,7 @@
 	hash_directory "log" "/var/log"
 	hash_directory "media" "/run/media/${USER}"
 	hash_directory "paccache" "/var/cache/pacman/pkg"
+	hash_directory "run" "${XDG_RUNTIME_DIR}"
 	hash_directory "virtualenvs" "${WORKON_HOME}"
 
 	# Cleanup

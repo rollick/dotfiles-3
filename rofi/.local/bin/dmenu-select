@@ -221,13 +221,9 @@ def dmenu_run(entries, dmenu_cfg, prompt_menu='', prompt_error=''):
 
     # Create prompt
     if dmenu_cfg.prompt_prefix and prompt_menu:
-        prompt_menu = '{}{}'.format(' - ', prompt_menu)
+        prompt_menu = f' - {prompt_menu}'
 
-    prompt = '{}{}{}:'.format(
-        dmenu_cfg.prompt_prefix,
-        prompt_menu,
-        prompt_error
-    )
+    prompt = f'{dmenu_cfg.prompt_prefix}{prompt_menu}{prompt_error}:'
 
     # Create dmenu commandline
     command = 'echo -e {} |{}'.format(
@@ -287,13 +283,13 @@ def main(argv=None):
         menu.from_file(args.file)
     except OSError as e:
         print(
-            '{}: {}'.format(e.strerror, e.filename),
+            f'{e.strerror}: {e.filename}',
             file=sys.stderr
         )
         return 1
     except json.decoder.JSONDecodeError as e:
         print(
-            '{} [{}]'.format(e, args.file),
+            f'{e} [{args.file}]',
             file=sys.stderr
         )
         return 1
@@ -325,7 +321,7 @@ def parse_arguments(argv):
         argparse.Namespace
     """
     description = 'Show a menu using dmenu based upon menu definiton files.'
-    usage = '{} [OPTION]... FILE'.format(os.path.basename(argv[0]))
+    usage = f'{os.path.basename(argv[0])} [OPTION]... FILE'
     version = (
         'dmenu-select 0.1\n'
         'Copyright (C) 2016 by Raphael Scholer\n\n'
@@ -456,7 +452,7 @@ def select_from_menu(menu, base, dmenu_cfg):
         if v:
             return k
         else:
-            return '{}{}'.format(k, suffix)
+            return f'{k}{suffix}'
 
     def path_in_base(k, base):
         path, name = posixpath.split(k)
@@ -503,7 +499,7 @@ def select_from_menu(menu, base, dmenu_cfg):
             path_current = path_selected
         elif selection and not menu.get(path_selected) and selection not in entries:
             # Reopen same path, and display an error message
-            prompt_error = ' ["{}" is not a valid selection]'.format(selection)
+            prompt_error = f' ["{selection}" is not a valid selection]'
         elif not selection and not path_current == path_initial:
             # One menu level up
             path_current = posixpath.join(path_selected, posixpath.pardir)
@@ -542,7 +538,7 @@ def subcommand_list_menus(menu, base, category):
         )
     except MenuBasePathError as e:
         print(
-            '"{}" does not exist in the menu definition.'.format(e),
+            f'"{e}" does not exist in the menu definition.',
             file=sys.stderr
         )
         return 1
@@ -566,7 +562,7 @@ def subcommand_show(menu, base, dmenu_cfg):
         selection = select_from_menu(menu, base, dmenu_cfg)
     except MenuBasePathError as e:
         print(
-            '"{}" does not exist in the menu definition.'.format(e),
+            f'"{e}" does not exist in the menu definition.',
             file=sys.stderr
         )
         return 1
@@ -579,7 +575,7 @@ def subcommand_show(menu, base, dmenu_cfg):
         return e.returncode
     else:
         if selection:
-            subprocess.run('{} &'.format(selection), shell=True)
+            subprocess.run(f'{selection} &', shell=True)
 
     return 0
 

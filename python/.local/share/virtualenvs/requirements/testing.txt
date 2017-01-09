@@ -1,2 +1,0 @@
-check-manifest==0.34
-pytest==3.0.5

@@ -1,0 +1,11 @@
+ipython
+pylint
+flake8
+flake8-import-order
+flake8-quotes
+flake8-tidy-imports
+pep8-naming
+flake8-docstrings
+pytest
+tox
+docutils

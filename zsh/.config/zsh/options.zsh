@@ -1,6 +1,7 @@
 # Changing Directories
 setopt AUTO_CD				# Unknown commands are treated as 'cd command'
 setopt AUTO_PUSHD			# cd pushes old directory onto stack
+setopt NO_CHASE_DOTS		# Resolve path to physical directory when using '..'
 setopt PUSHD_IGNORE_DUPS	# Don't push dupes onto the stack
 
 # Completion

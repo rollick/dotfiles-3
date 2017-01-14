@@ -4,8 +4,8 @@
 #
 #    pip-compile --output-file requirements-env_i3pystatus-bin.txt requirements-env_i3pystatus-bin.in
 #
+-e git+https://github.com/enkore/i3pystatus.git#egg=i3pystatus
 basiciw==0.2.2
 colour==0.1.2
-i3pystatus==3.35
 netifaces==0.10.5
 pyalsaaudio==0.8.2

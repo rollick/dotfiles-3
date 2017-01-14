@@ -47,16 +47,16 @@ bindkey -e
 	[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" history-beginning-search-backward
 }
 
-bindkey	' '						expand-global-alias
-bindkey	'^ '					magic-space
-bindkey	'^B'					backward-kill-word
-bindkey	'^W'					kill-word
-bindkey	'^X '					hide-from-history
-bindkey	'^Xd'					insert-iso-date
-bindkey	'^Xe'					expand-word
-bindkey	'^Xk'					insert-kept-result
-bindkey	'^Xs'					toggle-sudo
-bindkey -M menuselect	'i'		accept-and-menu-complete
+bindkey ' '                     expand-global-alias
+bindkey '^ '                    magic-space
+bindkey '^B'                    backward-kill-word
+bindkey '^W'                    kill-word
+bindkey '^X '                   hide-from-history
+bindkey '^Xd'                   insert-iso-date
+bindkey '^Xe'                   expand-word
+bindkey '^Xk'                   insert-kept-result
+bindkey '^Xs'                   toggle-sudo
+bindkey -M menuselect 'i'       accept-and-menu-complete
 
 # Make sure the terminal is in application mode, when zle is active.
 # Only then are the values from $terminfo valid.

@@ -217,10 +217,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer --quiet sset Headphone 
 bindsym XF86Calculator exec --no-startup-id st -n calc -e calc
 bindsym XF86HomePage exec chromium
 bindsym XF86Mail exec chromium https://www.gmail.com/
-bindsym XF86MonBrightnessDown exec light -s acpi_video0 -U 10
-bindsym XF86MonBrightnessUp exec light -s acpi_video0 -A 10
 
 # Session control
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock_wrapper
 bindsym $mod+Ctrl+s exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json
+bindsym Scroll_Lock exec --no-startup-id i3lock_wrapper
 bindsym XF86Sleep exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json

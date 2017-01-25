@@ -1,12 +1,11 @@
 #!/bin/bash
 mkdir --verbose --parents \
-	"${HOME}/.config/gnupg" \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.ssh"
-chmod --changes 700 "${HOME}/.config/gnupg"
+chmod --changes 700 "${HOME}/.gnupg"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
 	flake8 \

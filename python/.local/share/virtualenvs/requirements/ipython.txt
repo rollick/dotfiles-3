@@ -4,16 +4,19 @@
 #
 #    pip-compile --output-file ipython.txt ipython.in
 #
+appdirs==1.4.0            # via setuptools
 decorator==4.0.11         # via ipython, traitlets
 ipython-genutils==0.1.0   # via traitlets
 ipython==5.1.0
+packaging==16.8           # via setuptools
 pexpect==4.2.1            # via ipython
 pickleshare==0.7.4        # via ipython
 prompt-toolkit==1.0.9     # via ipython
 ptyprocess==0.5.1         # via pexpect
 pygments==2.1.3           # via ipython
+pyparsing==2.1.10         # via packaging
 simplegeneric==0.8.1      # via ipython
-six==1.10.0               # via prompt-toolkit, traitlets
+six==1.10.0               # via packaging, prompt-toolkit, setuptools, traitlets
 traitlets==4.3.1          # via ipython
 wcwidth==0.1.7            # via prompt-toolkit
 

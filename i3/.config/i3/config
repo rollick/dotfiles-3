@@ -45,13 +45,6 @@ bar {
 		inactive_workspace $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
 		urgent_workspace   $urgent_bg    $urgent_bg    $unfocused_fg $focused_bg
 	}
-
-	# Disable mouse events
-	bindsym button1 nop
-	bindsym button2 nop
-	bindsym button3 nop
-	bindsym button4 nop
-	bindsym button5 nop
 }
 
 ##############################

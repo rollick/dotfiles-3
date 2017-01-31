@@ -55,11 +55,13 @@ alias df="${aliases[df]:-df} --human-readable"
 alias dmesg="${aliases[dmesg]:-dmesg} --decode --human"
 alias du="${aliases[du]:-du} --human-readable"
 alias free="${aliases[free]:-free} --mega --human"
+alias ip="${aliases[ip]:-ip} -human-readable -iec"
 alias ls="${aliases[ls]:-ls} --human-readable"
 [[ -n ${commands[rsync]} ]] && alias rsync='rsync --human-readable'
 
 # Enable color output
 alias grep="${aliases[grep]:-grep} --color=auto"
+alias ip="${aliases[ip]:-ip} -color"
 alias ls="${aliases[ls]:-ls} --color=auto"
 
 # Overide default time format

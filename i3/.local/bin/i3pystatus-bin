@@ -20,14 +20,16 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import collections
+import datetime
+import fnmatch
 import os
 import shutil
 import sys
-import tempfile
 
 import i3pystatus
 import i3pystatus.updates.cower
 import i3pystatus.updates.pacman
+import uptime
 
 
 COLOR_DEFAULT = None
@@ -44,7 +46,7 @@ PackageManagerBackends.names.__doc__ = 'Names of available backends.'
 
 
 class RebootReminder(i3pystatus.IntervalModule):
-    """Remind the user to reboot if e.g. a new kernel was installed.
+    """Remind the user to reboot if a new initramfs was created.
 
     Settings:
         color - The color of the text.
@@ -60,17 +62,24 @@ class RebootReminder(i3pystatus.IntervalModule):
     interval = 10
     text = 'Reboot required'
 
-    status_file = os.path.join(tempfile.gettempdir(), 'reboot_needed')
-
     def run(self):
         """Run module."""
-        if not os.path.isfile(self.status_file):
-            self.output = None
-        else:
-            self.output = {
-                'full_text': self.text,
-                'color': self.color
-            }
+        boottime = uptime.boottime()
+
+        with os.scandir('/boot') as dircontent:
+            for entry in dircontent:
+                if fnmatch.fnmatch(entry.name, 'initramfs-*.img'):
+                    mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
+
+                    if mtime > boottime:
+                        self.output = {
+                            'color': self.color,
+                            'full_text': self.text
+                        }
+
+                        break
+            else:
+                self.output = None
 
 
 def first_network_interface(interface_type):

@@ -87,6 +87,7 @@ for_window [class="^MP3Diags$" window_type="normal"] floating disable
 for_window [class="^Nestopia$"] floating enable
 for_window [class="^Octave.*" title="^Figure .*"] floating enable
 for_window [class="^Snes9x.*"] floating enable
+for_window [class="^Sxiv$"] floating enable
 for_window [instance="^calc$"] floating enable
 for_window [title="^Page(|s) Unresponsive$"] floating enable
 for_window [title="^Task Manager - Chromium$"] floating enable

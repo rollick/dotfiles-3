@@ -1,3 +1,4 @@
 [flake8]
 ignore = E501
+import-order-style = appnexus
 max-complexity = 10

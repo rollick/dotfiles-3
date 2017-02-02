@@ -27,8 +27,11 @@ import shutil
 import sys
 
 import i3pystatus
+import i3pystatus.updates.aptget
 import i3pystatus.updates.cower
+import i3pystatus.updates.dnf
 import i3pystatus.updates.pacman
+import i3pystatus.updates.yaourt
 import uptime
 
 
@@ -58,20 +61,19 @@ class RebootReminder(i3pystatus.IntervalModule):
         ('text', 'Text to display')
     )
 
+    boottime = uptime.boottime()
     color = '#ff0000'
     interval = 10
     text = 'Reboot required'
 
     def run(self):
         """Run module."""
-        boottime = uptime.boottime()
-
         with os.scandir('/boot') as dircontent:
             for entry in dircontent:
                 if fnmatch.fnmatch(entry.name, 'initramfs-*.img'):
                     mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
 
-                    if mtime > boottime:
+                    if mtime > self.boottime:
                         self.output = {
                             'color': self.color,
                             'full_text': self.text

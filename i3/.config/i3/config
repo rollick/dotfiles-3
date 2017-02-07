@@ -8,25 +8,18 @@ exec --no-startup-id udiskie --quiet --no-automount --no-notify --no-tray
 ##############################
 # Appearance
 ##############################
-set $focused_bg #5294e2
-set $focused_fg #f5f6f7
-set $indicator_off #5294e2
-set $indicator_on #f5f6f7
-set $separator_fg #afb8c5
-set $unfocused_bg #2f343f
-set $unfocused_fg #f5f6f7
-set $urgent_bg #cc575d
-set $urgent_fg #5294e2
-
 # Set font
 font pango:FontAwesome, sans-serif Bold 10
 
 # Set colors for window decorations
-# class                 border        background    foreground    indicator
-client.focused          $focused_bg   $focused_bg   $focused_fg   $indicator_on
-client.focused_inactive $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off
-client.unfocused        $unfocused_bg $unfocused_bg $unfocused_fg $indicator_off
-client.urgent           $urgent_bg    $urgent_bg    $urgent_fg    $urgent_bg
+client.background       #f5f6f7
+
+# class                 border  background foreground indicator child_border
+client.focused          #5294e2 #5294e2    #f5f6f7    #f5f6f7   #5294e2
+client.focused_inactive #25343f #25343f    #f5f6f7    #5294e2   #25343f
+client.placeholder      #0c0c0c #0c0c0c    #f5f6f7    #0c0c0c   #0c0c0c
+client.unfocused        #25343f #25343f    #f5f6f7    #5294e2   #25343f
+client.urgent           #cc575d #cc575d    #f5f6f7    #cc575d   #cc575d
 
 # i3bar
 bar {
@@ -36,14 +29,16 @@ bar {
 	status_command venv_run i3pystatus-bin i3pystatus-bin
 	tray_output primary
 	colors {
-		background $unfocused_bg
-		separator $separator_fg
-		statusline $unfocused_fg
-		# class            border        background    foreground    indicator
-		active_workspace   $separator_fg $separator_fg $unfocused_fg $focused_bg
-		focused_workspace  $focused_bg   $focused_bg   $focused_fg   $unfocused_bg
-		inactive_workspace $unfocused_bg $unfocused_bg $unfocused_fg $focused_bg
-		urgent_workspace   $urgent_bg    $urgent_bg    $unfocused_fg $focused_bg
+		background #25343f
+		separator  #afb8c5
+		statusline #f5f6f7
+
+		# class            border  background foreground
+		active_workspace   #afb8c5 #afb8c5    #25343f
+		binding_mode       #e2e200 #e2e200    #25343f
+		focused_workspace  #5294e2 #5294e2    #f5f6f7
+		inactive_workspace #25343f #25343f    #f5f6f7
+		urgent_workspace   #cc575d #cc575d    #f5f6f7
 	}
 }
 

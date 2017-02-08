@@ -12,7 +12,6 @@ call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'indentpython.vim', {'for': 'python'}
 	Plug 'lastpos.vim'
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
-	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'christoomey/vim-sort-motion'

@@ -12,7 +12,7 @@ exec --no-startup-id udiskie --quiet --no-automount --no-notify --no-tray
 font pango:FontAwesome, sans-serif Bold 10
 
 # Set colors for window decorations
-client.background       #f5f6f7
+client.background       #000000
 
 # class                 border  background foreground indicator child_border
 client.focused          #5294e2 #5294e2    #f5f6f7    #f5f6f7   #5294e2

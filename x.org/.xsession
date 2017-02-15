@@ -19,6 +19,3 @@ fi
 
 # Disable bell
 xset -b
-
-# Disable screensaver
-xset s off

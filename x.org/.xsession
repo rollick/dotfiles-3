@@ -22,6 +22,3 @@ xset -b
 
 # Disable screensaver
 xset s off
-
-# Disable DPMS
-xset -dpms

@@ -9,7 +9,7 @@ astroid==1.4.9            # via pylint
 decorator==4.0.11         # via ipython, traitlets
 docutils==0.13.1
 flake8-docstrings==1.0.3
-flake8-import-order==0.11
+flake8-import-order==0.12
 flake8-polyfill==1.0.1    # via flake8-docstrings
 flake8-quotes==0.9.0
 flake8-tidy-imports==1.0.5
@@ -43,4 +43,4 @@ wcwidth==0.1.7            # via prompt-toolkit
 wrapt==1.10.8             # via astroid
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools                # via ipython, pytest
+# setuptools                # via flake8-import-order, ipython, pytest

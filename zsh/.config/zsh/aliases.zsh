@@ -30,8 +30,6 @@ alias ln="${aliases[ln]:-ln} --interactive"
 alias mv="${aliases[mv]:-mv} --interactive"
 alias rm="${aliases[rm]:-rm} --one-file-system --preserve-root"
 
-# Make some commands less verbose
-
 # Make some commands more verbose
 alias chgrp="${aliases[chgrp]:-chgrp} --changes"
 alias chmod="${aliases[chmod]:-chmod} --changes"
@@ -108,6 +106,11 @@ fi
 if [[ -n ${functions[zmv]} ]]; then
 	alias zcp="${aliases[zmv]:-zmv} -C"
 	alias zln="${aliases[zmv]:-zln} -L"
+fi
+
+# Improve handling of new windows in i3
+if [[ -n ${functions[i3-tswallow]} && -n ${commands[mpv]} ]]; then
+	alias mpv="i3-tswallow ${aliases[mpv]:-mpv}"
 fi
 
 # Hide some commands from history

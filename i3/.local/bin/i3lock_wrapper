@@ -21,7 +21,7 @@
 I3_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/i3/config"
 
 # Get i3 focused bg color
-BG_COLOR=$(grep '[[:space:]]focused_workspace' "${I3_CONFIG}" |cut -f 3 -d '#' |tr -d '[:space:]')
+BG_COLOR='25343f'
 COLOR_CMD="--color=${BG_COLOR}"
 
 revert_dpms() {

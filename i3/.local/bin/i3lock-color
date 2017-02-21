@@ -18,15 +18,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-I3_CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/i3/config"
 
 # Get i3 focused bg color
 BG_COLOR='25343f'
 COLOR_CMD="--color=${BG_COLOR}"
-
-revert_dpms() {
-	xset dpms 0 0 0
-}
 
 # Parse commandline arguments
 for e in "${@}"; do
@@ -36,10 +31,4 @@ for e in "${@}"; do
 	fi
 done
 
-trap revert_dpms SIGHUP SIGINT SIGTERM
-
-xset +dpms dpms 5 5 5
-
 i3lock --nofork "${COLOR_CMD}" "$@"
-
-revert_dpms

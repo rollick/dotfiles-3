@@ -3,16 +3,16 @@
 		"reconfigure": "i3-msg reload",
 		"restart": "i3-msg restart"
 	},
-	"lock": "i3lock_wrapper",
+	"lock": "i3lock-color",
 	"logout": "i3-msg exit",
 
 	"hibernate": {
-		"with lock": "sh -c 'systemctl hibernate; i3lock_wrapper'",
+		"with lock": "sh -c 'systemctl hibernate; i3lock-color'",
 		"without lock": "systemctl hibernate"
 	},
 
 	"suspend": {
-		"with lock": "sh -c 'systemctl suspend; i3lock_wrapper'",
+		"with lock": "sh -c 'systemctl suspend; i3lock-color'",
 		"without lock": "systemctl suspend"
 	},
 

@@ -1,9 +1,9 @@
 dotfiles
-===============
+========
 These are my dotfiles.
 
 Installation
----------------
+------------
 My dotfiles are optimized to be installed with
 [GNU stow](http://www.gnu.org/software/stow/).
 

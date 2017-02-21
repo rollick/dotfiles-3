@@ -42,6 +42,10 @@
 	pushInsteadOf = "gh:"
 [url "https://github.com/"]
 	insteadOf = "gh:"
+[url "https://aur.archlinux.org/"]
+	insteadOf = "aur:"
+[url "ssh://aur@aur.archlinux.org/"]
+	pushInsteadOf = "aur:"
 [user]
 	email = rascholer@gmail.com
 	name = 'Raphael Scholer'

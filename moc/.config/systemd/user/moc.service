@@ -1,5 +1,6 @@
 [Unit]
 Description=MOC server
+Documentation=man:mocp(1)
 ConditionPathExists=/usr/bin/mocp
 After=network.target sound.target
 

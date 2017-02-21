@@ -38,10 +38,10 @@
 [tig]
 	line-graphics = utf-8
 	vertical-split = 0
-[url "git@github.com:rscholer/"]
-	insteadOf = gh-work://
+[url "git@github.com:"]
+	pushInsteadOf = "gh:"
 [url "https://github.com/"]
-	insteadOf = gh://
+	insteadOf = "gh:"
 [user]
 	email = rascholer@gmail.com
 	name = 'Raphael Scholer'

@@ -37,6 +37,9 @@ ignore = Path .local/share/Trash
 ignore = Path Documents/Code/Local/*/{.cache,.eggs,.tox,build,dist,MANIFEST}
 ignore = Path Documents/Code/Local/*/*.egg-info
 ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
+ignore = Path Public/*
+
+ignorenot = Path Public/favicon.ico
 
 ####################
 # Application rules

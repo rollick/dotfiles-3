@@ -38,6 +38,8 @@
 [tig]
 	line-graphics = utf-8
 	vertical-split = 0
+[url "git://git.suckless.org/"]
+	insteadOf = "suckless:"
 [url "git@github.com:"]
 	pushInsteadOf = "gh:"
 [url "https://github.com/"]

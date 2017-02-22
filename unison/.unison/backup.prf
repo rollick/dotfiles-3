@@ -1,0 +1,7 @@
+label = Backup user profile to an external HDD
+
+root = /home/raphael/
+root = /run/media/raphael/raphael-backup
+
+include backup.settings
+include backup.rules

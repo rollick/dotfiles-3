@@ -1,6 +1,0 @@
-label = Backup $HOME to an external HDD
-
-include settings.include
-include rules-backup.include
-
-root = /run/media/raphael/raphael-backup

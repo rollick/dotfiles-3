@@ -1,6 +1,0 @@
-label = Synchronize $HOME with methusalix.local
-
-include settings.include
-include rules-syncing.include
-
-root = ssh://methusalix.local

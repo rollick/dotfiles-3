@@ -1,0 +1,7 @@
+label = Synchronize user profile with obelix.local
+
+root = /home/raphael/
+root = ssh://obelix.local
+
+include obelix.settings
+include obelix.rules

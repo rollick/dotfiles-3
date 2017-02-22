@@ -1,9 +1,4 @@
 ####################
-# Set ~/ as root
-####################
-root = /home/raphael/
-
-####################
 # Always exclude temporary and backup files
 ####################
 ignore = Name *.bak
@@ -90,4 +85,4 @@ ignorenot = Path .local/share/nvim/plugged
 ignorenot = Path .local/share/virtualenvs/requirements
 ignorenot = Path .local/share/zathura/bookmarks
 ignorenot = Path .moc/{config,themes}
-ignorenot = Path .unison/*.{include,prf}
+ignorenot = Path .unison/*.{include,prf,rules,settings}

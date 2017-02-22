@@ -1,4 +1,4 @@
-include rules-backup.include
+include backup.rules
 
 ignore = Path Music/*
 ignore = Path Videos/*

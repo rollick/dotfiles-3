@@ -26,16 +26,15 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/gtk-3.0" \
 		"${HOME}/.config/mpv" \
 		"${HOME}/.config/systemd/user" \
-		"${HOME}/.moc" \
 		"${HOME}/.unison"
 	stow --restow --target "${HOME}" --ignore='\.venv' \
 		a11y \
 		appearance \
+		cmus \
 		cower \
 		dunst \
 		fontconfig \
 		i3 \
-		moc \
 		mpv \
 		nestopia \
 		pacman \

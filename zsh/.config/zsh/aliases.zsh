@@ -90,9 +90,6 @@ alias la="${aliases[ls]:-ls} --almost-all"
 alias ll="${aliases[ls]:-ls} --format=long"
 alias lla="${aliases[ls]:-ls} --almost-all --format=long"
 [[ -n ${commands[htop]} ]] && alias uhtop="${aliases[htop]:-htop} -u ${USER}"
-if [[ -n ${commands[httpserver]} ]]; then
-	alias httpserver_public="${aliases[httpserver]:-httpserver} ${XDG_PUBLICSHARE_DIR:-${HOME}/Public}"
-fi
 if [[ -n ${commands[ionice]} ]] && [[ -n ${commands[nice]} ]]; then
 	alias reallynice='nice -n 19 ionice -c 3 '
 fi

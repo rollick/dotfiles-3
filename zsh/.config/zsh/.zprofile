@@ -12,7 +12,9 @@ fi
 
 # Autostart upon login
 if [[ -o 'login' && "$EUID" -ne 0 && "$XDG_VTNR" -eq 1 ]]; then
-	if [[ -f "${ZDOTDIR}/autostart/${HOST}" ]]; then
-		source "${ZDOTDIR}/autostart/${HOST}"
+	if grep -q -- '-fallback.img' /proc/cmdline; then
+		if [[ -f "${ZDOTDIR}/autostart/${HOST}" ]]; then
+			source "${ZDOTDIR}/autostart/${HOST}"
+		fi
 	fi
 fi

@@ -13,6 +13,7 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	gnupg \
 	htop \
 	neovim \
+	pacman \
 	pip \
 	python \
 	shells \
@@ -37,7 +38,6 @@ if [[ ${EUID} -ne 0 ]]; then
 		i3 \
 		mpv \
 		nestopia \
-		pacman \
 		profile-cleaner \
 		rofi \
 		snes9x \

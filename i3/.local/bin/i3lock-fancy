@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2016 by Raphael Scholer
+# Copyright (C) 2017 by Raphael Scholer
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,16 +19,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# Get i3 focused bg color
-BG_COLOR='25343f'
-COLOR_CMD="--color=${BG_COLOR}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+COLOR_CMD="--color=25343f"
+MONITOR_COUNT=$(xrandr -q |grep connected |wc -l)
 
-# Parse commandline arguments
-for e in "${@}"; do
-	if [[ "${e}" == '-c' || "${e}" = '--color=*' ]]; then
-		COLOR_CMD=""
-		break
-	fi
-done
-
-i3lock --nofork "${COLOR_CMD}" "$@"
+if [[ -f "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" ]]; then
+	i3lock -i "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" "${@}"
+else
+	i3lock "${COLOR_CMD}" "${@}"
+fi

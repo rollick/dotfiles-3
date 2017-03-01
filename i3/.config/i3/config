@@ -208,7 +208,7 @@ bindsym XF86HomePage exec chromium
 bindsym XF86Mail exec chromium https://www.gmail.com/
 
 # Session control
-bindsym $mod+Ctrl+l exec --no-startup-id i3lock-color
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock-fancy
 bindsym $mod+Ctrl+s exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json
-bindsym Scroll_Lock exec --no-startup-id i3lock-color
+bindsym Scroll_Lock exec --no-startup-id i3lock-fancy
 bindsym XF86Sleep exec --no-startup-id dmenu-select --prompt=session ~/.config/i3/menu-session.json

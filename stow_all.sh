@@ -1,9 +1,9 @@
 #!/bin/bash
 mkdir --verbose --parents \
+	"${HOME}/.gnupg" \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
-	"${HOME}/.gnupg" \
 	"${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
@@ -43,5 +43,5 @@ if [[ ${EUID} -ne 0 ]]; then
 		xorg
 fi
 
-chmod --changes 700 "${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.gnupg"
+chmod --changes 700 "${HOME}/.ssh"

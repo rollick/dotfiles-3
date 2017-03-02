@@ -3,6 +3,7 @@ mkdir --verbose --parents \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
+	"${HOME}/.gnupg"
 	"${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \

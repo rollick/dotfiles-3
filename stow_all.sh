@@ -4,8 +4,6 @@ mkdir --verbose --parents \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
-chmod --changes 700 "${HOME}/.ssh"
-chmod --changes 700 "${HOME}/.gnupg"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
 	git \
@@ -43,3 +41,6 @@ if [[ ${EUID} -ne 0 ]]; then
 		unison \
 		xorg
 fi
+
+chmod --changes 700 "${HOME}/.ssh"
+chmod --changes 700 "${HOME}/.gnupg"

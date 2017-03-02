@@ -8,7 +8,6 @@ chmod --changes 700 "${HOME}/.ssh"
 chmod --changes 700 "${HOME}/.gnupg"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
-	flake8 \
 	git \
 	gnupg \
 	htop \

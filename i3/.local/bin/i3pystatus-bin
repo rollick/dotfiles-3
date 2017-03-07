@@ -106,11 +106,12 @@ def first_network_interface(interface_type):
 
     prefix = prefixes[interface_type]
 
-    for entry in os.scandir('/sys/class/net'):
-        if entry.is_dir() and entry.name.startswith(prefix):
-            return entry.name
-    else:
-        return ''
+    with os.scandir('/sys/class/net') as dircontent:
+        for entry in dircontent:
+            if entry.is_dir() and entry.name.startswith(prefix):
+                return entry.name
+        else:
+            return ''
 
 
 def get_package_managers():
@@ -151,11 +152,12 @@ def is_laptop():
         bool -- True -- Machine is a laptop (or related type).
                 False -- Machine is a desktop PC.
     """
-    for entry in os.scandir('/sys/class/power_supply'):
-        if entry.isdir() and entry.name.startswith('BAT'):
-            return True
-    else:
-        return False
+    with os.scandir('/sys/class/power_supply') as dircontent:
+        for entry in dircontent:
+            if entry.isdir() and entry.name.startswith('BAT'):
+                return True
+        else:
+            return False
 
 
 def main():

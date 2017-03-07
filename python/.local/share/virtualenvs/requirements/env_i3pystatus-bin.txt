@@ -6,7 +6,11 @@
 #
 -e git+https://github.com/enkore/i3pystatus.git#egg=i3pystatus
 basiciw==0.2.2
+click==6.7                # via pip-tools
 colour==0.1.2
+first==2.0.1              # via pip-tools
 netifaces==0.10.5
+pip-tools==1.8.0
 pyalsaaudio==0.8.4
+six==1.10.0               # via pip-tools
 uptime==3.0.1

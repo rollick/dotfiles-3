@@ -70,7 +70,7 @@ class RebootReminder(i3pystatus.IntervalModule):
         """Run module."""
         with os.scandir('/boot') as dircontent:
             for entry in dircontent:
-                if fnmatch.fnmatch(entry.name, 'initramfs-*.img'):
+                if fnmatch.fnmatch(entry.name, '*.img'):
                     mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
 
                     if mtime > self.boottime:

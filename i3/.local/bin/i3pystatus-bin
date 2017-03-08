@@ -68,20 +68,21 @@ class RebootReminder(i3pystatus.IntervalModule):
 
     def run(self):
         """Run module."""
-        with os.scandir('/boot') as dircontent:
-            for entry in dircontent:
-                if fnmatch.fnmatch(entry.name, '*.img'):
-                    mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
+        if not self.output:
+            with os.scandir('/boot') as dircontent:
+                for entry in dircontent:
+                    if fnmatch.fnmatch(entry.name, '*.img'):
+                        mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
 
-                    if mtime > self.boottime:
-                        self.output = {
-                            'color': self.color,
-                            'full_text': self.text
-                        }
+                        if mtime > self.boottime:
+                            self.output = {
+                                'color': self.color,
+                                'full_text': self.text
+                            }
 
-                        break
-            else:
-                self.output = None
+                            break
+                else:
+                    self.output = None
 
 
 def first_network_interface(wildcard):

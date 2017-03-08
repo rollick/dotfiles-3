@@ -32,7 +32,7 @@ import i3pystatus.updates.cower
 import i3pystatus.updates.dnf
 import i3pystatus.updates.pacman
 import i3pystatus.updates.yaourt
-import uptime
+import psutil
 
 
 COLOR_DEFAULT = None
@@ -61,7 +61,7 @@ class RebootReminder(i3pystatus.IntervalModule):
         ('text', 'Text to display')
     )
 
-    boottime = uptime.boottime()
+    boottime = datetime.datetime.fromtimestamp(psutil.boot_time())
     color = '#ff0000'
     interval = 10
     text = 'Reboot required'

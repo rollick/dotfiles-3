@@ -3,5 +3,5 @@
 basiciw
 colour
 netifaces
+psutil
 pyalsaaudio
-uptime

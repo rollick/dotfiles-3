@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file ipython.txt ipython.in
 #
-appdirs==1.4.2            # via setuptools
+appdirs==1.4.3            # via setuptools
 decorator==4.0.11         # via ipython, traitlets
 ipython-genutils==0.1.0   # via traitlets
 ipython==5.3.0

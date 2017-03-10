@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file env_i3pystatus.txt env_i3pystatus.in
 #
-appdirs==1.4.2            # via setuptools
+appdirs==1.4.3            # via setuptools
 astroid==1.4.9            # via pylint
 click==6.7                # via pip-tools
 decorator==4.0.11         # via ipython, traitlets
@@ -14,7 +14,7 @@ flake8-docstrings==1.0.3
 flake8-import-order==0.12
 flake8-polyfill==1.0.1    # via flake8-docstrings
 flake8-quotes==0.9.0
-flake8-tidy-imports==1.0.5
+flake8-tidy-imports==1.0.6
 flake8==3.3.0
 ipython-genutils==0.1.0   # via traitlets
 ipython==5.3.0

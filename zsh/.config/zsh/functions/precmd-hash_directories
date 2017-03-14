@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Hash normal directories
+# Hash normal directories and automatically remove obsolete hashes
 () {
 	local XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
 

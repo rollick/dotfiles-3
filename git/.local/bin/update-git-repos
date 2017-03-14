@@ -61,19 +61,21 @@ else
 	XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
 
 	if [[ -n "${1}" ]]; then
-		HEADER="${COLOR_OTHER}::${COLOR_CLEAR} ${COLOR_MAIN}$(basename ${1})${COLOR_CLEAR}"
-		echo -e "${HEADER}"
-		(cd ${1}; git pull)
+		name=$(basename "${1}")
+		header="${COLOR_OTHER}::${COLOR_CLEAR} ${COLOR_MAIN}${name}${COLOR_CLEAR}"
+		echo -e "${header}"
+		(cd "${1}" && git pull)
 	else
 		for d in "${XDG_DOCUMENTS_DIR}/Code/Remote"/*; do
-			HEADER="${COLOR_OTHER}::${COLOR_CLEAR} ${COLOR_MAIN}$(basename ${d})${COLOR_CLEAR}"
+			name=$(basename "${d}")
+			header="${COLOR_OTHER}::${COLOR_CLEAR} ${COLOR_MAIN}${name}${COLOR_CLEAR}"
 			if [[ "${FIRST_REPO}" -eq 0 ]]; then
 				FIRST_REPO=1
-				echo -e "${HEADER}"
+				echo -e "${header}"
 			else
-				echo -e "\n${HEADER}"
+				echo -e "\n${header}"
 			fi
-			(cd ${d}; git pull)
+			(cd "${d}" && git pull)
 		done
 	fi
 fi

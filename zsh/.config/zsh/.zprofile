@@ -10,7 +10,7 @@ if [[ -z "${SSH_TTY}" && "${SHLVL}" -eq 1 && -f "${HOME}/.hushlogin" ]]; then
 	clear
 fi
 
-# Autostart upon login
+# Autostart upon login, except in fallback mode
 if [[ -o 'login' && "$EUID" -ne 0 && "$XDG_VTNR" -eq 1 ]]; then
 	if ! grep -q -- '-fallback.img' /proc/cmdline; then
 		if [[ -f "${ZDOTDIR}/autostart/${HOST}" ]]; then

@@ -1,7 +1,0 @@
-#!/bin/zsh
-if [[ "$USER" == 'lyre' ]]; then
-	if [[ -n ${commands[mocp]} ]]; then
-		sleep 2 # Allow systemd service to start
-		exec mocp
-	fi
-fi

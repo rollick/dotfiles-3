@@ -2,10 +2,16 @@
 
 # Toggle "sudo" at the beginning of the line
 # Also replace $EDITOR with sudoedit and vis a vis.
-# TODO: Handle sudo $EDITOR -> sudoedit
 case "${BUFFER[(w)1]}" in
 	"=sudo" )           BUFFER="${BUFFER/=sudo /}";;
-	"sudo" )            BUFFER="${BUFFER/sudo /}";;
+	"sudo" )            if [[ "${BUFFER[(w)2]}" == "${EDITOR:-vi}" || "${BUFFER[(w)2]}" == "vi" ]]; then
+							BUFFER[(w)1]="sudoedit"
+							BUFFER[(w)2]=""
+							BUFFER=${BUFFER/  / }
+						else
+							BUFFER="${BUFFER/sudo /}"
+						fi
+						;;
 	"sudoedit" )        BUFFER[(w)1]="${EDITOR:-vi}";;
 	"vi" )              ;&
 	"${EDITOR:-vi}" )   BUFFER[(w)1]="sudoedit";;

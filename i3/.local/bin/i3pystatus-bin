@@ -140,7 +140,7 @@ def is_laptop():
     """
     with os.scandir('/sys/class/power_supply') as dircontent:
         for entry in dircontent:
-            if entry.isdir() and entry.name.startswith('BAT'):
+            if fnmatch.fnmatch('BAT*') and entry.isdir():
                 return True
         else:
             return False
@@ -148,10 +148,12 @@ def is_laptop():
 
 def main():
     """Configure and run i3pystatus."""
-    ethernet_interface = first_network_interface('e*')
     laptop = is_laptop()
+    network_interface = {
+        'ethernet': first_network_interface('e*'),
+        'wifi': first_network_interface('w*'),
+    }
     package_managers = get_package_managers()
-    wifi_interface = first_network_interface('w*')
 
     status = i3pystatus.Status(standalone=True, click_events=False)
 
@@ -189,8 +191,8 @@ def main():
         scroll_on='\U0001f182',
     )
 
-    if ethernet_interface or wifi_interface:
-        if wifi_interface:
+    if network_interface['ethernet'] or network_interface['wifi']:
+        if network_interface['wifi']:
             status.register(
                 'network',
                 color_down=COLOR_DISABLED,
@@ -198,17 +200,17 @@ def main():
                 dynamic_color=False,
                 format_down='\uf1eb',
                 format_up='\uf1eb',
-                interface=wifi_interface,
+                interface=network_interface['wifi'],
             )
 
-        if ethernet_interface:
+        if network_interface['ethernet']:
             status.register(
                 'network',
                 color_down=COLOR_DISABLED,
                 color_up=COLOR_DEFAULT,
                 format_down='\uf0e8',
                 format_up='\uf0e8',
-                interface=ethernet_interface,
+                interface=network_interface['ethernet'],
             )
 
         status.register(
@@ -235,7 +237,7 @@ def main():
         }
     )
 
-    if (ethernet_interface or wifi_interface) and package_managers:
+    if (network_interface['ethernet'] or network_interface['wifi']) and package_managers.classes:
         status.register(
             'updates',
             backends=package_managers.classes,
@@ -249,7 +251,7 @@ def main():
     status.register(
         RebootReminder,
         color=COLOR_IMPORTANT,
-        text='\uf011 Reboot required'
+        text='\uf011 Reboot required',
     )
 
     status.run()

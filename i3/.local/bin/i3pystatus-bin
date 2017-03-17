@@ -49,21 +49,18 @@ PackageManagerBackends.names.__doc__ = 'Names of available backends.'
 
 
 class RebootReminder(i3pystatus.IntervalModule):
-    """Remind the user to reboot if a new initramfs was created.
-
-    Settings:
-        color - The color of the text.
-        text - Text to display.
-    """
+    """Show notification if a initramfs was updated."""
 
     settings = (
         ('color', 'The color of the text'),
+        ('pattern', 'Glob pattern to detect initramfs'),
         ('text', 'Text to display')
     )
 
     boottime = datetime.datetime.fromtimestamp(psutil.boot_time())
     color = '#ff0000'
     interval = 10
+    pattern = '*.img'
     text = 'Reboot required'
 
     def run(self):
@@ -71,7 +68,7 @@ class RebootReminder(i3pystatus.IntervalModule):
         if not self.output:
             with os.scandir('/boot') as dircontent:
                 for entry in dircontent:
-                    if fnmatch.fnmatch(entry.name, '*.img'):
+                    if fnmatch.fnmatch(entry.name, self.pattern) and entry.is_file():
                         mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
 
                         if mtime > self.boottime:

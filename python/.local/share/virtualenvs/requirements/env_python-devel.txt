@@ -25,9 +25,9 @@ packaging==16.8           # via setuptools
 pep8-naming==0.4.1
 pexpect==4.2.1            # via ipython
 pickleshare==0.7.4        # via ipython
-pip-tools==1.8.1
+pip-tools==1.8.2
 pluggy==0.4.0             # via tox
-prompt-toolkit==1.0.13    # via ipython
+prompt-toolkit==1.0.14    # via ipython
 ptyprocess==0.5.1         # via pexpect
 py==1.4.33                # via pytest, tox
 pycodestyle==2.3.1        # via flake8, flake8-import-order

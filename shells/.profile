@@ -78,9 +78,3 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 
 # checkupdate settings
 export CHECKUPDATES_DB="${XDG_RUNTIME_DIR:-/run/user/${UID}}/checkupdates-db"
-
-# fzf settings
-export FZF_DEFAULT_OPTS='
-	--color info:108,prompt:109,spinner:108,pointer:168,marker:168
-	--color hl:65,fg+:15,bg+:234,hl+:108
-'

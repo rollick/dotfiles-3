@@ -6,3 +6,4 @@ fastcheck = true
 log = false
 prefer = newer
 watch = false
+mountpoint = ./

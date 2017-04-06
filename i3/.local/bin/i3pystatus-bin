@@ -22,6 +22,7 @@
 import collections
 import datetime
 import fnmatch
+import functools
 import os
 import shutil
 import sys
@@ -38,14 +39,6 @@ import psutil
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_IMPORTANT = '#cc575d'
-
-
-PackageManagerBackends = collections.namedtuple(
-    'PackageManagerBackends', ['classes', 'names']
-)
-PackageManagerBackends.__doc__ = 'Available package manager backends.'
-PackageManagerBackends.classes.__doc__ = 'Class object of available backends.'
-PackageManagerBackends.names.__doc__ = 'Names of available backends.'
 
 
 class RebootReminder(i3pystatus.IntervalModule):
@@ -82,55 +75,57 @@ class RebootReminder(i3pystatus.IntervalModule):
                     self.output = None
 
 
-def first_network_interface(wildcard):
+@functools.lru_cache()
+def network_interface(network_type):
     """Get first network interface of specific type.
 
     Positional arguments:
-        wildcard -- Shell-style wildcard.
+        network_type -- Type of network interface to search for.
+                        Possible values: ethernet, wifi, wireless.
 
     Return value:
         string -- String containing interface name (eg. 'eth0').
                   An empty string will be returned if no interface was found.
     """
+    wildcard = {
+        'ethernet': 'e*',
+        'wifi': 'w*',
+        'wireless': 'w*',
+    }
+
     with os.scandir('/sys/class/net') as dircontent:
         for entry in dircontent:
-            if fnmatch.fnmatch(entry.name, wildcard):
+            if fnmatch.fnmatch(entry.name, wildcard[network_type]):
                 return entry.name
         else:
             return ''
 
 
-def get_package_managers():
+@functools.lru_cache()
+def package_managers():
     """Identify all possible package managers.
 
     Return value:
-        tuple -- First element is a list containing all backend classes
-                 Second element is a list containing all names of the backend
-                    classes intended to be used in a format string.
+        collections.OrderedDict -- Name and backendclass key/value pairs.
     """
-    classes = []
-    names = []
+    backends = collections.OrderedDict()
 
     if shutil.which('pacman') and shutil.which('makepkg'):
-        classes.append(i3pystatus.updates.pacman.Pacman())
-        names.append('{Pacman}')
+        backends['{Pacman}'] = i3pystatus.updates.pacman.Pacman()
 
         if shutil.which('cower'):
-            classes.append(i3pystatus.updates.cower.Cower())
-            names.append('{Cower}')
+            backends['{Cower}'] = i3pystatus.updates.cower.Cower()
         elif shutil.which('yaourt'):
-            classes.append(i3pystatus.updates.yaourt.Yaourt())
-            names.append('{Yaourt}')
+            backends['{Cower}'] = i3pystatus.updates.yaourt.Yaourt()
     elif shutil.which('apt-get'):
-        classes.append(i3pystatus.updates.aptget.AptGet())
-        names.append('{AptGet}')
+        backends['{AptGet}'] = i3pystatus.updates.aptget.AptGet()
     elif shutil.which('dnf'):
-        classes.append(i3pystatus.updates.dnf.Dnf())
-        names.append('{Dnf}')
+        backends['{Dnf}'] = i3pystatus.updates.dnf.Dnf()
 
-    return PackageManagerBackends(classes, names)
+    return backends
 
 
+@functools.lru_cache()
 def is_laptop():
     """Detect whether or not the current machine is a laptop.
 
@@ -148,13 +143,6 @@ def is_laptop():
 
 def main():
     """Configure and run i3pystatus."""
-    laptop = is_laptop()
-    network_interface = {
-        'ethernet': first_network_interface('e*'),
-        'wifi': first_network_interface('w*'),
-    }
-    package_managers = get_package_managers()
-
     status = i3pystatus.Status(standalone=True, click_events=False)
 
     status.register(
@@ -172,7 +160,7 @@ def main():
         mixer='Headphone',
     )
 
-    if laptop:
+    if is_laptop():
         status.register(
             'backlight',
             color=COLOR_DEFAULT,
@@ -191,8 +179,8 @@ def main():
         scroll_on='\U0001f182',
     )
 
-    if network_interface['ethernet'] or network_interface['wifi']:
-        if network_interface['wifi']:
+    if network_interface('ethernet') or network_interface('wifi'):
+        if network_interface('wifi'):
             status.register(
                 'network',
                 color_down=COLOR_DISABLED,
@@ -200,17 +188,17 @@ def main():
                 dynamic_color=False,
                 format_down='\uf1eb',
                 format_up='\uf1eb',
-                interface=network_interface['wifi'],
+                interface=network_interface('wifi'),
             )
 
-        if network_interface['ethernet']:
+        if network_interface('ethernet'):
             status.register(
                 'network',
                 color_down=COLOR_DISABLED,
                 color_up=COLOR_DEFAULT,
                 format_down='\uf0e8',
                 format_up='\uf0e8',
-                interface=network_interface['ethernet'],
+                interface=network_interface('ethernet'),
             )
 
         status.register(
@@ -237,12 +225,12 @@ def main():
         }
     )
 
-    if (network_interface['ethernet'] or network_interface['wifi']) and package_managers.classes:
+    if (network_interface('ethernet') or network_interface('wifi')) and package_managers():
         status.register(
             'updates',
-            backends=package_managers.classes,
+            backends=list(package_managers().values()),
             color=COLOR_IMPORTANT,
-            format=f"\uf06a {'/'.join(package_managers.names)}",
+            format=f"\uf06a {'/'.join(package_managers())}",
             format_no_updates='',
             format_working='',
             interval=10 * 60,

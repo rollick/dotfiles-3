@@ -3,6 +3,7 @@ mkdir --verbose --parents \
 	"${HOME}/.gnupg" \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
+	"${HOME}/.config/ranger" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
@@ -13,6 +14,7 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	neovim \
 	pacman \
 	python \
+	ranger \
 	shells \
 	ssh \
 	tmux \

@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# Automatically change the directory in bash after closing ranger
+readonly ARGS="$@"
+readonly XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${UID}}"
+
+main() {
+	readonly TEMPFILE="$(mktemp -p ${XDG_RUNTIME_DIR} -t 'ranger-cd.XXXXXXX')"
+
+	=ranger --choosedir="${TEMPFILE}" "${ARGS:-${PWD}}"
+
+	if [[ -f "${TEMPFILE}" ]]; then
+		cd -- "$(<${TEMPFILE})"
+
+		# Cleanup
+		rm -f -- "${TEMPFILE}"
+	fi
+}
+
+main

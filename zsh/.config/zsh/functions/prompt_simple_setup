@@ -96,7 +96,7 @@ prompt_simple_set_title() {
 		user='%n@%m: '
 	fi
 
-	title="${user}%~ - Zsh"
+	title="${user}%~ - zsh"
 
 	case "${TERM}" in
 		screen* )  print -Pn "\ek${title}\e\\";;

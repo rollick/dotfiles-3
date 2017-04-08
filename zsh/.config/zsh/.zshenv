@@ -1,7 +1,7 @@
 #!/bin/zsh
-# Set up enviroment for _all_ instances of ZSH
+# Set up enviroment for _all_ instances of zsh.
 # CAUTION: Avoid any output at all, because this script is run for every
-#          instance of ZSH!
+#          instance of zsh!
 
 export ZDOTDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/zsh"
 

@@ -3,7 +3,6 @@ mkdir --verbose --parents \
 	"${HOME}/.gnupg" \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
-	"${HOME}/.config/ranger" \
 	"${HOME}/.local/share/virtualenvs" \
 	"${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
@@ -14,7 +13,6 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	neovim \
 	pacman \
 	python \
-	ranger \
 	shells \
 	ssh \
 	tmux \
@@ -26,6 +24,7 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/gtk-2.0" \
 		"${HOME}/.config/gtk-3.0" \
 		"${HOME}/.config/mpv" \
+		"${HOME}/.config/ranger" \
 		"${HOME}/.config/systemd/user" \
 		"${HOME}/.unison"
 	stow --restow --target "${HOME}" --ignore='\.venv' \
@@ -39,6 +38,7 @@ if [[ ${EUID} -ne 0 ]]; then
 		mpv \
 		nestopia \
 		profile-cleaner \
+		ranger \
 		rofi \
 		snes9x \
 		sxiv \

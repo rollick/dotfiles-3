@@ -51,6 +51,7 @@ path = .MP3Diags.{dat,ini}
 path = .X{defaults,modmap,resources}
 path = .easyMP3Gain
 path = .gist-vim
+path = .hunspell_*
 path = .gnupg
 path = .hushlogin
 path = .profile

@@ -29,8 +29,8 @@ path = Templates
 path = Videos
 
 ignore = Path .local/share/Trash
-ignore = Path Documents/Code/Local/*/{.cache,.eggs,.tox,build,dist,MANIFEST}
 ignore = Path Documents/Code/Local/*/*.egg-info
+ignore = Path Documents/Code/Local/*/{.cache,.eggs,.tox,build,dist,MANIFEST}
 ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
 ignore = Path Public/*
 
@@ -77,7 +77,6 @@ ignore = Path .config/gtk-*/gtkfilechooser.ini
 ignore = Path .config/mpv/watch_later
 ignore = Path .config/quodlibet/{Dump*,accels,control,current,queue,songs}
 ignore = Path .config/transmission/*
-ignore = Path .{config/,}gnupg/S.{dirmngr,gpg-agent}*
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/icc
 ignore = Path .local/share/numlock_{on,off}
@@ -89,6 +88,7 @@ ignore = Path .local/share/zathura/*
 ignore = Path .moc/*
 ignore = Path .mozilla/firefox/*/lock
 ignore = Path .unison/*
+ignore = Path .{config/,}gnupg/S.{dirmngr,gpg-agent}*
 
 ignorenot = Path .config/cmus/{*.theme,rc}
 ignorenot = Path .config/transmission/{blocklists,settings.json}

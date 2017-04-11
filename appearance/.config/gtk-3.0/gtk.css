@@ -1,4 +1,7 @@
 /* Remove dotted lines from GTK3+ applications */
-undershoot.bottom, undershoot.left, undershoot.right, undershoot.top {
+undershoot.bottom,
+undershoot.left,
+undershoot.right,
+undershoot.top {
 	background-image: none;
 }

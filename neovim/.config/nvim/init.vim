@@ -19,8 +19,8 @@ source $XDG_CONFIG_HOME/nvim/plug.vim
 """""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
 colorscheme distinguished
+set background=dark
 set gdefault " The substitution flag g is always on
 set nobackup  " Don't use backupfiles
 set noswapfile  " Disable swap files
@@ -37,8 +37,8 @@ autocmd BufWritePre * :call StripTrailingWhitespace()
 " Keybindings
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Set <leader>
-let mapleader=','
 let g:mapleader=','
+let mapleader=','
 
 " Don't move cursor when repeating last command with '.'
 nmap . .`[
@@ -142,12 +142,12 @@ let g:python_hightlight_all=1
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Text editing settings
 """""""""""""""""""""""""""""""""""""""""""""""""
+set formatoptions-=t  " Disable insertion of newlines when exceeding textwidth
 set inccommand=split
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set textwidth=79
-set formatoptions-=t  " Disable insertion of newlines when exceeding textwidth
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " UI settings

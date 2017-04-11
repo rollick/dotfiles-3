@@ -19,9 +19,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 COLOR_CMD="--color=25343f"
 MONITOR_COUNT=$(xrandr -q |grep --count '\*')
+XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 
 if [ -f "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" ]; then
 	i3lock -i "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" "${@}"

@@ -9,8 +9,8 @@ export QUODLIBET_USERDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/quodlibet"
 export NO_AT_BRIDGE=1
 
 # Set terminal for i3
-export TERMINAL='st'
-export TERMCMD="${TERMINAL}"
+export TERMCMD='st'
+export TERMINAL="${TERMCMD}"
 
 # Set correct driver for libva
 export LIBVA_DRIVER_NAME='vdpau'

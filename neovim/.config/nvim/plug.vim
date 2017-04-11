@@ -11,15 +11,16 @@ endif
 call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
 	Plug 'indentpython.vim', {'for': 'python'}
 	Plug 'lastpos.vim'
+
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
-	Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'christoomey/vim-sort-motion'
+	Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 	Plug 'mitsuhiko/vim-rst', {'for': 'rst'}
 	Plug 'nvie/vim-flake8', {'for': 'python'}
-	Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
+	Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 	Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 	Plug 'tmux-plugins/vim-tmux'

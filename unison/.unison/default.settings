@@ -4,6 +4,6 @@ copyprogrest = rsync --partial --inplace --compress
 copythreshold = 6000
 fastcheck = true
 log = false
+mountpoint = ./
 prefer = newer
 watch = false
-mountpoint = ./

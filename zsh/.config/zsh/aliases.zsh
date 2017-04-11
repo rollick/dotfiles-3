@@ -74,6 +74,7 @@ alias info="${aliases[info]:-info} --vi-keys"
 alias ls="${aliases[ls]:-ls} --classify --group-directories-first --literal"
 alias mkdir="${aliases[mkdir]:-mkdir} --parents"
 [[ -n ${commands[mpv]} ]] && alias mpv="${aliases[mpv]:-mpv} --fullscreen=no"
+alias nvim="${aliases[nvim]:-nvim} -p"
 [[ -n ${commands[pgrep]} ]] && alias pgrep="${aliases[pgrep]:-pgrep} --list-name"
 [[ -n ${commands[ping]} ]] && alias ping="${aliases[ping]:-ping} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
@@ -84,6 +85,8 @@ if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
 	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock"
 fi
+alias vi="${aliases[vi]:-vi} -p"
+alias vim="${aliases[vim]:-vim} -p"
 
 # Define new commands
 alias la="${aliases[ls]:-ls} --almost-all"

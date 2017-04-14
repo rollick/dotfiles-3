@@ -109,11 +109,6 @@ if [[ -n ${functions[zmv]} ]]; then
 	alias zln="${aliases[zmv]:-zln} -L"
 fi
 
-# Improve handling of new windows in i3
-if [[ -n ${functions[i3-tswallow]} && -n ${commands[mpv]} ]]; then
-	alias mpv="i3-tswallow ${aliases[mpv]:-mpv}"
-fi
-
 # Hide some commands from history
 [[ -n ${commands[xprop]} ]] && alias xprop=" ${aliases[xprop]:-xprop}"
 

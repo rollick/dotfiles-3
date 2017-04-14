@@ -1,6 +1,0 @@
-#!/bin/zsh
-[[ -n ${DISPLAY} && -n ${commands[i3-msg]} ]] && i3-msg --quiet "split h; layout tabbed"
-
-${@}
-
-[[ -n ${DISPLAY} && -n ${commands[i3-msg]} ]] && i3-msg --quiet "layout default"

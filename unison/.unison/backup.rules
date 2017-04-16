@@ -10,6 +10,7 @@ ignore = Name *.tmp
 ignore = Name *~
 ignore = Name .*~
 ignore = Name __pycache__
+ignore = Name .~lock.*.*#
 
 ####################
 # Non-application rules

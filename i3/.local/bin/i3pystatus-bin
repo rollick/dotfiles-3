@@ -97,8 +97,8 @@ def network_interface(network_type):
         for entry in dircontent:
             if fnmatch.fnmatch(entry.name, wildcard[network_type]):
                 return entry.name
-        else:
-            return ''
+
+    return ''
 
 
 @functools.lru_cache()

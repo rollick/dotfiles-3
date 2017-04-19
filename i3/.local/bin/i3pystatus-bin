@@ -125,22 +125,6 @@ def package_managers():
     return backends
 
 
-@functools.lru_cache()
-def is_laptop():
-    """Detect whether or not the current machine is a laptop.
-
-    Return value:
-        bool -- True -- Machine is a laptop (or related type).
-                False -- Machine is a desktop PC.
-    """
-    with os.scandir('/sys/class/power_supply') as dircontent:
-        for entry in dircontent:
-            if fnmatch.fnmatch(entry.name, 'BAT*') and entry.is_dir():
-                return True
-        else:
-            return False
-
-
 def main():
     """Configure and run i3pystatus."""
     status = i3pystatus.Status(standalone=True, click_events=False)
@@ -159,13 +143,6 @@ def main():
         format_muted='\uf026   {volume}%',
         mixer='Headphone',
     )
-
-    if is_laptop():
-        status.register(
-            'backlight',
-            color=COLOR_DEFAULT,
-            format='\uf185 {percentage}%',
-        )
 
     status.register(
         'keyboard_locks',

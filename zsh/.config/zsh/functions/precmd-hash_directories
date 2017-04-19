@@ -28,32 +28,3 @@
 	# Cleanup
 	unfunction hash_directory
 }
-
-# Add local ABS mirror
-() {
-	local absroot
-
-	# Get ABSROOT
-	if [[ -n ${ABSROOT} ]]; then
-		absroot = "${ABSROOT}"
-	else
-		for f in "${HOME}/.abs.conf" '/etc/abs.conf'; do
-			if [[ -f "${f}" ]]; then
-				# Replace this with a line-by-line parser; sourcing is not
-				# secure
-				absroot=$(source "${f}"; print "${ABSROOT/%\//}")
-				break
-			fi
-		done
-
-	fi
-
-	# Hash directory
-	if [[ -n $absroot ]]; then
-		if [[ -d "${absroot}" ]]; then
-			hash -d abs="${absroot}"
-		fi
-	else
-		unhash -d "abs" &>|/dev/null
-	fi
-}

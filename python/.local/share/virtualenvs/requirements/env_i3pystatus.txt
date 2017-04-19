@@ -4,11 +4,10 @@
 #
 #    pip-compile --output-file env_i3pystatus.txt env_i3pystatus.in
 #
-astroid==1.5.1            # via pylint
+astroid==1.5.2            # via pylint
 click==6.7                # via pip-tools
 decorator==4.0.11         # via ipython, traitlets
 docutils==0.13.1
-editdistance==0.3.1       # via pylint
 first==2.0.1              # via pip-tools
 flake8-docstrings==1.0.3
 flake8-import-order==0.12
@@ -30,13 +29,14 @@ prompt-toolkit==1.0.14    # via ipython
 ptyprocess==0.5.1         # via pexpect
 py==1.4.33                # via pytest, tox
 pycodestyle==2.3.1        # via flake8, flake8-import-order
-pydocstyle==1.1.1         # via flake8-docstrings
+pydocstyle==2.0.0         # via flake8-docstrings
 pyflakes==1.5.0           # via flake8
 pygments==2.2.0           # via ipython
-pylint==1.7.0
+pylint==1.7.1
 pytest==3.0.7
 simplegeneric==0.8.1      # via ipython
-six==1.10.0               # via astroid, pip-tools, prompt-toolkit, pylint, traitlets
+six==1.10.0               # via astroid, pip-tools, prompt-toolkit, pydocstyle, pylint, traitlets
+snowballstemmer==1.2.1    # via pydocstyle
 tox==2.7.0
 traitlets==4.3.2          # via ipython
 virtualenv==15.1.0        # via tox

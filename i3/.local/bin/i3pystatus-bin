@@ -178,14 +178,6 @@ def main():
                 interface=network_interface('ethernet'),
             )
 
-        status.register(
-            'online',
-            color=COLOR_DEFAULT,
-            color_offline=COLOR_DISABLED,
-            format_offline='\uf127',
-            format_online='\uf0c1',
-        )
-
     status.register(
         'cmus',
         color=COLOR_DEFAULT,

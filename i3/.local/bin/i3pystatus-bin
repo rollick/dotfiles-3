@@ -163,7 +163,7 @@ def main():
         'updates',
         backends=list(package_managers().values()),
         color=COLOR_IMPORTANT,
-        format=f"\uf021 {'/'.join(package_managers())}",  # fa-refresh
+        format=f"\uf071 {'/'.join(package_managers())}",  # fa-exclamation-triangle
         format_no_updates='',
         format_working='',
         interval=10 * 60,

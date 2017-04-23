@@ -113,21 +113,21 @@ def main():
         'alsa',
         color=COLOR_DEFAULT,
         color_muted=COLOR_DISABLED,
-        format='\uf028 {volume}%',
-        format_muted='\uf026   {volume}%',
+        format='\uf028 {volume}%',  # fa-volume-up
+        format_muted='\uf026   {volume}%',  # fa-volume-down
         mixer='Headphone',
     )
 
     status.register(
         'keyboard_locks',
-        caps_off='\U0001f130',
-        caps_on='\U0001f170',
+        caps_off='\U0001f130',  # Squared Latin Capital Letter A
+        caps_on='\U0001f170',  # Negative Squared Capital Letter A
         color=COLOR_DEFAULT,
         format='{caps}{num}{scroll}',
-        num_off='\U0001f13d',
-        num_on='\U0001f17d',
-        scroll_off='\U0001f142',
-        scroll_on='\U0001f182',
+        num_off='\U0001f13d',  # Squared Latin Capital Letter N
+        num_on='\U0001f17d',  # Negative Squared Latin Captial Letter N
+        scroll_off='\U0001f142',  # Squared Latin Captial Letter S
+        scroll_on='\U0001f182',  # Negative Squared Latin Capital Letter S
     )
 
     status.register(
@@ -137,10 +137,10 @@ def main():
         detect_active=True,
         dynamic_color=False,
         format_active_up={
-            'e*': '\uf0e8',
-            'w*': '\uf1eb',
+            'e*': '\uf0e8',  # fa-sitemap
+            'w*': '\uf1eb',  # fa-wifi
         },
-        format_down='\uf110',
+        format_down='\uf110',  # fa-spinner
     )
 
     status.register(
@@ -153,9 +153,9 @@ def main():
         ),
         format_not_running='',
         status={
-            'paused': '\uf04c ',
-            'playing': '\uf04b ',
-            'stopped': '\uf04d',
+            'paused': '\uf04c ',  # fa-pause
+            'playing': '\uf04b ',  # fa-play
+            'stopped': '\uf04d',  # fa-stop
         }
     )
 
@@ -164,7 +164,7 @@ def main():
             'updates',
             backends=list(package_managers().values()),
             color=COLOR_IMPORTANT,
-            format=f"\uf021 {'/'.join(package_managers())}",
+            format=f"\uf021 {'/'.join(package_managers())}",  # fa-refresh
             format_no_updates='',
             format_working='',
             interval=10 * 60,
@@ -173,7 +173,7 @@ def main():
     status.register(
         RebootReminder,
         color=COLOR_IMPORTANT,
-        text='\uf011 Reboot required',
+        text='\uf011 Reboot required',  # fa-power-off
     )
 
     status.run()

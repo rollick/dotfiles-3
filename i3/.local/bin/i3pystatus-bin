@@ -157,26 +157,18 @@ def main():
     )
 
     if network_interface('ethernet') or network_interface('wifi'):
-        if network_interface('wifi'):
-            status.register(
-                'network',
-                color_down=COLOR_DISABLED,
-                color_up=COLOR_DEFAULT,
-                dynamic_color=False,
-                format_down='\uf1eb',
-                format_up='\uf1eb',
-                interface=network_interface('wifi'),
-            )
-
-        if network_interface('ethernet'):
-            status.register(
-                'network',
-                color_down=COLOR_DISABLED,
-                color_up=COLOR_DEFAULT,
-                format_down='\uf0e8',
-                format_up='\uf0e8',
-                interface=network_interface('ethernet'),
-            )
+        status.register(
+            'network',
+            color_down=COLOR_DISABLED,
+            color_up=COLOR_DEFAULT,
+            detect_active=True,
+            dynamic_color=False,
+            format_active_up={
+                'e*': '\uf0e8',
+                'w*': '\uf1eb',
+            },
+            format_down='\uf110',
+        )
 
     status.register(
         'cmus',

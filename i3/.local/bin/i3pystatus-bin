@@ -76,32 +76,6 @@ class RebootReminder(i3pystatus.IntervalModule):
 
 
 @functools.lru_cache()
-def network_interface(network_type):
-    """Get first network interface of specific type.
-
-    Positional arguments:
-        network_type -- Type of network interface to search for.
-                        Possible values: ethernet, wifi, wireless.
-
-    Return value:
-        string -- String containing interface name (eg. 'eth0').
-                  An empty string will be returned if no interface was found.
-    """
-    wildcard = {
-        'ethernet': 'e*',
-        'wifi': 'w*',
-        'wireless': 'w*',
-    }
-
-    with os.scandir('/sys/class/net') as dircontent:
-        for entry in dircontent:
-            if fnmatch.fnmatch(entry.name, wildcard[network_type]):
-                return entry.name
-
-    return ''
-
-
-@functools.lru_cache()
 def package_managers():
     """Identify all possible package managers.
 
@@ -156,19 +130,18 @@ def main():
         scroll_on='\U0001f182',
     )
 
-    if network_interface('ethernet') or network_interface('wifi'):
-        status.register(
-            'network',
-            color_down=COLOR_DISABLED,
-            color_up=COLOR_DEFAULT,
-            detect_active=True,
-            dynamic_color=False,
-            format_active_up={
-                'e*': '\uf0e8',
-                'w*': '\uf1eb',
-            },
-            format_down='\uf110',
-        )
+    status.register(
+        'network',
+        color_down=COLOR_DISABLED,
+        color_up=COLOR_DEFAULT,
+        detect_active=True,
+        dynamic_color=False,
+        format_active_up={
+            'e*': '\uf0e8',
+            'w*': '\uf1eb',
+        },
+        format_down='\uf110',
+    )
 
     status.register(
         'cmus',
@@ -186,7 +159,7 @@ def main():
         }
     )
 
-    if (network_interface('ethernet') or network_interface('wifi')) and package_managers():
+    if package_managers():
         status.register(
             'updates',
             backends=list(package_managers().values()),

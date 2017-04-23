@@ -159,16 +159,15 @@ def main():
         }
     )
 
-    if package_managers():
-        status.register(
-            'updates',
-            backends=list(package_managers().values()),
-            color=COLOR_IMPORTANT,
-            format=f"\uf021 {'/'.join(package_managers())}",  # fa-refresh
-            format_no_updates='',
-            format_working='',
-            interval=10 * 60,
-        )
+    status.register(
+        'updates',
+        backends=list(package_managers().values()),
+        color=COLOR_IMPORTANT,
+        format=f"\uf021 {'/'.join(package_managers())}",  # fa-refresh
+        format_no_updates='',
+        format_working='',
+        interval=10 * 60,
+    )
 
     status.register(
         RebootReminder,

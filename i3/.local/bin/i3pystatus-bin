@@ -61,7 +61,7 @@ class RebootReminder(i3pystatus.IntervalModule):
         if not self.output:
             with os.scandir('/boot') as dircontent:
                 for entry in dircontent:
-                    if fnmatch.fnmatch(entry.name, self.pattern) and entry.is_file():
+                    if fnmatch.fnmatch(entry.name, self.pattern):
                         mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
 
                         if mtime > self.boottime:

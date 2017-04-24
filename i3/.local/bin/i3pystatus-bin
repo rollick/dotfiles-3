@@ -101,79 +101,70 @@ def package_managers():
 
 def main():
     """Configure and run i3pystatus."""
-    status = i3pystatus.Status(standalone=True, click_events=False)
-
-    status.register(
-        'clock',
-        color=COLOR_DEFAULT,
-        format='%Y-%m-%d %H:%M',
-    )
-
-    status.register(
-        'alsa',
-        color=COLOR_DEFAULT,
-        color_muted=COLOR_DISABLED,
-        format='\uf028 {volume}%',  # fa-volume-up
-        format_muted='\uf026   {volume}%',  # fa-volume-down
-        mixer='Headphone',
-    )
-
-    status.register(
-        'keyboard_locks',
-        caps_off='\U0001f130',  # Squared Latin Capital Letter A
-        caps_on='\U0001f170',  # Negative Squared Capital Letter A
-        color=COLOR_DEFAULT,
-        format='{caps}{num}{scroll}',
-        num_off='\U0001f13d',  # Squared Latin Capital Letter N
-        num_on='\U0001f17d',  # Negative Squared Latin Captial Letter N
-        scroll_off='\U0001f142',  # Squared Latin Captial Letter S
-        scroll_on='\U0001f182',  # Negative Squared Latin Capital Letter S
-    )
-
-    status.register(
-        'network',
-        color_down=COLOR_DISABLED,
-        color_up=COLOR_DEFAULT,
-        detect_active=True,
-        dynamic_color=False,
-        format_active_up={
+    modules = collections.OrderedDict()
+    modules['clock'] = {
+        'color': COLOR_DEFAULT,
+        'format': '%Y-%m-%d %H:%M',
+    }
+    modules['alsa'] = {
+        'color': COLOR_DEFAULT,
+        'color_muted': COLOR_DISABLED,
+        'format': '\uf028 {volume}%',  # fa-volume-up
+        'format_muted': '\uf026   {volume}%',  # fa-volume-down
+        'mixer': 'Headphone',
+    }
+    modules['keyboard_locks'] = {
+        'caps_off': '\U0001f130',  # Squared Latin Capital Letter A
+        'caps_on': '\U0001f170',  # Negative Squared Capital Letter A
+        'color': COLOR_DEFAULT,
+        'format': '{caps}{num}{scroll}',
+        'num_off': '\U0001f13d',  # Squared Latin Capital Letter N
+        'num_on': '\U0001f17d',  # Negative Squared Latin Captial Letter N
+        'scroll_off': '\U0001f142',  # Squared Latin Captial Letter S
+        'scroll_on': '\U0001f182',  # Negative Squared Latin Capital Letter S
+    }
+    modules['network'] = {
+        'color_down': COLOR_DISABLED,
+        'color_up': COLOR_DEFAULT,
+        'detect_active': True,
+        'dynamic_color': False,
+        'format_active_up': {
             'e*': '\uf0e8',  # fa-sitemap
             'w*': '\uf1eb',  # fa-wifi
         },
-        format_down='\uf110',  # fa-spinner
-    )
-
-    status.register(
-        'cmus',
-        color=COLOR_DEFAULT,
-        format=(
+        'format_down': '\uf110',  # fa-spinner
+    }
+    modules['cmus'] = {
+        'color': COLOR_DEFAULT,
+        'format': (
             '{status}'
             '[ {artist} - {title} - {album}]'
             '[ ({song_elapsed:%M:%S}/{song_length:%M:%S})]'
         ),
-        format_not_running='',
-        status={
+        'format_not_running': '',
+        'status': {
             'paused': '\uf04c ',  # fa-pause
             'playing': '\uf04b ',  # fa-play
             'stopped': '\uf04d',  # fa-stop
-        }
-    )
+        },
+    }
+    modules['updates'] = {
+        'backends': list(package_managers().values()),
+        'color': COLOR_IMPORTANT,
+        'format': f"\uf071 {'/'.join(package_managers())}",  # fa-exclamation-triangle
+        'format_no_updates': '',
+        'format_working': '',
+        'interval': 10 * 60,
+    }
+    modules[RebootReminder] = {
+        'color': COLOR_IMPORTANT,
+        'text': '\uf011 Reboot required',  # fa-power-off
+    }
 
-    status.register(
-        'updates',
-        backends=list(package_managers().values()),
-        color=COLOR_IMPORTANT,
-        format=f"\uf071 {'/'.join(package_managers())}",  # fa-exclamation-triangle
-        format_no_updates='',
-        format_working='',
-        interval=10 * 60,
-    )
+    status = i3pystatus.Status(standalone=True, click_events=False)
 
-    status.register(
-        RebootReminder,
-        color=COLOR_IMPORTANT,
-        text='\uf011 Reboot required',  # fa-power-off
-    )
+    for name, config in modules.items():
+        status.register(name, **config)
 
     status.run()
 

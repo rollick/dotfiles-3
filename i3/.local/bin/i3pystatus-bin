@@ -90,7 +90,7 @@ def package_managers():
         if shutil.which('cower'):
             backends['{Cower}'] = i3pystatus.updates.cower.Cower()
         elif shutil.which('yaourt'):
-            backends['{Cower}'] = i3pystatus.updates.yaourt.Yaourt()
+            backends['{Yaourt}'] = i3pystatus.updates.yaourt.Yaourt()
     elif shutil.which('apt-get'):
         backends['{AptGet}'] = i3pystatus.updates.aptget.AptGet()
     elif shutil.which('dnf'):

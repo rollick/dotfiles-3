@@ -134,6 +134,12 @@ def main():
         },
         'format_down': '\uf110',  # fa-spinner
     }
+    modules['online'] = {
+        'color': COLOR_DEFAULT,
+        'color_offline': COLOR_DISABLED,
+        'format_offline': '\uf127',  # fa-unlink
+        'format_online': '\uf0c1',  # fa-link
+    }
     modules['cmus'] = {
         'color': COLOR_DEFAULT,
         'format': (

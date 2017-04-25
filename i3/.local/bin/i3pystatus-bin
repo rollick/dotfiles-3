@@ -38,7 +38,7 @@ import psutil
 
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
-COLOR_IMPORTANT = '#cc575d'
+COLOR_INFORMATION = '#cc575d'
 
 
 class RebootReminder(i3pystatus.IntervalModule):
@@ -150,14 +150,14 @@ def main():
     }
     modules['updates'] = {
         'backends': list(package_managers().values()),
-        'color': COLOR_IMPORTANT,
+        'color': COLOR_INFORMATION,
         'format': f"\uf071 {'/'.join(package_managers())}",  # fa-exclamation-triangle
         'format_no_updates': '',
         'format_working': '',
         'interval': 10 * 60,
     }
     modules[RebootReminder] = {
-        'color': COLOR_IMPORTANT,
+        'color': COLOR_INFORMATION,
         'text': '\uf011 Reboot required',  # fa-power-off
     }
 

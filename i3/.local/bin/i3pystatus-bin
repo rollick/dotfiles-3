@@ -163,8 +163,8 @@ def main():
 
     status = i3pystatus.Status(standalone=True, click_events=False)
 
-    for name, config in modules.items():
-        status.register(name, **config)
+    for module, config in modules.items():
+        status.register(module, **config)
 
     status.run()
 

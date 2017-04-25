@@ -110,7 +110,7 @@ def main():
         'color': COLOR_DEFAULT,
         'color_muted': COLOR_DISABLED,
         'format': '\uf028 {volume}%',  # fa-volume-up
-        'format_muted': '\uf026   {volume}%',  # fa-volume-down
+        'format_muted': '\uf026   {volume}%',  # fa-volume-off
         'mixer': 'Headphone',
     }
     modules['keyboard_locks'] = {

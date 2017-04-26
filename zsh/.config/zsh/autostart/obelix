@@ -1,4 +1,5 @@
 #!/bin/zsh
+# Autostart X session
 if systemctl list-units --type target |grep -q graphical; then
 	if [[ -z "$DISPLAY" && -n ${commands[startx]} && -f "${HOME}/.xinitrc" ]]; then
 		# Correct SHLVL value

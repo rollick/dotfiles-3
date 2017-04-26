@@ -63,7 +63,8 @@ zstyle ':completion:*:*:lp*:*' tag-order jobs
 zstyle ':completion:*:*:*:users' ignored-patterns \
 	$(awk -F: '{if ($3 > 0 && $3 < 1000) print $1}' /etc/passwd)
 
-# Use the generic gnu-style help (command --help) for the following commands
+# Use the generic gnu-style help (command --help) for the following commands,
+# but only if no Zsh-style completions are available.
 () {
 	local cmd
 	local commands=(

@@ -130,8 +130,9 @@ SPROMPT='zsh: correct %R to %r ([Y]es/[N]o/[E]dit/[A]bort) '
 # Disable virtualenv from setting PS1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+#########################
 # Initialize precmd hooks
-##################
+#########################
 add-zsh-hook precmd prompt_simple_check_git_arrows
 add-zsh-hook precmd prompt_simple_check_git_dirty
 add-zsh-hook precmd prompt_simple_check_user_info

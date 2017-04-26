@@ -3,12 +3,9 @@ autoload -Uz url-quote-magic
 # Enable ZLE widgets
 ####################
 zle -N expand-global-alias zle-expand-global-alias
-zle -N get-help zle-get-help
-zle -N get-man zle-get-man
 zle -N hide-from-history zle-hide-from-history
 zle -N insert-iso-date zle-insert-iso-date
 zle -N self-insert url-quote-magic
-zle -N toggle-alias zle-toggle-alias
 zle -N toggle-sudo zle-toggle-sudo
 
 # Keybindings

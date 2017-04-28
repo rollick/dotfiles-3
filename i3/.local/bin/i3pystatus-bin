@@ -93,7 +93,7 @@ def main():
             i3pystatus.updates.pacman.Pacman(),
         ],
         'color': COLOR_INFORMATION,
-        'format': '\uf071 {Pacman}/{Cower}',  # fa-exclamation-triangle
+        'format': '\uf071 {count}',  # fa-exclamation-triangle
         'format_no_updates': '',
         'format_working': '',
         'interval': 10 * 60,

@@ -88,10 +88,10 @@ def main():
         },
     }
     modules['updates'] = {
-        'backends': (
-            i3pystatus.updates.cower.Cower,
-            i3pystatus.updates.pacman.Pacman,
-        ),
+        'backends': [
+            i3pystatus.updates.cower.Cower(),
+            i3pystatus.updates.pacman.Pacman(),
+        ],
         'color': COLOR_INFORMATION,
         'format': '\uf071 {Pacman}/{Cower}',  # fa-exclamation-triangle
         'format_no_updates': '',

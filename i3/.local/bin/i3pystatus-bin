@@ -20,45 +20,16 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import collections
-import functools
-import shutil
 import sys
 
 import i3pystatus
-import i3pystatus.updates.aptget
 import i3pystatus.updates.cower
-import i3pystatus.updates.dnf
 import i3pystatus.updates.pacman
-import i3pystatus.updates.yaourt
 
 
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_INFORMATION = '#cc575d'
-
-
-@functools.lru_cache()
-def package_managers():
-    """Identify all possible package managers.
-
-    Return value:
-        collections.OrderedDict -- Name and backendclass key/value pairs.
-    """
-    backends = collections.OrderedDict()
-
-    if shutil.which('pacman') and shutil.which('makepkg'):
-        backends['{Pacman}'] = i3pystatus.updates.pacman.Pacman()
-
-        if shutil.which('cower'):
-            backends['{Cower}'] = i3pystatus.updates.cower.Cower()
-        elif shutil.which('yaourt'):
-            backends['{Yaourt}'] = i3pystatus.updates.yaourt.Yaourt()
-    elif shutil.which('apt-get'):
-        backends['{AptGet}'] = i3pystatus.updates.aptget.AptGet()
-    elif shutil.which('dnf'):
-        backends['{Dnf}'] = i3pystatus.updates.dnf.Dnf()
-
-    return backends
 
 
 def main():
@@ -117,9 +88,12 @@ def main():
         },
     }
     modules['updates'] = {
-        'backends': list(package_managers().values()),
+        'backends': (
+            i3pystatus.updates.cower.Cower,
+            i3pystatus.updates.pacman.Pacman,
+        ),
         'color': COLOR_INFORMATION,
-        'format': f"\uf071 {'/'.join(package_managers())}",  # fa-exclamation-triangle
+        'format': '\uf071 {Pacman}/{Cower}',  # fa-exclamation-triangle
         'format_no_updates': '',
         'format_working': '',
         'interval': 10 * 60,

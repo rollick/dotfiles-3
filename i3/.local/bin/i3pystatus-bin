@@ -20,10 +20,7 @@
 # THE SOFTWARE.
 """Configuration for i3pystatus."""
 import collections
-import datetime
-import fnmatch
 import functools
-import os
 import shutil
 import sys
 
@@ -33,46 +30,11 @@ import i3pystatus.updates.cower
 import i3pystatus.updates.dnf
 import i3pystatus.updates.pacman
 import i3pystatus.updates.yaourt
-import psutil
 
 
 COLOR_DEFAULT = None
 COLOR_DISABLED = '#afb8c5'
 COLOR_INFORMATION = '#cc575d'
-
-
-class RebootReminder(i3pystatus.IntervalModule):
-    """Show notification if a initramfs was updated."""
-
-    settings = (
-        ('color', 'The color of the text'),
-        ('pattern', 'Glob pattern to detect initramfs'),
-        ('text', 'Text to display')
-    )
-
-    boottime = datetime.datetime.fromtimestamp(psutil.boot_time())
-    color = '#ff0000'
-    interval = 10
-    pattern = '*.img'
-    text = 'Reboot required'
-
-    def run(self):
-        """Run module."""
-        if not self.output:
-            with os.scandir('/boot') as dircontent:
-                for entry in dircontent:
-                    if fnmatch.fnmatch(entry.name, self.pattern):
-                        mtime = datetime.datetime.fromtimestamp(entry.stat().st_mtime)
-
-                        if mtime > self.boottime:
-                            self.output = {
-                                'color': self.color,
-                                'full_text': self.text
-                            }
-
-                            break
-                else:
-                    self.output = None
 
 
 @functools.lru_cache()
@@ -161,10 +123,6 @@ def main():
         'format_no_updates': '',
         'format_working': '',
         'interval': 10 * 60,
-    }
-    modules[RebootReminder] = {
-        'color': COLOR_INFORMATION,
-        'text': '\uf011 Reboot required',  # fa-power-off
     }
 
     status = i3pystatus.Status(standalone=True, click_events=False)

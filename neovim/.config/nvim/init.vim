@@ -135,11 +135,6 @@ let g:vim_markdown_folding_disabled=1
 set printoptions=number:n,syntax:n
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python_hightlight_all=1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " Text editing settings
 """""""""""""""""""""""""""""""""""""""""""""""""
 set formatoptions-=t  " Disable insertion of newlines when exceeding textwidth

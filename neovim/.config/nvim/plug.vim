@@ -9,12 +9,11 @@ if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin($XDG_DATA_HOME . '/nvim/plugged')
-	Plug 'indentpython.vim', {'for': 'python'}
-	Plug 'lastpos.vim'
-
 	Plug 'Matt-Deacalion/vim-systemd-syntax'
+	Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 	Plug 'airblade/vim-gitgutter'
 	Plug 'christoomey/vim-sort-motion'
+	Plug 'farmergreg/vim-lastplace'
 	Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', {'for': 'mkd'}
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'

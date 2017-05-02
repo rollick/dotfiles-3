@@ -1,6 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""
 " Make sure some XDG_*_HOME variables are set
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""
 if empty($XDG_CACHE_HOME)
 	let $XDG_CACHE_HOME = $HOME . '/.cache'
 endif
@@ -11,14 +11,14 @@ if empty($XDG_DATA_HOME)
 	let $XDG_DATA_HOME = $HOME . '/.local/share'
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
 " Plugin management with vim-plug
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""
 source $XDG_CONFIG_HOME/nvim/plug.vim
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 " General settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 colorscheme distinguished
 set background=dark
 set gdefault " The substitution flag g is always on
@@ -28,14 +28,14 @@ set spelllang=en
 set undolevels=100  " Max number of changes that can be undone
 set undoreload=100  " Max number of lines to save for undo on a buffer reload
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 " Autocmd settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 autocmd BufWritePre * :call StripTrailingWhitespace()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""
 " Keybindings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""
 " Set <leader>
 let g:mapleader=','
 let mapleader=','
@@ -106,9 +106,9 @@ nnoremap <leader>p "+p
 vnoremap <leader>P "+P
 vnoremap <leader>p "+p
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""
 " Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""
 let g:NERDChristmasTree=1
 let g:NERDTreeBookmarksFIle=$XDG_DATA_HOME . '/nvim/NERDTreeBookmarks'
 let g:NERDTreeHighlightCursorline=0
@@ -129,14 +129,14 @@ let g:netrw_home=$XDG_CACHE_HOME . '/nvim'
 let g:python_highlight_all=1
 let g:vim_markdown_folding_disabled=1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 " Printer settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
 set printoptions=number:n,syntax:n
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""
 " Text editing settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""
 set formatoptions-=t  " Disable insertion of newlines when exceeding textwidth
 set inccommand=split
 set shiftwidth=4
@@ -144,9 +144,9 @@ set softtabstop=4
 set tabstop=4
 set textwidth=79
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""
 " UI settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""
 set cmdheight=1
 set colorcolumn=+1
 set cursorline
@@ -163,9 +163,9 @@ set sidescrolloff=5  " Keep n columns left/right of cursor
 set title
 set updatetime=250
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""
 " Wildmenu settings
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""
 set wildignore+=*.avi,*.flv,*.mkv,*.mp4,*.mpeg,*.mpg,*.ogv,*.wmv
 set wildignore+=*.bmp,*.gif,*.jpe,*.jpeg,*.jpg,*.png,*.psd,*.xcf,*.xpm
 set wildignore+=*.dat,*.directory,*.lock,*.nb,*.torrent,*.DS_Store
@@ -179,9 +179,9 @@ set wildignore+=~/.ICEauthority,~/.Xauthority
 set wildignore+=~/.bash_history
 set wildignore+=~/.zcompdump,~/.zsh_history
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
 " Functions
-"""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
 function! StripTrailingWhitespace()
 	" Strip trailing whitespace
 

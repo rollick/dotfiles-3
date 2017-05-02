@@ -1,7 +1,11 @@
+""""""""""""""""""""
 " Configure vim-plug
+""""""""""""""""""""
 let g:plug_shallow=1
 
+""""""""""""""""""""
 " Bootstrap vim-plug
+""""""""""""""""""""
 if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
 	silent !curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs
 		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

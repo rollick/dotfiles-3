@@ -1,7 +1,5 @@
 ! Replace Caps Lock with Shift
-remove Lock = Caps_Lock
-keysym Caps_Lock = Shift_L
-add Shift = Shift_L
+keycode 66 = Shift_L NoSymbol Shift_L
 
 ! Always use a period on the numpad
 ! Useful for programming / mathematics

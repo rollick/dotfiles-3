@@ -43,6 +43,7 @@ if [[ ${EUID} -ne 0 ]]; then
 		snes9x \
 		sxiv \
 		unison \
+		xdg \
 		xorg
 fi
 

@@ -1,7 +1,0 @@
--e git+https://github.com/enkore/i3pystatus.git#egg=i3pystatus
--r pip-tools.in
-basiciw
-colour
-netifaces
-psutil
-pyalsaaudio

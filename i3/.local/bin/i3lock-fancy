@@ -19,12 +19,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-COLOR_CMD="--color=2f343f"
+COLOR=''
+FALLBACK_COLOR='#000000'
 MONITOR_COUNT=$(xrandr -q |grep --count '\*')
 XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 
 if [ -f "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" ]; then
 	i3lock -i "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" "${@}"
 else
-	i3lock "${COLOR_CMD}" "${@}"
+	if [ -f "${XDG_DATA_HOME}/i3lock-fancy/background_color" ]; then
+		COLOR=$(cat "${XDG_DATA_HOME}"/i3lock-fancy/background_color)
+	fi
+
+	if ! echo "${COLOR}" | grep -q -E '^#[[:xdigit:]]{6}$'; then
+		COLOR="${FALLBACK_COLOR}"
+	fi
+
+	i3lock --color="${COLOR}" "${@}"
 fi

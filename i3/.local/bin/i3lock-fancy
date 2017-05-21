@@ -19,16 +19,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}}/.local/share"
+
 COLOR=''
+DATA_HOME="${XDG_DATA_HOME}/i3lock-fancy"
 FALLBACK_COLOR='#000000'
 MONITOR_COUNT=$(xrandr -q |grep --count '\*')
-XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
 
-if [ -f "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" ]; then
-	i3lock -i "${XDG_DATA_HOME}/i3lock-fancy/screen${MONITOR_COUNT}.png" "${@}"
+if [ -f "${DATA_HOME}/screen${MONITOR_COUNT}.png" ]; then
+	i3lock -i "${DATA_HOME}/screen${MONITOR_COUNT}.png" "${@}"
 else
-	if [ -f "${XDG_DATA_HOME}/i3lock-fancy/background_color" ]; then
-		COLOR=$(cat "${XDG_DATA_HOME}"/i3lock-fancy/background_color)
+	if [ -f "${DATA_HOME}/background_color" ]; then
+		COLOR=$(cat "${DATA_HOME}/background_color")
 	fi
 
 	if ! echo "${COLOR}" | grep -q -E '^#[[:xdigit:]]{6}$'; then

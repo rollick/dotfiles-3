@@ -24,7 +24,13 @@ XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}}/.local/share"
 COLOR=''
 DATA_HOME="${XDG_DATA_HOME}/i3lock-fancy"
 FALLBACK_COLOR='#000000'
-MONITOR_COUNT=$(xrandr -q |grep --count '\*')
+MONITOR_COUNT=0
+
+if which xrandr >/dev/null 2>&1; then
+	MONITOR_COUNT=$(xrandr -q |grep --count '\*')
+else
+	echo 'xrandr not found. Fall back to solid color.' >&2
+fi
 
 if [ -f "${DATA_HOME}/screen${MONITOR_COUNT}.png" ]; then
 	i3lock -i "${DATA_HOME}/screen${MONITOR_COUNT}.png" "${@}"

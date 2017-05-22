@@ -40,12 +40,15 @@ ignorenot = Path Public/favicon.ico
 ####################
 # Application rules
 ####################
+path = .PlayOnLinux
+path = .pylint
 path = .mozilla
 path = .nestopia
 path = .quodlibet
 path = .snes9x
 path = .ssh
 path = .unison
+path = .wine
 path = .xchat2
 
 path = .MP3Diags.dat

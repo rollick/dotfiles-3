@@ -83,19 +83,26 @@ prompt_simple_set_prompt() {
 	# Show prompt symbol
 	PROMPT+="%{$reset_color%}"
 	PROMPT+="${prompt_newline}"
-	PROMPT+="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})"
-	[[ "${TERM}" != 'linux' ]] && PROMPT+=$'\u276F' || PROMPT+='>'
+	PROMPT+="${prompt_simple_symbol}"
 	PROMPT+="%{$reset_color%} "
 }
 
-prompt_simple_set_prompt2(){
-	PROMPT2="%{$fg_bold[black]%}%_%f"
+prompt_simple_set_prompt2() {
+	PROMPT2="%{$fg_bold[black]%}%_"
 	PROMPT2+="%{$reset_color%}"
-	PROMPT2+=" %{$fg_bold[blue]%}"
-	[[ "${TERM}" != 'linux' ]] && PROMPT2+=$'\u276F' || PROMPT2+='>'
+	PROMPT2+=" ${prompt_simple_symbol}"
 	PROMPT2+="%{$reset_color%} "
 }
 
+prompt_simple_set_symbol() {
+	prompt_simple_symbol="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})"
+
+	if [[ "${TERM}" != 'linux' ]]; then
+		prompt_simple_symbol+=$'\u276F'
+	else
+		prompt_simple_symbol+='>'
+	fi
+}
 
 prompt_simple_set_title() {
 	local title=''
@@ -148,6 +155,7 @@ add-zsh-hook precmd prompt_simple_check_user_info
 add-zsh-hook precmd prompt_simple_check_venv
 add-zsh-hook precmd vcs_info
 
+add-zsh-hook precmd prompt_simple_set_symbol
 add-zsh-hook precmd prompt_simple_set_prompt
 add-zsh-hook precmd prompt_simple_set_prompt2
 add-zsh-hook precmd prompt_simple_set_title

@@ -60,7 +60,14 @@ prompt_simple_set_prompt() {
 	fi
 
 	# Show directory information
-	PROMPT+="%{$fg[magenta]%}%~"
+	# FIXME: There has to be a more elegant way
+	if  [[ -n ${LS_COLORS} ]]; then
+		local dircolor=${$(print -l ${(s.:.)LS_COLORS} |grep "^di=")//di=/}
+		PROMPT+=$(print "\e[${dircolor}m%~\e[0m")
+	else
+		PROMPT+="%{$fg[yellow]%}%~"
+	fi
+
 	if [[ -n ${vcs_info_msg_0_} ]]; then
 		PROMPT+="%{$reset_color%}"
 		PROMPT+=" %{$fg_bold[black]%}"

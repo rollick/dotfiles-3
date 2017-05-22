@@ -88,6 +88,15 @@ prompt_simple_set_prompt() {
 	PROMPT+="%{$reset_color%} "
 }
 
+prompt_simple_set_prompt2(){
+	PROMPT2="%{$fg_bold[black]%}%_%f"
+	PROMPT2+="%{$reset_color%}"
+	PROMPT2+=" %{$fg_bold[blue]%}"
+	[[ "${TERM}" != 'linux' ]] && PROMPT2+=$'\u276F' || PROMPT2+='>'
+	PROMPT2+="%{$reset_color%} "
+}
+
+
 prompt_simple_set_title() {
 	local title=''
 	local user=''
@@ -140,4 +149,5 @@ add-zsh-hook precmd prompt_simple_check_venv
 add-zsh-hook precmd vcs_info
 
 add-zsh-hook precmd prompt_simple_set_prompt
+add-zsh-hook precmd prompt_simple_set_prompt2
 add-zsh-hook precmd prompt_simple_set_title

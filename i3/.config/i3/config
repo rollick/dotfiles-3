@@ -51,8 +51,8 @@ new_window 1pixel
 ##############################
 # Workspaces
 ##############################
-set $monitor1 HDMI-0
-set $monitor2 VGA-0
+set $monitor1 HDMI-1
+set $monitor2 VGA-1
 
 workspace_auto_back_and_forth yes
 

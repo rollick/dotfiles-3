@@ -1,7 +1,8 @@
+##############################
 # Autostart
 ##############################
-##############################
 exec --no-startup-id udiskie --quiet --no-automount --no-notify --no-tray
+exec --no-startup-id xcompmgr
 exec_always --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/wallpaper
 
 ##############################

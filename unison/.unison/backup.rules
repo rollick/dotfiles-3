@@ -41,9 +41,9 @@ ignorenot = Path Public/favicon.ico
 # Application rules
 ####################
 path = .PlayOnLinux
-path = .pylint
 path = .mozilla
 path = .nestopia
+path = .pylint
 path = .quodlibet
 path = .snes9x
 path = .ssh

@@ -32,6 +32,7 @@ if [[ ${EUID} -ne 0 ]]; then
 		cmus \
 		cower \
 		dunst \
+		firefox \
 		fontconfig \
 		i3 \
 		mpv \

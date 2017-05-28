@@ -1,0 +1,69 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("9gag.com") {
+  #top-nav > div > nav > ul.flex.menu > li:nth-child(7) {
+    display: None !important;
+  }
+}
+
+@-moz-document domain("feedly.com") {
+    button[class="small pro primary"],
+    button.button-invite-to-group,
+    div#feedlyTabsUnpin,
+    div#fixedProfile,
+    div#integrationstab_header,
+    div#librarytab,
+    div#searchBoxPlaceholder,
+    div#tagList {
+       display: None !important;
+    }
+
+    div.cell.c.contents {
+       min-height: 0px !important;
+    }
+}
+
+@-moz-document domain("oldtendencies.blogspot.de") {
+	div#flotante1,
+	div#flotante2,
+	div#flotante3 {
+		display: None !important;
+	}
+}
+
+@-moz-document domain("serienjunkies.de") {
+	#newsnachricht > table.produkt-tab {
+		display: None !important;
+	}
+}
+
+@-moz-document url-prefix("http://wrestlingreviews.net/video") {
+	a,
+	body {
+		background: #1f1f1f !important;
+		color: #1f1f1f !important;
+	}
+
+	table,
+	tbody,
+	td,
+	tr {
+		border: None!important;
+	}
+}
+
+@-moz-document domain("wikia.com"), domain("memory-alpha.org") {
+	div#WikiaBar,
+	div#WikiaRail,
+	div#WikiaTopAds,
+	div#hubsEntryPoint,
+	div.start-wikia-container,
+	footer.CorporateFooter,
+	footer.WikiaFooter,
+	header#WikiaHeader,
+	nav.WikiaArticleInterlang,
+	ul#AccountNavigation,
+	ul.WikiaNotifications {
+		display: None !important;
+	}
+}

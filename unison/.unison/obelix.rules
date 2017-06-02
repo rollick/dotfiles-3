@@ -1,4 +1,0 @@
-include backup.rules
-
-ignore = Path Music/*
-ignore = Path Videos/*

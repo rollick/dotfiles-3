@@ -1,7 +1,0 @@
-label = Synchronize user profile with methusalix.local
-
-root = /home/raphael/
-root = ssh://methusalix.local
-
-include methusalix.settings
-include methusalix.rules

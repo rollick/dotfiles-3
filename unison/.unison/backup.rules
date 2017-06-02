@@ -84,7 +84,7 @@ ignore = Path .config/transmission/*
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/icc
 ignore = Path .local/share/numlock_{on,off}
-ignore = Path .local/share/nvim/*
+ignore = Path .local/share/nvim/shada
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*
@@ -95,7 +95,6 @@ ignore = Path .{config/,}gnupg/S.{dirmngr,gpg-agent}*
 
 ignorenot = Path .config/cmus/{*.theme,rc}
 ignorenot = Path .config/transmission/{blocklists,settings.json}
-ignorenot = Path .local/share/nvim/plugged
 ignorenot = Path .local/share/zathura/bookmarks
 ignorenot = Path .moc/{config,themes}
 ignorenot = Path .unison/*.{include,prf,rules,settings}

@@ -1,46 +1,37 @@
-####################
-# Always exclude temporary and backup files
-####################
+#################
+# Temporary files
+#################
 ignore = Name *.bak
 ignore = Name *.crdownload
 ignore = Name *.o
 ignore = Name *.pyc
 ignore = Name *.swp
 ignore = Name *.tmp
+ignore = Name *.~
 ignore = Name *~
-ignore = Name .*~
-ignore = Name __pycache__
 ignore = Name .~lock.*.*#
+ignore = Name __pycache__
 
-####################
-# Non-application rules
-####################
-path = .config
-path = .icons
-path = .local
-path = .themes
-path = Desktop
-path = Documents
-path = Music
-path = PDF
-path = Pictures
-path = Public
-path = Software
-path = Templates
-path = Videos
 
-ignore = Path .local/share/Trash
-ignore = Path Documents/Code/Local/*/*.egg-info
-ignore = Path Documents/Code/Local/*/{.cache,.eggs,.tox,build,dist,MANIFEST}
-ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar*}
-ignore = Path Public/*
+#######################
+# Applications - Caches
+#######################
+path = .cache
 
-ignorenot = Path Public/favicon.ico
+ignore = Path .cache/*
 
-####################
-# Application rules
-####################
+ignorenot = Path .cache/asp
+ignorenot = Path .cache/pacaur
+ignorenot = Path .cache/pip
+
+
+##############################
+# Applications - Configuration
+##############################
 path = .PlayOnLinux
+path = .config
+path = .gnupg
+path = .ipython
 path = .mozilla
 path = .nestopia
 path = .pylint
@@ -58,14 +49,12 @@ path = .Xmodmap
 path = .Xresources
 path = .easyMP3Gain
 path = .gist-vim
-path = .gnupg
 path = .hunspell_de_DE
 path = .hunspell_en_US
 path = .hushlogin
 path = .profile
 path = .tmux.conf
 path = .xinitrc
-path = .xprofile
 path = .xsession
 path = .zlogin
 path = .zlogout
@@ -73,6 +62,7 @@ path = .zprofile
 path = .zshenv
 path = .zshrc
 
+ignore = Path .config/MP3Diags/*
 ignore = Path .config/QtProject.conf
 ignore = Path .config/chromium/Profile*/File System
 ignore = Path .config/chromium/Singleton*
@@ -80,7 +70,27 @@ ignore = Path .config/cmus/*
 ignore = Path .config/gtk-*/gtkfilechooser.ini
 ignore = Path .config/mpv/watch_later
 ignore = Path .config/quodlibet/{accels,control,current,dumps,faultdump,queue,songs}
-ignore = Path .config/transmission/*
+ignore = Path .config/transmission
+ignore = Path .moc/*
+ignore = Path .mozilla/firefox/*/lock
+ignore = Path .unison/*
+ignore = Path .{config/,}gnupg/S.{dirmngr,gpg-agent}
+
+ignorenot = Path .config/MP3Diags/session.ini
+ignorenot = Path .config/cmus/{*.theme,rc}
+ignorenot = Path .config/transmission/{blocklists,settings.json}
+ignorenot = Path .moc/{config,themes}
+ignorenot = Path .unison/*.{include,prf,rules,settings}
+
+
+################################
+# Applications - Persistent data
+################################
+path = .icons
+path = .local
+path = .themes
+
+ignore = Path .local/share/Trash
 ignore = Path .local/share/gvfs-metadata
 ignore = Path .local/share/icc
 ignore = Path .local/share/numlock_{on,off}
@@ -88,13 +98,25 @@ ignore = Path .local/share/nvim/shada
 ignore = Path .local/share/recently-used.xbel
 ignore = Path .local/share/xorg
 ignore = Path .local/share/zathura/*
-ignore = Path .moc/*
-ignore = Path .mozilla/firefox/*/lock
-ignore = Path .unison/*
-ignore = Path .{config/,}gnupg/S.{dirmngr,gpg-agent}*
 
-ignorenot = Path .config/cmus/{*.theme,rc}
-ignorenot = Path .config/transmission/{blocklists,settings.json}
 ignorenot = Path .local/share/zathura/bookmarks
-ignorenot = Path .moc/{config,themes}
-ignorenot = Path .unison/*.{include,prf,rules,settings}
+
+
+###############
+# Personal Data
+###############
+path = Desktop
+path = Documents
+path = Music
+path = Pictures
+path = Public
+path = Software
+path = Templates
+path = Videos
+
+ignore = Path Documents/Code/Local/*/*/.egg-info
+ignore = Path Documents/Code/Local/*/{.cache,.eggs,.tox,build,dist,MANIFEST}
+ignore = Path Documents/Code/Local/pkgbuilds/{*,*/*}/{pkg,src,*.tar.*}
+ignore = Path Public/*
+
+ignorenot = Path Public/favicon.ico

@@ -17,17 +17,13 @@ if [[ -f  "${HOME}/.xprofile" ]]; then
 fi
 
 # Merge user Xdefaults
-if which xrdb >/dev/null 2>&1; then
-	if [[ -f "${HOME}/.Xresources" ]]; then
-		xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
-	fi
+if [[ -f "${HOME}/.Xresources" ]] && which xrdb >/dev/null 2>&1; then
+	xrdb -merge -I"${HOME}" "${HOME}/.Xresources" &
 fi
 
 # Load keyboard tweaks
-if which xmodmap >/dev/null 2>&1; then
-	if [[ -e ${HOME}/.Xmodmap ]]; then
-		xmodmap "${HOME}/.Xmodmap" &
-	fi
+if [[ -f "${HOME}/.Xmodmap" ]] && which xmodmap >/dev/null 2>&1; then
+	xmodmap "${HOME}/.Xmodmap" &
 fi
 
 # Load session specific commands

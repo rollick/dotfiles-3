@@ -28,3 +28,6 @@ if [[ -z ${DESKTOP_SESSION} ]]; then
 	export GNOME_DESKTOP_SESSION=1
 	export XDG_CURRENT_DESKTOP="LXDE"
 fi
+
+# Improve handling of multiple firefox profiles
+export MOZ_NO_REMOTE=1

@@ -59,8 +59,8 @@ def main():
     modules['dpms'] = {
         'color': COLOR_DEFAULT,
         'color_disabled': COLOR_DISABLED,
-        'format': '\U0001f634',  # Sleeping Face
-        'format_disabled': '\U0001f634',  # Sleeping Face
+        'format': 'DPMS',
+        'format_disabled': 'DMPS',
     }
     modules['network'] = {
         'color_down': COLOR_DISABLED,

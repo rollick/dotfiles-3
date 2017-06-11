@@ -56,6 +56,12 @@ def main():
         'scroll_off': '\U0001f142',  # Squared Latin Captial Letter S
         'scroll_on': '\U0001f182',  # Negative Squared Latin Capital Letter S
     }
+    modules['dpms'] = {
+        'color': COLOR_DEFAULT,
+        'color_disabled': COLOR_DISABLED,
+        'format': '\U0001f634',  # Sleeping Face
+        'format_disabled': '\U0001f634',  # Sleeping Face
+    }
     modules['network'] = {
         'color_down': COLOR_DISABLED,
         'color_up': COLOR_DEFAULT,

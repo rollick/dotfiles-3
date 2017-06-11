@@ -26,6 +26,10 @@ DATA_HOME="${XDG_DATA_HOME}/i3lock-fancy"
 FALLBACK_COLOR='#000000'
 MONITOR_COUNT=0
 
+revert_dpms() {
+	xset dpms 0 0 0
+}
+
 if which xrandr >/dev/null 2>&1; then
 	MONITOR_COUNT=$(xrandr -q |grep --count '\*')
 else
@@ -43,5 +47,12 @@ else
 		COLOR="${FALLBACK_COLOR}"
 	fi
 
+	# Enable DPMS
+	trap revert_dpms HUP INT TERM
+	xset +dpms dpms 5 5 5
+
 	i3lock --color="${COLOR}" "${@}"
+
+	# Disable DPMS
+	revert_dpms
 fi

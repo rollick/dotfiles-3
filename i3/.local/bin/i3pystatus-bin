@@ -60,7 +60,7 @@ def main():
         'color': COLOR_DEFAULT,
         'color_disabled': COLOR_DISABLED,
         'format': 'DPMS',
-        'format_disabled': 'DMPS',
+        'format_disabled': 'DPMS',
     }
     modules['network'] = {
         'color_down': COLOR_DISABLED,

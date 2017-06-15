@@ -3,4 +3,3 @@ basiciw>=0.2.2
 colour>=0.1.4
 netifaces>=0.10.5
 psutil>=5.2.2
-pyalsaaudio>=0.8.4

@@ -39,12 +39,14 @@ def main():
         'color': COLOR_DEFAULT,
         'format': '%Y-%m-%d %H:%M',
     }
-    modules['alsa'] = {
-        'color': COLOR_DEFAULT,
+    modules['pulseaudio'] = {
         'color_muted': COLOR_DISABLED,
+        'color_unmuted': COLOR_DEFAULT,
         'format': '\uf028 {volume}%',  # fa-volume-up
         'format_muted': '\uf026   {volume}%',  # fa-volume-off
-        'mixer': 'Headphone',
+        'on_leftclick': 'switch_mute',
+        'on_rightclick': 'pavucontrol',
+        'sink': '@DEFAULT_SINK@',
     }
     modules['keyboard_locks'] = {
         'caps_off': '\U0001f130',  # Squared Latin Capital Letter A

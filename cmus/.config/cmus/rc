@@ -3,6 +3,6 @@
 colorscheme gems
 set aaa_mode=artist
 set device=/dev/sr0
-set output_plugin=alsa
+set output_plugin=pulse
 set replaygain=album-preferred
 set smart_artist_sort=false

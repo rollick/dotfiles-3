@@ -24,9 +24,9 @@ export GTK_OVERLAY_SCROLLING=0
 
 # Fix some issues if no DE is used
 if [[ -z ${DESKTOP_SESSION} ]]; then
-	export DESKTOP_SESSION='gnome'
-	export GNOME_DESKTOP_SESSION=1
-	export XDG_CURRENT_DESKTOP="LXDE"
+	export DE="xfce"
+	export DESKTOP_SESSION="xfce"
+	export XDG_CURRENT_DESKTOP="XFCE"
 fi
 
 # Improve handling of multiple firefox profiles

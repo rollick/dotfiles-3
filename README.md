@@ -1,15 +1,19 @@
 dotfiles
 ========
-These are my dotfiles.
+This is a collection of my dotfiles.
+
+Although this repository mainly exist for my convenience and as a
+backup, it might prove to be of interest for others.
 
 Installation
 ------------
-My dotfiles are optimized to be installed with
+This collection of dotfiles is meant to be installed with
 [GNU stow](http://www.gnu.org/software/stow/).
 
-Simply run `stow -t ~/ <application>` from inside the git repository.
+Simply run `stow -t ~/ <application>` or `./stow_all.sh`
+from inside the git repository.
 
-For further information on handling your configuration with GNU stow see the
+For further information on handling your configuration with GNU stow see it's
 [official manual](https://www.gnu.org/software/stow/manual/).
 
 License

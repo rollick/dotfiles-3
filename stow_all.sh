@@ -10,6 +10,7 @@ stow --restow --target "${HOME}" --ignore='\.venv' \
 	git \
 	gnupg \
 	htop \
+	ipython \
 	neovim \
 	pacman \
 	python \

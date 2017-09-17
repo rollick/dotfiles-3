@@ -7,7 +7,8 @@
 if [[ -n ${commands[vim]} ]]; then
 	alias vi='vim'
 	[[ -n ${aliases[vim]} ]] && unalias vim
-elif [[ -n ${commands[nvim]} ]]; then
+fi
+if [[ -n ${commands[nvim]} ]]; then
 	alias vi='nvim'
 	alias vim='nvim'
 	alias vimdiff='nvim -d'

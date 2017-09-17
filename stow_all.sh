@@ -1,5 +1,6 @@
 #!/bin/bash
 mkdir --verbose --parents \
+	"${HOME}/.config/profile.d" \
 	"${HOME}/.gnupg" \
 	"${HOME}/.ipython/profile_default" \
 	"${HOME}/.local/bin" \
@@ -7,13 +8,16 @@ mkdir --verbose --parents \
 	"${HOME}/.ssh"
 stow --restow --target "${HOME}" --ignore='\.venv' \
 	calc \
+	colorgcc \
 	git \
 	gnupg \
 	htop \
 	ipython \
+	less \
 	neovim \
 	pacman \
 	python \
+	rsync \
 	shells \
 	ssh \
 	tmux \

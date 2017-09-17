@@ -1,20 +1,12 @@
 #!/bin/bash
-# Enable/disable numlock
-if which numlockx >/dev/null 2>&1; then
-	if  [[ -f "${XDG_DATA_HOME:-${HOME}/.local/share}/numlock_on" ]]; then
-		numlockx on &
-	elif  [[ -f "${XDG_DATA_HOME:-${HOME}/.local/share}/numlock_off" ]]; then
-		numlockx off &
-	elif [[ -d "/sys/class/power_supply/BAT0" ]]; then
-		# Disable numlock except when a external keyboard is connected,
-		if [[ $(find "/dev/input/by-path" -type l -name "*-kbd" | wc -l) -gt 1 ]]; then
-			numlockx on &
-		else
-			numlockx off &
+# Executed for each X session
+
+if [[ -d "${XDG_CONFIG_HOME:-${HOME}/.config}/xorg/xsession.d" ]]; then
+	for f in "${XDG_CONFIG_HOME:-${HOME}/.config}/xorg/xsession.d"/*.sh; do
+		if [[ -x "${f}" ]]; then
+			source "${f}"
 		fi
-	else
-		numlockx on &
-	fi
+	done
 fi
 
 # Disable bell

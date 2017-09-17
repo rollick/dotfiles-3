@@ -27,6 +27,8 @@ if [[ ${EUID} -ne 0 ]]; then
 		"${HOME}/.config/mpv" \
 		"${HOME}/.config/systemd/user" \
 		"${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" \
+		"${HOME}/.config/xorg/xprofile.d" \
+		"${HOME}/.config/xorg/xsession.d" \
 		"${HOME}/.unison"
 	stow --restow --target "${HOME}" --ignore='\.venv' \
 		a11y \
@@ -35,12 +37,17 @@ if [[ ${EUID} -ne 0 ]]; then
 		cower \
 		firefox \
 		fontconfig \
+		gimp \
 		i3 \
+		libreoffice \
 		mpv \
 		nestopia \
+		numlockx \
 		profile-cleaner \
+		quodlibet \
 		rofi \
 		snes9x \
+		st \
 		sxiv \
 		unison \
 		xdg \

@@ -4,14 +4,20 @@
 	local XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
 
 	hash_directory() {
-		local DIR="${2}"
-		local NAME="${1}"
+		local dir
+		local NAME
 
-		if [[ -d "${DIR}" ]]; then
-			hash -d "${NAME}"="${DIR}"
-		else
-			unhash -d "${NAME}" &>|/dev/null
-		fi
+		NAME="${1}"
+		shift
+
+		unhash -d "${NAME}" &>|/dev/null
+
+		for dir in $@; do
+			if [[ -d "${dir}" ]]; then
+				hash -d "${NAME}"="${dir}"
+				break
+			fi
+		done
 	}
 
 	hash_directory "alog" "/var/log/old"
@@ -20,7 +26,7 @@
 	hash_directory "git-remote" "${XDG_DOCUMENTS_DIR}/Code/Remote"
 	hash_directory "git-root" "${XDG_DOCUMENTS_DIR}/Code"
 	hash_directory "log" "/var/log"
-	hash_directory "media" "/run/media/${USER}"
+	hash_directory "media" "/run/media/${USER}" "/media/${USER}"
 	hash_directory "paccache" "/var/cache/pacman/pkg"
 	hash_directory "run" "${XDG_RUNTIME_DIR}"
 	hash_directory "virtualenvs" "${WORKON_HOME}"

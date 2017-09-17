@@ -1,3 +1,5 @@
 #!/bin/bash
 # Set path to Xauthority file
-export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+if [[ -z $XDG_GREETER_DATA_DIR ]]; then
+	export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+fi

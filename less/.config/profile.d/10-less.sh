@@ -6,10 +6,13 @@ export LESSHISTFILE="${XDG_CACHE_HOME:-${HOME}/.cache}/less_history"
 # Settings for less
 # -J = Display a status column
 # -M = More verbose prompt
+# -Ph = Prompt for the help screen
 # -R = Display "raw" control characters
 # -s = Fold consecutive blank lines into a single line
 # -~ = Don't use '~' to indicate lines after the end of a file
-export LESS='-J-M-R-s-~'
+LESS='-J-M-R-s-~'
+LESS+='-PhHELP ?ltlines %lt-%lb?L/%L. ?e(END):?pB(%pB\%)..%t$'
+export LESS
 export SYSTEMD_LESS="${LESS}"
 
 # Colorize man when using less as pager
@@ -33,3 +36,9 @@ export SYSTEMD_PAGER='less'
 
 # Use a nice textwidth for man pages
 export MANWIDTH='80'
+
+# Set a much nicer prompt for manpage display with less
+MANLESS='Manual page \$MAN_PN ?ltlines %lt-%lb?%L/%L.:'
+MANLESS+='byte %bB?s/%s.. '
+MANLESS+='?e(END):?pB%pB\%..%t$'
+export MANLESS

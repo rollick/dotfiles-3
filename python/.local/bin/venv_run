@@ -18,8 +18,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-venv_path="${WORKON_HOME:-${XDG_DATA_HOME:-${HOME}/.local}/virtualenvs}"
-
 if [[ "${1}" == "--help" ]]; then
 	echo -e "usage: $(basename "${0}") [OPTION]... [VIRTUAL_ENVIRONMENT] [SCRIPT]\n"
 	echo -e 'Run a python script inside a virtual environment\n'
@@ -50,6 +48,13 @@ elif [[ "${1}" == "--version" ]]; then
 	echo 'OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN'
 	echo 'THE SOFTWARE.'
 else
+	if [[ -z ${WORKON_HOME} ]]; then
+		echo 'WORKON_HOME is not set.' >&2
+		exit 1
+	fi
+
+	venv_path="${WORKON_HOME}/virtualenvs"
+
 	if [[ -f "${venv_path}/${1}/bin/activate" ]]; then
 		source "${venv_path}/${1}/bin/activate"
 

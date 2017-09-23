@@ -1,3 +1,4 @@
+#!/bin/zsh
 autoload -Uz url-quote-magic
 
 # Enable ZLE widgets

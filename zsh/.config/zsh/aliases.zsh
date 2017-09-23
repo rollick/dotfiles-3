@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Allow sudo to use aliases
 [[ -n ${commands[sudo]} ]] && alias sudo='sudo '
 

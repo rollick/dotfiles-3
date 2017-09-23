@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Changing Directories
 setopt AUTO_CD              # Unknown commands are treated as 'cd command'
 setopt AUTO_PUSHD           # cd pushes old directory onto stack

@@ -1,3 +1,4 @@
+#!/bin/zsh
 zmodload -F zsh/complist
 autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
 autoload -Uz colors && colors

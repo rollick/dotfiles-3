@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Loaded for interactive shells only
 
 # Create needed directories

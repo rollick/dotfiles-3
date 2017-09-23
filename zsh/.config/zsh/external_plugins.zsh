@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Include external additions provided by packages
 () {
 	local GIT_ROOT="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}/Code/Remote"

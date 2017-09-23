@@ -1,6 +1,6 @@
 #!/bin/bash
 # Set path for startup
-export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python_startup.py"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-${HOME}/.config}/python.py"
 
 # Set path for virtualenvwrapper
 export WORKON_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/virtualenvs"

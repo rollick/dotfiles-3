@@ -1,8 +1,5 @@
 # Loaded for interactive shells only
 
-# Sanitize su environment
-[[ ${EUID} -eq 0 && ! -o 'login' ]] && source '/root/.config/zsh/sanitize_su.zsh'
-
 # Create needed directories
 mkdir -p "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh"
 

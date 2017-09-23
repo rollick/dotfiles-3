@@ -15,12 +15,8 @@ if [[ -d "${ZDOTDIR}/functions" ]]; then
 	autoload -Uz ${fpath[1]}/*(.,@N:t)
 fi
 
-# Make sure all fpath and path entries are unique
+# Make sure all fpath entries are unique
 typeset -U fpath
-typeset -U path
-
-# Initialize functions
-promptinit
 
 # Set zsh options
 source "${ZDOTDIR}/options.zsh"
@@ -33,6 +29,8 @@ source "${ZDOTDIR}/aliases.zsh"
 source "${ZDOTDIR}/external_plugins.zsh"
 
 # Set prompt
+promptinit
+
 if [[ -n ${functions[prompt_simple_setup]} ]]; then
 	prompt simple
 else

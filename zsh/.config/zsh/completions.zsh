@@ -69,7 +69,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 () {
 	local cmd
 	local commands=(
-		abs
 		dircolors
 		eyed3
 		flake8

@@ -16,7 +16,7 @@ if [[ -n ${commands[nvim]} ]]; then
 fi
 
 # Use in non-GUI mode
-[[ -n ${commands[unison]} ]] && alias unison='unison -ui text'
+[[ -n ${commands[unison]} ]] && alias unison="${aliases[unison]:-unison} -ui text"
 
 # Force a specific nice level
 [[ -n ${commands[gcc]} ]] && alias gcc="nice -n 19 ${aliases[gcc]:-gcc}"
@@ -43,7 +43,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} --verbose"
 alias modprobe="${aliases[modprobe]:-modprobe} --verbose"
 alias mount="${aliases[mount]:-mount} --verbose"
 alias mv="${aliases[mv]:-mv} --verbose"
-[[ -n ${commands[paccache]} ]] && alias paccache='paccache --verbose'
+[[ -n ${commands[paccache]} ]] && alias paccache="${aliases[paccache]:-paccache} --verbose"
 alias rm="${aliases[rm]:-rm} --verbose"
 alias rmdir="${aliases[rmdir]:-rmdir} --verbose"
 [[ -n ${commands[rsync]} ]] && alias rsync='rsync --verbose'
@@ -57,7 +57,7 @@ alias du="${aliases[du]:-du} --human-readable"
 alias free="${aliases[free]:-free} --mega --human"
 alias ip="${aliases[ip]:-ip} -human-readable -iec"
 alias ls="${aliases[ls]:-ls} --human-readable"
-[[ -n ${commands[rsync]} ]] && alias rsync='rsync --human-readable'
+[[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --human-readable"
 
 # Enable color output
 alias grep="${aliases[grep]:-grep} --color=auto"
@@ -71,7 +71,7 @@ alias ls="${aliases[ls]:-ls} --time-style=long-iso"
 # Set options
 alias diff="${aliases[diff]:-diff} --unified"
 alias free="${aliases[free]:-free} --total"
-[[ -n ${commands[head]} ]] && alias head='head -n $(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
+[[ -n ${commands[head]} ]] && alias head="${aliases[head]:-head} -n "'$(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
 alias info="${aliases[info]:-info} --vi-keys"
 alias ls="${aliases[ls]:-ls} --classify --group-directories-first --literal"
 alias mkdir="${aliases[mkdir]:-mkdir} --parents"
@@ -81,9 +81,9 @@ alias nvim="${aliases[nvim]:-nvim} -p"
 [[ -n ${commands[ping]} ]] && alias ping="${aliases[ping]:-ping} -c4"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
-[[ -n ${commands[tail]} ]] && alias tail='tail -n $(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
+[[ -n ${commands[tail]} ]] && alias tail="${aliases[tail]:-tail} -n "'$(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
 [[ -n ${commands[tig]} ]] && alias tig="${aliases[tig]:-tig} --show-signature"
-[[ -n ${commands[tmux]} ]] && alias tmux='tmux -f "${XDG_CONFIG_HOME:-${HOME}/.config}/tmux/tmux.conf"'
+[[ -n ${commands[tmux]} ]] && alias tmux="${aliases[tmux]:-tmux} -f \"${XDG_CONFIG_HOME:-${HOME}/.config}/tmux/tmux.conf\""
 if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"
 	alias udiskie-umount="${aliases[udiskie-umount]:-udiskie-umount} --lock"

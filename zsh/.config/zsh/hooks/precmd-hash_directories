@@ -1,0 +1,35 @@
+#!/bin/zsh
+# Hash normal directories and automatically remove obsolete hashes
+() {
+	local _XDG_DOCUMENTS_DIR="${XDG_DOCUMENTS_DIR:-${HOME}/Documents}"
+	local already_hashed
+	local dir
+	local hash_directories
+	local hashname
+
+	typeset -A hash_directories
+
+	hash_directories=(
+		"${WORKON_HOME}"                     'virtualenvs'
+		"${_XDG_DOCUMENTS_DIR}/Code"         'git-root'
+		"${_XDG_DOCUMENTS_DIR}/Code/Local"   'git-local'
+		"${_XDG_DOCUMENTS_DIR}/Code/Remote"  'git-remote'
+		"${_XDG_RUNTIME_DIR}"                'run'
+		"/media/${USER}"                     'media'
+		"/run/media/${USER}"                 'media'
+		"/var/spool/cups-pdf/${USER}"        'cups-pdf'
+		'/var/cache/pacman/pkg'              'paccache'
+		'/var/log'                           'log'
+		'/var/log/old'                       'alog'
+	)
+
+	for dir hashname in "${(@kv)hash_directories}"; do
+		already_hashed="$(hash -d |grep "^${hashname}" |cut -d= -f2)"
+
+		if [[ -d "${dir}" ]]; then
+			hash -d "${hashname}"="${dir}"
+		elif [[ ! -d "${already_hashed}" ]]; then
+			unhash -d "${hashname}" &>|/dev/null
+		fi
+	done
+}

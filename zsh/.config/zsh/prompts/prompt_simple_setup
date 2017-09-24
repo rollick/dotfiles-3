@@ -130,11 +130,6 @@ prompt_simple_set_title() {
 ##############
 # Setup prompt
 ##############
-# Load needed functions
-autoload -Uz add-zsh-hook
-autoload -Uz colors && colors
-autoload -Uz vcs_info
-
 # Options for simple prompt
 ##################
 prompt_opts=(cr subst percent)
@@ -156,13 +151,24 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 #########################
 # Initialize precmd hooks
 #########################
-add-zsh-hook precmd prompt_simple_check_git_arrows
-add-zsh-hook precmd prompt_simple_check_git_dirty
-add-zsh-hook precmd prompt_simple_check_user_info
-add-zsh-hook precmd prompt_simple_check_venv
-add-zsh-hook precmd vcs_info
+() {
+	local hook
+	local hooks
 
-add-zsh-hook precmd prompt_simple_set_symbol
-add-zsh-hook precmd prompt_simple_set_prompt
-add-zsh-hook precmd prompt_simple_set_prompt2
-add-zsh-hook precmd prompt_simple_set_title
+	hooks=(
+		'prompt_simple_check_git_arrows'
+		'prompt_simple_check_git_dirty'
+		'prompt_simple_check_user_info'
+		'prompt_simple_check_venv'
+		'vcs_info'
+
+		'prompt_simple_set_symbol'
+		'prompt_simple_set_prompt'
+		'prompt_simple_set_prompt2'
+		'prompt_simple_set_title'
+	)
+
+	for hook in "${(@)hooks}"; do
+		add-zsh-hook precmd "${hook}"
+	done
+}

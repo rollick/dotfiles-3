@@ -1,8 +1,4 @@
 #!/bin/zsh
-zmodload -F zsh/complist
-autoload -Uz compinit && compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zsh/zcompdump"
-autoload -Uz colors && colors
-
 zstyle ':completion:*' verbose true
 
 # Allow completion for '..'
@@ -67,8 +63,8 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # Use the generic gnu-style help (command --help) for the following commands,
 # but only if no Zsh-style completions are available.
 () {
-	local cmd
-	local commands=(
+	local cmnd
+	local cmnds=(
 		dircolors
 		eyed3
 		flake8
@@ -83,15 +79,30 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 		udisks
 	)
 
-	for cmd in $commands; do
-		if [[ -z ${_comps[$cmd]} ]]; then
-			compdef _gnu_generic $cmd
+	for cmnd in "${(@)cmnds}"; do
+		if [[ -z ${_comps[${cmnd}]} ]]; then
+			compdef _gnu_generic "${cmnd}"
 		else
-			print "Completion for \"${cmd}\" is already installed."
+			print "Completion for \"${cmnd}\" is already installed."
 		fi
 	done
 }
 
 # Enable completion for some wrappers
-compdef _cd cd-git
-compdef _diff colordiff
+() {
+	local original
+	local replacement
+	local replacements
+
+	typeset -A replacements
+
+	replacements=(
+		# Orig. command     Replacement command
+		'cd'                'cd-git'
+		'diff'              'colordiff'
+	)
+
+	for original replacement in "${(@kv)replacements}"; do
+		compdef "_${original}" "${replacement}"
+	done
+}

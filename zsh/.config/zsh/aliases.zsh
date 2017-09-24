@@ -82,6 +82,7 @@ alias nvim="${aliases[nvim]:-nvim} -p"
 [[ -n ${commands[rsync]} ]] && alias rsync="${aliases[rsync]:-rsync} --compress"
 [[ -n ${commands[sxiv]} ]] && alias sxiv="${aliases[sxiv]:-sxiv} -ar"
 [[ -n ${commands[tail]} ]] && alias tail='tail -n $(( LINES - 2 * $(print ${PROMPT} |wc -l) ))'
+[[ -n ${commands[tig]} ]] && alias tig="${aliases[tig]:-tig} --show-signature"
 [[ -n ${commands[tmux]} ]] && alias tmux='tmux -f "${XDG_CONFIG_HOME:-${HOME}/.config}/tmux/tmux.conf"'
 if [[ -n ${commands[udiskie]} ]]; then
 	alias udiskie-mount="${aliases[udiskie-mount]:-udiskie-mount} --recursive"

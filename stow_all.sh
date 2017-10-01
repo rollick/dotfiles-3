@@ -51,7 +51,6 @@ if [[ ${EUID} -ne 0 ]]; then
 		quodlibet \
 		rofi \
 		snes9x \
-		st \
 		sxiv \
 		unison \
 		xdg \

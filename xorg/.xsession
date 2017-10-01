@@ -8,6 +8,3 @@ if [[ -d "${XDG_CONFIG_HOME:-${HOME}/.config}/xorg/xsession.d" ]]; then
 		fi
 	done
 fi
-
-# Disable bell
-xset -b

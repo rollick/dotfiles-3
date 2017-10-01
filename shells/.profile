@@ -7,4 +7,6 @@ if [[ -d "${XDG_CONFIG_HOME:-${HOME}/.config}/profile.d" ]]; then
 			source "${f}"
 		fi
 	done
+
+	unset f
 fi
